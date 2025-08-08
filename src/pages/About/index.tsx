@@ -300,9 +300,7 @@ export const AboutPage: React.FC = () => {
                 <p className="text-gray-700 leading-relaxed mb-4">
                   {COMPANY_INFO.history}
                 </p>
-                <div className="flex items-center space-x-4 text-sm text-blue-700">
-                  <span className="font-semibold">Founded: {COMPANY_INFO.founded}</span>
-                  <span>•</span>
+                <div className="flex items-center justify-center text-sm text-blue-700">
                   <span className="font-semibold">HQ: {COMPANY_INFO.headquarters}</span>
                 </div>
               </div>

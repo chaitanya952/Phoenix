@@ -1,7 +1,6 @@
 // src/components/common/Footer/index.tsx
 import React from 'react';
 import { motion } from 'framer-motion';
-import { COMPANY_INFO, CERTIFICATIONS } from '../../../utils/constants';
 import { 
   PhoneIcon, 
   EnvelopeIcon, 
@@ -9,10 +8,7 @@ import {
   GlobeAltIcon,
   BuildingOfficeIcon,
   ClockIcon,
-  ArrowUpIcon,
-  ShieldCheckIcon,
-  HeartIcon,
-  StarIcon
+  ArrowUpIcon
 } from '@heroicons/react/24/outline';
 
 export const Footer: React.FC = () => {
@@ -54,26 +50,7 @@ export const Footer: React.FC = () => {
     }
   };
 
-  const quickLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About Us', href: '#about' },
-    { name: 'Products', href: '#products' },
-    { name: 'Quality', href: '#quality' },
-    { name: 'Services', href: '#services' },
-    { name: 'News', href: '#news' },
-    { name: 'Contact', href: '#contact' }
-  ];
 
-  const services = [
-    'OEM Manufacturing',
-    'ODM Solutions',
-    'Quality Testing',
-    'Global Shipping',
-    'Custom Design',
-    'Packaging Solutions'
-  ];
-
-  const certifications = CERTIFICATIONS.slice(0, 4);
 
   return (
     <footer className="relative bg-gray-900 text-white overflow-hidden">
@@ -116,12 +93,24 @@ export const Footer: React.FC = () => {
               whileHover={{ scale: 1.02 }}
               className="bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50 backdrop-blur-sm"
             >
-              <motion.h3 
-                className="text-3xl font-bold mb-4 text-primary-400"
-                whileHover={{ color: "#60a5fa" }}
-              >
-                Phoenix
-              </motion.h3>
+              <div className="flex items-center gap-4 mb-4">
+                <motion.img 
+                  src="/images/Phoenix_Logo.png" 
+                  alt="Phoenix Logo" 
+                  className="h-12 w-auto object-contain"
+                  whileHover={{ scale: 1.1 }}
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                  }}
+                />
+                <motion.h3 
+                  className="text-3xl font-bold text-primary-400"
+                  whileHover={{ color: "#60a5fa" }}
+                >
+                  Phoenix
+                </motion.h3>
+              </div>
               <p className="text-gray-300 mb-6 leading-relaxed">
                 20+ years of excellence in baby products manufacturing. 
                 Your trusted partner for OEM & ODM services worldwide.

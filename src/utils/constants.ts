@@ -530,8 +530,7 @@ export const COMPANY_INFO = {
     "Customer Focus - Understanding and exceeding expectations",
     "Integrity - Transparent and ethical business practices"
   ],
-  history: "Founded in 2004, Phoenix began as a small family business with a vision to create safer baby products. Over two decades, we've grown into a leading manufacturer serving 60+ countries worldwide, while maintaining our commitment to quality and innovation.",
-  founded: 2004,
+  history: "Phoenix began as a small family business with a vision to create safer baby products. Over the years, we've grown into a leading manufacturer serving 60+ countries worldwide, while maintaining our commitment to quality and innovation.",
   headquarters: "Guangzhou, China"
 };
 

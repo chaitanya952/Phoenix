@@ -52,8 +52,19 @@ export const Header: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             className="flex-shrink-0"
           >
-            <Link to="/">
-              <h1 className="text-2xl font-bold gradient-text-animated transition-colors duration-300 font-display">
+            <Link to="/" className="flex items-center gap-3">
+              <img 
+                src="/images/Phoenix_Logo.png" 
+                alt="Phoenix Logo" 
+                className="h-10 w-auto object-contain"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  const fallback = target.nextElementSibling as HTMLElement;
+                  if (fallback) fallback.style.display = 'block';
+                }}
+              />
+              <h1 className="text-2xl font-bold gradient-text-animated transition-colors duration-300 font-display" style={{display: 'none'}}>
                 Phoenix
               </h1>
             </Link>

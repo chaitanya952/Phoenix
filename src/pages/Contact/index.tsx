@@ -180,6 +180,24 @@ export const ContactPage: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
+            {/* Phoenix Logo */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex justify-center mb-8"
+            >
+              <img 
+                src="/images/Phoenix_Logo.png" 
+                alt="Phoenix Logo" 
+                className="h-20 w-auto object-contain drop-shadow-lg"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                }}
+              />
+            </motion.div>
+            
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
               Contact <span className="text-primary-600">Phoenix</span>
             </h1>

@@ -385,6 +385,24 @@ export const Hero: React.FC = () => {
               transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
               className="text-left"
             >
+              {/* Phoenix Logo */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="flex justify-start mb-6"
+              >
+                <img 
+                  src="/images/Phoenix_Logo.png" 
+                  alt="Phoenix Logo" 
+                  className="h-16 w-auto object-contain drop-shadow-lg"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                  }}
+                />
+              </motion.div>
+
               {/* Badge */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
