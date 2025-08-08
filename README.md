@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Phoenix Baby Products Website
+
+This is the official website for Phoenix Baby Products, a leading manufacturer of premium baby products including feeding bottles, sippy cups, and baby care essentials.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

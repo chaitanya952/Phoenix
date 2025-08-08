@@ -1,0 +1,101 @@
+// src/types/index.ts
+export interface Product {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  category: string;
+  features?: string[];
+  specifications?: Record<string, string>;
+  subProducts?: SubProduct[];
+}
+
+export interface SubProduct {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  features: string[];
+  specifications: Record<string, string>;
+  material: string;
+  heatResistance?: string;
+  transparency?: string;
+  dropResistance?: string;
+  durability?: string;
+}
+
+export interface CompanyStats {
+  years: number;
+  employees: number;
+  factoryArea: number;
+  countries: number;
+  monthlyCapacity: number;
+}
+
+export interface Customer {
+  id: string;
+  name: string;
+  logo: string;
+}
+
+export interface Service {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  features: string[];
+}
+
+export interface Certification {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  issuer: string;
+  validUntil?: string;
+}
+
+export interface FAQ {
+  id: string;
+  question: string;
+  answer: string;
+  category: string;
+}
+
+export interface TeamMember {
+  id: string;
+  name: string;
+  position: string;
+  image: string;
+  bio: string;
+  experience: string;
+}
+
+export interface NewsItem {
+  id: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  image: string;
+  date: string;
+  category: string;
+}
+
+export interface Testimonial {
+  id: string;
+  name: string;
+  company: string;
+  position: string;
+  content: string;
+  image: string;
+  rating: number;
+}
+
+export interface CompanyInfo {
+  mission: string;
+  vision: string;
+  values: string[];
+  history: string;
+  founded: number;
+  headquarters: string;
+}
