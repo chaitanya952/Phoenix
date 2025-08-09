@@ -3,7 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useCountUp } from '../../hooks/useCountUp';
-import { COMPANY_STATS, COMPANY_INFO, TEAM_MEMBERS } from '../../utils/constants';
+import { COMPANY_STATS, COMPANY_INFO, TEAM_MEMBERS, COMPANY_FACTS, MANUFACTURING_PROCESS, SERVICES_OFFERED } from '../../utils/constants';
 import { 
   BuildingOfficeIcon, 
   UsersIcon, 
@@ -362,6 +362,42 @@ export const AboutPage: React.FC = () => {
         </div>
       </section>
 
+      {/* Company Facts Section */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-100 relative z-10">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Company Facts</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Key facts and achievements that define Phoenix's excellence in baby product manufacturing.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {Object.values(COMPANY_FACTS).map((fact, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center"
+              >
+                <div className="text-4xl mb-4">{fact.icon}</div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{fact.title}</h3>
+                <p className="text-2xl font-bold text-primary-600 mb-2">{fact.value}</p>
+                <p className="text-gray-600 text-sm">{fact.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Manufacturing Process Section */}
       <section className="py-20 bg-white relative z-10">
         <div className="container mx-auto px-4">
@@ -374,35 +410,81 @@ export const AboutPage: React.FC = () => {
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Manufacturing Process</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Our state-of-the-art manufacturing process ensures the highest quality standards.
+                Our comprehensive manufacturing process ensures the highest quality standards from concept to delivery.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              {[
-                { step: "1", title: "Design & Development", desc: "Product conceptualization and engineering", icon: "🎨" },
-                { step: "2", title: "Material Selection", desc: "Premium, baby-safe materials sourcing", icon: "🧪" },
-                { step: "3", title: "Production", desc: "Advanced manufacturing with quality control", icon: "⚙️" },
-                { step: "4", title: "Testing & Packaging", desc: "Rigorous testing and eco-friendly packaging", icon: "📦" }
-              ].map((process, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6 mb-16">
+              {MANUFACTURING_PROCESS.map((process, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.6 }}
                   viewport={{ once: true }}
-                  className="text-center bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="text-center bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group"
                 >
-                  <div className="text-4xl mb-4">{process.icon}</div>
-                  <div className="w-12 h-12 bg-primary-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
+                  <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{process.icon}</div>
+                  <div className="w-12 h-12 bg-primary-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 group-hover:bg-primary-700 transition-colors duration-300">
                     {process.step}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{process.title}</h3>
-                  <p className="text-gray-600">{process.desc}</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{process.title}</h3>
+                  <p className="text-gray-600 mb-4">{process.description}</p>
+                  <div className="space-y-1">
+                    {process.details.map((detail, idx) => (
+                      <div key={idx} className="text-sm text-gray-500 flex items-center justify-center">
+                        <CheckCircleIcon className="w-3 h-3 text-green-500 mr-1" />
+                        {detail}
+                      </div>
+                    ))}
+                  </div>
                 </motion.div>
               ))}
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Services We Offer Section */}
+      <section className="py-20 bg-gradient-to-br from-green-50 to-emerald-100 relative z-10">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Services We Offer</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Comprehensive services to support your baby product needs from concept to market.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {SERVICES_OFFERED.map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group"
+              >
+                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{service.icon}</div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
+                <p className="text-gray-600 mb-4">{service.description}</p>
+                <div className="space-y-2">
+                  {service.features.map((feature, idx) => (
+                    <div key={idx} className="text-sm text-gray-500 flex items-center">
+                      <CheckCircleIcon className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                      {feature}
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 

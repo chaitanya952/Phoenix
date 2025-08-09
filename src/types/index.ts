@@ -8,6 +8,10 @@ export interface Product {
   features?: string[];
   specifications?: Record<string, string>;
   subProducts?: SubProduct[];
+  volume?: string;
+  specialFeatures?: string[];
+  material?: string;
+  ageGroup?: string;
 }
 
 export interface SubProduct {
@@ -98,4 +102,12 @@ export interface CompanyInfo {
   history: string;
   founded: number;
   headquarters: string;
+}
+
+export interface ProductFiltersState {
+  category: string;
+  volume: string;
+  specialFeatures: string[];
+  material: string;
+  ageGroup: string;
 }

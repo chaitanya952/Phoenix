@@ -1,8 +1,9 @@
 // src/pages/Products/index.tsx
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useParams, Link } from 'react-router-dom';
 import { ProductCard } from '../../components/common/ProductCard';
+import { ProductFilters } from '../../components/common/ProductFilters';
 import { PRODUCTS } from '../../utils/constants';
 import { Button } from '../../components/common/Button';
 import { 
@@ -11,19 +12,83 @@ import {
   ShieldCheckIcon, 
   HeartIcon, 
   GlobeAltIcon,
-  ArrowRightIcon 
+  ArrowRightIcon,
+  FunnelIcon
 } from '@heroicons/react/24/outline';
-import { Product } from '../../types';
+import { ProductFiltersState } from '../../types';
 
 export const ProductsPage: React.FC = () => {
-  const { productId } = useParams();
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [filters, setFilters] = useState<ProductFiltersState>({
+    category: 'all',
+    volume: 'all',
+    specialFeatures: [],
+    material: 'all',
+    ageGroup: 'all'
+  });
+  const [showFilters, setShowFilters] = useState(false);
 
-  const categories = ['all', 'Feeding', 'Drinking', 'Care', 'Textile'];
-  
-  const filteredProducts = selectedCategory === 'all' 
-    ? PRODUCTS 
-    : PRODUCTS.filter(product => product.category === selectedCategory);
+
+
+  // Filter products based on selected filters
+  const filteredProducts = useMemo(() => {
+    return PRODUCTS.filter(product => {
+      // Category filter
+      if (filters.category !== 'all' && product.category !== filters.category) {
+        return false;
+      }
+
+      // Volume filter (you'll need to add volume property to products)
+      if (filters.volume !== 'all' && product.volume !== filters.volume) {
+        return false;
+      }
+
+      // Special features filter
+      if (filters.specialFeatures.length > 0) {
+        const hasFeature = filters.specialFeatures.some((feature: string) => 
+          product.specialFeatures?.includes(feature)
+        );
+        if (!hasFeature) return false;
+      }
+
+      // Material filter
+      if (filters.material !== 'all' && product.material !== filters.material) {
+        return false;
+      }
+
+      // Age group filter
+      if (filters.ageGroup !== 'all' && product.ageGroup !== filters.ageGroup) {
+        return false;
+      }
+
+      return true;
+    });
+  }, [filters]);
+
+  const handleFilterChange = (filterType: keyof ProductFiltersState, value: any) => {
+    setFilters((prev: ProductFiltersState) => ({
+      ...prev,
+      [filterType]: value
+    }));
+  };
+
+  const handleSpecialFeatureToggle = (feature: string) => {
+    setFilters((prev: ProductFiltersState) => ({
+      ...prev,
+      specialFeatures: prev.specialFeatures.includes(feature)
+        ? prev.specialFeatures.filter((f: string) => f !== feature)
+        : [...prev.specialFeatures, feature]
+    }));
+  };
+
+  const clearAllFilters = () => {
+    setFilters({
+      category: 'all',
+      volume: 'all',
+      specialFeatures: [],
+      material: 'all',
+      ageGroup: 'all'
+    });
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -54,120 +119,125 @@ export const ProductsPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white to-primary-50">
-      {/* Header Section */}
-      <section className="pt-24 pb-16 relative overflow-hidden">
-        {/* Background Decorations */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 hero-pattern opacity-10"></div>
-          <motion.div
-            animate={{ 
-              rotate: [0, 360],
-              scale: [1, 1.1, 1]
+      {/* Hero Banner - Top 25% */}
+      <section className="relative h-[25vh] min-h-[300px] overflow-hidden">
+        {/* Banner Image */}
+        <div className="absolute inset-0">
+          <img 
+            src="/images/baby_picture.jpeg" 
+            alt="Phoenix Baby Products" 
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.src = '/images/Wide Neck Bottles JPEG/WN0001 - 210ml.jpg';
             }}
-            transition={{ 
-              duration: 30, 
-              repeat: Infinity, 
-              ease: "linear" 
-            }}
-            className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-primary-400/20 to-accent-400/20 rounded-full blur-xl"
           />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60"></div>
         </div>
 
-        <div className="container mx-auto px-4 relative z-10">
-          {/* Breadcrumb */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-8"
-          >
-            <Link 
-              to="/" 
-              className="inline-flex items-center text-primary-600 hover:text-primary-700 transition-colors"
-            >
-              <ArrowLeftIcon className="w-4 h-4 mr-2" />
-              Back to Home
-            </Link>
-          </motion.div>
-
-          {/* Page Title */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
+        {/* Banner Content */}
+        <div className="relative z-10 h-full flex items-center justify-center">
+          <div className="container mx-auto px-4 text-center">
+            {/* Breadcrumb */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="relative inline-block mb-6"
-            >
-              <h1 className="text-4xl md:text-6xl font-bold text-secondary-900 font-display">
-                Our{' '}
-                <span className="gradient-text-animated relative">
-                  Products
-                  <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                    className="absolute -top-2 -right-8 text-primary-400"
-                  >
-                    <SparklesIcon className="w-8 h-8" />
-                  </motion.div>
-                </span>
-              </h1>
-              <motion.div
-                initial={{ width: 0 }}
-                animate={{ width: "100%" }}
-                transition={{ duration: 1, delay: 0.5 }}
-                className="absolute -bottom-2 left-0 h-1 bg-primary-600 rounded-full"
-              />
-            </motion.div>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
+              transition={{ duration: 0.6 }}
+              className="mb-8"
             >
-              Discover our comprehensive range of premium baby products designed with safety, 
-              quality, and innovation at the forefront. From feeding essentials to care products, 
-              we have everything you need for your little ones.
-            </motion.p>
-          </motion.div>
-
-          {/* Category Filter */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-wrap justify-center gap-4 mb-12"
-          >
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
-                  selectedCategory === category
-                    ? 'bg-primary-600 text-white shadow-lg'
-                    : 'bg-white text-gray-600 hover:bg-primary-50 hover:text-primary-600 shadow-md'
-                }`}
+              <Link 
+                to="/" 
+                className="inline-flex items-center text-white/80 hover:text-white transition-colors"
               >
-                {category === 'all' ? 'All Products' : category}
-              </button>
-            ))}
-          </motion.div>
+                <ArrowLeftIcon className="w-4 h-4 mr-2" />
+                Back to Home
+              </Link>
+            </motion.div>
+
+            {/* Page Title */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="relative inline-block mb-6"
+              >
+                <h1 className="text-4xl md:text-6xl font-bold text-white font-display">
+                  Phoenix{' '}
+                  <span className="text-primary-300 relative">
+                    Products
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                      className="absolute -top-2 -right-8 text-primary-300"
+                    >
+                      <SparklesIcon className="w-8 h-8" />
+                    </motion.div>
+                  </span>
+                </h1>
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 1, delay: 0.5 }}
+                  className="absolute -bottom-2 left-0 h-1 bg-primary-400 rounded-full"
+                />
+              </motion.div>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="text-xl text-white/90 max-w-4xl mx-auto leading-relaxed"
+              >
+                Discover our comprehensive range of premium baby products designed with safety, 
+                quality, and innovation at the forefront. From feeding essentials to care products, 
+                we have everything you need for your little ones.
+              </motion.p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Filters Section */}
+      <section className="py-8 bg-gray-50 sticky top-0 z-40">
+        <div className="container mx-auto px-4">
+          {/* Filter Toggle Button (Mobile) */}
+          <div className="lg:hidden mb-4">
+            <button
+              onClick={() => setShowFilters(!showFilters)}
+              className="flex items-center space-x-2 px-4 py-2 bg-primary-600 text-white rounded-lg"
+            >
+              <FunnelIcon className="w-5 h-5" />
+              <span>Filters</span>
+            </button>
+          </div>
+
+          {/* Filters */}
+          <div className={`${showFilters ? 'block' : 'hidden'} lg:block`}>
+            <ProductFilters
+              filters={filters}
+              onFilterChange={handleFilterChange}
+              onSpecialFeatureToggle={handleSpecialFeatureToggle}
+              onClearAll={clearAllFilters}
+              resultsCount={filteredProducts.length}
+            />
+          </div>
         </div>
       </section>
 
       {/* Products Grid */}
-      <section className="pb-16">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
           >
             {filteredProducts.map((product) => (
               <motion.div key={product.id} variants={itemVariants}>
@@ -184,7 +254,19 @@ export const ProductsPage: React.FC = () => {
               animate={{ opacity: 1 }}
               className="text-center py-16"
             >
-              <p className="text-xl text-gray-500">No products found in this category.</p>
+              <div className="max-w-md mx-auto">
+                <FunnelIcon className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-gray-600 mb-2">No products found</h3>
+                <p className="text-gray-500 mb-4">
+                  Try adjusting your filters to see more products.
+                </p>
+                <button
+                  onClick={clearAllFilters}
+                  className="px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+                >
+                  Clear All Filters
+                </button>
+              </div>
             </motion.div>
           )}
         </div>
