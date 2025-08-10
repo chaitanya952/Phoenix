@@ -120,7 +120,7 @@ export const ProductsPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-white to-primary-50">
       {/* Hero Banner - Top 25% */}
-      <section className="relative h-[25vh] min-h-[300px] overflow-hidden">
+      <section className="relative h-[25vh] min-h-[300px] overflow-hidden pt-32">
         {/* Banner Image */}
         <div className="absolute inset-0">
           <img 

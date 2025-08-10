@@ -196,6 +196,32 @@ export const WhyPhoenix: React.FC = () => {
             className="mb-16"
           >
             <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">What Sets Us Apart</h3>
+            
+            {/* Hero Image Section */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="relative mb-12 rounded-2xl overflow-hidden shadow-2xl"
+            >
+              <img 
+                src={`${process.env.PUBLIC_URL}/images/Phoenix_Logo.png`}
+                alt="Phoenix Manufacturing Excellence"
+                className="w-full h-64 md:h-80 object-contain bg-gradient-to-br from-primary-50 to-white"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = `${process.env.PUBLIC_URL}/images/image.png`;
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent">
+                <div className="absolute bottom-6 left-6 text-white">
+                  <h4 className="text-2xl font-bold mb-2">India's Largest Baby Product Manufacturing Facility</h4>
+                  <p className="text-lg opacity-90">60,000 sq.ft of advanced manufacturing excellence</p>
+                </div>
+              </div>
+            </motion.div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {WHAT_SETS_APART.differentiators.map((diff, index) => (
                 <motion.div
@@ -204,7 +230,7 @@ export const WhyPhoenix: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.6 }}
                   viewport={{ once: true }}
-                  className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                  className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="inline-flex p-3 rounded-xl bg-primary-100 text-primary-600 mb-4">
                     {getIcon(diff.icon)}

@@ -260,6 +260,92 @@ export const InnovationPage: React.FC = () => {
               </motion.div>
             ))}
           </motion.div>
+
+          {/* Innovation Gallery */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mb-16"
+          >
+            <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+              🏭 Innovation in Action
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: true }}
+                className="relative group overflow-hidden rounded-2xl shadow-lg"
+              >
+                <img 
+                  src={`${process.env.PUBLIC_URL}/images/Phoenix/4.jpeg`}
+                  alt="Manufacturing Process"
+                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <h4 className="text-lg font-bold">Advanced Manufacturing</h4>
+                    <p className="text-sm opacity-90">State-of-the-art production facilities</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="relative group overflow-hidden rounded-2xl shadow-lg"
+              >
+                <img 
+                  src={`${process.env.PUBLIC_URL}/images/Phoenix/5.jpeg`}
+                  alt="Quality Control"
+                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <h4 className="text-lg font-bold">Quality Assurance</h4>
+                    <p className="text-sm opacity-90">Rigorous testing protocols</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="relative group overflow-hidden rounded-2xl shadow-lg"
+              >
+                <img 
+                  src={`${process.env.PUBLIC_URL}/images/Phoenix/6.jpeg`}
+                  alt="Innovation Lab"
+                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <h4 className="text-lg font-bold">Research & Development</h4>
+                    <p className="text-sm opacity-90">Cutting-edge innovation lab</p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -306,19 +392,42 @@ export const InnovationPage: React.FC = () => {
               className="relative"
             >
               <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl p-8">
-                <img 
-                  src="/images/phoenix/3.jpeg" 
-                  alt="Testing Laboratory"
-                  className="w-full h-64 object-cover rounded-xl mb-6"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                  }}
-                />
+                <div className="grid grid-cols-1 gap-4 mb-6">
+                  <img 
+                    src={`${process.env.PUBLIC_URL}/images/Phoenix/3.jpeg`}
+                    alt="Testing Laboratory"
+                    className="w-full h-48 object-cover rounded-xl"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+                    }}
+                  />
+                  <div className="grid grid-cols-2 gap-4">
+                    <img 
+                      src={`${process.env.PUBLIC_URL}/images/Phoenix/(@).jpeg`}
+                      alt="Quality Control Process"
+                      className="w-full h-32 object-cover rounded-lg"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80";
+                      }}
+                    />
+                    <img 
+                      src={`${process.env.PUBLIC_URL}/images/Phoenix/WhatsApp Image 2025-08-10 at 08.58.53.jpeg`}
+                      alt="Manufacturing Excellence"
+                      className="w-full h-32 object-cover rounded-lg"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80";
+                      }}
+                    />
+                  </div>
+                </div>
                 <div className="text-center">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Advanced Testing Facility</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Advanced Testing & Manufacturing</h3>
                   <p className="text-gray-600">
-                    Our state-of-the-art laboratory ensures every product meets international safety standards.
+                    Our state-of-the-art facilities ensure every product meets international safety standards 
+                    through comprehensive testing and quality control processes.
                   </p>
                 </div>
               </div>
@@ -603,13 +712,116 @@ export const InnovationPage: React.FC = () => {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Innovation Process</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
               Innovation isn't just about new ideas — it's a structured, research-backed process that 
               transforms insights into safe, reliable, and thoughtful baby products.
             </p>
+            
+
           </motion.div>
 
 
+
+          {/* Innovation Facilities Showcase */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mb-16"
+          >
+            <div className="bg-gradient-to-r from-primary-600 to-orange-600 rounded-3xl p-12 text-white">
+              <div className="text-center mb-12">
+                <h3 className="text-3xl font-bold mb-4">🏭 World-Class Innovation Facilities</h3>
+                <p className="text-xl opacity-90 max-w-3xl mx-auto">
+                  Our cutting-edge facilities combine advanced technology with meticulous craftsmanship 
+                  to deliver products that exceed global standards.
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1, duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="bg-white/10 rounded-xl p-6 backdrop-blur-sm"
+                >
+                  <img 
+                    src={`${process.env.PUBLIC_URL}/images/Phoenix/4.jpeg`}
+                    alt="Manufacturing Excellence"
+                    className="w-full h-32 object-cover rounded-lg mb-4"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80";
+                    }}
+                  />
+                  <h4 className="text-lg font-bold mb-2">Manufacturing</h4>
+                  <p className="text-sm opacity-90">Advanced production lines</p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2, duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="bg-white/10 rounded-xl p-6 backdrop-blur-sm"
+                >
+                  <img 
+                    src={`${process.env.PUBLIC_URL}/images/Phoenix/5.jpeg`}
+                    alt="Quality Control"
+                    className="w-full h-32 object-cover rounded-lg mb-4"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80";
+                    }}
+                  />
+                  <h4 className="text-lg font-bold mb-2">Quality Control</h4>
+                  <p className="text-sm opacity-90">Rigorous testing protocols</p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="bg-white/10 rounded-xl p-6 backdrop-blur-sm"
+                >
+                  <img 
+                    src={`${process.env.PUBLIC_URL}/images/Phoenix/6.jpeg`}
+                    alt="Research Lab"
+                    className="w-full h-32 object-cover rounded-lg mb-4"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80";
+                    }}
+                  />
+                  <h4 className="text-lg font-bold mb-2">R&D Lab</h4>
+                  <p className="text-sm opacity-90">Innovation center</p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="bg-white/10 rounded-xl p-6 backdrop-blur-sm"
+                >
+                  <img 
+                    src={`${process.env.PUBLIC_URL}/images/Phoenix/3.jpeg`}
+                    alt="Testing Facility"
+                    className="w-full h-32 object-cover rounded-lg mb-4"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80";
+                    }}
+                  />
+                  <h4 className="text-lg font-bold mb-2">Testing Lab</h4>
+                  <p className="text-sm opacity-90">Safety validation</p>
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
 
           {/* Interactive Process Steps */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
