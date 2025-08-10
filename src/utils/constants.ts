@@ -1097,7 +1097,9 @@ export const NEWS_ITEMS: NewsItem[] = [
     content: 'We are excited to announce the launch of our new eco-friendly product line, featuring baby bottles and cups made from recycled materials...',
     image: '/images/news/eco-friendly-launch.jpg',
     date: '2024-01-15',
-    category: 'Product Launch'
+    category: 'Product Launch',
+    author: 'Phoenix Team',
+    readTime: '3 min read'
   },
   {
     id: '2',
@@ -1106,7 +1108,9 @@ export const NEWS_ITEMS: NewsItem[] = [
     content: 'Following successful market research and regulatory approvals, we are expanding our operations into key European markets...',
     image: '/images/news/europe-expansion.jpg',
     date: '2024-01-10',
-    category: 'Business'
+    category: 'Business',
+    author: 'Marketing Team',
+    readTime: '5 min read'
   },
   {
     id: '3',
@@ -1115,7 +1119,42 @@ export const NEWS_ITEMS: NewsItem[] = [
     content: 'Our new 5000 sq ft safety testing facility is now operational, featuring advanced equipment for comprehensive product testing...',
     image: '/images/news/testing-facility.jpg',
     date: '2024-01-05',
-    category: 'Innovation'
+    category: 'Innovation',
+    author: 'R&D Team',
+    readTime: '4 min read'
+  },
+  {
+    id: '4',
+    title: 'Phoenix Wins Industry Excellence Award',
+    excerpt: 'Recognition for outstanding quality and innovation in baby product manufacturing.',
+    content: 'We are proud to announce that Phoenix has been awarded the Industry Excellence Award for our commitment to quality and innovation...',
+    image: '/images/news/award-win.jpg',
+    date: '2024-01-01',
+    category: 'Awards',
+    author: 'Phoenix Team',
+    readTime: '2 min read'
+  },
+  {
+    id: '5',
+    title: 'New Partnership with Global Retailers',
+    excerpt: 'Strategic partnerships to expand Phoenix products worldwide.',
+    content: 'Phoenix has formed strategic partnerships with leading global retailers to make our products more accessible to families worldwide...',
+    image: '/images/news/partnership.jpg',
+    date: '2023-12-20',
+    category: 'Business',
+    author: 'Sales Team',
+    readTime: '3 min read'
+  },
+  {
+    id: '6',
+    title: 'Sustainable Manufacturing Initiative',
+    excerpt: 'Phoenix commits to carbon-neutral manufacturing by 2025.',
+    content: 'As part of our environmental commitment, Phoenix is implementing sustainable manufacturing practices to achieve carbon neutrality...',
+    image: '/images/news/sustainability.jpg',
+    date: '2023-12-15',
+    category: 'Sustainability',
+    author: 'Operations Team',
+    readTime: '6 min read'
   }
 ];
 

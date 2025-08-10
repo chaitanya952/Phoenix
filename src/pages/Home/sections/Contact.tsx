@@ -1,7 +1,7 @@
 // src/pages/Home/sections/Contact.tsx
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FAQS, WARRANTY_INFO } from '../../../utils/constants';
+import { WARRANTY_INFO, FAQS } from '../../../utils/constants';
 import { 
   PhoneIcon,
   EnvelopeIcon,
@@ -39,13 +39,13 @@ export const Contact: React.FC = () => {
     {
       icon: <PhoneIcon className="w-6 h-6" />,
       title: "Phone",
-      details: ["+86 20 1234 5678", "+86 20 8765 4321"],
+      details: ["9000700700"],
       color: "text-primary-600"
     },
     {
       icon: <EnvelopeIcon className="w-6 h-6" />,
       title: "Email",
-      details: ["info@phoenix.com", "sales@phoenix.com"],
+      details: ["bda@phoenixplastowares.com", "info@phoenixplastowares.com"],
       color: "text-green-600"
     },
     {

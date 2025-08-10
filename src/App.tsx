@@ -10,6 +10,7 @@ import { CategoryPage } from './pages/Products/CategoryPage';
 import { ProductDetailPage } from './pages/Products/ProductDetail';
 import { ServicesPage } from './pages/Services';
 import { InnovationPage } from './pages/Innovation';
+import { NewsPage } from './pages/News';
 import { ContactPage } from './pages/Contact';
 import './index.css';
 
@@ -27,6 +28,7 @@ function App() {
             <Route path="/products/:productId" element={<ProductDetailPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/innovation" element={<InnovationPage />} />
+            <Route path="/news" element={<NewsPage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </main>

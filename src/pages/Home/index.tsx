@@ -2,15 +2,7 @@
 import React from 'react';
 import { Hero } from './sections/Hero';
 import { About } from './sections/About';
-import { WhyPhoenix } from './sections/WhyPhoenix';
 import { Products } from './sections/Products';
-import { Quality } from './sections/Quality';
-import { Services } from './sections/Services';
-import { Customers } from './sections/Customers';
-import { News } from './sections/News';
-import { CSR } from './sections/CSR';
-import { RnD } from './sections/RnD';
-import { Awards } from './sections/Awards';
 import { Contact } from './sections/Contact';
 
 export const HomePage: React.FC = () => {
@@ -18,15 +10,7 @@ export const HomePage: React.FC = () => {
     <>
       <Hero />
       <About />
-      <WhyPhoenix />
       <Products />
-      <Quality />
-      <Services />
-      <Customers />
-      <News />
-      <CSR />
-      <RnD />
-      <Awards />
       <Contact />
     </>
   );

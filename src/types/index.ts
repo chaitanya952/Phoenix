@@ -83,6 +83,8 @@ export interface NewsItem {
   image: string;
   date: string;
   category: string;
+  author: string;
+  readTime: string;
 }
 
 export interface Testimonial {
