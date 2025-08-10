@@ -200,7 +200,7 @@ export const About: React.FC = () => {
               className="absolute -bottom-6 -left-6 bg-white rounded-xl p-4 shadow-lg border border-gray-100"
             >
               <div className="text-2xl font-bold text-primary-600">{(COMPANY_STATS.monthlyCapacity / 1000000).toFixed(1)}M+</div>
-              <div className="text-sm text-gray-600">Products/Month</div>
+              <div className="text-sm text-gray-600">Products</div>
             </motion.div>
           </motion.div>
         </div>

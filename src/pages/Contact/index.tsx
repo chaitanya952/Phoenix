@@ -68,21 +68,21 @@ export const ContactPage: React.FC = () => {
     {
       icon: <PhoneIcon className="w-6 h-6" />,
       title: "Phone",
-      details: ["+86 20 1234 5678", "+86 20 8765 4321"],
+      details: ["+91 9000700700", "+86 8050700700"],
       color: "text-primary-600",
       bgColor: "bg-primary-50"
     },
     {
       icon: <EnvelopeIcon className="w-6 h-6" />,
       title: "Email",
-      details: ["info@phoenix.com", "sales@phoenix.com"],
+      details: ["bda@phoeniplastowares..com", "info@phoenixplastowares.com"],
       color: "text-green-600",
       bgColor: "bg-green-50"
     },
     {
       icon: <MapPinIcon className="w-6 h-6" />,
       title: "Address",
-      details: ["123 Manufacturing District", "Guangzhou, China 510000"],
+      details: ["Hyderabad", "Telangana", "India"],
       color: "text-blue-600",
       bgColor: "bg-blue-50"
     },
@@ -446,10 +446,9 @@ export const ContactPage: React.FC = () => {
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Why Choose Phoenix?</h3>
                 <ul className="space-y-3">
                   {[
-                    "20+ years of manufacturing experience",
+                    "10+ years of manufacturing experience",
                     "International quality certifications",
                     "Custom OEM/ODM solutions",
-                    "Global shipping to 60+ countries",
                     "24/7 customer support"
                   ].map((item, index) => (
                     <li key={index} className="flex items-center text-gray-700">

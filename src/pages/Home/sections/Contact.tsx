@@ -303,7 +303,7 @@ export const Contact: React.FC = () => {
               <h4 className="text-xl font-bold text-gray-900 mb-4">Why  Phoenix?</h4>
               <ul className="space-y-3">
                 {[
-                  "20+ years of manufacturing experience",
+                  "10+ years of manufacturing experience",
                   "International quality certifications",
                   "Custom OEM/ODM solutions",
                   "Global shipping to 60+ countries",

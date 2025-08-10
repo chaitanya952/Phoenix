@@ -313,7 +313,7 @@ export const Hero: React.FC = () => {
     {
       title: "Trusted by Mothers Worldwide",
       subtitle: "Global Excellence",
-      description: "Over 20 years of manufacturing excellence, trusted by loving mothers in 60+ countries who choose only the best for their babies.",
+      description: "Over 10 years of manufacturing excellence, trusted by loving mothers who choose only the best for their babies.",
       image: "https://images.unsplash.com/photo-1559715541-5daf8a0296d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
       features: ["Mother Approved", "Global Trust", "Premium Quality"]
     }
