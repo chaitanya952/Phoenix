@@ -569,7 +569,7 @@ export const Hero: React.FC = () => {
                     </div>
                     <div>
                       <div className="text-sm font-bold text-secondary-800">Global Reach</div>
-                      <div className="text-xs text-secondary-600">60+ Countries Served</div>
+                      <div className="text-xs text-secondary-600">50+ Countries Served</div>
                     </div>
                   </div>
                 </motion.div>
@@ -591,21 +591,21 @@ export const Hero: React.FC = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <StatCard
               icon={<BuildingOfficeIcon className="w-6 h-6" />}
-              end={15}
-              suffix="+"
-              label="Years Experience"
+              end={10}
+              suffix="yrs"
+              label="Experience"
               delay={200}
             />
             <StatCard
               icon={<GlobeAltIcon className="w-6 h-6" />}
-              end={60}
+              end={50}
               suffix="+"
-              label="Countries Served"
+              label="Customers Served"
               delay={400}
             />
             <StatCard
               icon={<TrophyIcon className="w-6 h-6" />}
-              end={500}
+              end={10000000}
               suffix="+"
               label="Products Delivered"
               delay={600}

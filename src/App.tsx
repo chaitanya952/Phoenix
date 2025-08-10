@@ -6,6 +6,7 @@ import { Footer } from './components/common/Footer';
 import { HomePage } from './pages/Home';
 import { AboutPage } from './pages/About';
 import { ProductsPage } from './pages/Products';
+import { CategoryPage } from './pages/Products/CategoryPage';
 import { ProductDetailPage } from './pages/Products/ProductDetail';
 import { ServicesPage } from './pages/Services';
 import { InnovationPage } from './pages/Innovation';
@@ -22,6 +23,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/products" element={<ProductsPage />} />
+            <Route path="/products/category/:categoryId" element={<CategoryPage />} />
             <Route path="/products/:productId" element={<ProductDetailPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/innovation" element={<InnovationPage />} />

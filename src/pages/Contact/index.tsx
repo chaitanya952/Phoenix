@@ -1,7 +1,7 @@
 // src/pages/Contact/index.tsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { 
   PhoneIcon, 
   EnvelopeIcon, 
@@ -9,17 +9,13 @@ import {
   ClockIcon,
   ArrowLeftIcon,
   CheckCircleIcon,
-  PaperAirplaneIcon,
-  DocumentArrowDownIcon,
-  ShieldCheckIcon,
-  ClipboardDocumentCheckIcon,
-  BeakerIcon,
-  AcademicCapIcon
+  PaperAirplaneIcon
 } from '@heroicons/react/24/outline';
 import { Button } from '../../components/common/Button';
 import { WARRANTY_INFO } from '../../utils/constants';
 
 export const ContactPage: React.FC = () => {
+  const [searchParams] = useSearchParams();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -31,6 +27,21 @@ export const ContactPage: React.FC = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  // Pre-fill form if product inquiry parameters are present
+  useEffect(() => {
+    const product = searchParams.get('product');
+    const model = searchParams.get('model');
+    
+    if (product || model) {
+      setFormData(prev => ({
+        ...prev,
+        subject: `Product Inquiry: ${product || model}`,
+        message: `I am interested in learning more about ${product || 'your product'}${model ? ` (Model: ${model})` : ''}. Please provide information about:\n\n- Pricing and availability\n- Technical specifications\n- Minimum order quantities\n- Delivery timelines\n- Customization options\n\nThank you for your time.`,
+        inquiryType: 'product'
+      }));
+    }
+  }, [searchParams]);
+
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {

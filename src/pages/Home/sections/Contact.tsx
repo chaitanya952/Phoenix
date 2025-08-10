@@ -7,7 +7,6 @@ import {
   EnvelopeIcon,
   MapPinIcon,
   ClockIcon,
-  GlobeAltIcon,
   ChevronDownIcon,
   ChevronUpIcon,
   PaperAirplaneIcon

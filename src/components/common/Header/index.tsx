@@ -3,12 +3,13 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { Bars3Icon, XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
-import { PRODUCTS } from '../../../utils/constants';
+import { PRODUCT_CATEGORIES } from '../../../data/catalogData';
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
+  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -121,49 +122,123 @@ export const Header: React.FC = () => {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 10, scale: 0.95 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 mt-2 w-80 bg-white rounded-xl shadow-2xl border border-gray-100 z-50 overflow-hidden"
+                          className="absolute top-full left-0 mt-2 bg-white rounded-xl shadow-2xl border border-gray-100 z-50 overflow-hidden"
                         >
-                          <div className="max-h-96 overflow-y-auto">
-                            <div className="p-4">
-                              <div className="grid gap-2">
-                                {PRODUCTS.map((product) => (
-                                  <Link
-                                    key={product.id}
-                                    to={`/products/${product.id}`}
-                                    className="group block"
-                                    onClick={() => setIsProductsDropdownOpen(false)}
-                                  >
-                                    <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-primary-50 transition-colors duration-200">
-                                      <img 
-                                        src={product.image} 
-                                        alt={product.name}
-                                        className="w-10 h-10 object-cover rounded-lg flex-shrink-0"
-                                        onError={(e) => {
-                                          const target = e.target as HTMLImageElement;
-                                          target.src = '/images/placeholder-product.png';
+                          <div className="flex">
+                            {/* Categories Column */}
+                            <div className="w-48 border-r border-gray-100">
+                              <div className="p-2">
+                                <h3 className="text-xs font-semibold text-gray-900 mb-2 px-2">Categories</h3>
+                                <div className="max-h-40 overflow-y-auto space-y-0.5">
+                                  {PRODUCT_CATEGORIES.map((category) => (
+                                    <div
+                                      key={category.id}
+                                      className="relative"
+                                      onMouseEnter={() => setHoveredCategory(category.id)}
+                                    >
+                                      <Link
+                                        to={`/products/category/${category.id}`}
+                                        className={`group block px-2 py-1.5 rounded transition-colors duration-200 ${
+                                          hoveredCategory === category.id ? 'bg-primary-50' : 'hover:bg-gray-50'
+                                        }`}
+                                        onClick={() => {
+                                          setIsProductsDropdownOpen(false);
+                                          setHoveredCategory(null);
                                         }}
-                                      />
-                                      <div className="flex-1 min-w-0">
-                                        <h4 className="font-semibold text-gray-900 group-hover:text-primary-600 transition-colors duration-200 text-sm">
-                                          {product.name}
-                                        </h4>
-                                        <p className="text-xs text-gray-500 line-clamp-1">
-                                          {product.description}
-                                        </p>
-                                      </div>
+                                      >
+                                        <div className="flex items-center justify-between">
+                                          <h4 className={`font-medium text-xs transition-colors duration-200 ${
+                                            hoveredCategory === category.id ? 'text-primary-600' : 'text-gray-900 group-hover:text-primary-600'
+                                          }`}>
+                                            {category.displayName}
+                                          </h4>
+                                          <ChevronDownIcon className="w-3 h-3 text-gray-400 rotate-[-90deg]" />
+                                        </div>
+                                      </Link>
                                     </div>
-                                  </Link>
-                                ))}
+                                  ))}
+                                </div>
                               </div>
                             </div>
+
+                            {/* Products Column */}
+                            <div className="w-60">
+                              <AnimatePresence mode="wait">
+                                {hoveredCategory && (
+                                  <motion.div
+                                    key={hoveredCategory}
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -20 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="p-2"
+                                  >
+                                    {(() => {
+                                      const category = PRODUCT_CATEGORIES.find(cat => cat.id === hoveredCategory);
+                                      if (!category) return null;
+                                      
+                                      return (
+                                        <>
+                                          <h3 className="text-xs font-semibold text-gray-900 mb-2 px-2">
+                                            {category.displayName} Products
+                                          </h3>
+                                          <div className="max-h-40 overflow-y-auto space-y-0.5">
+                                            {category.products.map((product) => (
+                                              <Link
+                                                key={product.modelNo}
+                                                to={`/products/${product.modelNo}`}
+                                                className="group block px-2 py-1 rounded hover:bg-gray-50 transition-colors duration-200"
+                                                onClick={() => {
+                                                  setIsProductsDropdownOpen(false);
+                                                  setHoveredCategory(null);
+                                                }}
+                                              >
+                                                <div>
+                                                  <h4 className="font-medium text-xs text-gray-900 group-hover:text-primary-600 transition-colors duration-200 truncate">
+                                                    {product.description}
+                                                  </h4>
+                                                  <div className="flex items-center justify-between mt-0.5">
+                                                    <p className="text-xs text-gray-500 font-mono">
+                                                      {product.modelNo}
+                                                    </p>
+                                                    <p className="text-xs font-semibold text-primary-600">
+                                                      ${product.usd.toFixed(2)}
+                                                    </p>
+                                                  </div>
+                                                </div>
+                                              </Link>
+                                            ))}
+                                          </div>
+                                        </>
+                                      );
+                                    })()}
+                                  </motion.div>
+                                )}
+                              </AnimatePresence>
+                              
+                              {!hoveredCategory && (
+                                <div className="p-2 flex items-center justify-center h-40">
+                                  <div className="text-center text-gray-500">
+                                    <div className="w-8 h-8 mx-auto mb-2 bg-gray-100 rounded-full flex items-center justify-center">
+                                      <ChevronDownIcon className="w-4 h-4 rotate-[-90deg]" />
+                                    </div>
+                                    <p className="text-xs">Hover over a category</p>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
                           </div>
-                          <div className="p-4 pt-2 border-t border-gray-100 bg-gray-50">
+                          
+                          <div className="p-2 border-t border-gray-100 bg-gray-50">
                             <Link
                               to="/products"
-                              className="block w-full text-center py-2 px-4 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-200 font-semibold text-sm"
-                              onClick={() => setIsProductsDropdownOpen(false)}
+                              className="block w-full text-center py-1.5 px-3 bg-primary-600 text-white rounded hover:bg-primary-700 transition-colors duration-200 font-semibold text-xs"
+                              onClick={() => {
+                                setIsProductsDropdownOpen(false);
+                                setHoveredCategory(null);
+                              }}
                             >
-                              View All Products
+                              View All Categories
                             </Link>
                           </div>
                         </motion.div>
@@ -286,15 +361,15 @@ export const Header: React.FC = () => {
                               transition={{ duration: 0.3 }}
                               className="ml-4 mt-2 space-y-1 overflow-hidden max-h-64 overflow-y-auto"
                             >
-                              {PRODUCTS.map((product) => (
+                              {PRODUCT_CATEGORIES.map((category) => (
                                 <motion.div
-                                  key={product.id}
+                                  key={category.id}
                                   initial={{ opacity: 0, x: -20 }}
                                   animate={{ opacity: 1, x: 0 }}
                                   transition={{ duration: 0.3 }}
                                 >
                                   <Link
-                                    to={`/products/${product.id}`}
+                                    to={`/products/category/${category.id}`}
                                     onClick={() => {
                                       setIsMobileMenuOpen(false);
                                       setIsProductsDropdownOpen(false);
@@ -303,20 +378,20 @@ export const Header: React.FC = () => {
                                 >
                                   <div className="flex items-center gap-3">
                                     <img 
-                                      src={product.image} 
-                                      alt={product.name}
+                                      src={category.image}
+                                      alt={category.displayName}
                                       className="w-8 h-8 object-cover rounded flex-shrink-0"
                                       onError={(e) => {
                                         const target = e.target as HTMLImageElement;
-                                        target.src = '/images/placeholder-product.png';
+                                        target.src = '/images/Phoenix_Logo.png';
                                       }}
                                     />
                                     <div className="flex-1 min-w-0">
                                       <h5 className="font-medium text-gray-900 text-sm">
-                                        {product.name}
+                                        {category.displayName}
                                       </h5>
                                       <p className="text-xs text-gray-500 line-clamp-1">
-                                        {product.description}
+                                        {category.products.length} products
                                       </p>
                                     </div>
                                   </div>
@@ -337,7 +412,7 @@ export const Header: React.FC = () => {
                                     setIsProductsDropdownOpen(false);
                                   }}
                                 >
-                                  View All Products
+                                  View All Categories
                                 </Link>
                               </motion.div>
                             </motion.div>

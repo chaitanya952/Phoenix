@@ -2,7 +2,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { PRODUCTS } from '../../../utils/constants';
 import { SparklesIcon, ArrowRightIcon, ShieldCheckIcon, HeartIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
 
 export const Products: React.FC = () => {
@@ -124,63 +123,65 @@ export const Products: React.FC = () => {
         >
           {[
             {
-              id: '1',
-              name: 'Wide Neck Baby Bottles',
+              id: 'wide-feeding',
+              name: 'Wide Neck Feeding Bottles',
               description: 'Experience the joy of feeding with our premium wide neck bottles. Designed for easy cleaning and comfortable feeding, bringing mother and baby closer together.',
               image: '/images/Wide Neck Bottles JPEG/WN0001 - 210ml.jpg',
-              volume: '150ml - 330ml',
+              volume: '210ml - 300ml',
               features: ['Anti-Colic', 'BPA-Free', 'Wide Opening']
             },
             {
-              id: '2',
-              name: 'Standard Neck Bottles',
+              id: 'std-feeding',
+              name: 'Standard Neck Feeding Bottles',
               description: 'Classic feeding bottles that have nurtured generations. Reliable, safe, and designed with a mother\'s intuition for perfect feeding moments.',
               image: '/images/Standard Neck Bottles JPEG/RN0001 - 125ml.jpg',
-              volume: '125ml - 250ml',
+              volume: '60ml - 250ml',
               features: ['Universal Fit', 'Gentle Flow', 'Trusted Design']
             },
             {
-              id: '3',
-              name: 'Sippy Cups',
+              id: 'sippy-cups',
+              name: 'Sippy Cups & Training Cups',
               description: 'Celebrate your toddler\'s milestones with spill-proof sippy cups. Making the transition from bottle to cup a joyful journey for both mother and child.',
               image: '/images/Sippy Cups JPEG/SP0001 - 150ml.jpg',
-              volume: '150ml - 200ml',
+              volume: '150ml - 350ml',
               features: ['Spill-Proof', 'Milestone Ready', 'Growth Support']
             }
           ].map((product) => (
             <motion.div key={product.id} variants={itemVariants}>
-              <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
-                <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src={product.image} 
-                    alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = '/images/Phoenix_Logo.png';
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                  <div className="absolute top-4 right-4 bg-primary-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                    {product.volume}
+              <Link to={`/products/category/${product.id}`}>
+                <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                  <div className="relative h-48 overflow-hidden">
+                    <img 
+                      src={product.image} 
+                      alt={product.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = '/images/Phoenix_Logo.png';
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                    <div className="absolute top-4 right-4 bg-primary-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                      {product.volume}
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h4 className="text-xl font-bold text-gray-900 mb-3">{product.name}</h4>
+                    <p className="text-gray-600 mb-4 leading-relaxed">{product.description}</p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {product.features.map((feature, index) => (
+                        <span key={index} className="bg-primary-50 text-primary-700 px-3 py-1 rounded-full text-xs font-medium">
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-primary-600 font-semibold">View Products</span>
+                      <ArrowRightIcon className="w-4 h-4 text-primary-600 group-hover:translate-x-1 transition-transform" />
+                    </div>
                   </div>
                 </div>
-                <div className="p-6">
-                  <h4 className="text-xl font-bold text-gray-900 mb-3">{product.name}</h4>
-                  <p className="text-gray-600 mb-4 leading-relaxed">{product.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {product.features.map((feature, index) => (
-                      <span key={index} className="bg-primary-50 text-primary-700 px-3 py-1 rounded-full text-xs font-medium">
-                        {feature}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-primary-600 font-semibold">Learn More</span>
-                    <ArrowRightIcon className="w-4 h-4 text-primary-600 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </div>
-              </div>
+              </Link>
             </motion.div>
           ))}
         </motion.div>

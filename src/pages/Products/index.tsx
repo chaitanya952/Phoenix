@@ -1,11 +1,8 @@
 // src/pages/Products/index.tsx
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useParams, Link } from 'react-router-dom';
-import { ProductCard } from '../../components/common/ProductCard';
-import { ProductFilters } from '../../components/common/ProductFilters';
-import { PRODUCTS } from '../../utils/constants';
-import { Button } from '../../components/common/Button';
+import { Link } from 'react-router-dom';
+import { PRODUCT_CATEGORIES } from '../../data/catalogData';
 import { 
   SparklesIcon, 
   ArrowLeftIcon, 
@@ -13,82 +10,12 @@ import {
   HeartIcon, 
   GlobeAltIcon,
   ArrowRightIcon,
-  FunnelIcon
+  MagnifyingGlassIcon
 } from '@heroicons/react/24/outline';
-import { ProductFiltersState } from '../../types';
+import { Button } from '../../components/common/Button';
 
 export const ProductsPage: React.FC = () => {
-  const [filters, setFilters] = useState<ProductFiltersState>({
-    category: 'all',
-    volume: 'all',
-    specialFeatures: [],
-    material: 'all',
-    ageGroup: 'all'
-  });
-  const [showFilters, setShowFilters] = useState(false);
-
-
-
-  // Filter products based on selected filters
-  const filteredProducts = useMemo(() => {
-    return PRODUCTS.filter(product => {
-      // Category filter
-      if (filters.category !== 'all' && product.category !== filters.category) {
-        return false;
-      }
-
-      // Volume filter (you'll need to add volume property to products)
-      if (filters.volume !== 'all' && product.volume !== filters.volume) {
-        return false;
-      }
-
-      // Special features filter
-      if (filters.specialFeatures.length > 0) {
-        const hasFeature = filters.specialFeatures.some((feature: string) => 
-          product.specialFeatures?.includes(feature)
-        );
-        if (!hasFeature) return false;
-      }
-
-      // Material filter
-      if (filters.material !== 'all' && product.material !== filters.material) {
-        return false;
-      }
-
-      // Age group filter
-      if (filters.ageGroup !== 'all' && product.ageGroup !== filters.ageGroup) {
-        return false;
-      }
-
-      return true;
-    });
-  }, [filters]);
-
-  const handleFilterChange = (filterType: keyof ProductFiltersState, value: any) => {
-    setFilters((prev: ProductFiltersState) => ({
-      ...prev,
-      [filterType]: value
-    }));
-  };
-
-  const handleSpecialFeatureToggle = (feature: string) => {
-    setFilters((prev: ProductFiltersState) => ({
-      ...prev,
-      specialFeatures: prev.specialFeatures.includes(feature)
-        ? prev.specialFeatures.filter((f: string) => f !== feature)
-        : [...prev.specialFeatures, feature]
-    }));
-  };
-
-  const clearAllFilters = () => {
-    setFilters({
-      category: 'all',
-      volume: 'all',
-      specialFeatures: [],
-      material: 'all',
-      ageGroup: 'all'
-    });
-  };
+  const [searchQuery, setSearchQuery] = useState('');
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -203,68 +130,124 @@ export const ProductsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Filters Section */}
-      <section className="py-8 bg-gray-50 sticky top-0 z-40">
+      {/* Search Section */}
+      <section className="py-8 bg-white sticky top-0 z-40 shadow-sm">
         <div className="container mx-auto px-4">
-          {/* Filter Toggle Button (Mobile) */}
-          <div className="lg:hidden mb-4">
-            <button
-              onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center space-x-2 px-4 py-2 bg-primary-600 text-white rounded-lg"
-            >
-              <FunnelIcon className="w-5 h-5" />
-              <span>Filters</span>
-            </button>
-          </div>
+          <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
+            {/* Search */}
+            <div className="relative flex-1 max-w-md">
+              <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search categories..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              />
+            </div>
 
-          {/* Filters */}
-          <div className={`${showFilters ? 'block' : 'hidden'} lg:block`}>
-            <ProductFilters
-              filters={filters}
-              onFilterChange={handleFilterChange}
-              onSpecialFeatureToggle={handleSpecialFeatureToggle}
-              onClearAll={clearAllFilters}
-              resultsCount={filteredProducts.length}
-            />
+            <div className="text-sm text-gray-600">
+              {PRODUCT_CATEGORIES.filter(category => 
+                category.displayName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                category.description.toLowerCase().includes(searchQuery.toLowerCase())
+              ).length} categories available
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Products Grid */}
+      {/* Product Categories Grid */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {filteredProducts.map((product) => (
-              <motion.div key={product.id} variants={itemVariants}>
-                <ProductCard
-                  product={product}
-                />
+            {PRODUCT_CATEGORIES
+              .filter(category => 
+                category.displayName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                category.description.toLowerCase().includes(searchQuery.toLowerCase())
+              )
+              .map((category) => (
+              <motion.div key={category.id} variants={itemVariants}>
+                <Link to={`/products/category/${category.id}`}>
+                  <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                    <div className="relative h-64 overflow-hidden">
+                      <img 
+                        src={category.image} 
+                        alt={category.displayName}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = '/images/Phoenix_Logo.png';
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                      
+                      {/* Product Count Badge */}
+                      <div className="absolute top-4 right-4 bg-primary-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                        {category.products.length} Products
+                      </div>
+                    </div>
+                    
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors">
+                        {category.displayName}
+                      </h3>
+                      <p className="text-gray-600 mb-4 leading-relaxed">
+                        {category.description}
+                      </p>
+                      
+                      {/* Sample Products Preview */}
+                      <div className="mb-4">
+                        <div className="text-sm text-gray-500 mb-2">Sample Products:</div>
+                        <div className="space-y-1">
+                          {category.products.slice(0, 3).map((product, index) => (
+                            <div key={index} className="text-xs text-gray-600 truncate">
+                              • {product.description}
+                            </div>
+                          ))}
+                          {category.products.length > 3 && (
+                            <div className="text-xs text-primary-600 font-medium">
+                              +{category.products.length - 3} more products
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-center justify-between">
+                        <span className="text-primary-600 font-semibold">View Products</span>
+                        <ArrowRightIcon className="w-4 h-4 text-primary-600 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </div>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </motion.div>
 
-          {filteredProducts.length === 0 && (
+          {PRODUCT_CATEGORIES.filter(category => 
+            category.displayName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            category.description.toLowerCase().includes(searchQuery.toLowerCase())
+          ).length === 0 && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               className="text-center py-16"
             >
               <div className="max-w-md mx-auto">
-                <FunnelIcon className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-gray-600 mb-2">No products found</h3>
+                <MagnifyingGlassIcon className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-gray-600 mb-2">No categories found</h3>
                 <p className="text-gray-500 mb-4">
-                  Try adjusting your filters to see more products.
+                  Try adjusting your search terms.
                 </p>
                 <button
-                  onClick={clearAllFilters}
+                  onClick={() => setSearchQuery('')}
                   className="px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
                 >
-                  Clear All Filters
+                  Clear Search
                 </button>
               </div>
             </motion.div>

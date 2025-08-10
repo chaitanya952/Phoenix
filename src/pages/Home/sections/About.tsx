@@ -127,35 +127,7 @@ export const About: React.FC = () => {
           />
         </motion.div>
 
-        {/* Brief Company Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-5 gap-6 mb-12"
-        >
-          <div className="text-center">
-            <div className="text-3xl font-bold text-primary-600 mb-2">{COMPANY_STATS.years}+</div>
-            <div className="text-sm text-gray-600">Years Experience</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-primary-600 mb-2">{COMPANY_STATS.employees}+</div>
-            <div className="text-sm text-gray-600">Employees</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-primary-600 mb-2">{COMPANY_STATS.factoryArea.toLocaleString()}</div>
-            <div className="text-sm text-gray-600">Sq.ft Factory</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-primary-600 mb-2">{COMPANY_STATS.countries}+</div>
-            <div className="text-sm text-gray-600">Countries</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-primary-600 mb-2">{(COMPANY_STATS.monthlyCapacity / 1000000).toFixed(1)}M</div>
-            <div className="text-sm text-gray-600">Monthly Capacity</div>
-          </div>
-        </motion.div>
+
 
         {/* Company Overview with Image */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
@@ -170,14 +142,13 @@ export const About: React.FC = () => {
               Crafted with a Mother's Love in Mind
             </h3>
             <p className="text-lg text-gray-600 leading-relaxed mb-6">
-              At Phoenix, we understand that every feeding moment is precious. For over {COMPANY_STATS.years} years, we've been crafting baby bottles 
-              that honor the sacred bond between mother and child. Our products are trusted by loving mothers in {COMPANY_STATS.countries}+ countries 
+              At Phoenix, we understand that every feeding moment is precious. We've been crafting baby bottles 
+              that honor the sacred bond between mother and child. Our products are trusted by loving mothers worldwide 
               who choose only the safest, most nurturing feeding solutions for their little ones.
             </p>
             <p className="text-lg text-gray-600 leading-relaxed mb-8">
-              Every bottle that leaves our {COMPANY_STATS.factoryArea.toLocaleString()} sq.ft facility carries the promise of safety, comfort, and love. 
-              With {(COMPANY_STATS.monthlyCapacity / 1000000).toFixed(1)}M+ products crafted monthly, we ensure that every feeding moment becomes 
-              a cherished memory between you and your baby.
+              Every bottle that leaves our facility carries the promise of safety, comfort, and love. 
+              We ensure that every feeding moment becomes a cherished memory between you and your baby.
             </p>
             <div className="flex flex-wrap gap-4">
               <div className="flex items-center gap-2">
@@ -205,12 +176,12 @@ export const About: React.FC = () => {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                src="/images/baby_picture.jpeg"
                 alt="Mother lovingly feeding her baby"
                 className="w-full h-96 object-cover"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  target.src = "https://images.unsplash.com/photo-1566004100631-35d015d6a491?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+                  target.src = "/images/Wide Neck Bottles JPEG/WN0001 - 210ml.jpg";
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>

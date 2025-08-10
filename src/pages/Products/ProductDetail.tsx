@@ -2,27 +2,32 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useParams, Link } from 'react-router-dom';
-import { PRODUCTS } from '../../utils/constants';
+import { PRODUCT_CATEGORIES } from '../../data/catalogData';
 import { Button } from '../../components/common/Button';
 import { 
-  ArrowLeftIcon, 
-  CheckCircleIcon,
-  ShieldCheckIcon,
-  StarIcon,
-  HeartIcon,
   ArrowRightIcon,
   ChevronLeftIcon,
   ChevronRightIcon
 } from '@heroicons/react/24/outline';
 
 export const ProductDetailPage: React.FC = () => {
-  const { productId } = useParams();
-  const [selectedSubProduct, setSelectedSubProduct] = useState(0);
+  const { productId } = useParams<{ productId: string }>();
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-  const product = PRODUCTS.find(p => p.id === productId);
+  // Find product across all categories
+  let product: any = null;
+  let category: any = null;
+  
+  for (const cat of PRODUCT_CATEGORIES) {
+    const foundProduct = cat.products.find(p => p.modelNo === productId);
+    if (foundProduct) {
+      product = foundProduct;
+      category = cat;
+      break;
+    }
+  }
 
-  if (!product) {
+  if (!product || !category) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
@@ -35,8 +40,8 @@ export const ProductDetailPage: React.FC = () => {
     );
   }
 
-  const currentSubProduct = product.subProducts?.[selectedSubProduct];
-  const images = [product.image, ...(currentSubProduct?.image ? [currentSubProduct.image] : [])];
+  // For catalog products, we'll use the category image as fallback
+  const images = [category.image];
 
   const nextImage = () => {
     setSelectedImageIndex((prev) => (prev + 1) % images.length);
@@ -63,7 +68,7 @@ export const ProductDetailPage: React.FC = () => {
               <span className="text-gray-400">/</span>
               <Link to="/products" className="text-primary-600 hover:text-primary-700">Products</Link>
               <span className="text-gray-400">/</span>
-              <span className="text-gray-600">{product.name}</span>
+              <span className="text-gray-600">{product.description}</span>
             </div>
           </motion.div>
         </div>
@@ -83,11 +88,11 @@ export const ProductDetailPage: React.FC = () => {
                 <div className="aspect-square bg-white rounded-2xl shadow-lg overflow-hidden mb-4">
                   <img
                     src={images[selectedImageIndex]}
-                    alt={product.name}
+                    alt={product.description}
                     className="w-full h-full object-cover"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = '/images/placeholder-product.png';
+                      target.src = '/images/Phoenix_Logo.png';
                     }}
                   />
                   
@@ -125,7 +130,7 @@ export const ProductDetailPage: React.FC = () => {
                       >
                         <img
                           src={image}
-                          alt={`${product.name} ${index + 1}`}
+                          alt={`${product.description} ${index + 1}`}
                           className="w-full h-full object-cover"
                         />
                       </button>
@@ -144,73 +149,75 @@ export const ProductDetailPage: React.FC = () => {
               <div className="space-y-6">
                 <div>
                   <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                    {product.name}
-                  </h1>
-                  <p className="text-lg text-gray-600 leading-relaxed">
                     {product.description}
-                  </p>
+                  </h1>
+                  <div className="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <span className="font-semibold text-gray-700">Model:</span>
+                      <span className="ml-2 text-gray-600">{product.modelNo}</span>
+                    </div>
+                    {product.capacity && (
+                      <div>
+                        <span className="font-semibold text-gray-700">Capacity:</span>
+                        <span className="ml-2 text-gray-600">{product.capacity}</span>
+                      </div>
+                    )}
+                    <div>
+                      <span className="font-semibold text-gray-700">Packaging:</span>
+                      <span className="ml-2 text-gray-600">{product.packaging}</span>
+                    </div>
+                    <div>
+                      <span className="font-semibold text-gray-700">MOQ:</span>
+                      <span className="ml-2 text-gray-600">{product.moq.toLocaleString()} units</span>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Category Badge */}
                 <div>
                   <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-100 text-primary-800">
-                    {product.category}
+                    {category.displayName}
                   </span>
                 </div>
 
-                {/* Features */}
-                {product.features && product.features.length > 0 && (
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">Key Features</h3>
-                    <div className="grid grid-cols-2 gap-3">
-                      {product.features.map((feature, index) => (
-                        <div key={index} className="flex items-center space-x-2">
-                          <CheckCircleIcon className="w-5 h-5 text-green-500 flex-shrink-0" />
-                          <span className="text-gray-600">{feature}</span>
-                        </div>
-                      ))}
+                {/* Pricing Information */}
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Pricing Information</h3>
+                  <div className="bg-gray-50 rounded-2xl p-6">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <span className="font-semibold text-gray-700">INR Price:</span>
+                        <span className="ml-2 text-lg font-bold text-primary-600">₹{product.inr}</span>
+                      </div>
+                      <div>
+                        <span className="font-semibold text-gray-700">USD Price:</span>
+                        <span className="ml-2 text-lg font-bold text-primary-600">${product.usd.toFixed(2)}</span>
+                      </div>
+                      <div>
+                        <span className="font-semibold text-gray-700">Inner Pack:</span>
+                        <span className="ml-2 text-gray-600">{product.inner} units</span>
+                      </div>
+                      <div>
+                        <span className="font-semibold text-gray-700">Outer Pack:</span>
+                        <span className="ml-2 text-gray-600">{product.outer} units</span>
+                      </div>
                     </div>
                   </div>
-                )}
-
-                {/* Sub Products */}
-                {product.subProducts && product.subProducts.length > 0 && (
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">Available Variants</h3>
-                    <div className="space-y-3">
-                      {product.subProducts.map((subProduct, index) => (
-                        <button
-                          key={subProduct.id}
-                          onClick={() => setSelectedSubProduct(index)}
-                          className={`w-full text-left p-4 rounded-lg border-2 transition-all ${
-                            selectedSubProduct === index
-                              ? 'border-primary-600 bg-primary-50'
-                              : 'border-gray-200 hover:border-gray-300 bg-white'
-                          }`}
-                        >
-                          <div className="flex items-center justify-between">
-                            <div>
-                              <h4 className="font-semibold text-gray-900">{subProduct.name}</h4>
-                              <p className="text-sm text-gray-600 mt-1">{subProduct.material}</p>
-                            </div>
-                            {selectedSubProduct === index && (
-                              <CheckCircleIcon className="w-5 h-5 text-primary-600" />
-                            )}
-                          </div>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
+                </div>
 
                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 pt-6">
-                  <Button 
-                    size="lg" 
-                    className="bg-primary-600 hover:bg-primary-700 text-white flex-1"
+                  <Link 
+                    to={`/contact?product=${encodeURIComponent(product.description)}&model=${encodeURIComponent(product.modelNo)}`}
+                    className="flex-1"
                   >
-                    Request Quote
-                  </Button>
+                    <Button 
+                      size="lg" 
+                      className="bg-primary-600 hover:bg-primary-700 text-white w-full"
+                    >
+                      Request Quote
+                    </Button>
+                  </Link>
                   <Button 
                     size="lg" 
                     variant="outline"
@@ -225,79 +232,7 @@ export const ProductDetailPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Detailed Specifications */}
-      {currentSubProduct && (
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-                {currentSubProduct.name} Specifications
-              </h2>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {/* Specifications Table */}
-                {currentSubProduct.specifications && (
-                  <div className="bg-gray-50 rounded-2xl p-6">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">Technical Specifications</h3>
-                    <div className="space-y-3">
-                      {Object.entries(currentSubProduct.specifications).map(([key, value]) => (
-                        <div key={key} className="flex justify-between py-2 border-b border-gray-200">
-                          <span className="font-medium text-gray-700">{key}:</span>
-                          <span className="text-gray-600">{value}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Material Properties */}
-                <div className="space-y-6">
-                  {currentSubProduct.transparency && (
-                    <div className="bg-blue-50 rounded-2xl p-6">
-                      <h4 className="font-semibold text-gray-900 mb-2">Transparency</h4>
-                      <p className="text-gray-600">{currentSubProduct.transparency}</p>
-                    </div>
-                  )}
-                  
-                  {currentSubProduct.heatResistance && (
-                    <div className="bg-red-50 rounded-2xl p-6">
-                      <h4 className="font-semibold text-gray-900 mb-2">Heat Resistance</h4>
-                      <p className="text-gray-600">{currentSubProduct.heatResistance}</p>
-                    </div>
-                  )}
-                  
-                  {currentSubProduct.durability && (
-                    <div className="bg-green-50 rounded-2xl p-6">
-                      <h4 className="font-semibold text-gray-900 mb-2">Durability</h4>
-                      <p className="text-gray-600">{currentSubProduct.durability}</p>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Features */}
-              {currentSubProduct.features && currentSubProduct.features.length > 0 && (
-                <div className="mt-8">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Product Features</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {currentSubProduct.features.map((feature, index) => (
-                      <div key={index} className="flex items-center space-x-3 bg-white rounded-lg p-4 shadow-sm">
-                        <StarIcon className="w-5 h-5 text-yellow-500 flex-shrink-0" />
-                        <span className="text-gray-700">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </motion.div>
-          </div>
-        </section>
-      )}
 
       {/* Related Products */}
       <section className="py-16 bg-gradient-to-br from-gray-50 to-white">
@@ -313,33 +248,53 @@ export const ProductDetailPage: React.FC = () => {
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {PRODUCTS.filter(p => p.id !== product.id && p.category === product.category)
+              {category.products.filter((p: any) => p.modelNo !== product.modelNo)
                 .slice(0, 3)
-                .map((relatedProduct) => (
+                .map((relatedProduct: any) => (
                   <Link
-                    key={relatedProduct.id}
-                    to={`/products/${relatedProduct.id}`}
+                    key={relatedProduct.modelNo}
+                    to={`/products/${relatedProduct.modelNo}`}
                     className="group"
                   >
                     <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
                       <div className="aspect-square overflow-hidden">
                         <img
-                          src={relatedProduct.image}
-                          alt={relatedProduct.name}
+                          src={category.image}
+                          alt={relatedProduct.description}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = '/images/Phoenix_Logo.png';
+                          }}
                         />
                       </div>
                       <div className="p-6">
                         <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
-                          {relatedProduct.name}
+                          {relatedProduct.description}
                         </h3>
                         <p className="text-gray-600 text-sm">
-                          {relatedProduct.description}
+                          Model: {relatedProduct.modelNo}
                         </p>
+                        {relatedProduct.capacity && (
+                          <p className="text-gray-600 text-sm">
+                            Capacity: {relatedProduct.capacity}
+                          </p>
+                        )}
                       </div>
                     </div>
                   </Link>
                 ))}
+            </div>
+
+            {/* View All Products Button */}
+            <div className="text-center mt-12">
+              <Link
+                to="/products"
+                className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-xl font-semibold transition-colors"
+              >
+                View All Products
+                <ArrowRightIcon className="w-5 h-5" />
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -362,12 +317,12 @@ export const ProductDetailPage: React.FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link to="/contact">
+                <Link to={`/contact?product=${encodeURIComponent(product.description)}&model=${encodeURIComponent(product.modelNo)}`}>
                   <Button 
                     size="lg" 
                     className="bg-white text-primary-600 hover:bg-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300"
                   >
-                    Contact Us
+                    Get Quote Now
                   </Button>
                 </Link>
               </motion.div>
