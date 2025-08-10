@@ -111,3 +111,45 @@ export interface ProductFiltersState {
   material: string;
   ageGroup: string;
 }
+
+export interface WhyPhoenixReason {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  color: string;
+}
+
+export interface Differentiator {
+  id: string;
+  title: string;
+  description: string;
+  features: string[];
+  icon: string;
+}
+
+export interface FactoryMerit {
+  id: string;
+  title: string;
+  value: string;
+  description: string;
+  details: string;
+  icon: string;
+}
+
+export interface FactoryFeature {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+}
+
+export interface RawMaterial {
+  id: string;
+  name: string;
+  description: string;
+  properties: string[];
+  applications: string[];
+  certifications: string[];
+  color: string;
+}

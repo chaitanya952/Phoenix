@@ -63,22 +63,10 @@ const AnimatedStatCard: React.FC<{
 };
 
 export const About: React.FC = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 }
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -139,268 +127,150 @@ export const About: React.FC = () => {
           />
         </motion.div>
 
-        {/* Company Stats */}
+        {/* Brief Company Stats */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-20"
+          className="grid grid-cols-2 md:grid-cols-5 gap-6 mb-12"
         >
-          <AnimatedStatCard
-            icon={<CalendarIcon className="w-8 h-8 text-primary-600" />}
-            end={COMPANY_STATS.years}
-            suffix="+"
-            label="Years of Excellence"
-            delay={200}
-            color="border-l-primary-500"
-          />
-          <AnimatedStatCard
-            icon={<UsersIcon className="w-8 h-8 text-green-600" />}
-            end={COMPANY_STATS.employees}
-            suffix="+"
-            label="Skilled Employees"
-            delay={400}
-            color="border-l-green-500"
-          />
-          <AnimatedStatCard
-            icon={<BuildingOfficeIcon className="w-8 h-8 text-blue-600" />}
-            end={COMPANY_STATS.factoryArea}
-            suffix=" m²"
-            label="Factory Area"
-            delay={600}
-            color="border-l-blue-500"
-          />
-          <AnimatedStatCard
-            icon={<GlobeAltIcon className="w-8 h-8 text-purple-600" />}
-            end={COMPANY_STATS.countries}
-            suffix="+"
-            label="Countries Served"
-            delay={800}
-            color="border-l-purple-500"
-          />
-          <AnimatedStatCard
-            icon={<TruckIcon className="w-8 h-8 text-orange-600" />}
-            end={COMPANY_STATS.monthlyCapacity / 1000000}
-            suffix="M"
-            label="Monthly Capacity"
-            delay={1000}
-            color="border-l-orange-500"
-          />
+          <div className="text-center">
+            <div className="text-3xl font-bold text-primary-600 mb-2">{COMPANY_STATS.years}+</div>
+            <div className="text-sm text-gray-600">Years Experience</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-primary-600 mb-2">{COMPANY_STATS.employees}+</div>
+            <div className="text-sm text-gray-600">Employees</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-primary-600 mb-2">{COMPANY_STATS.factoryArea.toLocaleString()}</div>
+            <div className="text-sm text-gray-600">Sq.ft Factory</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-primary-600 mb-2">{COMPANY_STATS.countries}+</div>
+            <div className="text-sm text-gray-600">Countries</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-primary-600 mb-2">{(COMPANY_STATS.monthlyCapacity / 1000000).toFixed(1)}M</div>
+            <div className="text-sm text-gray-600">Monthly Capacity</div>
+          </div>
         </motion.div>
+
+        {/* Company Overview with Image */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+          {/* Left Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-3xl font-bold text-gray-900 mb-6">
+              Crafted with a Mother's Love in Mind
+            </h3>
+            <p className="text-lg text-gray-600 leading-relaxed mb-6">
+              At Phoenix, we understand that every feeding moment is precious. For over {COMPANY_STATS.years} years, we've been crafting baby bottles 
+              that honor the sacred bond between mother and child. Our products are trusted by loving mothers in {COMPANY_STATS.countries}+ countries 
+              who choose only the safest, most nurturing feeding solutions for their little ones.
+            </p>
+            <p className="text-lg text-gray-600 leading-relaxed mb-8">
+              Every bottle that leaves our {COMPANY_STATS.factoryArea.toLocaleString()} sq.ft facility carries the promise of safety, comfort, and love. 
+              With {(COMPANY_STATS.monthlyCapacity / 1000000).toFixed(1)}M+ products crafted monthly, we ensure that every feeding moment becomes 
+              a cherished memory between you and your baby.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <div className="flex items-center gap-2">
+                <CheckCircleIcon className="w-5 h-5 text-green-600" />
+                <span className="text-gray-700">ISO 9001 Certified</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircleIcon className="w-5 h-5 text-green-600" />
+                <span className="text-gray-700">FDA Approved</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircleIcon className="w-5 h-5 text-green-600" />
+                <span className="text-gray-700">BPA-Free Materials</span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <img 
+                src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                alt="Mother lovingly feeding her baby"
+                className="w-full h-96 object-cover"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = "https://images.unsplash.com/photo-1566004100631-35d015d6a491?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+              <div className="absolute bottom-6 left-6 text-white">
+                <h4 className="text-xl font-bold mb-2">Every Moment Matters</h4>
+                <p className="text-sm opacity-90">Nurturing bonds through safe feeding</p>
+              </div>
+            </div>
+            
+            {/* Floating Stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true }}
+              className="absolute -bottom-6 -left-6 bg-white rounded-xl p-4 shadow-lg border border-gray-100"
+            >
+              <div className="text-2xl font-bold text-primary-600">{(COMPANY_STATS.monthlyCapacity / 1000000).toFixed(1)}M+</div>
+              <div className="text-sm text-gray-600">Products/Month</div>
+            </motion.div>
+          </motion.div>
+        </div>
 
         {/* Mission, Vision, Values */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
-          {/* Left Column - Mission & Vision */}
-          <motion.div
-            variants={itemVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="space-y-12"
-          >
-            {/* Mission */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-center mb-6">
-                <div className="p-3 bg-primary-100 rounded-xl mr-4">
-                  <HeartIcon className="w-8 h-8 text-primary-600" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900">Our Mission</h3>
-              </div>
-              <p className="text-gray-600 leading-relaxed text-lg">
-                {COMPANY_INFO.mission}
-              </p>
-            </div>
-
-            {/* Vision */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-center mb-6">
-                <div className="p-3 bg-secondary-100 rounded-xl mr-4">
-                  <EyeIcon className="w-8 h-8 text-secondary-600" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900">Our Vision</h3>
-              </div>
-              <p className="text-gray-600 leading-relaxed text-lg">
-                {COMPANY_INFO.vision}
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Right Column - Values & History */}
-          <motion.div
-            variants={itemVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="space-y-12"
-          >
-            {/* Values */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-center mb-6">
-                <div className="p-3 bg-green-100 rounded-xl mr-4">
-                  <StarIcon className="w-8 h-8 text-green-600" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900">Our Values</h3>
-              </div>
-              <div className="space-y-3">
-                {COMPANY_INFO.values.map((value, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1, duration: 0.5 }}
-                    viewport={{ once: true }}
-                    className="flex items-start space-x-3"
-                  >
-                    <CheckCircleIcon className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-600">{value}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* History */}
-            <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Journey</h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                {COMPANY_INFO.history}
-              </p>
-              <div className="flex items-center justify-center text-sm text-primary-700">
-                <span className="font-semibold">HQ: {COMPANY_INFO.headquarters}</span>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Leadership Team */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="max-w-4xl mx-auto text-center mb-12"
         >
-          <h3 className="text-3xl font-bold text-gray-900 mb-4">Leadership Team</h3>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Meet the experienced professionals leading Phoenix's mission to create safer, better baby products.
-          </p>
-        </motion.div>
-
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-        >
-          {TEAM_MEMBERS.map((member, index) => (
-            <motion.div
-              key={member.id}
-              variants={itemVariants}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center"
-            >
-              <div className="relative mb-6">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-24 h-24 rounded-full mx-auto object-cover border-4 border-primary-100"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = '/images/placeholder-avatar.png';
-                  }}
-                />
-                <div className="absolute -bottom-2 -right-2 bg-primary-600 text-white text-xs px-2 py-1 rounded-full">
-                  {member.experience}
-                </div>
-              </div>
-              <h4 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h4>
-              <p className="text-primary-600 font-semibold mb-3">{member.position}</p>
-              <p className="text-gray-600 text-sm leading-relaxed">{member.bio}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Manufacturing Process Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mt-20"
-        >
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-gray-900 mb-4">Manufacturing Process</h3>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our state-of-the-art manufacturing process ensures the highest quality standards.
-            </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div className="bg-white rounded-xl p-6 shadow-lg">
+              <HeartIcon className="w-8 h-8 text-primary-600 mx-auto mb-3" />
+              <h4 className="font-semibold text-gray-900 mb-2">Our Mission</h4>
+              <p className="text-sm text-gray-600">To honor the sacred bond between mother and baby by creating the safest, most nurturing feeding products that make every moment special.</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-lg">
+              <EyeIcon className="w-8 h-8 text-primary-600 mx-auto mb-3" />
+              <h4 className="font-semibold text-gray-900 mb-2">Our Vision</h4>
+              <p className="text-sm text-gray-600">To be the trusted companion in every mother's journey, providing products that celebrate love, safety, and the precious moments of nurturing.</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-lg">
+              <StarIcon className="w-8 h-8 text-primary-600 mx-auto mb-3" />
+              <h4 className="font-semibold text-gray-900 mb-2">Our Values</h4>
+              <p className="text-sm text-gray-600">Love-inspired design, unwavering safety, mother's intuition, and the belief that every baby deserves the very best care.</p>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {[
-              { step: "1", title: "Design & Development", desc: "Product conceptualization and engineering", icon: "🎨" },
-              { step: "2", title: "Material Selection", desc: "Premium, baby-safe materials sourcing", icon: "🧪" },
-              { step: "3", title: "Production", desc: "Advanced manufacturing with quality control", icon: "⚙️" },
-              { step: "4", title: "Testing & Packaging", desc: "Rigorous testing and eco-friendly packaging", icon: "📦" }
-            ].map((process, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                viewport={{ once: true }}
-                className="text-center bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <div className="text-4xl mb-4">{process.icon}</div>
-                <div className="w-12 h-12 bg-primary-600 text-white rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-4">
-                  {process.step}
-                </div>
-                <h4 className="text-lg font-bold text-gray-900 mb-2">{process.title}</h4>
-                <p className="text-gray-600 text-sm">{process.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Company Facts Section */}
-      <div className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white py-16 mt-20">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
+          <motion.button
+            onClick={() => scrollToSection('why-phoenix')}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="btn-primary px-8 py-3 text-lg font-semibold rounded-xl inline-flex items-center gap-2"
           >
-            <h3 className="text-3xl font-bold mb-4">Company Facts</h3>
-            <p className="text-xl opacity-90">
-              Numbers that speak to our experience and commitment.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { number: "500+", label: "Employees", icon: "👥" },
-              { number: "70,000", label: "Sq Meters Facility", icon: "🏢" },
-              { number: "$30M", label: "Annual Revenue", icon: "💰" },
-              { number: "60+", label: "Countries Served", icon: "🌍" }
-            ].map((fact, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <div className="text-4xl mb-2">{fact.icon}</div>
-                <div className="text-3xl font-bold mb-2">{fact.number}</div>
-                <div className="text-sm opacity-90">{fact.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+            Know More About Phoenix
+            <CheckCircleIcon className="w-5 h-5" />
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   );

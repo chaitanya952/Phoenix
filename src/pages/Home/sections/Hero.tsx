@@ -215,10 +215,12 @@ const QuoteForm: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen,
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
                     >
                       <option value="">Select product type</option>
-                      <option value="cotton">Cotton Products</option>
-                      <option value="plastic">Plastic Products</option>
-                      <option value="silicone">Silicone Products</option>
-                      <option value="mixed">Mixed Products</option>
+                      <option value="wide-neck-bottles">Wide Neck Baby Bottles</option>
+                      <option value="standard-neck-bottles">Standard Neck Bottles</option>
+                      <option value="bottles-with-handles">Bottles with Handles</option>
+                      <option value="sippy-cups">Sippy Cups</option>
+                      <option value="feeding-accessories">Feeding Accessories</option>
+                      <option value="custom-products">Custom Products</option>
                     </select>
                   </motion.div>
 
@@ -295,25 +297,25 @@ export const Hero: React.FC = () => {
 
   const heroSlides = [
     {
-      title: "Premium Baby Products",
-      subtitle: "Manufacturing Excellence",
-      description: "Leading manufacturer of safe, innovative baby products with over 15 years of expertise in OEM & ODM services.",
-      image: "/images/hero-1.jpg",
-      features: ["ISO Certified", "Global Shipping", "Custom Design"]
+      title: "A Mother's Love in Every Bottle",
+      subtitle: "Premium Baby Bottles",
+      description: "Crafted with love and precision, our wide neck baby bottles ensure the safest, most comfortable feeding experience for your precious little one.",
+      image: "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      features: ["BPA-Free Materials", "Anti-Colic Design", "Easy to Clean"]
     },
     {
-      title: "Innovation & Safety",
-      subtitle: "Quality First",
-      description: "State-of-the-art facilities and rigorous quality control ensure every product meets international safety standards.",
-      image: "/images/hero-2.jpg",
-      features: ["FDA Approved", "CE Certified", "BPA Free"]
+      title: "Nurturing Every Moment",
+      subtitle: "Safe & Innovative",
+      description: "From the first feeding to toddler transitions, our bottles grow with your baby, providing comfort and safety at every stage of development.",
+      image: "https://images.unsplash.com/photo-1566004100631-35d015d6a491?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      features: ["FDA Approved", "Gentle Flow", "Ergonomic Design"]
     },
     {
-      title: "Global Partnership",
-      subtitle: "Trusted Worldwide",
-      description: "Serving 60+ countries with reliable supply chain and exceptional customer service for growing businesses.",
-      image: "/images/hero-3.jpg",
-      features: ["24/7 Support", "Fast Delivery", "Competitive Pricing"]
+      title: "Trusted by Mothers Worldwide",
+      subtitle: "Global Excellence",
+      description: "Over 20 years of manufacturing excellence, trusted by loving mothers in 60+ countries who choose only the best for their babies.",
+      image: "https://images.unsplash.com/photo-1559715541-5daf8a0296d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      features: ["Mother Approved", "Global Trust", "Premium Quality"]
     }
   ];
 
@@ -515,21 +517,25 @@ export const Hero: React.FC = () => {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8 }}
-                  className="relative rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-primary-100 to-primary-200 aspect-square"
+                  className="relative rounded-3xl overflow-hidden shadow-2xl aspect-square"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-primary-600/20"></div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center p-8">
-                      <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center shadow-orange-lg">
-                        <SparklesIcon className="w-16 h-16 text-white" />
-                      </div>
-                      <h3 className="text-2xl font-bold gradient-text mb-4 font-display">
-                        Premium Quality
-                      </h3>
-                      <p className="text-secondary-600">
-                        Trusted by families worldwide
-                      </p>
-                    </div>
+                  <img 
+                    src={heroSlides[currentSlide].image}
+                    alt={heroSlides[currentSlide].title}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80";
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-primary-600/30"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent">
+                    <h3 className="text-2xl font-bold text-white mb-2 font-display">
+                      {heroSlides[currentSlide].title}
+                    </h3>
+                    <p className="text-white/90 text-sm">
+                      Premium quality baby feeding solutions
+                    </p>
                   </div>
                 </motion.div>
 

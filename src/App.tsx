@@ -8,6 +8,7 @@ import { AboutPage } from './pages/About';
 import { ProductsPage } from './pages/Products';
 import { ProductDetailPage } from './pages/Products/ProductDetail';
 import { ServicesPage } from './pages/Services';
+import { InnovationPage } from './pages/Innovation';
 import { ContactPage } from './pages/Contact';
 import './index.css';
 
@@ -23,6 +24,7 @@ function App() {
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/products/:productId" element={<ProductDetailPage />} />
             <Route path="/services" element={<ServicesPage />} />
+            <Route path="/innovation" element={<InnovationPage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </main>

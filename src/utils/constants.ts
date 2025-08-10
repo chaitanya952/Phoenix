@@ -2,7 +2,7 @@
 import { Product, CompanyStats, Customer, Service, Certification, FAQ, TeamMember, NewsItem, Testimonial } from '../types';
 
 export const COMPANY_STATS: CompanyStats = {
-  years: 20,
+  years: 10,
   employees: 150,
   factoryArea: 60000,
   countries: 60,
@@ -1226,5 +1226,191 @@ export const RESEARCH_DEVELOPMENT = {
     'Partnerships with child development experts',
     'Research with international safety organizations',
     'Innovation labs in multiple countries'
+  ]
+};
+
+export const WHY_PHOENIX = {
+  reasons: [
+    {
+      id: '1',
+      title: 'Safety First',
+      description: 'Every product undergoes rigorous safety testing and meets international standards including FDA, LFGB, and CPC certifications.',
+      icon: 'ShieldCheckIcon',
+      color: 'text-green-600'
+    },
+    {
+      id: '2',
+      title: 'Premium Quality',
+      description: 'We use only the finest materials like PPSU, Tritan, and food-grade silicone to ensure durability and safety.',
+      icon: 'StarIcon',
+      color: 'text-yellow-600'
+    },
+    {
+      id: '3',
+      title: 'Innovation Driven',
+      description: 'Our R&D team continuously develops new technologies and designs to meet evolving parent and baby needs.',
+      icon: 'LightBulbIcon',
+      color: 'text-blue-600'
+    },
+    {
+      id: '4',
+      title: 'Global Trust',
+      description: 'Trusted by parents in over 60 countries worldwide with millions of satisfied customers.',
+      icon: 'GlobeAltIcon',
+      color: 'text-purple-600'
+    }
+  ]
+};
+
+export const WHAT_SETS_APART = {
+  differentiators: [
+    {
+      id: '1',
+      title: 'Advanced Manufacturing',
+      description: 'State-of-the-art production facilities with automated quality control systems',
+      features: ['ISO 9001:2015 Certified', 'Automated Production Lines', 'Real-time Quality Monitoring', '99.9% Quality Rate'],
+      icon: 'CogIcon'
+    },
+    {
+      id: '2',
+      title: 'Material Excellence',
+      description: 'Premium materials sourced from certified suppliers worldwide',
+      features: ['Food-Grade Materials', 'BPA-Free Guarantee', 'Heat Resistant', 'Eco-Friendly Options'],
+      icon: 'BeakerIcon'
+    },
+    {
+      id: '3',
+      title: 'Design Innovation',
+      description: 'Award-winning designs that combine functionality with aesthetics',
+      features: ['Ergonomic Design', 'Anti-Colic Technology', 'Easy-Clean Features', 'Parent-Friendly'],
+      icon: 'PencilIcon'
+    },
+    {
+      id: '4',
+      title: 'Customer Focus',
+      description: 'Dedicated support and customization services for all clients',
+      features: ['24/7 Support', 'Custom Solutions', 'Fast Response', 'Global Shipping'],
+      icon: 'HeartIcon'
+    }
+  ]
+};
+
+export const FACTORY_MERITS = {
+  facilities: [
+    {
+      id: '1',
+      title: 'Infrastructure',
+      value: '60,000',
+      description: 'Sq.ft facility',
+      details: "India's biggest facility - 3x larger than next biggest competitor (20,000 Sq.ft)",
+      icon: 'BuildingOfficeIcon'
+    },
+    {
+      id: '2',
+      title: 'Machines',
+      value: '50+',
+      description: 'Production machines',
+      details: 'Over 50 advanced machines vs competitors with around 15 machines',
+      icon: 'CogIcon'
+    },
+    {
+      id: '3',
+      title: 'Molds',
+      value: '700+',
+      description: 'Production molds',
+      details: 'Around 700 molds vs competitors with around 100 molds',
+      icon: 'SparklesIcon'
+    },
+    {
+      id: '4',
+      title: 'Production Capacity',
+      value: '2M+',
+      description: 'Bottles monthly',
+      details: 'Can produce 2+ million bottles monthly vs competitors with less than 1 million',
+      icon: 'ArrowPathIcon'
+    }
+  ],
+  features: [
+    {
+      id: '1',
+      title: 'Advanced Lab & Hygiene Facility',
+      description: 'Lab approved by ISO, BIS and EN standards vs competitors with simple lab setup',
+      icon: 'BeakerIcon'
+    },
+    {
+      id: '2',
+      title: 'Experienced Team & Expertise',
+      description: 'Each Department HOD has at least 5-7 years experience vs competitors running traditional setup',
+      icon: 'UsersIcon'
+    },
+    {
+      id: '3',
+      title: 'Clean Room Environment',
+      description: 'Sterile production environment meeting pharmaceutical standards',
+      icon: 'SparklesIcon'
+    },
+    {
+      id: '4',
+      title: 'Automated Systems',
+      description: 'Advanced robotics and automation for consistent quality',
+      icon: 'ComputerDesktopIcon'
+    }
+  ]
+};
+
+export const RAW_MATERIALS = {
+  materials: [
+    {
+      id: '1',
+      name: 'PPSU (Polyphenylsulfone)',
+      description: 'Premium medical-grade plastic with exceptional heat resistance and clarity',
+      properties: ['Heat resistant up to 180°C', 'Crystal clear transparency', 'Chemical resistant', 'BPA-free'],
+      applications: ['Premium bottles', 'Sippy cups', 'Training cups'],
+      certifications: ['FDA approved', 'LFGB certified', 'Medical grade'],
+      color: 'bg-blue-100 text-blue-800'
+    },
+    {
+      id: '2',
+      name: 'PP (Polypropylene)',
+      description: 'Food-grade plastic known for durability and safety',
+      properties: ['Lightweight and durable', 'Excellent chemical resistance', 'Recyclable', 'Cost-effective'],
+      applications: ['Standard bottles', 'Bottle accessories', 'Storage containers'],
+      certifications: ['FDA approved', 'Food contact safe', 'Recyclable'],
+      color: 'bg-green-100 text-green-800'
+    },
+    {
+      id: '3',
+      name: 'Tritan™ Copolyester',
+      description: 'Advanced BPA-free plastic with glass-like clarity and durability',
+      properties: ['Shatter-resistant', 'Dishwasher safe', 'Stain resistant', 'Odor resistant'],
+      applications: ['Training cups', 'Water bottles', 'Food containers'],
+      certifications: ['BPA-free certified', 'FDA approved', 'EU compliant'],
+      color: 'bg-purple-100 text-purple-800'
+    },
+    {
+      id: '4',
+      name: 'Food-Grade Silicone',
+      description: 'Premium silicone for soft components and sealing',
+      properties: ['Temperature resistant', 'Flexible and soft', 'Non-toxic', 'Easy to clean'],
+      applications: ['Nipples', 'Seals', 'Soft spouts', 'Teething products'],
+      certifications: ['Medical grade', 'FDA approved', 'LFGB certified'],
+      color: 'bg-pink-100 text-pink-800'
+    },
+    {
+      id: '5',
+      name: 'Organic Cotton',
+      description: 'Natural, organic cotton for textile components',
+      properties: ['100% organic', 'Hypoallergenic', 'Breathable', 'Sustainable'],
+      applications: ['Bottle covers', 'Bibs', 'Cleaning cloths'],
+      certifications: ['GOTS certified', 'Organic certified', 'Eco-friendly'],
+      color: 'bg-yellow-100 text-yellow-800'
+    }
+  ],
+  qualityStandards: [
+    'All materials undergo rigorous testing for safety and purity',
+    'Regular supplier audits ensure consistent quality',
+    'Traceability system tracks materials from source to product',
+    'Environmental impact assessment for all materials',
+    'Continuous research for safer, more sustainable alternatives'
   ]
 };

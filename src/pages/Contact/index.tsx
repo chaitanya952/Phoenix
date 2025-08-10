@@ -9,7 +9,12 @@ import {
   ClockIcon,
   ArrowLeftIcon,
   CheckCircleIcon,
-  PaperAirplaneIcon
+  PaperAirplaneIcon,
+  DocumentArrowDownIcon,
+  ShieldCheckIcon,
+  ClipboardDocumentCheckIcon,
+  BeakerIcon,
+  AcademicCapIcon
 } from '@heroicons/react/24/outline';
 import { Button } from '../../components/common/Button';
 import { WARRANTY_INFO } from '../../utils/constants';
@@ -466,6 +471,7 @@ export const ContactPage: React.FC = () => {
           </div>
         </div>
       </section>
+
 
       {/* Warranty & Support Information */}
       <section className="py-16 bg-white">

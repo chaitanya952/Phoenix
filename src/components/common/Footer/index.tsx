@@ -8,7 +8,8 @@ import {
   GlobeAltIcon,
   BuildingOfficeIcon,
   ClockIcon,
-  ArrowUpIcon
+  ArrowUpIcon,
+  DocumentArrowDownIcon
 } from '@heroicons/react/24/outline';
 
 export const Footer: React.FC = () => {
@@ -145,7 +146,9 @@ export const Footer: React.FC = () => {
           <motion.div variants={itemVariants}>
             <div className="bg-gray-800/30 rounded-xl p-6 border border-gray-700/30 h-full">
               <h4 className="text-xl font-bold mb-6 text-white">Quick Links</h4>
-              <ul className="space-y-3">
+              
+              {/* Navigation Links */}
+              <ul className="space-y-3 mb-6">
                 {[
                   { name: 'Home', id: 'home' },
                   { name: 'Products', id: 'products' },
@@ -166,6 +169,51 @@ export const Footer: React.FC = () => {
                   </motion.li>
                 ))}
               </ul>
+
+              {/* Divider */}
+              <div className="border-t border-gray-600/30 my-4"></div>
+
+              {/* Download Links */}
+              <div className="mb-2">
+                <h5 className="text-sm font-semibold text-gray-400 mb-3 uppercase tracking-wider">Downloads</h5>
+                <ul className="space-y-2">
+                  {[
+                    { 
+                      name: 'Test Reports', 
+                      file: '/downloads/Phoenix-Test-Reports.docx',
+                      filename: 'Phoenix-Test-Reports.docx'
+                    },
+                    { 
+                      name: 'Certifications', 
+                      file: '/downloads/Phoenix-Certifications.docx',
+                      filename: 'Phoenix-Certifications.docx'
+                    },
+                    { 
+                      name: 'Material Safety', 
+                      file: '/downloads/Phoenix-Material-Safety-Technical-Sheets.docx',
+                      filename: 'Phoenix-Material-Safety-Technical-Sheets.docx'
+                    },
+                    { 
+                      name: 'QC & Lab Info', 
+                      file: '/downloads/Phoenix-QC-Lab-Information.docx',
+                      filename: 'Phoenix-QC-Lab-Information.docx'
+                    }
+                  ].map((link, index) => (
+                    <motion.li key={index}>
+                      <motion.a 
+                        href={link.file}
+                        download={link.filename}
+                        whileHover={{ x: 6, color: "#60a5fa" }}
+                        transition={{ duration: 0.2 }}
+                        className="text-gray-400 hover:text-primary-400 transition-colors text-left flex items-center group text-sm"
+                      >
+                        <DocumentArrowDownIcon className="w-3 h-3 text-primary-400 mr-2 opacity-70 group-hover:opacity-100 transition-opacity" />
+                        {link.name}
+                      </motion.a>
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </motion.div>
 

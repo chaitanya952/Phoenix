@@ -2,6 +2,7 @@
 import React from 'react';
 import { Hero } from './sections/Hero';
 import { About } from './sections/About';
+import { WhyPhoenix } from './sections/WhyPhoenix';
 import { Products } from './sections/Products';
 import { Quality } from './sections/Quality';
 import { Services } from './sections/Services';
@@ -17,6 +18,7 @@ export const HomePage: React.FC = () => {
     <>
       <Hero />
       <About />
+      <WhyPhoenix />
       <Products />
       <Quality />
       <Services />
