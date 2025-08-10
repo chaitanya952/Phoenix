@@ -240,14 +240,7 @@ export const AboutPage: React.FC = () => {
               delay={600}
               color="border-l-blue-500"
             />
-            <AnimatedStatCard
-              icon={<GlobeAltIcon className="w-8 h-8 text-purple-600" />}
-              end={COMPANY_STATS.countries}
-              suffix="+"
-              label="Countries Served"
-              delay={800}
-              color="border-l-purple-500"
-            />
+            
             <AnimatedStatCard
               icon={<TruckIcon className="w-8 h-8 text-orange-600" />}
               end={COMPANY_STATS.monthlyCapacity / 1000000}
@@ -636,18 +629,13 @@ export const AboutPage: React.FC = () => {
                   <div className="text-xs text-gray-600">vs 20,000 Sq.ft (Others)</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary-600 mb-2">50+</div>
-                  <div className="text-sm font-semibold text-gray-800 mb-1">Machines</div>
-                  <div className="text-xs text-gray-600">vs ~15 (Others)</div>
-                </div>
-                <div className="text-center">
                   <div className="text-3xl font-bold text-primary-600 mb-2">700+</div>
                   <div className="text-sm font-semibold text-gray-800 mb-1">Molds</div>
                   <div className="text-xs text-gray-600">vs ~100 (Others)</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary-600 mb-2">2M+</div>
-                  <div className="text-sm font-semibold text-gray-800 mb-1">Monthly Capacity</div>
+                  <div className="text-3xl font-bold text-primary-600 mb-2">10M+</div>
+                  <div className="text-sm font-semibold text-gray-800 mb-1">Products Delivered</div>
                   <div className="text-xs text-gray-600">vs &lt;1M (Others)</div>
                 </div>
               </div>

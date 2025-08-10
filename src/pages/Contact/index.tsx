@@ -1,4 +1,5 @@
 // src/pages/Contact/index.tsx
+// UPDATED: Phoenix Plastowares Manoharabad address and contact info
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useSearchParams } from 'react-router-dom';
@@ -12,7 +13,7 @@ import {
   PaperAirplaneIcon
 } from '@heroicons/react/24/outline';
 import { Button } from '../../components/common/Button';
-import { WARRANTY_INFO } from '../../utils/constants';
+
 
 export const ContactPage: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -64,32 +65,33 @@ export const ContactPage: React.FC = () => {
     console.log('Form submitted:', formData);
   };
 
+  // FORCE UPDATE: Phoenix Plastowares Manoharabad - v2.0
   const contactInfo = [
     {
       icon: <PhoneIcon className="w-6 h-6" />,
       title: "Phone",
-      details: ["+91 9000700700", "+86 8050700700"],
+      details: ["+91 73865 90043", "9000700700"],
       color: "text-primary-600",
       bgColor: "bg-primary-50"
     },
     {
       icon: <EnvelopeIcon className="w-6 h-6" />,
       title: "Email",
-      details: ["bda@phoeniplastowares..com", "info@phoenixplastowares.com"],
+      details: ["bda@phoenixplastowares.com", "info@phoenixplastowares.com"],
       color: "text-green-600",
       bgColor: "bg-green-50"
     },
     {
       icon: <MapPinIcon className="w-6 h-6" />,
       title: "Address",
-      details: ["Hyderabad", "Telangana", "India"],
+      details: ["S.No 30/5&30/EE, V SRP Properties, Block C2", "beside Reliance Petrol Station, Manoharabad", "Hyderabad, Telangana 502334, India"],
       color: "text-blue-600",
       bgColor: "bg-blue-50"
     },
     {
       icon: <ClockIcon className="w-6 h-6" />,
       title: "Business Hours",
-      details: ["Mon - Fri: 9:00 AM - 6:00 PM", "Sat: 9:00 AM - 12:00 PM"],
+      details: ["Mon - Sat: Open 24 hours", "Sunday: Closed"],
       color: "text-purple-600",
       bgColor: "bg-purple-50"
     }
@@ -432,12 +434,44 @@ export const ContactPage: React.FC = () => {
               viewport={{ once: true }}
               className="space-y-8"
             >
-              {/* Map Placeholder */}
-              <div className="bg-gray-200 rounded-2xl h-64 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPinIcon className="w-12 h-12 text-gray-400 mx-auto mb-2" />
-                  <p className="text-gray-500 font-semibold">Interactive Map</p>
-                  <p className="text-sm text-gray-400">Guangzhou, China</p>
+              {/* Interactive Map */}
+              <div className="bg-white rounded-2xl overflow-hidden shadow-lg">
+                <div className="p-4 bg-gradient-to-r from-primary-500 to-primary-600">
+                  <h4 className="text-white font-semibold flex items-center">
+                    <MapPinIcon className="w-5 h-5 mr-2" />
+                    Our Location
+                  </h4>
+                </div>
+                <div className="h-64">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3798.2!2d78.4672192!3d17.7721533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb7b8b8b8b8b8b%3A0x8b8b8b8b8b8b8b8b!2sPhoenix%20Plastowares%20Private%20Limited!5e0!3m2!1sen!2sin!4v1640000000000"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Phoenix Plastowares Private Limited - Manoharabad, Hyderabad"
+                  ></iframe>
+                </div>
+                <div className="p-4 bg-gray-50">
+                  <div className="space-y-1">
+                    <p className="text-sm text-gray-800 font-semibold">Phoenix Plastowares Private Limited</p>
+                    <p className="text-sm text-gray-600">S.No 30/5&30/EE, V SRP Properties, Block C2</p>
+                    <p className="text-sm text-gray-600">beside Reliance Petrol Station, Manoharabad</p>
+                    <p className="text-sm text-gray-600">Hyderabad, Telangana 502334, India</p>
+                  </div>
+                  <div className="mt-3 pt-3 border-t border-gray-200">
+                    <a
+                      href="https://maps.app.goo.gl/GB6udZDUk8vjcJQX8"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-primary-600 hover:text-primary-700 text-sm font-medium transition-colors"
+                    >
+                      <MapPinIcon className="w-4 h-4 mr-1" />
+                      Open in Google Maps
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -483,99 +517,6 @@ export const ContactPage: React.FC = () => {
       </section>
 
 
-      {/* Warranty & Support Information */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Warranty & Support</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We stand behind our products with comprehensive warranty coverage and dedicated support.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Warranty */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.6 }}
-              viewport={{ once: true }}
-              className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6"
-            >
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Warranty Coverage</h3>
-              <div className="space-y-3">
-                <div className="flex justify-between">
-                  <span className="text-gray-700">Period:</span>
-                  <span className="font-semibold">{WARRANTY_INFO.standard.period}</span>
-                </div>
-                <div className="text-gray-700">
-                  <p className="font-semibold mb-2">Coverage:</p>
-                  <p className="text-sm">{WARRANTY_INFO.standard.coverage}</p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Returns */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              viewport={{ once: true }}
-              className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-6"
-            >
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Return Policy</h3>
-              <div className="space-y-3">
-                <div className="flex justify-between">
-                  <span className="text-gray-700">Return Period:</span>
-                  <span className="font-semibold">{WARRANTY_INFO.returns.period}</span>
-                </div>
-                <div className="text-gray-700">
-                  <p className="font-semibold mb-2">Conditions:</p>
-                  <ul className="text-sm space-y-1">
-                    {WARRANTY_INFO.returns.conditions.slice(0, 2).map((condition, index) => (
-                      <li key={index} className="flex items-start">
-                        <span className="w-1 h-1 bg-green-600 rounded-full mt-2 mr-2 flex-shrink-0"></span>
-                        {condition}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Support */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              viewport={{ once: true }}
-              className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-6"
-            >
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Customer Support</h3>
-              <div className="space-y-3">
-                <div className="text-gray-700">
-                  <p className="font-semibold">Email:</p>
-                  <p className="text-sm">{WARRANTY_INFO.support.email}</p>
-                </div>
-                <div className="text-gray-700">
-                  <p className="font-semibold">Phone:</p>
-                  <p className="text-sm">{WARRANTY_INFO.support.phone}</p>
-                </div>
-                <div className="text-gray-700">
-                  <p className="font-semibold">Hours:</p>
-                  <p className="text-sm">{WARRANTY_INFO.support.hours}</p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };

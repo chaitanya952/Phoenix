@@ -1,4 +1,5 @@
 // src/pages/Home/sections/Contact.tsx
+// Updated with new Hyderabad address - Manoharabad location
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { WARRANTY_INFO, FAQS } from '../../../utils/constants';
@@ -35,11 +36,12 @@ export const Contact: React.FC = () => {
     console.log('Form submitted:', formData);
   };
 
+  // Updated contact information - Phoenix Plastowares Manoharabad
   const contactInfo = [
     {
       icon: <PhoneIcon className="w-6 h-6" />,
       title: "Phone",
-      details: ["9000700700"],
+      details: ["+91 73865 90043", "9000700700"],
       color: "text-primary-600"
     },
     {
@@ -51,13 +53,13 @@ export const Contact: React.FC = () => {
     {
       icon: <MapPinIcon className="w-6 h-6" />,
       title: "Address",
-      details: ["123 Manufacturing District", "Guangzhou, China 510000"],
+      details: ["S.No 30/5&30/EE, V SRP Properties, Block C2", "beside Reliance Petrol Station, Manoharabad", "Hyderabad, Telangana 502334, India"],
       color: "text-blue-600"
     },
     {
       icon: <ClockIcon className="w-6 h-6" />,
       title: "Business Hours",
-      details: ["Mon - Fri: 9:00 AM - 6:00 PM", "Sat: 9:00 AM - 12:00 PM"],
+      details: ["Mon - Sat: Open 24 hours", "Sunday: Closed"],
       color: "text-purple-600"
     }
   ];
@@ -288,13 +290,51 @@ export const Contact: React.FC = () => {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            {/* Map Placeholder */}
-            <div className="bg-gray-200 rounded-2xl h-64 flex items-center justify-center">
-              <div className="text-center">
-                <MapPinIcon className="w-12 h-12 text-gray-400 mx-auto mb-2" />
-                <p className="text-gray-500">Interactive Map</p>
-                <p className="text-sm text-gray-400">Hyderabad, Bharath
-                </p>
+            {/* Map */}
+            <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+              <div className="p-4 bg-gradient-to-r from-primary-500 to-primary-600">
+                <h4 className="text-white font-semibold flex items-center">
+                  <MapPinIcon className="w-5 h-5 mr-2" />
+                  Our Location
+                </h4>
+              </div>
+              <div className="h-64 relative">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3798.2!2d78.4672192!3d17.7721533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb7b8b8b8b8b8b%3A0x8b8b8b8b8b8b8b8b!2sPhoenix%20Plastowares%20Private%20Limited!5e0!3m2!1sen!2sin!4v1640000000000"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Phoenix Plastowares Private Limited - Manoharabad, Hyderabad"
+                ></iframe>
+                {/* Fallback for map loading */}
+                <div className="absolute inset-0 bg-gray-100 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div className="text-center">
+                    <MapPinIcon className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+                    <p className="text-sm text-gray-500">Click to open in Google Maps</p>
+                  </div>
+                </div>
+              </div>
+              <div className="p-4 bg-gray-50">
+                <div className="space-y-1">
+                  <p className="text-sm text-gray-800 font-semibold">Phoenix Plastowares</p>
+                  <p className="text-sm text-gray-600">S.No 30/5&30/EE, V SRP Properties, Block C2</p>
+                  <p className="text-sm text-gray-600">beside Reliance Petrol Station, Manoharabad</p>
+                  <p className="text-sm text-gray-600">Hyderabad, Telangana 502334, India</p>
+                </div>
+                <div className="mt-3 pt-3 border-t border-gray-200">
+                  <a
+                    href="https://maps.app.goo.gl/GB6udZDUk8vjcJQX8"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-primary-600 hover:text-primary-700 text-sm font-medium transition-colors"
+                  >
+                    <MapPinIcon className="w-4 h-4 mr-1" />
+                    Open in Google Maps
+                  </a>
+                </div>
               </div>
             </div>
 

@@ -1,4 +1,5 @@
 // src/components/common/Footer/index.tsx
+// FORCE UPDATE: Phoenix Plastowares Manoharabad address and contact info - v3.0 - ${new Date().getTime()}
 import React from 'react';
 import { motion } from 'framer-motion';
 import { 
@@ -13,6 +14,8 @@ import {
 } from '@heroicons/react/24/outline';
 
 export const Footer: React.FC = () => {
+  console.log('Footer rendering with updated Manoharabad address');
+  
   const handleSocialClick = (e: React.MouseEvent) => {
     e.preventDefault();
     // Add your social media logic here
@@ -54,7 +57,7 @@ export const Footer: React.FC = () => {
 
 
   return (
-    <footer className="relative bg-gray-900 text-white overflow-hidden">
+    <footer key="footer-v2-updated" className="relative bg-gray-900 text-white overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-0 w-full h-full">
@@ -120,11 +123,11 @@ export const Footer: React.FC = () => {
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="flex items-center space-x-2">
                   <BuildingOfficeIcon className="w-5 h-5 text-primary-400" />
-                  <span className="text-sm text-gray-300">500+ Employees</span>
+                  <span className="text-sm text-gray-300">10M+ Products</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <GlobeAltIcon className="w-5 h-5 text-primary-400" />
-                  <span className="text-sm text-gray-300">60+ Countries</span>
+                  <span className="text-sm text-gray-300">10+ Years</span>
                 </div>
               </div>
 
@@ -228,8 +231,9 @@ export const Footer: React.FC = () => {
                 >
                   <MapPinIcon className="w-5 h-5 text-primary-400 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-gray-300 text-sm">Zhejiang Province, China</p>
-                    <p className="text-gray-400 text-xs mt-1">Manufacturing Hub</p>
+                    <p className="text-gray-300 text-sm">S.No 30/5&30/EE, V SRP Properties, Block C2</p>
+                    <p className="text-gray-300 text-sm">beside Reliance Petrol Station, Manoharabad</p>
+                    <p className="text-gray-400 text-xs mt-1">Hyderabad, Telangana 502334, India</p>
                   </div>
                 </motion.div>
                 
@@ -239,7 +243,8 @@ export const Footer: React.FC = () => {
                 >
                   <PhoneIcon className="w-5 h-5 text-primary-400 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-gray-300 text-sm">+86 XXX XXXX XXXX</p>
+                    <p className="text-gray-300 text-sm">+91 73865 90043</p>
+                    <p className="text-gray-300 text-sm">9000700700</p>
                     <p className="text-gray-400 text-xs mt-1">24/7 Support</p>
                   </div>
                 </motion.div>
@@ -250,7 +255,8 @@ export const Footer: React.FC = () => {
                 >
                   <EnvelopeIcon className="w-5 h-5 text-primary-400 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-gray-300 text-sm">info@phoenix.com</p>
+                    <p className="text-gray-300 text-sm">bda@phoenixplastowares.com</p>
+                    <p className="text-gray-300 text-sm">info@phoenixplastowares.com</p>
                     <p className="text-gray-400 text-xs mt-1">Business Inquiries</p>
                   </div>
                 </motion.div>
@@ -261,8 +267,9 @@ export const Footer: React.FC = () => {
                 >
                   <ClockIcon className="w-5 h-5 text-primary-400 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-gray-300 text-sm">Mon - Fri: 9:00 - 18:00</p>
-                    <p className="text-gray-400 text-xs mt-1">Business Hours (GMT+8)</p>
+                    <p className="text-gray-300 text-sm">Mon - Sat: Open 24 hours</p>
+                    <p className="text-gray-300 text-sm">Sunday: Closed</p>
+                    <p className="text-gray-400 text-xs mt-1">Business Hours (IST)</p>
                   </div>
                 </motion.div>
               </div>

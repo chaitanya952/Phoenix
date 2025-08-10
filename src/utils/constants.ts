@@ -707,7 +707,7 @@ export const COMPANY_INFO = {
     "Global Standards - Manufacturing to meet international safety and quality requirements"
   ],
   history: "At Phoenix, we believe that every baby deserves the very best. Founded with a vision to redefine quality and safety in baby care, we are a passionate team dedicated to designing and manufacturing premium baby products that support healthy development and modern parenting. We specialize in feeding bottles, sippers, cutlery, tableware, and hygiene accessories — crafted with care using safe, BPA-free, and food-grade materials.",
-  headquarters: "Hyderabad, India"
+  headquarters: "S.No 30/5&30/EE, V SRP Properties, Block C2, beside Reliance Petrol Station, Manoharabad, Hyderabad, Telangana 502334, India"
 };
 
 export const TEAM_MEMBERS: TeamMember[] = [
@@ -1041,51 +1041,123 @@ export const CERTIFICATIONS: Certification[] = [
 export const FAQS: FAQ[] = [
   {
     id: '1',
-    question: 'Are your products BPA-free?',
-    answer: 'Yes, all our plastic and silicone products are completely BPA-free and made from food-grade materials that are safe for babies.',
+    question: 'Are your feeding bottles BPA-free?',
+    answer: 'Yes, all our feeding bottles and accessories are made from 100% BPA-free, food-grade materials, ensuring complete safety for your baby.',
     category: 'Safety'
   },
   {
     id: '2',
-    question: 'What certifications do your products have?',
-    answer: 'Our products are certified by FDA, LFGB, CPC, EN standards, and more. Each product comes with relevant safety certifications for international markets.',
-    category: 'Certifications'
+    question: 'What materials are your products made of?',
+    answer: 'We use high-quality, certified food-grade plastics such as Polypropylene (PP), Tritan, and Silicone, depending on the product. These materials are safe, durable, and approved by global safety standards like BIS, EN, and FDA.',
+    category: 'Materials'
   },
   {
     id: '3',
-    question: 'How do you ensure product quality?',
-    answer: 'We have a comprehensive quality control system including material testing, production monitoring, and final product inspection. Every batch is tested before shipping.',
-    category: 'Quality'
+    question: 'Are your bottles sterilizer and dishwasher safe?',
+    answer: 'Yes, most of our products are designed to withstand steam sterilization, UV sterilization, boiling, and dishwasher cleaning. Please refer to the product label for specific instructions.',
+    category: 'Safety'
   },
   {
     id: '4',
-    question: 'Do you offer custom manufacturing?',
-    answer: 'Yes, we provide OEM and ODM services with custom designs, colors, and packaging options. Minimum order quantities apply.',
-    category: 'Manufacturing'
+    question: 'How do I choose the right nipple/teat size for my baby?',
+    answer: 'We offer teats in various flow rates: Slow Flow – for 0–3 months, Medium Flow – for 3–6 months, Fast Flow – for 6+ months. Check product labels or consult your pediatrician if in doubt.',
+    category: 'Product Usage'
   },
   {
     id: '5',
-    question: 'What is your production capacity?',
-    answer: 'Our monthly production capacity is 1,000,000 units across all product lines, with the ability to scale based on demand.',
-    category: 'Manufacturing'
+    question: 'Are your products tested and certified?',
+    answer: 'Yes. All our products undergo rigorous quality testing including leak tests, drop tests, sterilization resistance, and chemical safety. We comply with standards like IS 14625, EN 14350, ISO 9001, and FDA guidelines.',
+    category: 'Certifications'
   },
   {
     id: '6',
-    question: 'How long is the warranty period?',
-    answer: 'We offer a 12-month warranty on all products against manufacturing defects. Warranty terms may vary by product type.',
-    category: 'Warranty'
+    question: 'Do your bottles have anti-colic features?',
+    answer: 'Yes, many of our bottles feature advanced anti-colic venting systems designed to reduce gas, spit-up, and fussiness by minimizing air ingestion.',
+    category: 'Product Features'
   },
   {
     id: '7',
-    question: 'Do you ship internationally?',
-    answer: 'Yes, we ship to over 60 countries worldwide. Shipping times and costs vary by destination.',
-    category: 'Shipping'
+    question: 'Where are your products manufactured?',
+    answer: 'Our products are proudly manufactured in India, at our state-of-the-art facility in Hyderabad, adhering to strict quality and hygiene protocols.',
+    category: 'Manufacturing'
   },
   {
     id: '8',
-    question: 'What materials do you use?',
-    answer: 'We use premium materials including PP, PPSU, Tritan, food-grade silicone, and organic cotton, all tested for safety and durability.',
-    category: 'Materials'
+    question: 'Can I recycle your products?',
+    answer: 'Yes. Our packaging and many components are recyclable. We are committed to eco-friendly manufacturing practices and encourage responsible disposal.',
+    category: 'Environmental'
+  },
+  {
+    id: '9',
+    question: 'Do you supply to hospitals, retailers, or private labels?',
+    answer: 'Yes. We support bulk, B2B, OEM, and private label manufacturing. Please contact our sales team for more information.',
+    category: 'Business'
+  },
+  {
+    id: '10',
+    question: 'How can I place an order or become a distributor?',
+    answer: 'You can reach out via our Contact Us page. We\'d be happy to assist you with catalogs, pricing, and distribution partnerships.',
+    category: 'Business'
+  },
+  {
+    id: '11',
+    question: 'Do you offer customization for baby products?',
+    answer: 'Yes, we offer full customization including: Bottle color and design, Printing/logo branding, Packaging design, Custom nipple flow types. We support OEM, ODM, and private label manufacturing.',
+    category: 'Customization'
+  },
+  {
+    id: '12',
+    question: 'What is your Minimum Order Quantity (MOQ)?',
+    answer: 'Our standard MOQs are: Feeding Bottles: 3,000 – 5,000 units per design, Sippers/Cutlery: 5,000 – 10,000 units. However, MOQs can vary based on customization and packaging. We\'re flexible for first orders and pilot runs.',
+    category: 'Business'
+  },
+  {
+    id: '13',
+    question: 'What is your lead time for bulk orders?',
+    answer: 'Typical lead times: Standard products: 30 - 40 working days, Customized products: 40 - 60 working days after design approval and advance payment. For urgent needs, we offer priority production slots (subject to capacity).',
+    category: 'Business'
+  },
+  {
+    id: '14',
+    question: 'Do you support private label or OEM production?',
+    answer: 'Absolutely. We specialize in OEM/private label manufacturing. You can choose from our existing molds or develop your own with support from our R&D and mold design team.',
+    category: 'Manufacturing'
+  },
+  {
+    id: '15',
+    question: 'Can I order samples before placing a bulk order?',
+    answer: 'Yes. We provide: Standard samples (free or at nominal cost + courier), Customized samples (chargeable with mold/sample cost, adjusted in bulk order).',
+    category: 'Business'
+  },
+  {
+    id: '16',
+    question: 'Do you offer export services?',
+    answer: 'Yes, we export globally and comply with international certifications like: FDA (USA), EN 14350 (Europe), ISO & CE Certifications. We support shipping via sea/air/courier with full documentation.',
+    category: 'Business'
+  },
+  {
+    id: '17',
+    question: 'Can you develop new molds for custom baby products?',
+    answer: 'Yes, we offer in-house mold development for unique products. Timeline: Mold design: 7–10 days, Mold development: 30-45 days. We maintain confidentiality through NDA agreements.',
+    category: 'Manufacturing'
+  },
+  {
+    id: '18',
+    question: 'What certifications do your products meet?',
+    answer: 'Our products conform to: IS 14625 (India BIS Standard), EN 14350 (Europe), FDA 21 CFR (USA), ISO 9001 / ISO 13485 (Quality Management), ISO 22000, ISO 14001, CE Marking, GMP Certified. We can provide COA, MSDS, and batch test reports on request.',
+    category: 'Certifications'
+  },
+  {
+    id: '19',
+    question: 'What payment terms do you offer?',
+    answer: 'Typical payment terms: 50% advance, 50% before dispatch. Flexible terms available for repeat or large-volume customers. We accept NEFT, RTGS, LC, and international transfers.',
+    category: 'Business'
+  },
+  {
+    id: '20',
+    question: 'Can I visit your factory?',
+    answer: 'Yes, we welcome factory visits by appointment. We\'re based in Hyderabad, India, and follow strict safety and hygiene protocols.',
+    category: 'Business'
   }
 ];
 
