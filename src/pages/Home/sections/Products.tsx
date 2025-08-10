@@ -127,7 +127,7 @@ export const Products: React.FC = () => {
               id: '1',
               name: 'Wide Neck Baby Bottles',
               description: 'Experience the joy of feeding with our premium wide neck bottles. Designed for easy cleaning and comfortable feeding, bringing mother and baby closer together.',
-              image: 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+              image: '/images/Wide Neck Bottles JPEG/WN0001 - 210ml.jpg',
               volume: '150ml - 330ml',
               features: ['Anti-Colic', 'BPA-Free', 'Wide Opening']
             },
@@ -135,41 +135,17 @@ export const Products: React.FC = () => {
               id: '2',
               name: 'Standard Neck Bottles',
               description: 'Classic feeding bottles that have nurtured generations. Reliable, safe, and designed with a mother\'s intuition for perfect feeding moments.',
-              image: 'https://images.unsplash.com/photo-1566004100631-35d015d6a491?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+              image: '/images/Standard Neck Bottles JPEG/RN0001 - 125ml.jpg',
               volume: '125ml - 250ml',
               features: ['Universal Fit', 'Gentle Flow', 'Trusted Design']
             },
             {
               id: '3',
-              name: 'Bottles with Handles',
-              description: 'Watch your little one grow independent with our ergonomic handled bottles. Perfect for tiny hands learning to self-feed with confidence.',
-              image: 'https://images.unsplash.com/photo-1559715541-5daf8a0296d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
-              volume: '150ml - 300ml',
-              features: ['Easy Grip', 'Independence', 'Safe Learning']
-            },
-            {
-              id: '4',
               name: 'Sippy Cups',
               description: 'Celebrate your toddler\'s milestones with spill-proof sippy cups. Making the transition from bottle to cup a joyful journey for both mother and child.',
-              image: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+              image: '/images/Sippy Cups JPEG/SP0001 - 150ml.jpg',
               volume: '150ml - 200ml',
               features: ['Spill-Proof', 'Milestone Ready', 'Growth Support']
-            },
-            {
-              id: '5',
-              name: 'Feeding Accessories',
-              description: 'Complete your feeding journey with our thoughtfully designed accessories. Every piece crafted to make feeding time special and stress-free.',
-              image: 'https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
-              volume: 'Various Sizes',
-              features: ['Complete Care', 'Mother\'s Choice', 'Premium Quality']
-            },
-            {
-              id: '6',
-              name: 'Care & Sterilization',
-              description: 'Protect your baby with our advanced sterilization solutions. Because a mother\'s love means ensuring every bottle is perfectly clean and safe.',
-              image: 'https://images.unsplash.com/photo-1586015555751-63bb77f4322a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
-              volume: 'Multi-Bottle',
-              features: ['Perfect Hygiene', 'Peace of Mind', 'Advanced Care']
             }
           ].map((product) => (
             <motion.div key={product.id} variants={itemVariants}>
@@ -181,7 +157,7 @@ export const Products: React.FC = () => {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80';
+                      target.src = '/images/Phoenix_Logo.png';
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>

@@ -301,7 +301,7 @@ export const Contact: React.FC = () => {
 
             {/* Additional Information */}
             <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-8">
-              <h4 className="text-xl font-bold text-gray-900 mb-4">Why Choose Phoenix?</h4>
+              <h4 className="text-xl font-bold text-gray-900 mb-4">Why  Phoenix?</h4>
               <ul className="space-y-3">
                 {[
                   "20+ years of manufacturing experience",
