@@ -686,14 +686,8 @@ export const PRODUCTS: Product[] = [
   }
 ];
 
-export const CUSTOMERS: Customer[] = [
-  { id: '1', name: 'KiKKA boo', logo: '/images/customers/kikka-boo.jpg' },
-  { id: '2', name: 'Bubbles', logo: '/images/customers/bubbles.jpg' },
-  { id: '3', name: 'Disney', logo: '/images/customers/disney.jpg' },
-  { id: '4', name: 'Baby Care', logo: '/images/customers/baby-care.jpg' },
-  { id: '5', name: 'BEABA', logo: '/images/customers/beaba.jpg' },
-  { id: '6', name: 'YEEHOO', logo: '/images/customers/yeehoo.jpg' }
-];
+// Client images are now handled directly in the Clients component
+export const TRUSTED_CLIENTS_COUNT = 50;
 
 export const COMPANY_INFO = {
   mission: "Our mission is to design and manufacture high-quality baby products that prioritize child safety, promote healthy development, and support modern parenting needs. We are committed to continuous innovation, sustainability, and excellence in every product we create, ensuring peace of mind for parents and comfort for babies.",
@@ -1060,7 +1054,7 @@ export const FAQS: FAQ[] = [
   {
     id: '4',
     question: 'How do I choose the right nipple/teat size for my baby?',
-    answer: 'We offer teats in various flow rates: Slow Flow – for 0–3 months, Medium Flow – for 3–6 months, Fast Flow – for 6+ months. Check product labels or consult your pediatrician if in doubt.',
+    answer: 'We offer teats in various flow rates:\nSlow Flow – for 0–3 months\nMedium Flow – for 3–6 months\nFast Flow – for 6+ months\nCheck product labels or consult your pediatrician if in doubt.',
     category: 'Product Usage'
   },
   {
@@ -1102,19 +1096,19 @@ export const FAQS: FAQ[] = [
   {
     id: '11',
     question: 'Do you offer customization for baby products?',
-    answer: 'Yes, we offer full customization including: Bottle color and design, Printing/logo branding, Packaging design, Custom nipple flow types. We support OEM, ODM, and private label manufacturing.',
+    answer: 'Yes, we offer full customization including:\nBottle color and design\nPrinting/logo branding\nPackaging design\nCustom nipple flow types\nWe support OEM, ODM, and private label manufacturing.',
     category: 'Customization'
   },
   {
     id: '12',
     question: 'What is your Minimum Order Quantity (MOQ)?',
-    answer: 'Our standard MOQs are: Feeding Bottles: 3,000 – 5,000 units per design, Sippers/Cutlery: 5,000 – 10,000 units. However, MOQs can vary based on customization and packaging. We\'re flexible for first orders and pilot runs.',
+    answer: 'Our standard MOQs are:\nFeeding Bottles: 3,000 – 5,000 units per design\nSippers/Cutlery: 5,000 – 10,000 units\nHowever, MOQs can vary based on customization and packaging. We\'re flexible for first orders and pilot runs.',
     category: 'Business'
   },
   {
     id: '13',
     question: 'What is your lead time for bulk orders?',
-    answer: 'Typical lead times: Standard products: 30 - 40 working days, Customized products: 40 - 60 working days after design approval and advance payment. For urgent needs, we offer priority production slots (subject to capacity).',
+    answer: 'Typical lead times:\nStandard products: 30 - 40 working days\nCustomized products: 40 - 60 working days after design approval and advance payment\nFor urgent needs, we offer priority production slots (subject to capacity).',
     category: 'Business'
   },
   {
@@ -1126,31 +1120,31 @@ export const FAQS: FAQ[] = [
   {
     id: '15',
     question: 'Can I order samples before placing a bulk order?',
-    answer: 'Yes. We provide: Standard samples (free or at nominal cost + courier), Customized samples (chargeable with mold/sample cost, adjusted in bulk order).',
+    answer: 'Yes. We provide:\nStandard samples (free or at nominal cost + courier)\nCustomized samples (chargeable with mold/sample cost, adjusted in bulk order)',
     category: 'Business'
   },
   {
     id: '16',
     question: 'Do you offer export services?',
-    answer: 'Yes, we export globally and comply with international certifications like: FDA (USA), EN 14350 (Europe), ISO & CE Certifications. We support shipping via sea/air/courier with full documentation.',
+    answer: 'Yes, we export globally and comply with international certifications like:\nFDA (USA)\nEN 14350 (Europe)\nISO & CE Certifications\nWe support shipping via sea/air/courier with full documentation.',
     category: 'Business'
   },
   {
     id: '17',
     question: 'Can you develop new molds for custom baby products?',
-    answer: 'Yes, we offer in-house mold development for unique products. Timeline: Mold design: 7–10 days, Mold development: 30-45 days. We maintain confidentiality through NDA agreements.',
+    answer: 'Yes, we offer in-house mold development for unique products. Timeline:\nMold design: 7–10 days\nMold development: 30-45 days\nWe maintain confidentiality through NDA agreements.',
     category: 'Manufacturing'
   },
   {
     id: '18',
     question: 'What certifications do your products meet?',
-    answer: 'Our products conform to: IS 14625 (India BIS Standard), EN 14350 (Europe), FDA 21 CFR (USA), ISO 9001 / ISO 13485 (Quality Management), ISO 22000, ISO 14001, CE Marking, GMP Certified. We can provide COA, MSDS, and batch test reports on request.',
+    answer: 'Our products conform to:\nIS 14625 (India BIS Standard)\nEN 14350 (Europe)\nFDA 21 CFR (USA)\nISO 9001 / ISO 13485 (Quality Management)\nWe can provide COA, MSDS, and batch test reports on request.\nISO 22000\nISO 14001\nCE Marking\nGMP Certified',
     category: 'Certifications'
   },
   {
     id: '19',
     question: 'What payment terms do you offer?',
-    answer: 'Typical payment terms: 50% advance, 50% before dispatch. Flexible terms available for repeat or large-volume customers. We accept NEFT, RTGS, LC, and international transfers.',
+    answer: 'Typical payment terms:\n50% advance, 50% before dispatch\nFlexible terms available for repeat or large-volume customers\nWe accept NEFT, RTGS, LC, and international transfers.',
     category: 'Business'
   },
   {

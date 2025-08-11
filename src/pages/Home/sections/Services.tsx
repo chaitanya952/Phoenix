@@ -91,9 +91,58 @@ export const Services: React.FC = () => {
   };
 
   return (
-    <section id="services" className="section bg-gradient-to-br from-primary-50 to-white relative overflow-hidden">
+    <section id="services" className="section relative overflow-hidden">
+      {/* Hero Banner with AI Image */}
+      <div className="relative h-96 mb-16">
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+            alt="Mother and baby with feeding bottle" 
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.src = 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2026&q=80';
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-900/80 via-primary-800/60 to-primary-900/80"></div>
+        </div>
+        
+        <div className="relative z-10 h-full flex items-center justify-center">
+          <div className="text-center text-white">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-6xl font-bold mb-4 font-display"
+            >
+              Services We{' '}
+              <span className="text-primary-300 relative">
+                Offer
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                  className="absolute -top-2 -right-8 text-primary-300"
+                >
+                  <SparklesIcon className="w-8 h-8" />
+                </motion.div>
+              </span>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-xl text-white/90 max-w-3xl mx-auto"
+            >
+              Comprehensive solutions for all your baby product needs - from manufacturing to design
+            </motion.p>
+          </div>
+        </div>
+      </div>
+
       {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden bg-gradient-to-br from-primary-50 to-white">
         <div className="absolute inset-0 hero-pattern opacity-20"></div>
         <motion.div
           animate={{ 
@@ -122,60 +171,6 @@ export const Services: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-            className="relative inline-block mb-6"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-secondary-900 font-display">
-              Services We{' '}
-              <span className="gradient-text-animated relative">
-                Offer
-                <motion.div
-                  animate={{ 
-                    rotate: [0, 15, -15, 0],
-                    scale: [1, 1.2, 1]
-                  }}
-                  transition={{ 
-                    duration: 2, 
-                    repeat: Infinity,
-                    repeatDelay: 3
-                  }}
-                  className="absolute -top-2 -right-8 text-primary-500"
-                >
-                  <SparklesIcon className="w-6 h-6" />
-                </motion.div>
-              </span>
-            </h2>
-          </motion.div>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-xl text-secondary-600 mb-6"
-          >
-            We Support <span className="font-bold gradient-text">OEM</span> & <span className="font-bold gradient-text">ODM</span>
-          </motion.p>
-          
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: "96px" }}
-            transition={{ duration: 1, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="h-1 bg-gradient-to-r from-primary-500 to-primary-600 mx-auto rounded-full shadow-orange"
-          />
-        </motion.div>
 
         {/* Main Services */}
         <motion.div
@@ -242,6 +237,13 @@ export const Services: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {additionalServices.map((service, index) => {
             const IconComponent = service.icon;
+            const serviceImages = [
+              'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80', // Custom Colors
+              'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80', // Printing Services
+              'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80', // Packaging Solutions
+              'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'  // Design Services
+            ];
+            
             return (
               <motion.div
                 key={service.id}
@@ -250,13 +252,30 @@ export const Services: React.FC = () => {
                 transition={{ delay: index * 0.1, duration: 0.6 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -5, scale: 1.02 }}
-                className={`${service.bgColor} rounded-2xl p-6 ${service.borderColor} border-2 hover:shadow-lg transition-all duration-300`}
+                className="relative rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 group"
               >
-                <div className={`inline-flex p-3 rounded-xl bg-white mb-4 ${service.color}`}>
-                  <IconComponent className="w-6 h-6" />
+                {/* Background Image */}
+                <div className="absolute inset-0">
+                  <img 
+                    src={serviceImages[index]} 
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80';
+                    }}
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent`}></div>
                 </div>
-                <h4 className="text-lg font-bold text-gray-900 mb-3">{service.title}</h4>
-                <p className="text-gray-600 text-sm leading-relaxed">{service.description}</p>
+                
+                {/* Content */}
+                <div className="relative z-10 p-6 h-full flex flex-col justify-end text-white">
+                  <div className={`inline-flex p-3 rounded-xl bg-white/20 backdrop-blur-sm mb-4 ${service.color} w-fit`}>
+                    <IconComponent className="w-6 h-6 text-white" />
+                  </div>
+                  <h4 className="text-lg font-bold text-white mb-3">{service.title}</h4>
+                  <p className="text-white/90 text-sm leading-relaxed">{service.description}</p>
+                </div>
               </motion.div>
             );
           })}

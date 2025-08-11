@@ -1,7 +1,7 @@
 // src/pages/Home/sections/Customers.tsx
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CUSTOMERS } from '../../../utils/constants';
+import { TRUSTED_CLIENTS_COUNT } from '../../../utils/constants';
 import { useCountUp } from '../../../hooks/useCountUp';
 import { HeartIcon, StarIcon } from '@heroicons/react/24/solid';
 
@@ -120,100 +120,36 @@ export const Customers: React.FC = () => {
             viewport={{ once: true }}
             className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 max-w-4xl mx-auto"
           >
-            <TrustMetric end={60} suffix="+" label="Countries Served" delay={200} />
-            <TrustMetric end={500} suffix="+" label="Happy Clients" delay={400} />
-            <TrustMetric end={98} suffix="%" label="Satisfaction Rate" delay={600} />
-            <TrustMetric end={15} suffix="+" label="Years Partnership" delay={800} />
+            <TrustMetric end={100} suffix="+" label="Countries Served" delay={200} />
+            <TrustMetric end={TRUSTED_CLIENTS_COUNT} suffix="+" label="Trusted Clients" delay={400} />
+            <TrustMetric end={99} suffix="%" label="Satisfaction Rate" delay={600} />
+            <TrustMetric end={15} suffix="+" label="Years Experience" delay={800} />
           </motion.div>
         </motion.div>
 
-        {/* Enhanced Customer Logos */}
+
+
+        {/* Call to Action */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
           viewport={{ once: true }}
-          className="relative"
+          className="mt-20 text-center"
         >
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center">
-            {CUSTOMERS.map((customer, index) => (
-              <motion.div
-                key={customer.id}
-                initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
-                whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ 
-                  scale: 1.1, 
-                  rotateY: 5,
-                  transition: { duration: 0.3 }
-                }}
-                className="group cursor-pointer"
-              >
-                <div className="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-primary-200 overflow-hidden">
-                  {/* Hover Background Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary-50 to-secondary-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  {/* Star Rating Indicator */}
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    whileHover={{ opacity: 1, y: 0 }}
-                    className="absolute top-2 right-2 flex space-x-1"
-                  >
-                    {[...Array(5)].map((_, i) => (
-                      <StarIcon key={i} className="w-3 h-3 text-yellow-400" />
-                    ))}
-                  </motion.div>
-                  
-                  <div className="relative z-10 flex items-center justify-center h-16">
-                    <img
-                      src={customer.logo}
-                      alt={customer.name}
-                      className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-110"
-                    />
-                  </div>
-                  
-                  {/* Customer Name on Hover */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    whileHover={{ opacity: 1, y: 0 }}
-                    className="absolute bottom-2 left-0 right-0 text-center"
-                  >
-                    <span className="text-xs font-medium text-gray-600 bg-white/80 px-2 py-1 rounded-full">
-                      {customer.name}
-                    </span>
-                  </motion.div>
-                </div>
-              </motion.div>
-            ))}
+          <div className="bg-gradient-to-r from-primary-600 to-secondary-600 rounded-3xl p-8 text-white">
+            <h3 className="text-3xl font-bold mb-4">Join Our Growing Family</h3>
+            <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+              Become part of our trusted network of global partners and experience the Phoenix difference
+            </p>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-white text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+            >
+              Start Partnership
+            </motion.button>
           </div>
-          
-          {/* Floating Elements */}
-          <motion.div
-            animate={{ 
-              y: [0, -10, 0],
-              rotate: [0, 5, 0]
-            }}
-            transition={{ 
-              duration: 4, 
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            className="absolute -top-4 left-1/4 w-8 h-8 bg-gradient-to-br from-primary-200 to-secondary-200 rounded-full opacity-30"
-          />
-          <motion.div
-            animate={{ 
-              y: [0, 10, 0],
-              rotate: [0, -5, 0]
-            }}
-            transition={{ 
-              duration: 5, 
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 1
-            }}
-            className="absolute -bottom-4 right-1/4 w-6 h-6 bg-gradient-to-br from-secondary-200 to-primary-200 rounded-full opacity-30"
-          />
         </motion.div>
       </div>
     </section>

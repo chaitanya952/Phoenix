@@ -251,7 +251,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, category }) => {
         <img 
           src={`/images/${category.name} JPEG/${product.modelNo}.jpg`}
           alt={product.description}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+          className="w-full h-full object-contain p-4 bg-white group-hover:scale-110 transition-transform duration-300"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
             target.src = '/images/Phoenix_Logo.png';

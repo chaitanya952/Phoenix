@@ -297,25 +297,25 @@ export const Hero: React.FC = () => {
 
   const heroSlides = [
     {
-      title: "A Mother's Love in Every Bottle",
-      subtitle: "Premium Baby Bottles",
-      description: "Crafted with love and precision, our wide neck baby bottles ensure the safest, most comfortable feeding experience for your precious little one.",
-      image: "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-      features: ["BPA-Free Materials", "Anti-Colic Design", "Easy to Clean"]
+      title: "A Mother's Love in Every Product",
+      subtitle: "Mother's Love",
+      description: "Every Phoenix product is crafted with the same care and attention a mother gives her child. Because we understand that nothing is more precious than your baby's wellbeing.",
+      image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      features: ["Mother's Care", "Pure Love", "Gentle Touch"]
     },
     {
-      title: "Nurturing Every Moment",
-      subtitle: "Safe & Innovative",
-      description: "From the first feeding to toddler transitions, our bottles grow with your baby, providing comfort and safety at every stage of development.",
-      image: "https://images.unsplash.com/photo-1566004100631-35d015d6a491?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-      features: ["FDA Approved", "Gentle Flow", "Ergonomic Design"]
+      title: "Bonding Moments Made Perfect",
+      subtitle: "Precious Moments",
+      description: "Creating beautiful memories between mother and child with products designed to enhance every feeding, every cuddle, every precious moment together.",
+      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      features: ["Bonding Time", "Sweet Memories", "Loving Care"]
     },
     {
-      title: "Trusted by Mothers Worldwide",
-      subtitle: "Global Excellence",
-      description: "Over 10 years of manufacturing excellence, trusted by loving mothers who choose only the best for their babies.",
-      image: "https://images.unsplash.com/photo-1559715541-5daf8a0296d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-      features: ["Mother Approved", "Global Trust", "Premium Quality"]
+      title: "Where Love Meets Innovation",
+      subtitle: "Love & Innovation",
+      description: "Combining a mother's intuition with cutting-edge technology to create products that nurture the beautiful bond between you and your little one.",
+      image: "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      features: ["Maternal Instinct", "Innovation", "Pure Connection"]
     }
   ];
 
@@ -328,9 +328,24 @@ export const Hero: React.FC = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex flex-col overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-primary-100">
-        <div className="absolute inset-0 hero-pattern opacity-30"></div>
+      {/* Twitter Header Size AI Image at Top */}
+      <div className="absolute top-0 left-0 right-0 h-48 overflow-hidden">
+        <img 
+          src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1500&h=500&q=80" 
+          alt="Mother's Love - Phoenix Baby Products Header" 
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1500&h=500&q=80';
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-600/60 via-primary-500/40 to-primary-600/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white"></div>
+      </div>
+
+      {/* Clean Background with Subtle Pattern */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-secondary-50">
+        <div className="absolute inset-0 hero-pattern opacity-20"></div>
         
         {/* Floating Elements */}
         <motion.div
@@ -376,7 +391,7 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 flex-1 flex items-center justify-center px-4 py-20 mt-16">
+      <div className="relative z-10 flex-1 flex items-center justify-center px-4 py-20 mt-48">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             
@@ -503,7 +518,7 @@ export const Hero: React.FC = () => {
               </motion.div>
             </motion.div>
 
-            {/* Right Content - Hero Image */}
+            {/* Right Content - Animated Hero Image Card */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -511,23 +526,80 @@ export const Hero: React.FC = () => {
               className="relative"
             >
               <div className="relative">
-                {/* Main Image Container */}
+                {/* Floating Background Elements */}
+                <motion.div
+                  animate={{ 
+                    rotate: [0, 360],
+                    scale: [1, 1.1, 1]
+                  }}
+                  transition={{ 
+                    duration: 20, 
+                    repeat: Infinity, 
+                    ease: "linear" 
+                  }}
+                  className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-primary-400/20 to-primary-600/20 rounded-full blur-xl"
+                />
+                
+                <motion.div
+                  animate={{ 
+                    y: [0, -20, 0],
+                    rotate: [0, 10, 0]
+                  }}
+                  transition={{ 
+                    duration: 8, 
+                    repeat: Infinity, 
+                    ease: "easeInOut",
+                    delay: 2
+                  }}
+                  className="absolute -bottom-6 -left-6 w-16 h-16 bg-gradient-to-br from-accent-400/30 to-accent-600/30 rounded-full blur-lg"
+                />
+
+                {/* Main Image Container with Enhanced Animation */}
                 <motion.div
                   key={currentSlide}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.8 }}
-                  className="relative rounded-3xl overflow-hidden shadow-2xl aspect-square"
+                  initial={{ opacity: 0, scale: 0.8, rotateY: 15 }}
+                  animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                  exit={{ opacity: 0, scale: 0.8, rotateY: -15 }}
+                  transition={{ 
+                    duration: 1.2,
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 20
+                  }}
+                  whileHover={{ 
+                    scale: 1.05,
+                    rotateY: 5,
+                    transition: { duration: 0.3 }
+                  }}
+                  className="relative rounded-3xl overflow-hidden shadow-2xl aspect-square bg-white/10 backdrop-blur-sm border border-white/20"
                 >
-                  <img 
+                  {/* Image with Zoom Animation */}
+                  <motion.img 
                     src={heroSlides[currentSlide].image}
                     alt={heroSlides[currentSlide].title}
                     className="w-full h-full object-cover"
+                    initial={{ scale: 1.2 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 1.5, ease: "easeOut" }}
+                    whileHover={{ scale: 1.1 }}
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80";
+                      target.src = "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80";
                     }}
                   />
+                  
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary-900/20 via-transparent to-transparent" />
+                  
+                  {/* Floating Badge */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1, duration: 0.6 }}
+                    className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-semibold text-primary-600 shadow-lg"
+                  >
+                    {heroSlides[currentSlide].subtitle}
+                  </motion.div>
                   <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-primary-600/30"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent">
                     <h3 className="text-2xl font-bold text-white mb-2 font-display">

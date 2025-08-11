@@ -51,12 +51,12 @@ export const ProductsPage: React.FC = () => {
         {/* Banner Image */}
         <div className="absolute inset-0">
           <img 
-            src="/images/baby_picture.jpeg" 
-            alt="Phoenix Baby Products" 
+            src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+            alt="Premium Baby Products Collection - Phoenix" 
             className="w-full h-full object-cover"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
-              target.src = '/images/Wide Neck Bottles JPEG/WN0001 - 210ml.jpg';
+              target.src = 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2026&q=80';
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60"></div>
@@ -171,20 +171,25 @@ export const ProductsPage: React.FC = () => {
                 category.description.toLowerCase().includes(searchQuery.toLowerCase())
               )
               .map((category) => (
-              <motion.div key={category.id} variants={itemVariants}>
+              <motion.div 
+                key={category.id} 
+                variants={itemVariants}
+                whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
                 <Link to={`/products/category/${category.id}`}>
-                  <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer">
-                    <div className="relative h-64 overflow-hidden">
+                  <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group cursor-pointer border border-gray-100 hover:border-primary-200">
+                    <div className="relative h-48 overflow-hidden">
                       <img 
                         src={category.image} 
                         alt={category.displayName}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        className="w-full h-full object-cover scale-50 group-hover:scale-75 transition-transform duration-500 ease-out"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
-                          target.src = '/images/Phoenix_Logo.png';
+                          target.src = 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80';
                         }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/40 group-hover:via-black/10 transition-all duration-500"></div>
                       
                       {/* Product Count Badge */}
                       <div className="absolute top-4 right-4 bg-primary-600 text-white px-3 py-1 rounded-full text-sm font-semibold">

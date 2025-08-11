@@ -40,6 +40,9 @@ export interface Customer {
   id: string;
   name: string;
   logo: string;
+  industry?: string;
+  partnership?: string;
+  description?: string;
 }
 
 export interface Service {
