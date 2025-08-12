@@ -199,7 +199,7 @@ export const CategoryPage: React.FC = () => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4"
           >
             {filteredAndSortedProducts.map((product, index) => (
               <motion.div key={`${product.modelNo}-${index}`} variants={itemVariants}>
@@ -242,82 +242,32 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, category }) => {
-
   return (
-    <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
-      {/* Product Image */}
-      <Link to={`/products/${product.modelNo}`}>
-        <div className="relative h-48 overflow-hidden bg-gray-100 cursor-pointer">
-        <img 
-          src={`/images/${category.name} JPEG/${product.modelNo}.jpg`}
-          alt={product.description}
-          className="w-full h-full object-contain p-4 bg-white group-hover:scale-110 transition-transform duration-300"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.src = '/images/Phoenix_Logo.png';
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-        
-        {/* Price Badge */}
-        <div className="absolute top-4 right-4 bg-primary-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
-          ${product.usd.toFixed(2)}
+    <Link to={`/products/${product.modelNo}`}>
+      <motion.div 
+        whileHover={{ y: -8, scale: 1.02 }}
+        className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group cursor-pointer"
+      >
+        {/* Product Image */}
+        <div className="relative h-48 overflow-hidden bg-gray-50">
+          <img 
+            src={`/images/${category.name} JPEG/${product.modelNo}.jpg`}
+            alt={product.description}
+            className="w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-300"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.src = '/images/Phoenix_Logo.png';
+            }}
+          />
         </div>
 
-        {/* Capacity Badge */}
-        {product.capacity && (
-          <div className="absolute top-4 left-4 bg-white/90 text-gray-800 px-3 py-1 rounded-full text-xs font-semibold">
-            {product.capacity}
-          </div>
-        )}
+        {/* Product Name */}
+        <div className="p-4 text-center">
+          <h4 className="text-sm font-semibold text-gray-900 group-hover:text-primary-600 transition-colors line-clamp-2">
+            {product.description}
+          </h4>
         </div>
-      </Link>
-
-      {/* Product Info */}
-      <div className="p-6">
-        <div className="mb-3">
-          <Link to={`/products/${product.modelNo}`}>
-            <h4 className="text-lg font-bold text-gray-900 mb-1 hover:text-primary-600 transition-colors cursor-pointer">{product.description}</h4>
-          </Link>
-          <p className="text-sm text-gray-500 font-mono">{product.modelNo}</p>
-        </div>
-
-        {/* Key Details */}
-        <div className="space-y-2 mb-4">
-          <div className="flex items-center justify-between text-sm">
-            <span className="text-gray-600">MOQ:</span>
-            <span className="font-semibold">{product.moq.toLocaleString()} pcs</span>
-          </div>
-          <div className="flex items-center justify-between text-sm">
-            <span className="text-gray-600">Packaging:</span>
-            <span className="font-semibold">{product.packaging}</span>
-          </div>
-          <div className="flex items-center justify-between text-sm">
-            <span className="text-gray-600">Inner/Outer:</span>
-            <span className="font-semibold">{product.inner}/{product.outer}</span>
-          </div>
-        </div>
-
-        {/* Price Display */}
-        <div className="flex items-center justify-between mb-4 p-3 bg-gray-50 rounded-lg">
-          <div className="text-center">
-            <div className="text-xs text-gray-500">USD</div>
-            <div className="text-lg font-bold text-primary-600">${product.usd.toFixed(2)}</div>
-          </div>
-          <div className="text-center">
-            <div className="text-xs text-gray-500">INR</div>
-            <div className="text-lg font-bold text-secondary-600">₹{product.inr}</div>
-          </div>
-        </div>
-
-        {/* Learn More Button */}
-        <Link 
-          to={`/products/${product.modelNo}`}
-          className="w-full px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors text-sm font-medium flex items-center justify-center gap-2"
-        >
-          Learn More
-        </Link>
-      </div>
-    </div>
+      </motion.div>
+    </Link>
   );
 };

@@ -711,15 +711,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     position: 'CEO & Managing Director',
     image: '/images/team/krishna-sighakolli.jpg',
     bio: 'Seasoned entrepreneur with extensive experience in the baby product category. Successfully led teams of over 200 professionals with a focus on innovation and quality. Pioneer in introducing new products that cater to evolving needs of parents and babies.',
-    experience: '20+ years'
-  },
-  {
-    id: '2',
-    name: 'Harshavardhan Reddy R',
-    position: 'COO & Director',
-    image: '/images/team/harshavardhan-reddy.jpg',
-    bio: 'Dynamic entrepreneur with Master\'s in International Business from Cardiff University, UK. Responsible for overseeing operations and driving business growth with innovative strategies that improve efficiency and customer satisfaction.',
-    experience: '15+ years'
+    experience: '10+ years'
   },
   {
     id: '3',
@@ -727,7 +719,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     position: 'CHRO & Director',
     image: '/images/team/vyshnavi-yakkali.jpg',
     bio: 'Dynamic leader with Double MBA in HR and Finance. Drives company growth through expert human resource management and financial acumen. Committed to building high-performing teams and delivering quality products.',
-    experience: '12+ years'
+    experience: '8+ years'
   },
   {
     id: '4',

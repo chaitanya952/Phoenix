@@ -211,24 +211,29 @@ export const About: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto text-center mb-12"
+          className="max-w-6xl mx-auto text-center mb-12"
         >
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             <div className="bg-white rounded-xl p-6 shadow-lg">
               <HeartIcon className="w-8 h-8 text-primary-600 mx-auto mb-3" />
               <h4 className="font-semibold text-gray-900 mb-2">Our Mission</h4>
-              <p className="text-sm text-gray-600">To honor the sacred bond between mother and baby by creating the safest, most nurturing feeding products that make every moment special.</p>
+              <p className="text-sm text-gray-600">Our mission is to design and manufacture high-quality baby products that prioritize child safety, promote healthy development, and support modern parenting needs.</p>
             </div>
             <div className="bg-white rounded-xl p-6 shadow-lg">
               <EyeIcon className="w-8 h-8 text-primary-600 mx-auto mb-3" />
               <h4 className="font-semibold text-gray-900 mb-2">Our Vision</h4>
-              <p className="text-sm text-gray-600">To be the trusted companion in every mother's journey, providing products that celebrate love, safety, and the precious moments of nurturing.</p>
+              <p className="text-sm text-gray-600">To become the most trusted and innovative baby care brand, enriching every child's early years with safe, sustainable, and thoughtfully designed products.</p>
             </div>
             <div className="bg-white rounded-xl p-6 shadow-lg">
               <StarIcon className="w-8 h-8 text-primary-600 mx-auto mb-3" />
               <h4 className="font-semibold text-gray-900 mb-2">Our Values</h4>
               <p className="text-sm text-gray-600">Love-inspired design, unwavering safety, mother's intuition, and the belief that every baby deserves the very best care.</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-lg">
+              <CalendarIcon className="w-8 h-8 text-primary-600 mx-auto mb-3" />
+              <h4 className="font-semibold text-gray-900 mb-2">Our Journey</h4>
+              <p className="text-sm text-gray-600">Founded with a mother's love, Phoenix has grown from a small family business to a trusted global brand, dedicated to creating safe and nurturing feeding solutions for babies worldwide.</p>
             </div>
           </div>
 

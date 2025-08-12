@@ -68,7 +68,7 @@ export const Products: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -104,12 +104,10 @@ export const Products: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+            className="text-lg text-gray-600 max-w-2xl mx-auto"
           >
-            Every Phoenix product is designed with a mother's love in mind. We create 
-            <span className="font-semibold text-primary-600"> safe, nurturing feeding solutions</span> that honor the precious bond between mother and baby. 
-            Our comprehensive range includes <span className="font-semibold text-secondary-600">wide neck bottles, gentle sippy cups, and caring accessories</span> 
-            with over <span className="font-semibold text-primary-600">1M+ products</span> crafted with love and precision.
+            Safe, nurturing feeding solutions designed with a mother's love. 
+            <span className="font-semibold text-primary-600"> Premium quality</span> products for your baby's growth journey.
           </motion.p>
         </motion.div>
 
@@ -119,65 +117,80 @@ export const Products: React.FC = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+          className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-8"
         >
           {[
             {
               id: 'wide-feeding',
-              name: 'Wide Neck Feeding Bottles',
-              description: 'Experience the joy of feeding with our premium wide neck bottles. Designed for easy cleaning and comfortable feeding, bringing mother and baby closer together.',
+              name: 'Wide Neck Bottles',
               image: '/images/Wide Neck Bottles JPEG/WN0001 - 210ml.jpg',
               volume: '210ml - 300ml',
-              features: ['Anti-Colic', 'BPA-Free', 'Wide Opening']
+              features: ['Anti-Colic', 'BPA-Free']
             },
             {
               id: 'std-feeding',
-              name: 'Standard Neck Feeding Bottles',
-              description: 'Classic feeding bottles that have nurtured generations. Reliable, safe, and designed with a mother\'s intuition for perfect feeding moments.',
+              name: 'Standard Neck Bottles',
               image: '/images/Standard Neck Bottles JPEG/RN0001 - 125ml.jpg',
               volume: '60ml - 250ml',
-              features: ['Universal Fit', 'Gentle Flow', 'Trusted Design']
+              features: ['Universal Fit', 'Gentle Flow']
             },
             {
               id: 'sippy-cups',
-              name: 'Sippy Cups & Training Cups',
-              description: 'Celebrate your toddler\'s milestones with spill-proof sippy cups. Making the transition from bottle to cup a joyful journey for both mother and child.',
+              name: 'Sippy Cups',
               image: '/images/Sippy Cups JPEG/SP0001 - 150ml.jpg',
               volume: '150ml - 350ml',
-              features: ['Spill-Proof', 'Milestone Ready', 'Growth Support']
+              features: ['Spill-Proof', 'Growth Support']
+            },
+            {
+              id: 'cutlery',
+              name: 'Cutlery & Tableware',
+              image: '/images/Cutlery & Tableware JPEG/CT0001.JPG',
+              volume: 'All Sizes',
+              features: ['Safe Materials', 'Easy Grip']
+            },
+            {
+              id: 'teethers',
+              name: 'Teethers & Pacifiers',
+              image: '/images/Teethers & Pacifiers JPEG/TP0001.JPG',
+              volume: 'All Ages',
+              features: ['Soothing', 'Safe Design']
+            },
+            {
+              id: 'accessories',
+              name: 'Accessories',
+              image: '/images/Phoenix_Logo.png',
+              volume: 'Various',
+              features: ['Quality', 'Durable']
             }
           ].map((product) => (
             <motion.div key={product.id} variants={itemVariants}>
               <Link to={`/products/category/${product.id}`}>
-                <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer">
-                  <div className="relative h-48 overflow-hidden">
+                <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer">
+                  <div className="relative h-24 overflow-hidden">
                     <img 
                       src={product.image} 
                       alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.src = '/images/Phoenix_Logo.png';
                       }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                    <div className="absolute top-4 right-4 bg-primary-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                    <div className="absolute top-1 right-1 bg-primary-600 text-white px-1 py-0.5 rounded text-xs font-semibold">
                       {product.volume}
                     </div>
                   </div>
-                  <div className="p-6">
-                    <h4 className="text-xl font-bold text-gray-900 mb-3">{product.name}</h4>
-                    <p className="text-gray-600 mb-4 leading-relaxed">{product.description}</p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {product.features.map((feature, index) => (
-                        <span key={index} className="bg-primary-50 text-primary-700 px-3 py-1 rounded-full text-xs font-medium">
+                  <div className="p-3">
+                    <h4 className="text-sm font-bold text-gray-900 mb-1 line-clamp-1">{product.name}</h4>
+                    <div className="flex flex-wrap gap-1 mb-2">
+                      {product.features.slice(0, 2).map((feature, index) => (
+                        <span key={index} className="bg-primary-50 text-primary-700 px-1.5 py-0.5 rounded text-xs font-medium">
                           {feature}
                         </span>
                       ))}
                     </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-primary-600 font-semibold">View Products</span>
-                      <ArrowRightIcon className="w-4 h-4 text-primary-600 group-hover:translate-x-1 transition-transform" />
+                    <div className="flex items-center justify-center">
+                      <span className="text-primary-600 font-semibold text-xs group-hover:text-primary-700">View Details</span>
                     </div>
                   </div>
                 </div>
@@ -186,51 +199,37 @@ export const Products: React.FC = () => {
           ))}
         </motion.div>
 
-        {/* Know More Button */}
+        {/* Safety Highlights & CTA */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="bg-gradient-to-r from-primary-50 to-secondary-50 rounded-lg p-4"
         >
-          <Link to="/products">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-primary px-8 py-4 text-lg font-semibold rounded-xl inline-flex items-center gap-2"
-            >
-              View All Products
-              <ArrowRightIcon className="w-5 h-5" />
-            </motion.button>
-          </Link>
-        </motion.div>
-
-        {/* Brief Safety Highlights */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-8"
-        >
-          <h3 className="text-2xl font-bold text-center text-gray-900 mb-6">Safety & Quality Assured</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="text-center">
-              <ShieldCheckIcon className="w-8 h-8 text-green-600 mx-auto mb-2" />
-              <div className="font-semibold text-gray-900">100% BPA Free</div>
-              <div className="text-sm text-gray-600">Food-grade materials</div>
+          <div className="flex flex-wrap items-center justify-center gap-6">
+            <div className="flex items-center gap-2">
+              <ShieldCheckIcon className="w-5 h-5 text-green-600" />
+              <span className="font-semibold text-gray-900 text-sm">BPA Free</span>
             </div>
-            <div className="text-center">
-              <HeartIcon className="w-8 h-8 text-red-600 mx-auto mb-2" />
-              <div className="font-semibold text-gray-900">Non-Toxic</div>
-              <div className="text-sm text-gray-600">Premium materials</div>
+            <div className="flex items-center gap-2">
+              <HeartIcon className="w-5 h-5 text-red-600" />
+              <span className="font-semibold text-gray-900 text-sm">Non-Toxic</span>
             </div>
-            <div className="text-center">
-              <GlobeAltIcon className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-              <div className="font-semibold text-gray-900">Eco-Friendly</div>
-              <div className="text-sm text-gray-600">Sustainable production</div>
+            <div className="flex items-center gap-2">
+              <GlobeAltIcon className="w-5 h-5 text-blue-600" />
+              <span className="font-semibold text-gray-900 text-sm">Eco-Friendly</span>
             </div>
+            <Link to="/products">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="btn-primary px-4 py-2 text-sm font-semibold rounded-lg inline-flex items-center gap-2"
+              >
+                View All Products
+                <ArrowRightIcon className="w-4 h-4" />
+              </motion.button>
+            </Link>
           </div>
         </motion.div>
       </div>

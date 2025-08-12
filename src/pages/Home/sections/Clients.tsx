@@ -96,8 +96,7 @@ export const Clients: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
-          >
+            className="text-xl text-gray-600 max-w-3xl mx-auto">
             Leading businesses choose Phoenix for reliable, high-quality baby products and exceptional service
           </motion.p>
         </motion.div>

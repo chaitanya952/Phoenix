@@ -677,7 +677,7 @@ export const Hero: React.FC = () => {
             />
             <StatCard
               icon={<TrophyIcon className="w-6 h-6" />}
-              end={1}
+              end={10}
               suffix="M+"
               label="Products Manufactured"
               delay={600}

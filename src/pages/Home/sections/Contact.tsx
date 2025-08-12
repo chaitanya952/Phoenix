@@ -10,11 +10,15 @@ import {
   ClockIcon,
   ChevronDownIcon,
   ChevronUpIcon,
-  PaperAirplaneIcon
+  PaperAirplaneIcon,
+  QuestionMarkCircleIcon,
+  XMarkIcon
 } from '@heroicons/react/24/outline';
 
 export const Contact: React.FC = () => {
   const [openFAQ, setOpenFAQ] = useState<string | null>(null);
+  const [showFAQPopup, setShowFAQPopup] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('All');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -35,6 +39,14 @@ export const Contact: React.FC = () => {
     // Handle form submission
     console.log('Form submitted:', formData);
   };
+
+  // Filter FAQs based on selected category
+  const filteredFAQs = selectedCategory === 'All' 
+    ? FAQS 
+    : FAQS.filter(faq => faq.category === selectedCategory);
+
+  // Get unique categories for filter buttons
+  const categories = ['All', ...Array.from(new Set(FAQS.map(faq => faq.category)))];
 
   // Updated contact information - Phoenix Plastowares Manoharabad
   const contactInfo = [
@@ -149,33 +161,7 @@ export const Contact: React.FC = () => {
           </motion.p>
         </motion.div>
 
-        {/* Contact Information */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16"
-        >
-          {contactInfo.map((info, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              whileHover={{ y: -5, scale: 1.02 }}
-              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center border border-gray-100"
-            >
-              <div className={`inline-flex p-3 rounded-xl bg-gray-50 mb-4 ${info.color}`}>
-                {info.icon}
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-3">{info.title}</h3>
-              <div className="space-y-1">
-                {info.details.map((detail, idx) => (
-                  <p key={idx} className="text-gray-600 text-sm">{detail}</p>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+
 
         {/* Contact Form and Map */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
@@ -361,79 +347,108 @@ export const Contact: React.FC = () => {
 
 
 
-        {/* FAQ Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
+        {/* FAQ Icon - Fixed Position */}
+        <motion.button
+          onClick={() => setShowFAQPopup(true)}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="fixed bottom-6 right-6 bg-primary-600 text-white p-4 rounded-full shadow-lg hover:bg-primary-700 transition-colors z-40"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 1, duration: 0.3 }}
         >
-          <h3 className="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h3>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Find answers to common questions about our products and services.
-          </p>
-        </motion.div>
+          <QuestionMarkCircleIcon className="w-6 h-6" />
+        </motion.button>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="max-w-6xl mx-auto"
-        >
-          {/* FAQ Categories Filter */}
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
-            {['All', 'Safety', 'Materials', 'Business', 'Manufacturing', 'Certifications'].map((category) => (
-              <button
-                key={category}
-                className="px-4 py-2 rounded-full bg-primary-100 text-primary-700 hover:bg-primary-200 transition-colors text-sm font-medium"
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-
-          {/* FAQ Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {FAQS.map((faq, index) => (
+        {/* FAQ Popup */}
+        {showFAQPopup && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+            onClick={() => setShowFAQPopup(false)}
+          >
             <motion.div
-              key={faq.id}
-              variants={itemVariants}
-              className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              className="bg-white rounded-2xl max-w-4xl w-full max-h-[80vh] overflow-hidden shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
             >
-              <button
-                onClick={() => setOpenFAQ(openFAQ === faq.id ? null : faq.id)}
-                className="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
-              >
-                <div>
-                  <h4 className="text-lg font-semibold text-gray-900 mb-1">{faq.question}</h4>
-                  <span className="text-sm text-primary-600 font-medium">{faq.category}</span>
+              {/* Header */}
+              <div className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white p-6 flex items-center justify-between">
+                <h3 className="text-2xl font-bold">Frequently Asked Questions</h3>
+                <button
+                  onClick={() => setShowFAQPopup(false)}
+                  className="p-2 hover:bg-white/20 rounded-full transition-colors"
+                >
+                  <XMarkIcon className="w-6 h-6" />
+                </button>
+              </div>
+
+              {/* Category Filter */}
+              <div className="p-6 border-b border-gray-200">
+                <div className="flex flex-wrap gap-2">
+                  {categories.map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => setSelectedCategory(category)}
+                      className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                        selectedCategory === category
+                          ? 'bg-primary-600 text-white'
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
+                    >
+                      {category}
+                    </button>
+                  ))}
                 </div>
-                {openFAQ === faq.id ? (
-                  <ChevronUpIcon className="w-5 h-5 text-gray-500" />
-                ) : (
-                  <ChevronDownIcon className="w-5 h-5 text-gray-500" />
-                )}
-              </button>
-              
-              <motion.div
-                initial={false}
-                animate={{
-                  height: openFAQ === faq.id ? "auto" : 0,
-                  opacity: openFAQ === faq.id ? 1 : 0
-                }}
-                transition={{ duration: 0.3 }}
-                className="overflow-hidden"
-              >
-                <div className="px-8 pb-6">
-                  <p className="text-gray-600 leading-relaxed whitespace-pre-line">{faq.answer}</p>
+              </div>
+
+              {/* FAQ Content */}
+              <div className="p-6 overflow-y-auto max-h-[50vh]">
+                <div className="space-y-4">
+                  {filteredFAQs.map((faq) => (
+                    <div
+                      key={faq.id}
+                      className="bg-gray-50 rounded-xl overflow-hidden border border-gray-200"
+                    >
+                      <button
+                        onClick={() => setOpenFAQ(openFAQ === faq.id ? null : faq.id)}
+                        className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-100 transition-colors"
+                      >
+                        <div>
+                          <h4 className="text-lg font-semibold text-gray-900 mb-1">{faq.question}</h4>
+                          <span className="text-sm text-primary-600 font-medium">{faq.category}</span>
+                        </div>
+                        {openFAQ === faq.id ? (
+                          <ChevronUpIcon className="w-5 h-5 text-gray-500 flex-shrink-0" />
+                        ) : (
+                          <ChevronDownIcon className="w-5 h-5 text-gray-500 flex-shrink-0" />
+                        )}
+                      </button>
+                      
+                      <motion.div
+                        initial={false}
+                        animate={{
+                          height: openFAQ === faq.id ? "auto" : 0,
+                          opacity: openFAQ === faq.id ? 1 : 0
+                        }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-6 pb-4">
+                          <p className="text-gray-600 leading-relaxed whitespace-pre-line">{faq.answer}</p>
+                        </div>
+                      </motion.div>
+                    </div>
+                  ))}
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
-          ))}
-          </div>
-        </motion.div>
+          </motion.div>
+        )}
       </div>
     </section>
   );
