@@ -109,7 +109,7 @@ export const Customers: React.FC = () => {
             viewport={{ once: true }}
             className="text-xl text-gray-600 mb-8"
           >
-            Building partnerships with industry leaders worldwide
+            Building partnerships with industry leaders everywhere
           </motion.p>
 
           {/* Trust Metrics */}
@@ -120,7 +120,7 @@ export const Customers: React.FC = () => {
             viewport={{ once: true }}
             className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 max-w-4xl mx-auto"
           >
-            <TrustMetric end={100} suffix="+" label="Countries Served" delay={200} />
+            <TrustMetric end={1} suffix="M+" label="Products Made" delay={200} />
             <TrustMetric end={TRUSTED_CLIENTS_COUNT} suffix="+" label="Trusted Clients" delay={400} />
             <TrustMetric end={99} suffix="%" label="Satisfaction Rate" delay={600} />
             <TrustMetric end={15} suffix="+" label="Years Experience" delay={800} />

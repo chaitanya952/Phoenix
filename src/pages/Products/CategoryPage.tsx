@@ -79,7 +79,7 @@ export const CategoryPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-white to-primary-50">
       {/* Hero Banner */}
-      <section className="relative h-[30vh] min-h-[300px] overflow-hidden pt-32">
+      <section className="relative h-[40vh] min-h-[400px] overflow-hidden pt-32">
         <div className="absolute inset-0">
           <img 
             src={category.image} 
@@ -87,7 +87,7 @@ export const CategoryPage: React.FC = () => {
             className="w-full h-full object-cover"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
-              target.src = '/images/baby_picture.jpeg';
+              target.src = '/images/mother/d4859ef1-2b89-49de-9e17-d68cb397ac60.jpg';
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60"></div>

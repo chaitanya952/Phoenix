@@ -300,21 +300,21 @@ export const Hero: React.FC = () => {
       title: "A Mother's Love in Every Product",
       subtitle: "Mother's Love",
       description: "Every Phoenix product is crafted with the same care and attention a mother gives her child. Because we understand that nothing is more precious than your baby's wellbeing.",
-      image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      image: "/images/mother/d4859ef1-2b89-49de-9e17-d68cb397ac60.jpg",
       features: ["Mother's Care", "Pure Love", "Gentle Touch"]
     },
     {
       title: "Bonding Moments Made Perfect",
       subtitle: "Precious Moments",
       description: "Creating beautiful memories between mother and child with products designed to enhance every feeding, every cuddle, every precious moment together.",
-      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      image: "/images/mother/download.jpg",
       features: ["Bonding Time", "Sweet Memories", "Loving Care"]
     },
     {
       title: "Where Love Meets Innovation",
       subtitle: "Love & Innovation",
       description: "Combining a mother's intuition with cutting-edge technology to create products that nurture the beautiful bond between you and your little one.",
-      image: "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      image: "/images/mother/Meal Time.jpg",
       features: ["Maternal Instinct", "Innovation", "Pure Connection"]
     }
   ];
@@ -331,12 +331,12 @@ export const Hero: React.FC = () => {
       {/* Twitter Header Size AI Image at Top */}
       <div className="absolute top-0 left-0 right-0 h-48 overflow-hidden">
         <img 
-          src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1500&h=500&q=80" 
+          src="/images/mother/d4859ef1-2b89-49de-9e17-d68cb397ac60.jpg" 
           alt="Mother's Love - Phoenix Baby Products Header" 
           className="w-full h-full object-cover"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
-            target.src = 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1500&h=500&q=80';
+            target.src = '/images/mother/download.jpg';
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-primary-600/60 via-primary-500/40 to-primary-600/60"></div>
@@ -641,7 +641,7 @@ export const Hero: React.FC = () => {
                     </div>
                     <div>
                       <div className="text-sm font-bold text-secondary-800">Global Reach</div>
-                      <div className="text-xs text-secondary-600">50+ Countries Served</div>
+                      <div className="text-xs text-secondary-600">50+ Customers Served</div>
                     </div>
                   </div>
                 </motion.div>
@@ -677,9 +677,9 @@ export const Hero: React.FC = () => {
             />
             <StatCard
               icon={<TrophyIcon className="w-6 h-6" />}
-              end={10000000}
-              suffix="+"
-              label="Products Delivered"
+              end={1}
+              suffix="M+"
+              label="Products Manufactured"
               delay={600}
             />
             <StatCard

@@ -109,7 +109,7 @@ export const Products: React.FC = () => {
             Every Phoenix product is designed with a mother's love in mind. We create 
             <span className="font-semibold text-primary-600"> safe, nurturing feeding solutions</span> that honor the precious bond between mother and baby. 
             Our comprehensive range includes <span className="font-semibold text-secondary-600">wide neck bottles, gentle sippy cups, and caring accessories</span> 
-            trusted by loving mothers in 60+ countries worldwide.
+            with over <span className="font-semibold text-primary-600">1M+ products</span> crafted with love and precision.
           </motion.p>
         </motion.div>
 

@@ -1202,9 +1202,9 @@ export const NEWS_ITEMS: NewsItem[] = [
   },
   {
     id: '5',
-    title: 'New Partnership with Global Retailers',
-    excerpt: 'Strategic partnerships to expand Phoenix products worldwide.',
-    content: 'Phoenix has formed strategic partnerships with leading global retailers to make our products more accessible to families worldwide...',
+    title: 'New Partnership with Leading Retailers',
+    excerpt: 'Strategic partnerships to expand Phoenix product availability and reach more families.',
+    content: 'Phoenix has formed strategic partnerships with leading retailers to make our products more accessible to families everywhere...',
     image: '/images/news/partnership.jpg',
     date: '2023-12-20',
     category: 'Business',
@@ -1278,10 +1278,10 @@ export const SERVICES: Service[] = [
   },
   {
     id: '4',
-    title: 'Global Shipping',
-    description: 'Reliable worldwide shipping and logistics solutions',
+    title: 'Reliable Shipping',
+    description: 'Fast and secure shipping with comprehensive logistics solutions',
     icon: 'TruckIcon',
-    features: ['Express Shipping', 'Bulk Orders', 'Customs Support', 'Tracking System']
+    features: ['Express Shipping', 'Bulk Orders', 'Secure Packaging', 'Tracking System']
   }
 ];
 
@@ -1359,9 +1359,9 @@ export const WHY_PHOENIX = {
     },
     {
       id: '4',
-      title: 'Global Trust',
-      description: 'Trusted by parents in over 60 countries worldwide with millions of satisfied customers.',
-      icon: 'GlobeAltIcon',
+      title: 'Product Excellence',
+      description: 'Over 1M+ premium baby products manufactured with love and precision for families everywhere.',
+      icon: 'CubeIcon',
       color: 'text-purple-600'
     }
   ]

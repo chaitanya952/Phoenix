@@ -33,8 +33,8 @@ export const Quality: React.FC = () => {
     },
     {
       icon: <AcademicCapIcon className="w-8 h-8 text-purple-600" />,
-      title: "Trusted Globally",
-      description: "Mothers worldwide choose Phoenix"
+      title: "Trusted Excellence",
+      description: "Over 1M+ products crafted with love"
     }
   ];
 

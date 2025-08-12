@@ -200,7 +200,7 @@ export const AboutPage: React.FC = () => {
             >
               Discover the story behind Phoenix, a leading manufacturer of premium baby products 
               with over two decades of experience in creating safe, innovative, and high-quality 
-              products for families worldwide.
+              products for families everywhere.
             </motion.p>
           </motion.div>
         </div>
@@ -857,7 +857,7 @@ export const AboutPage: React.FC = () => {
               Ready to Work with Phoenix?
             </h2>
             <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-              Join the hundreds of companies worldwide who trust Phoenix for their baby product manufacturing needs.
+              Join the hundreds of companies who trust Phoenix for their baby product manufacturing needs and quality excellence.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="inline-block">

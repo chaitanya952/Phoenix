@@ -98,7 +98,7 @@ export const Clients: React.FC = () => {
             viewport={{ once: true }}
             className="text-xl text-gray-600 max-w-3xl mx-auto"
           >
-            Leading businesses worldwide choose Phoenix for reliable, high-quality baby products and exceptional service
+            Leading businesses choose Phoenix for reliable, high-quality baby products and exceptional service
           </motion.p>
         </motion.div>
 
@@ -140,84 +140,10 @@ export const Clients: React.FC = () => {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-              <div className="text-3xl font-bold text-blue-600 mb-2">50+</div>
-              <p className="text-gray-600 font-medium">Trusted Clients</p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-              <div className="text-3xl font-bold text-blue-600 mb-2">100+</div>
-              <p className="text-gray-600 font-medium">Countries Served</p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-              <div className="text-3xl font-bold text-blue-600 mb-2">15+</div>
-              <p className="text-gray-600 font-medium">Years Experience</p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-              <div className="text-3xl font-bold text-blue-600 mb-2">99%</div>
-              <p className="text-gray-600 font-medium">Client Satisfaction</p>
-            </div>
-          </div>
+          
         </motion.div>
 
-        {/* Phoenix Excellence */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100"
-        >
-          <h3 className="text-3xl font-bold text-center text-gray-900 mb-4">Why Choose Phoenix?</h3>
-          <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
-            Our commitment to excellence has earned the trust of leading brands worldwide
-          </p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="p-4 bg-green-100 rounded-xl mb-4 inline-flex">
-                <ShieldCheckIcon className="w-8 h-8 text-green-600" />
-              </div>
-              <h4 className="font-semibold text-gray-900 mb-2">Quality Assured</h4>
-              <p className="text-sm text-gray-600">ISO certified manufacturing with rigorous quality control standards</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="p-4 bg-blue-100 rounded-xl mb-4 inline-flex">
-                <TruckIcon className="w-8 h-8 text-blue-600" />
-              </div>
-              <h4 className="font-semibold text-gray-900 mb-2">Reliable Delivery</h4>
-              <p className="text-sm text-gray-600">On-time delivery with flexible logistics solutions worldwide</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="p-4 bg-purple-100 rounded-xl mb-4 inline-flex">
-                <GlobeAltIcon className="w-8 h-8 text-purple-600" />
-              </div>
-              <h4 className="font-semibold text-gray-900 mb-2">Global Reach</h4>
-              <p className="text-sm text-gray-600">Export capabilities to 100+ countries with local support</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="p-4 bg-orange-100 rounded-xl mb-4 inline-flex">
-                <SparklesIcon className="w-8 h-8 text-orange-600" />
-              </div>
-              <h4 className="font-semibold text-gray-900 mb-2">Custom Solutions</h4>
-              <p className="text-sm text-gray-600">OEM/ODM services with complete customization options</p>
-            </div>
-          </div>
-          
-          <div className="text-center mt-8">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center gap-2"
-            >
-              Partner With Phoenix
-              <ArrowTopRightOnSquareIcon className="w-5 h-5" />
-            </motion.button>
-          </div>
-        </motion.div>
+
       </div>
     </section>
   );

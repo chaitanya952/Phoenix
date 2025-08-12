@@ -117,13 +117,13 @@ export const Footer: React.FC = () => {
               </div>
               <p className="text-gray-300 mb-6 leading-relaxed">
                 20+ years of excellence in baby products manufacturing. 
-                Your trusted partner for OEM & ODM services worldwide.
+                Your trusted partner for OEM & ODM services everywhere.
               </p>
               
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="flex items-center space-x-2">
                   <BuildingOfficeIcon className="w-5 h-5 text-primary-400" />
-                  <span className="text-sm text-gray-300">10M+ Products</span>
+                  <span className="text-sm text-gray-300">1M+ Products</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <GlobeAltIcon className="w-5 h-5 text-primary-400" />
@@ -292,7 +292,7 @@ export const Footer: React.FC = () => {
             
             <div className="flex items-center space-x-6">
               <motion.span className="text-gray-500 text-sm">
-                Made with ❤️ for babies worldwide
+                Made with ❤️ for babies everywhere
               </motion.span>
               
               <motion.button

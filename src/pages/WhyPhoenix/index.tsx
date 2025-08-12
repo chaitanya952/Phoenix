@@ -389,7 +389,7 @@ export const WhyPhoenixPage: React.FC = () => {
               Ready to Partner with Phoenix?
             </h3>
             <p className="text-xl mb-8 opacity-90">
-              Join thousands of satisfied customers worldwide who trust Phoenix for their baby product needs.
+              Join thousands of satisfied customers who trust Phoenix for their baby product needs and premium quality.
             </p>
             <motion.button
               whileHover={{ scale: 1.05 }}
