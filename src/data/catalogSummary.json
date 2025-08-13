@@ -1,0 +1,157 @@
+{
+  "catalog_info": {
+    "last_updated": "2024-12-19",
+    "source": "Phoenix Catalog 7",
+    "total_products": 140,
+    "categories": 8,
+    "image_coverage": "100%"
+  },
+  "analytics": {
+    "total_products": 140,
+    "capacity_distribution": {
+      "60ml": 14,
+      "125ml": 28,
+      "250ml": 28,
+      "120ml": 7,
+      "150ml": 7,
+      "180ml": 28,
+      "300ml": 14,
+      "270ml": 14
+    },
+    "price_ranges": {
+      "60ml": {
+        "inr": {
+          "min": 21.5,
+          "max": 32.0,
+          "avg": 23.285714285714285
+        },
+        "usd": {
+          "min": 0.318519,
+          "max": 0.474074,
+          "avg": 0.34497364285714277
+        }
+      },
+      "125ml": {
+        "inr": {
+          "min": 23.5,
+          "max": 40.0,
+          "avg": 29.357142857142858
+        },
+        "usd": {
+          "min": 0.348148,
+          "max": 0.592593,
+          "avg": 0.43492064285714294
+        }
+      },
+      "250ml": {
+        "inr": {
+          "min": 25.5,
+          "max": 42.0,
+          "avg": 31.892857142857142
+        },
+        "usd": {
+          "min": 0.377778,
+          "max": 0.622222,
+          "avg": 0.47248682142857146
+        }
+      },
+      "120ml": {
+        "inr": {
+          "min": 22.0,
+          "max": 30.0,
+          "avg": 23.5
+        },
+        "usd": {
+          "min": 0.325926,
+          "max": 0.444444,
+          "avg": 0.3481481428571428
+        }
+      },
+      "150ml": {
+        "inr": {
+          "min": 23.0,
+          "max": 31.0,
+          "avg": 24.714285714285715
+        },
+        "usd": {
+          "min": 0.340741,
+          "max": 0.459259,
+          "avg": 0.3661377142857143
+        }
+      },
+      "180ml": {
+        "inr": {
+          "min": 23.0,
+          "max": 41.0,
+          "avg": 30.410714285714285
+        },
+        "usd": {
+          "min": 0.340741,
+          "max": 0.607407,
+          "avg": 0.45052907142857146
+        }
+      },
+      "300ml": {
+        "inr": {
+          "min": 26.0,
+          "max": 44.0,
+          "avg": 32.892857142857146
+        },
+        "usd": {
+          "min": 0.385185,
+          "max": 0.651852,
+          "avg": 0.4873016428571428
+        }
+      },
+      "270ml": {
+        "inr": {
+          "min": 27.0,
+          "max": 39.5,
+          "avg": 33.392857142857146
+        },
+        "usd": {
+          "min": 0.4,
+          "max": 0.585185,
+          "avg": 0.4947090714285715
+        }
+      }
+    },
+    "popular_capacities": [
+      "125ml",
+      "250ml",
+      "180ml",
+      "60ml",
+      "300ml"
+    ]
+  },
+  "seo": {
+    "meta_keywords": [
+      "baby feeding bottles",
+      "standard neck bottles",
+      "BPA free bottles",
+      "anti-colic bottles",
+      "baby bottle manufacturer",
+      "feeding accessories",
+      "infant bottles",
+      "newborn feeding",
+      "baby care products",
+      "Phoenix bottles"
+    ],
+    "product_benefits": [
+      "BPA-Free and food-grade materials",
+      "Anti-colic design reduces gas and discomfort",
+      "Easy-grip ergonomic design",
+      "Wide compatibility with standard teats",
+      "Easy to clean and sterilize",
+      "Graduated measurement markings",
+      "Durable and long-lasting construction",
+      "Available in multiple capacities"
+    ]
+  },
+  "quality_metrics": {
+    "data_completeness": "97%",
+    "image_coverage": "100%",
+    "price_accuracy": "100%",
+    "description_quality": "Enhanced"
+  }
+}
