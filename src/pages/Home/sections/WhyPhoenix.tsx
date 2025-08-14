@@ -132,7 +132,7 @@ export const WhyPhoenix: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="max-w-6xl mx-auto"
+          className="max-w-7xl mx-auto"
         >
           {/* Key Reasons Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
@@ -154,39 +154,6 @@ export const WhyPhoenix: React.FC = () => {
             ))}
           </div>
 
-          {/* Phoenix vs Others Comparison */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-8 mb-12"
-          >
-            <h3 className="text-2xl font-bold text-center text-gray-900 mb-8">Phoenix vs Others</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary-600 mb-2">60,000</div>
-                <div className="text-sm font-semibold text-gray-800 mb-1">Sq.ft Facility</div>
-                <div className="text-xs text-gray-600">vs 20,000 Sq.ft (Others)</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary-600 mb-2">50+</div>
-                <div className="text-sm font-semibold text-gray-800 mb-1">Machines</div>
-                <div className="text-xs text-gray-600">vs ~15 (Others)</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary-600 mb-2">700+</div>
-                <div className="text-sm font-semibold text-gray-800 mb-1">Molds</div>
-                <div className="text-xs text-gray-600">vs ~100 (Others)</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary-600 mb-2">2M+</div>
-                <div className="text-sm font-semibold text-gray-800 mb-1">Monthly Capacity</div>
-                <div className="text-xs text-gray-600">vs &lt;1M (Others)</div>
-              </div>
-            </div>
-          </motion.div>
-
           {/* What Sets Us Apart */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -205,21 +172,6 @@ export const WhyPhoenix: React.FC = () => {
               viewport={{ once: true }}
               className="relative mb-12 rounded-2xl overflow-hidden shadow-2xl"
             >
-              <img 
-                src={`${process.env.PUBLIC_URL}/images/Phoenix_Logo.png`}
-                alt="Phoenix Manufacturing Excellence"
-                className="w-full h-64 md:h-80 object-contain bg-gradient-to-br from-primary-50 to-white"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.src = `${process.env.PUBLIC_URL}/images/image.png`;
-                }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent">
-                <div className="absolute bottom-6 left-6 text-white">
-                  <h4 className="text-2xl font-bold mb-2">India's Largest Baby Product Manufacturing Facility</h4>
-                  <p className="text-lg opacity-90">60,000 sq.ft of advanced manufacturing excellence</p>
-                </div>
-              </div>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -250,60 +202,6 @@ export const WhyPhoenix: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Factory Merits */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="mb-16"
-          >
-            <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">Factory Excellence</h3>
-            
-            {/* Facilities Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-              {FACTORY_MERITS.facilities.map((facility, index) => (
-                <motion.div
-                  key={facility.id}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.1, duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-xl p-6 text-center"
-                >
-                  <div className="inline-flex p-3 rounded-xl bg-primary-600 text-white mb-4">
-                    {getIcon(facility.icon)}
-                  </div>
-                  <div className="text-3xl font-bold text-primary-600 mb-2">{facility.value}</div>
-                  <div className="text-sm font-semibold text-gray-800 mb-2">{facility.description}</div>
-                  <div className="text-xs text-gray-600">{facility.details}</div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Factory Features */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {FACTORY_MERITS.features.map((feature, index) => (
-                <motion.div
-                  key={feature.id}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="bg-white rounded-xl p-6 shadow-lg"
-                >
-                  <div className="flex items-center mb-4">
-                    <div className="inline-flex p-2 rounded-lg bg-primary-100 text-primary-600 mr-3">
-                      {getIcon(feature.icon)}
-                    </div>
-                    <h4 className="text-lg font-bold text-gray-900">{feature.title}</h4>
-                  </div>
-                  <p className="text-gray-600 text-sm">{feature.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
           {/* Raw Materials Excellence */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -315,7 +213,7 @@ export const WhyPhoenix: React.FC = () => {
             <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">Premium Materials</h3>
             
             {/* Materials Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
               {RAW_MATERIALS.materials.map((material, index) => (
                 <motion.div
                   key={material.id}

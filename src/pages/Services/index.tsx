@@ -92,8 +92,45 @@ export const ServicesPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white to-primary-50">
+      {/* Hero Image Section */}
+      <div className="relative w-full h-80 md:h-96 overflow-hidden">
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+            alt="Phoenix Manufacturing Services" 
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.src = '/images/Phoenix_Logo.png';
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary-900/70 to-primary-800/70"></div>
+        </div>
+        
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center text-white max-w-4xl px-4">
+            <motion.h1 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-4xl md:text-6xl font-bold mb-4 font-display"
+            >
+              Our <span className="text-primary-300">Services</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-xl text-white/90 max-w-3xl mx-auto"
+            >
+              Comprehensive manufacturing solutions for premium baby products
+            </motion.p>
+          </div>
+        </div>
+      </div>
+      
       {/* Header Section */}
-      <section className="pt-24 pb-16 relative overflow-hidden">
+      <section className="pt-16 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 hero-pattern opacity-10"></div>
           <motion.div

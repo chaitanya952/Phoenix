@@ -25,17 +25,17 @@ const StatCard: React.FC<{
   const { count, ref } = useCountUp({ 
     end, 
     suffix, 
-    duration: 2500, 
+    duration: 2000, 
     delay 
   });
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ 
-        duration: 0.6, 
+        duration: 0.5, 
         delay: delay / 1000,
         type: "spring",
         stiffness: 100
@@ -47,14 +47,14 @@ const StatCard: React.FC<{
       }}
       className="relative group cursor-pointer"
     >
-      <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-primary-100 hover:border-primary-300 hover:shadow-orange transition-all duration-300 card-hover">
-        <div className="flex items-center justify-center mb-4">
-          <div className="p-3 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl text-white shadow-orange">
+      <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-primary-100 hover:border-primary-300 hover:shadow-orange transition-all duration-300 card-hover">
+        <div className="flex items-center justify-center mb-2">
+          <div className="p-2 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg text-white shadow-orange">
             {icon}
           </div>
         </div>
         <div className="text-center">
-          <div className="text-2xl md:text-3xl font-bold gradient-text mb-2 font-display">
+          <div className="text-xl md:text-2xl font-bold gradient-text mb-1 font-display">
             {count}
           </div>
           <div className="text-secondary-600 text-sm font-medium">
@@ -391,9 +391,9 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 flex-1 flex items-center justify-center px-4 py-20 mt-48">
+      <div className="relative z-10 flex-1 flex items-center justify-center px-4 py-16 mt-40">
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             
             {/* Left Content */}
             <motion.div
@@ -402,17 +402,28 @@ export const Hero: React.FC = () => {
               transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
               className="text-left"
             >
-              {/* Phoenix Logo */}
+              {/* Phoenix Logo - Bird and Text Side by Side */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.1 }}
-                className="flex justify-start mb-6"
+                className="flex justify-start items-center mb-4"
               >
+                {/* Bird Logo (Left) */}
                 <img 
-                  src="/images/Phoenix_Logo.png" 
-                  alt="Phoenix Logo" 
-                  className="h-16 w-auto object-contain drop-shadow-lg"
+                  src="/images/512 X 512/1.svg" 
+                  alt="Phoenix Bird Logo" 
+                  className="h-20 w-auto object-contain drop-shadow-lg mr-2" /* Increased from h-16 to h-20 */
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = "/images/Phoenix_Logo.png";
+                  }}
+                />
+                {/* Text Logo (Right) */}
+                <img 
+                  src="/images/512 X 512/2.svg" 
+                  alt="Phoenix Text Logo" 
+                  className="h-14 w-auto object-contain drop-shadow-lg" /* Increased from h-12 to h-14 */
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.style.display = 'none';
@@ -425,7 +436,7 @@ export const Hero: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500 to-primary-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-6 shadow-orange"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500 to-primary-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4 shadow-orange"
               >
                 <SparklesIcon className="w-4 h-4" />
                 {heroSlides[currentSlide].subtitle}
@@ -437,7 +448,7 @@ export const Hero: React.FC = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-display"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 font-display"
               >
                 <span className="gradient-text-animated">
                   {heroSlides[currentSlide].title}
@@ -450,7 +461,7 @@ export const Hero: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="text-lg md:text-xl text-secondary-600 mb-8 leading-relaxed max-w-2xl"
+                className="text-lg md:text-xl text-secondary-600 mb-6 leading-relaxed max-w-2xl"
               >
                 {heroSlides[currentSlide].description}
               </motion.p>
@@ -460,7 +471,7 @@ export const Hero: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
-                className="flex flex-wrap gap-4 mb-8"
+                className="flex flex-wrap gap-3 mb-6"
               >
                 {heroSlides[currentSlide].features.map((feature, index) => (
                   <motion.div
@@ -481,17 +492,17 @@ export const Hero: React.FC = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
-                className="flex flex-col sm:flex-row gap-4"
+                className="flex flex-col sm:flex-row gap-3"
               >
                 <button
                   onClick={() => setIsQuoteFormOpen(true)}
-                  className="btn-primary px-8 py-4 text-lg font-semibold rounded-xl flex items-center justify-center gap-2 group"
+                  className="btn-primary px-6 py-3 text-lg font-semibold rounded-xl flex items-center justify-center gap-2 group"
                 >
                   Get Quote Now
                   <ArrowRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
                 
-                <button className="btn-secondary px-8 py-4 text-lg font-semibold rounded-xl flex items-center justify-center gap-2 group">
+                <button className="btn-secondary px-6 py-3 text-lg font-semibold rounded-xl flex items-center justify-center gap-2 group">
                   <PlayIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
                   Watch Video
                 </button>
@@ -502,15 +513,15 @@ export const Hero: React.FC = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 1 }}
-                className="flex gap-2 mt-8"
+                className="flex gap-2 mt-6"
               >
                 {heroSlides.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentSlide(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
                       index === currentSlide 
-                        ? 'bg-primary-500 w-8' 
+                        ? 'bg-primary-500 w-6' 
                         : 'bg-primary-200 hover:bg-primary-300'
                     }`}
                   />
@@ -657,36 +668,36 @@ export const Hero: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="relative z-10 py-16 bg-white/80 backdrop-blur-sm border-t border-primary-100"
+        className="relative z-10 py-12 bg-white/80 backdrop-blur-sm border-t border-primary-100"
       >
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <StatCard
-              icon={<BuildingOfficeIcon className="w-6 h-6" />}
+              icon={<BuildingOfficeIcon className="w-5 h-5" />}
               end={10}
               suffix="yrs"
               label="Experience"
               delay={200}
             />
             <StatCard
-              icon={<GlobeAltIcon className="w-6 h-6" />}
+              icon={<GlobeAltIcon className="w-5 h-5" />}
               end={50}
               suffix="+"
               label="Customers Served"
               delay={400}
             />
             <StatCard
-              icon={<TrophyIcon className="w-6 h-6" />}
+              icon={<TrophyIcon className="w-5 h-5" />}
               end={10}
               suffix="M+"
-              label="Products Manufactured"
+              label="Products Made"
               delay={600}
             />
             <StatCard
-              icon={<StarIcon className="w-6 h-6" />}
+              icon={<StarIcon className="w-5 h-5" />}
               end={98}
               suffix="%"
-              label="Customer Satisfaction"
+              label="Satisfaction Rate"
               delay={800}
             />
           </div>

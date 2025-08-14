@@ -1,6 +1,6 @@
 // src/pages/Innovation/index.tsx
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
   ArrowLeftIcon,
@@ -152,10 +152,123 @@ export const InnovationPage: React.FC = () => {
     "Evolving regulatory updates and consumer needs"
   ];
 
+  // Parallax scroll effect refs
+  const heroRef = useRef(null);
+  const isHeroInView = useInView(heroRef);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+  
+  const heroImageY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-white to-primary-50">
+      {/* Modern Hero Section with Parallax */}
+      <div ref={heroRef} className="relative w-full h-[60vh] md:h-[70vh] overflow-hidden">
+        <motion.div 
+          className="absolute inset-0"
+          style={{ y: heroImageY }}
+        >
+          <img 
+            src="/images/Phoenix/4.jpeg" 
+            alt="Phoenix Innovation and Development" 
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.src = "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80";
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary-900/80 to-primary-800/80"></div>
+          
+          {/* Floating elements for modern look */}
+          <motion.div 
+            className="absolute top-1/4 left-1/4 w-32 h-32 rounded-full bg-primary-300/20 blur-xl"
+            animate={{ 
+              scale: [1, 1.2, 1],
+              rotate: [0, 90, 0],
+              opacity: [0.3, 0.5, 0.3]
+            }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div 
+            className="absolute bottom-1/3 right-1/4 w-40 h-40 rounded-full bg-orange-300/20 blur-xl"
+            animate={{ 
+              scale: [1.2, 1, 1.2],
+              rotate: [90, 0, 90],
+              opacity: [0.4, 0.6, 0.4]
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </motion.div>
+        
+        <motion.div 
+          className="absolute inset-0 flex items-center justify-center"
+          style={{ opacity: heroOpacity }}
+        >
+          <div className="text-center text-white max-w-5xl px-4 z-10">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={isHeroInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="mb-6"
+            >
+              <span className="px-4 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium tracking-wider">
+                PHOENIX INNOVATION CENTER
+              </span>
+            </motion.div>
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: -20 }}
+              animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-5xl md:text-7xl font-bold mb-6 font-display leading-tight"
+            >
+              Innovation & <span className="text-primary-300">Development</span>
+            </motion.h1>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-8"
+            >
+              Pioneering the future of safe, smart, and sustainable baby products
+            </motion.p>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <Link to="/contact">
+                <button className="px-8 py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-primary-500/30">
+                  Explore Our Innovations
+                </button>
+              </Link>
+            </motion.div>
+          </div>
+        </motion.div>
+        
+        {/* Scroll indicator */}
+        <motion.div 
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <div className="w-8 h-12 rounded-full border-2 border-white/50 flex items-start justify-center p-2">
+            <motion.div 
+              className="w-1 h-2 bg-white rounded-full"
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </div>
+        </motion.div>
+      </div>
+      
       {/* Header Section */}
-      <section className="pt-24 pb-16 relative overflow-hidden">
+      <section className="pt-16 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 hero-pattern opacity-10"></div>
           <motion.div
@@ -196,42 +309,83 @@ export const InnovationPage: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              Innovation & <span className="text-primary-600">Development</span>
-            </h1>
-            <motion.div
-              initial={{ width: 0 }}
-              animate={{ width: "120px" }}
-              transition={{ duration: 1, delay: 0.3 }}
-              className="h-1 bg-primary-600 rounded-full mx-auto mb-8"
-            />
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Pioneering the Future of Safe, Smart, and Sustainable Baby Products. 
-              At Phoenix, innovation is at the heart of everything we do. We go beyond traditional 
-              manufacturing — constantly researching, testing, and evolving to create products that 
-              make parenting easier and safer while enhancing a baby's early development.
-            </p>
+            
           </motion.div>
         </div>
       </section>
 
-      {/* Innovation Approach */}
-      <section className="pb-16">
-        <div className="container mx-auto px-4">
+      {/* Innovation Approach - Modern Design */}
+      <section className="py-24 relative overflow-hidden">
+        {/* Background elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <motion.div 
+            className="absolute -right-20 top-40 w-80 h-80 rounded-full bg-primary-100/30 blur-3xl"
+            animate={{ 
+              scale: [1, 1.2, 1],
+              x: [0, 20, 0],
+              opacity: [0.3, 0.5, 0.3]
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div 
+            className="absolute -left-20 bottom-40 w-64 h-64 rounded-full bg-orange-100/30 blur-3xl"
+            animate={{ 
+              scale: [1.2, 1, 1.2],
+              x: [0, -20, 0],
+              opacity: [0.2, 0.4, 0.2]
+            }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              🔬 Our Approach to Innovation
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="inline-block mb-4"
+            >
+              <span className="px-4 py-1 bg-primary-100 text-primary-600 rounded-full text-sm font-medium tracking-wider">
+                INNOVATION METHODOLOGY
+              </span>
+            </motion.div>
+            
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+            >
+              Our Approach to <span className="text-primary-600">Innovation</span>
+            </motion.h2>
+            
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: "120px" }}
+              transition={{ duration: 1, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="h-1 bg-primary-600 rounded-full mx-auto mb-8"
+            />
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+            >
               Every innovation starts with understanding real needs and applying cutting-edge technology 
-              to create meaningful solutions.
-            </p>
+              to create meaningful solutions that enhance the lives of babies and parents.
+            </motion.p>
           </motion.div>
 
           <motion.div
@@ -246,253 +400,513 @@ export const InnovationPage: React.FC = () => {
                 key={index}
                 variants={itemVariants}
                 whileHover={{ y: -10, scale: 1.02 }}
-                className={`${approach.color} rounded-2xl p-8 border-2 hover:shadow-lg transition-all duration-300`}
+                className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl border border-gray-100 transition-all duration-300"
               >
                 <div className="mb-6 flex justify-center">
-                  <div className="p-4 bg-white rounded-xl shadow-sm">
-                    <div className={approach.color.split(' ')[2]}>
+                  <motion.div 
+                    className={`p-5 ${approach.color} rounded-2xl shadow-md group-hover:shadow-lg transition-all duration-300`}
+                    whileHover={{ rotate: [0, -10, 10, -10, 0] }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <div className="text-white">
                       {approach.icon}
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">{approach.title}</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-4 text-center group-hover:text-primary-600 transition-colors duration-300">{approach.title}</h3>
                 <p className="text-gray-600 leading-relaxed text-center">{approach.description}</p>
+                
+                {/* Animated underline on hover */}
+                <div className="w-full flex justify-center mt-4">
+                  <motion.div 
+                    className="h-0.5 bg-primary-500 rounded-full w-0 group-hover:w-16 transition-all duration-300"
+                  />
+                </div>
               </motion.div>
             ))}
           </motion.div>
 
-          {/* Innovation Gallery */}
+          {/* Innovation Gallery - Modern Design */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="mb-16"
+            className="mb-24"
           >
-            <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-              🏭 Innovation in Action
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <span className="px-4 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-medium tracking-wider">
+                INNOVATION SHOWCASE
+              </span>
+              <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-6">
+                Innovation in <span className="text-primary-600">Action</span>
+              </h3>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Explore our state-of-the-art facilities where innovation comes to life through 
+                advanced manufacturing, rigorous testing, and cutting-edge research.
+              </p>
+            </motion.div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
                 viewport={{ once: true }}
-                className="relative group overflow-hidden rounded-2xl shadow-lg"
+                className="md:col-span-5 relative group overflow-hidden rounded-2xl shadow-xl h-[500px]"
               >
                 <img 
-                  src={`${process.env.PUBLIC_URL}/images/Phoenix/4.jpeg`}
+                  src="/images/Phoenix/4.jpeg"
                   alt="Manufacturing Process"
-                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.src = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <h4 className="text-lg font-bold">Advanced Manufacturing</h4>
-                    <p className="text-sm opacity-90">State-of-the-art production facilities</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
+                  <div className="absolute bottom-8 left-8 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <div className="p-3 bg-primary-500 rounded-lg inline-block mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                      <CogIcon className="w-6 h-6 text-white" />
+                    </div>
+                    <h4 className="text-2xl font-bold mb-2">Advanced Manufacturing</h4>
+                    <p className="text-white/80 max-w-xs">
+                      Our state-of-the-art production facilities combine precision engineering with 
+                      rigorous quality control to create products that exceed global standards.
+                    </p>
                   </div>
                 </div>
               </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="relative group overflow-hidden rounded-2xl shadow-lg"
-              >
-                <img 
-                  src={`${process.env.PUBLIC_URL}/images/Phoenix/5.jpeg`}
-                  alt="Quality Control"
-                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <h4 className="text-lg font-bold">Quality Assurance</h4>
-                    <p className="text-sm opacity-90">Rigorous testing protocols</p>
+              <div className="md:col-span-7 grid grid-cols-1 md:grid-rows-2 gap-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  viewport={{ once: true }}
+                  className="relative group overflow-hidden rounded-2xl shadow-xl h-[240px]"
+                >
+                  <img 
+                    src="/images/Phoenix/5.jpeg"
+                    alt="Quality Control"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
+                    <div className="absolute bottom-6 left-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                      <div className="p-2 bg-green-500 rounded-lg inline-block mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                        <ShieldCheckIcon className="w-5 h-5 text-white" />
+                      </div>
+                      <h4 className="text-xl font-bold mb-1">Quality Assurance</h4>
+                      <p className="text-white/80 text-sm">Rigorous testing protocols ensure safety and reliability</p>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
+                </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                viewport={{ once: true }}
-                className="relative group overflow-hidden rounded-2xl shadow-lg"
-              >
-                <img 
-                  src={`${process.env.PUBLIC_URL}/images/Phoenix/6.jpeg`}
-                  alt="Innovation Lab"
-                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <h4 className="text-lg font-bold">Research & Development</h4>
-                    <p className="text-sm opacity-90">Cutting-edge innovation lab</p>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  viewport={{ once: true }}
+                  className="relative group overflow-hidden rounded-2xl shadow-xl h-[240px]"
+                >
+                  <img 
+                    src="/images/Phoenix/6.jpeg"
+                    alt="Innovation Lab"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
+                    <div className="absolute bottom-6 left-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                      <div className="p-2 bg-blue-500 rounded-lg inline-block mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                        <BeakerIcon className="w-5 h-5 text-white" />
+                      </div>
+                      <h4 className="text-xl font-bold mb-1">Research & Development</h4>
+                      <p className="text-white/80 text-sm">Cutting-edge innovation lab where ideas become reality</p>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Product Testing & Continuous Improvement */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+      {/* Product Testing & Continuous Improvement - Modern Design */}
+      <section className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        {/* Background elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <motion.div 
+            className="absolute -left-20 top-40 w-72 h-72 rounded-full bg-blue-100/40 blur-3xl"
+            animate={{ 
+              scale: [1, 1.2, 1],
+              y: [0, 20, 0],
+              opacity: [0.2, 0.4, 0.2]
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div 
+            className="absolute -right-20 bottom-40 w-80 h-80 rounded-full bg-green-100/30 blur-3xl"
+            animate={{ 
+              scale: [1.2, 1, 1.2],
+              y: [0, -20, 0],
+              opacity: [0.3, 0.5, 0.3]
+            }}
+            transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="px-4 py-1 bg-green-100 text-green-600 rounded-full text-sm font-medium tracking-wider">
+              QUALITY ASSURANCE
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-6">
+              Product Testing & <span className="text-primary-600">Continuous Improvement</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Every product goes through rigorous testing to ensure safety, quality, and performance
+              that exceeds international standards.
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.8 }}
               viewport={{ once: true }}
+              className="lg:col-span-5"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                🧪 Product Testing & Continuous Improvement
-              </h2>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Every product goes through rigorous testing to ensure safety, quality, and performance. 
-                We follow ISO 9001, EN 14350, and FDA guidelines, ensuring quality you can trust.
-              </p>
-              
-              <div className="space-y-4">
-                {testingProcesses.map((process, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1, duration: 0.5 }}
-                    viewport={{ once: true }}
-                    className="flex items-center"
-                  >
-                    <CheckCircleIcon className="w-6 h-6 text-green-500 mr-3 flex-shrink-0" />
-                    <span className="text-gray-700 text-lg">{process}</span>
-                  </motion.div>
-                ))}
+              <div className="bg-white rounded-3xl p-8 shadow-xl relative overflow-hidden">
+                {/* Decorative elements */}
+                <div className="absolute -top-10 -right-10 w-40 h-40 bg-green-100/50 rounded-full blur-xl"></div>
+                <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-blue-100/50 rounded-full blur-xl"></div>
+                
+                <div className="relative">
+                  <div className="inline-flex p-3 rounded-xl bg-green-500 text-white shadow-lg mb-6">
+                    <ShieldCheckIcon className="w-8 h-8" />
+                  </div>
+                  
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                    Rigorous Testing Protocols
+                  </h3>
+                  
+                  <div className="space-y-5">
+                    {testingProcesses.map((process, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1, duration: 0.5 }}
+                        viewport={{ once: true }}
+                        className="flex items-start bg-green-50 p-4 rounded-xl hover:bg-green-100 transition-colors duration-300"
+                      >
+                        <div className="bg-white p-2 rounded-lg shadow-sm mr-4">
+                          <CheckCircleIcon className="w-5 h-5 text-green-500 flex-shrink-0" />
+                        </div>
+                        <div>
+                          <span className="text-gray-800 font-medium">{process}</span>
+                          <div className="w-0 group-hover:w-full h-0.5 bg-green-500 mt-1 transition-all duration-300"></div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                  
+                  <div className="mt-8 flex items-center">
+                    <div className="flex -space-x-2">
+                      {['CIPET.jpg', 'INTERTEK.png', 'NABL.png', 'SGS.png'].map((lab, index) => (
+                        <motion.div 
+                          key={index}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 0.1 * index, duration: 0.5 }}
+                          viewport={{ once: true }}
+                          className="w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-white"
+                        >
+                          <img 
+                            src={`/images/LABS/${lab}`}
+                            alt={`Lab certification ${index + 1}`}
+                            className="w-full h-full object-contain"
+                          />
+                        </motion.div>
+                      ))}
+                    </div>
+                    <span className="ml-4 text-sm text-gray-600">Certified by international testing labs</span>
+                  </div>
+                </div>
               </div>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="relative"
+              className="lg:col-span-7"
             >
-              <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl p-8">
-                <div className="grid grid-cols-1 gap-4 mb-6">
-                  <img 
-                    src={`${process.env.PUBLIC_URL}/images/Phoenix/3.jpeg`}
-                    alt="Testing Laboratory"
-                    className="w-full h-48 object-cover rounded-xl"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
-                    }}
-                  />
-                  <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-12 gap-4">
+                <div className="col-span-12">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                    className="relative overflow-hidden rounded-2xl shadow-xl h-64"
+                  >
                     <img 
-                      src={`${process.env.PUBLIC_URL}/images/Phoenix/(@).jpeg`}
+                      src="/images/Phoenix/3.jpeg"
+                      alt="Testing Laboratory"
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
+                      <div>
+                        <h4 className="text-xl font-bold text-white">Advanced Testing Laboratory</h4>
+                        <p className="text-white/80">Where safety and quality are verified</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+                
+                <div className="col-span-6">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    viewport={{ once: true }}
+                    className="relative overflow-hidden rounded-2xl shadow-xl h-48"
+                  >
+                    <img 
+                      src="/images/Phoenix/(@).jpeg"
                       alt="Quality Control Process"
-                      className="w-full h-32 object-cover rounded-lg"
+                      className="w-full h-full object-cover"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.src = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80";
                       }}
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
+                      <h4 className="text-lg font-bold text-white">Quality Control</h4>
+                    </div>
+                  </motion.div>
+                </div>
+                
+                <div className="col-span-6">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                    viewport={{ once: true }}
+                    className="relative overflow-hidden rounded-2xl shadow-xl h-48"
+                  >
                     <img 
-                      src={`${process.env.PUBLIC_URL}/images/Phoenix/WhatsApp Image 2025-08-10 at 08.58.53.jpeg`}
+                      src="/images/Phoenix/WhatsApp Image 2025-08-10 at 08.58.53.jpeg"
                       alt="Manufacturing Excellence"
-                      className="w-full h-32 object-cover rounded-lg"
+                      className="w-full h-full object-cover"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.src = "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80";
                       }}
                     />
-                  </div>
-                </div>
-                <div className="text-center">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Advanced Testing & Manufacturing</h3>
-                  <p className="text-gray-600">
-                    Our state-of-the-art facilities ensure every product meets international safety standards 
-                    through comprehensive testing and quality control processes.
-                  </p>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
+                      <h4 className="text-lg font-bold text-white">Manufacturing Excellence</h4>
+                    </div>
+                  </motion.div>
                 </div>
               </div>
             </motion.div>
           </div>
 
-          {/* Collaborative Innovation */}
+          {/* Collaborative Innovation - Modern Design */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-r from-primary-600 to-orange-600 rounded-3xl p-12 text-white mb-16"
+            className="mb-24 relative"
           >
-            <div className="text-center mb-12">
-              <SparklesIcon className="w-16 h-16 text-white mx-auto mb-6" />
-              <h3 className="text-3xl font-bold mb-4">🤝 Collaborative Innovation</h3>
-              <p className="text-xl opacity-90 max-w-3xl mx-auto">
-                We collaborate with experts and partners to ensure our innovations meet real-world needs 
-                and exceed expectations.
-              </p>
+            <div className="absolute inset-0 rounded-3xl overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-orange-600"></div>
+              
+              {/* Modern geometric patterns */}
+              <motion.div 
+                className="absolute inset-0"
+                animate={{ 
+                  backgroundPosition: ['0% 0%', '100% 100%']
+                }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                style={{
+                  backgroundImage: 'url("data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z" fill="%23ffffff" fill-opacity="0.05" fill-rule="evenodd"/%3E%3C/svg%3E")',
+                  backgroundSize: '180px 180px'
+                }}
+              />
+              
+              {/* Animated gradient overlay */}
+              <motion.div 
+                className="absolute inset-0 opacity-30"
+                animate={{ 
+                  background: [
+                    'radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%)',
+                    'radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%)',
+                    'radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%)'
+                  ]
+                }}
+                transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+              />
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {collaborations.map((collaboration, index) => (
+            
+            <div className="relative rounded-3xl overflow-hidden backdrop-blur-sm p-16">
+              <div className="text-center mb-12">
                 <motion.div
-                  key={index}
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="inline-block p-4 bg-white/10 backdrop-blur-sm rounded-2xl mb-6"
+                >
+                  <SparklesIcon className="w-16 h-16 text-white" />
+                </motion.div>
+                
+                <motion.h3 
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.6 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
                   viewport={{ once: true }}
-                  className="flex items-center space-x-4 bg-white/10 rounded-xl p-6"
+                  className="text-4xl font-bold mb-4 text-white"
                 >
-                  <div className="w-2 h-2 bg-white rounded-full flex-shrink-0"></div>
-                  <span className="text-white">{collaboration}</span>
-                </motion.div>
-              ))}
+                  Collaborative Innovation
+                </motion.h3>
+                
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  viewport={{ once: true }}
+                  className="text-xl text-white/90 max-w-3xl mx-auto"
+                >
+                  We collaborate with experts and partners to ensure our innovations meet real-world needs 
+                  and exceed expectations in safety, comfort, and functionality.
+                </motion.p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {collaborations.map((collaboration, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1, duration: 0.6 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.05, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
+                    className="flex flex-col items-center text-center bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20 hover:bg-white/20 transition-all duration-300"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mb-4">
+                      {index === 0 && <UserGroupIcon className="w-6 h-6 text-white" />}
+                      {index === 1 && <AcademicCapIcon className="w-6 h-6 text-white" />}
+                      {index === 2 && <GlobeAltIcon className="w-6 h-6 text-white" />}
+                    </div>
+                    <span className="text-white text-lg font-medium">{collaboration}</span>
+                    <div className="mt-4 w-12 h-1 bg-white/30 rounded-full"></div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </motion.div>
 
-          {/* Upcoming Developments */}
+          {/* Upcoming Developments - Modern Design */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="mb-24"
           >
-            <h3 className="text-3xl font-bold text-gray-900 mb-8">📈 Upcoming Developments</h3>
-            <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
-              We're currently working on exciting new innovations that will revolutionize baby care.
-            </p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <span className="px-4 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium tracking-wider">
+                FUTURE INNOVATIONS
+              </span>
+              <h3 className="text-4xl font-bold text-gray-900 mt-4 mb-6">
+                Upcoming <span className="text-primary-600">Developments</span>
+              </h3>
+              <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                We're currently working on exciting new innovations that will revolutionize baby care
+                through smart technology, sustainability, and enhanced design.
+              </p>
+            </motion.div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {upcomingDevelopments.map((development, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.6 }}
                   viewport={{ once: true }}
-                  className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6 hover:shadow-lg transition-all duration-300"
+                  whileHover={{ 
+                    y: -10,
+                    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.1)"
+                  }}
+                  className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 transition-all duration-300 relative overflow-hidden group"
                 >
-                  <div className="text-4xl mb-4">🚀</div>
-                  <h4 className="text-lg font-bold text-gray-900 mb-2">{development}</h4>
+                  {/* Background gradient that animates on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-primary-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  
+                  {/* Content */}
+                  <div className="relative">
+                    <div className="mb-6 flex justify-center">
+                      <motion.div 
+                        className="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300"
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.8 }}
+                      >
+                        <RocketLaunchIcon className="w-8 h-8 text-primary-600" />
+                      </motion.div>
+                    </div>
+                    
+                    <h4 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-primary-600 transition-colors duration-300">{development}</h4>
+                    
+                    {/* Progress bar to indicate development status */}
+                    <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden mt-4">
+                      <motion.div 
+                        className="h-full bg-primary-500 rounded-full"
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${65 - index * 15}%` }}
+                        transition={{ duration: 1, delay: 0.5 + index * 0.1 }}
+                        viewport={{ once: true }}
+                      />
+                    </div>
+                    <div className="mt-2 text-xs text-gray-500 text-right">
+                      {index === 0 ? 'Coming Soon' : index === 1 ? 'In Development' : index === 2 ? 'Research Phase' : 'Concept Stage'}
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -701,223 +1115,470 @@ export const InnovationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Innovation Process Flow */}
-      <section className="py-16 bg-gradient-to-br from-gray-50 to-white">
-        <div className="container mx-auto px-4">
+      {/* Innovation Process Flow - Modern Design */}
+      <section className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        {/* Background elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <motion.div 
+            className="absolute -right-40 top-40 w-96 h-96 rounded-full bg-primary-100/30 blur-3xl"
+            animate={{ 
+              scale: [1, 1.2, 1],
+              x: [0, 20, 0],
+              opacity: [0.2, 0.4, 0.2]
+            }}
+            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div 
+            className="absolute -left-40 bottom-40 w-96 h-96 rounded-full bg-blue-100/30 blur-3xl"
+            animate={{ 
+              scale: [1.2, 1, 1.2],
+              x: [0, -20, 0],
+              opacity: [0.3, 0.5, 0.3]
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Innovation Process</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="inline-block mb-4"
+            >
+              <span className="px-4 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm font-medium tracking-wider">
+                INNOVATION METHODOLOGY
+              </span>
+            </motion.div>
+            
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+            >
+              Our <span className="text-primary-600">Innovation</span> Process
+            </motion.h2>
+            
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: "120px" }}
+              transition={{ duration: 1, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="h-1 bg-primary-600 rounded-full mx-auto mb-8"
+            />
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+            >
               Innovation isn't just about new ideas — it's a structured, research-backed process that 
               transforms insights into safe, reliable, and thoughtful baby products.
-            </p>
-            
-
+            </motion.p>
           </motion.div>
-
-
-
-          {/* Innovation Facilities Showcase */}
+          
+          {/* Process Flow Diagram */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="mb-16"
+            className="mb-20 relative"
           >
-            <div className="bg-gradient-to-r from-primary-600 to-orange-600 rounded-3xl p-12 text-white">
-              <div className="text-center mb-12">
-                <h3 className="text-3xl font-bold mb-4">🏭 World-Class Innovation Facilities</h3>
-                <p className="text-xl opacity-90 max-w-3xl mx-auto">
-                  Our cutting-edge facilities combine advanced technology with meticulous craftsmanship 
-                  to deliver products that exceed global standards.
-                </p>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1, duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="bg-white/10 rounded-xl p-6 backdrop-blur-sm"
-                >
-                  <img 
-                    src={`${process.env.PUBLIC_URL}/images/Phoenix/4.jpeg`}
-                    alt="Manufacturing Excellence"
-                    className="w-full h-32 object-cover rounded-lg mb-4"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80";
-                    }}
-                  />
-                  <h4 className="text-lg font-bold mb-2">Manufacturing</h4>
-                  <p className="text-sm opacity-90">Advanced production lines</p>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="bg-white/10 rounded-xl p-6 backdrop-blur-sm"
-                >
-                  <img 
-                    src={`${process.env.PUBLIC_URL}/images/Phoenix/5.jpeg`}
-                    alt="Quality Control"
-                    className="w-full h-32 object-cover rounded-lg mb-4"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80";
-                    }}
-                  />
-                  <h4 className="text-lg font-bold mb-2">Quality Control</h4>
-                  <p className="text-sm opacity-90">Rigorous testing protocols</p>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3, duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="bg-white/10 rounded-xl p-6 backdrop-blur-sm"
-                >
-                  <img 
-                    src={`${process.env.PUBLIC_URL}/images/Phoenix/6.jpeg`}
-                    alt="Research Lab"
-                    className="w-full h-32 object-cover rounded-lg mb-4"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80";
-                    }}
-                  />
-                  <h4 className="text-lg font-bold mb-2">R&D Lab</h4>
-                  <p className="text-sm opacity-90">Innovation center</p>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="bg-white/10 rounded-xl p-6 backdrop-blur-sm"
-                >
-                  <img 
-                    src={`${process.env.PUBLIC_URL}/images/Phoenix/3.jpeg`}
-                    alt="Testing Facility"
-                    className="w-full h-32 object-cover rounded-lg mb-4"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80";
-                    }}
-                  />
-                  <h4 className="text-lg font-bold mb-2">Testing Lab</h4>
-                  <p className="text-sm opacity-90">Safety validation</p>
-                </motion.div>
+            {/* Removed per request: Process Flow image block */}
+            
+            <div className="lg:hidden">
+              <div className="flex flex-col items-center">
+                {[1, 2, 3, 4, 5, 6, 7].map((step) => (
+                  <motion.div
+                    key={step}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: step * 0.1 }}
+                    viewport={{ once: true }}
+                    className="mb-8 relative"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-primary-600 text-white flex items-center justify-center font-bold text-xl mb-4 mx-auto">
+                      {step}
+                    </div>
+                    <div className="h-16 w-1 bg-primary-200 absolute -bottom-16 left-1/2 transform -translate-x-1/2"></div>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </motion.div>
 
-          {/* Interactive Process Steps */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+          {/* Innovation Facilities Showcase - Modern Design */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="mb-24"
+          >
+            <div className="relative rounded-3xl overflow-hidden">
+              {/* Background with animated gradient */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-orange-600 z-0"></div>
+              
+              <motion.div 
+                className="absolute inset-0 z-0 opacity-30"
+                animate={{ 
+                  background: [
+                    'radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%)',
+                    'radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%)',
+                    'radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%)'
+                  ]
+                }}
+                transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+              />
+              
+              {/* Content */}
+              <div className="relative z-10 p-16">
+                <div className="text-center mb-16">
+                  <motion.div
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                    className="inline-block p-4 bg-white/10 backdrop-blur-sm rounded-2xl mb-6"
+                  >
+                    <CogIcon className="w-16 h-16 text-white" />
+                  </motion.div>
+                  
+                  <motion.h3 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.1 }}
+                    viewport={{ once: true }}
+                    className="text-4xl font-bold mb-4 text-white"
+                  >
+                    World-Class Innovation Facilities
+                  </motion.h3>
+                  
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    viewport={{ once: true }}
+                    className="text-xl text-white/90 max-w-3xl mx-auto"
+                  >
+                    Our cutting-edge facilities combine advanced technology with meticulous craftsmanship 
+                    to deliver products that exceed global standards.
+                  </motion.p>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                  {[
+                    {
+                      image: "/images/Phoenix/4.jpeg",
+                      title: "Manufacturing",
+                      description: "Advanced production lines",
+                      icon: <CogIcon className="w-6 h-6 text-white" />,
+                      color: "bg-blue-500"
+                    },
+                    {
+                      image: "/images/Phoenix/5.jpeg",
+                      title: "Quality Control",
+                      description: "Rigorous testing protocols",
+                      icon: <ShieldCheckIcon className="w-6 h-6 text-white" />,
+                      color: "bg-green-500"
+                    },
+                    {
+                      image: "/images/Phoenix/6.jpeg",
+                      title: "R&D Lab",
+                      description: "Innovation center",
+                      icon: <BeakerIcon className="w-6 h-6 text-white" />,
+                      color: "bg-purple-500"
+                    },
+                    {
+                      image: "/images/Phoenix/3.jpeg",
+                      title: "Testing Lab",
+                      description: "Safety validation",
+                      icon: <ClipboardDocumentCheckIcon className="w-6 h-6 text-white" />,
+                      color: "bg-orange-500"
+                    }
+                  ].map((facility, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1, duration: 0.6 }}
+                      viewport={{ once: true }}
+                      whileHover={{ 
+                        y: -10,
+                        transition: { duration: 0.3 }
+                      }}
+                      className="group relative rounded-xl overflow-hidden shadow-xl"
+                    >
+                      <div className="aspect-w-16 aspect-h-9">
+                        <img 
+                          src={facility.image}
+                          alt={facility.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80";
+                          }}
+                        />
+                      </div>
+                      
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
+                      
+                      <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                        <div className={`${facility.color} p-3 rounded-lg inline-block mb-3 shadow-lg`}>
+                          {facility.icon}
+                        </div>
+                        <h4 className="text-xl font-bold text-white mb-2">{facility.title}</h4>
+                        <p className="text-white/80 text-sm transform opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100">{facility.description}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Interactive Process Steps - Modern Design */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {innovationProcess.map((process, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
                 onMouseEnter={() => setActiveStep(index)}
                 onMouseLeave={() => setActiveStep(null)}
-                className={`bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer ${
-                  activeStep === index ? 'ring-2 ring-blue-500 transform scale-105' : ''
+                className={`bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 group ${
+                  activeStep === index ? 'ring-2 ring-primary-500 transform scale-[1.03]' : ''
                 }`}
               >
-                <div className="flex items-start space-x-6">
-                  <div className={`${process.color} text-white rounded-full w-16 h-16 flex items-center justify-center text-xl font-bold flex-shrink-0`}>
-                    {process.step}
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center mb-4">
-                      <div className={`p-2 ${process.color.replace('bg-', 'bg-').replace('-600', '-100')} rounded-lg mr-3`}>
-                        <div className={process.color.replace('bg-', 'text-')}>
-                          {process.icon}
-                        </div>
-                      </div>
-                      <h3 className="text-xl font-bold text-gray-900">{process.title}</h3>
+                {/* Top colored bar */}
+                <div className={`${process.color} h-2 w-full`}></div>
+                
+                <div className="p-8">
+                  <div className="flex items-start gap-6">
+                    {/* Step number with animated background */}
+                    <div className="relative">
+                      <motion.div 
+                        className={`${process.color} text-white rounded-2xl w-20 h-20 flex items-center justify-center text-2xl font-bold flex-shrink-0 shadow-lg group-hover:shadow-xl transition-all duration-300`}
+                        whileHover={{ 
+                          scale: 1.1,
+                          rotate: [0, -5, 5, -5, 0],
+                          transition: { duration: 0.5 }
+                        }}
+                      >
+                        {process.step}
+                        
+                        {/* Animated ring */}
+                        <motion.div 
+                          className={`absolute inset-0 ${process.color} rounded-2xl opacity-30`}
+                          animate={activeStep === index ? {
+                            scale: [1, 1.2, 1],
+                            opacity: [0.3, 0.1, 0.3]
+                          } : {}}
+                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                        />
+                      </motion.div>
                     </div>
-                    <p className="text-gray-600 leading-relaxed">{process.description}</p>
+                    
+                    <div className="flex-1">
+                      <div className="flex items-center mb-4">
+                        <div className={`p-3 ${process.color.replace('bg-', 'bg-').replace('-600', '-100')} rounded-xl mr-4 group-hover:scale-110 transition-transform duration-300`}>
+                          <div className={process.color.replace('bg-', 'text-')}>
+                            {process.icon}
+                          </div>
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">{process.title}</h3>
+                      </div>
+                      
+                      <p className="text-gray-600 leading-relaxed">{process.description}</p>
+                      
+                      {/* Animated underline on hover */}
+                      <div className="mt-4 w-0 group-hover:w-full h-0.5 bg-primary-200 transition-all duration-500"></div>
+                    </div>
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
 
-          {/* Continuous Innovation */}
+          {/* Continuous Innovation - Modern Design */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="mt-16 bg-gradient-to-br from-green-50 to-primary-50 rounded-2xl p-12"
+            className="mt-24 mb-24"
           >
-            <div className="text-center mb-8">
-              <ArrowPathIcon className="w-16 h-16 text-green-600 mx-auto mb-6" />
-              <h3 className="text-3xl font-bold text-gray-900 mb-4">🔁 Continuous Innovation</h3>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Even after launch, we continue improving our products with ongoing enhancements and updates.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {continuousImprovements.map((improvement, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  viewport={{ once: true }}
-                  className="flex items-center bg-white rounded-xl p-6 shadow-sm"
-                >
-                  <CheckCircleIcon className="w-6 h-6 text-green-500 mr-3 flex-shrink-0" />
-                  <span className="text-gray-700">{improvement}</span>
-                </motion.div>
-              ))}
+            <div className="relative rounded-3xl overflow-hidden">
+              {/* Background with animated gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-primary-500 z-0"></div>
+              
+              <motion.div 
+                className="absolute inset-0 z-0 opacity-30"
+                animate={{ 
+                  background: [
+                    'radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%)',
+                    'radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%)',
+                    'radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%)'
+                  ]
+                }}
+                transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+              />
+              
+              {/* Content */}
+              <div className="relative z-10 p-16">
+                <div className="text-center mb-12">
+                  <motion.div
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                    className="inline-block p-4 bg-white/10 backdrop-blur-sm rounded-2xl mb-6"
+                  >
+                    <ArrowPathIcon className="w-16 h-16 text-white" />
+                  </motion.div>
+                  
+                  <motion.h3 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.1 }}
+                    viewport={{ once: true }}
+                    className="text-4xl font-bold mb-4 text-white"
+                  >
+                    Continuous Innovation
+                  </motion.h3>
+                  
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    viewport={{ once: true }}
+                    className="text-xl text-white/90 max-w-3xl mx-auto"
+                  >
+                    Even after launch, we continue improving our products with ongoing enhancements and updates
+                    to ensure they remain at the cutting edge of safety and functionality.
+                  </motion.p>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  {continuousImprovements.map((improvement, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1, duration: 0.6 }}
+                      viewport={{ once: true }}
+                      whileHover={{ 
+                        y: -10,
+                        boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
+                      }}
+                      className="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20 hover:bg-white/20 transition-all duration-300"
+                    >
+                      <div className="flex flex-col items-center text-center">
+                        <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-6">
+                          {index === 0 && <SparklesIcon className="w-8 h-8 text-white" />}
+                          {index === 1 && <LightBulbIcon className="w-8 h-8 text-white" />}
+                          {index === 2 && <ShieldCheckIcon className="w-8 h-8 text-white" />}
+                        </div>
+                        
+                        <h4 className="text-xl font-bold text-white mb-4">{improvement}</h4>
+                        
+                        {/* Animated underline */}
+                        <motion.div 
+                          className="h-0.5 bg-white/50 rounded-full w-12"
+                          whileHover={{ width: "80%" }}
+                          transition={{ duration: 0.3 }}
+                        />
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
             </div>
           </motion.div>
 
-          {/* Call to Action */}
+          {/* Call to Action - Modern Design */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mt-16"
+            className="mb-16"
           >
-            <div className="bg-gradient-to-r from-primary-600 to-orange-600 rounded-2xl p-12 text-white">
-              <h3 className="text-3xl font-bold mb-4">✨ Innovation that grows with your baby — and your brand.</h3>
-              <p className="text-xl opacity-90 mb-8 max-w-3xl mx-auto">
-                Partner with us to bring innovative baby products to life. Our comprehensive innovation 
-                process ensures your ideas become safe, reliable, and market-ready products.
-              </p>
-              <Link to="/contact">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-white text-primary-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-50 transition-colors"
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+              {/* Background image with overlay */}
+              <div className="absolute inset-0">
+                <img 
+                  src="/images/baby_picture.jpeg" 
+                  alt="Baby with Phoenix products" 
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = "/images/Wide Neck Bottles JPEG/WN0001 - 210ml.jpg";
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-900/90 to-orange-900/90"></div>
+              </div>
+              
+              {/* Content */}
+              <div className="relative z-10 p-16 text-center">
+                <motion.h3 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="text-4xl md:text-5xl font-bold mb-6 text-white"
                 >
-                  Start Your Innovation Journey
-                </motion.button>
-              </Link>
+                  Innovation that grows with your baby — and your brand
+                </motion.h3>
+                
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  viewport={{ once: true }}
+                  className="text-xl text-white/90 mb-12 max-w-3xl mx-auto"
+                >
+                  Partner with us to bring innovative baby products to life. Our comprehensive innovation 
+                  process ensures your ideas become safe, reliable, and market-ready products.
+                </motion.p>
+                
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <Link to="/contact">
+                    <motion.button
+                      whileHover={{ scale: 1.05, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
+                      whileTap={{ scale: 0.95 }}
+                      className="bg-white text-primary-600 px-10 py-5 rounded-full font-semibold text-lg hover:bg-gray-50 transition-all duration-300 shadow-xl"
+                    >
+                      Start Your Innovation Journey
+                    </motion.button>
+                  </Link>
+                </motion.div>
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
     </div>
   );
-};
+};// src/pages/Innovation/index.tsx

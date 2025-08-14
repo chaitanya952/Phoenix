@@ -97,20 +97,35 @@ export const Footer: React.FC = () => {
               whileHover={{ scale: 1.02 }}
               className="bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50 backdrop-blur-sm"
             >
-              <div className="flex items-center gap-4 mb-4">
+              <div className="flex items-center gap-3 mb-4">
+                {/* Bird Logo (Left) */}
                 <motion.img 
-                  src="/images/Phoenix_Logo.png" 
-                  alt="Phoenix Logo" 
-                  className="h-12 w-auto object-contain"
+                  src="/images/512 X 512/1.svg" 
+                  alt="Phoenix Bird Logo" 
+                  className="h-14 w-auto object-contain" /* Increased from h-12 to h-14 */
+                  whileHover={{ scale: 1.1 }}
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = '/images/Phoenix_Logo.png';
+                  }}
+                />
+                {/* Text Logo (Right) */}
+                <motion.img 
+                  src="/images/512 X 512/2.svg" 
+                  alt="Phoenix Text Logo" 
+                  className="h-12 w-auto object-contain" /* Increased from h-10 to h-12 */
                   whileHover={{ scale: 1.1 }}
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.style.display = 'none';
+                    const fallback = target.nextElementSibling as HTMLElement;
+                    if (fallback) fallback.style.display = 'block';
                   }}
                 />
                 <motion.h3 
                   className="text-3xl font-bold text-primary-400"
                   whileHover={{ color: "#60a5fa" }}
+                  style={{display: 'none'}}
                 >
                   Phoenix
                 </motion.h3>

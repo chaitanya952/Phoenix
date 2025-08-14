@@ -20,13 +20,13 @@ export const CategoryPage: React.FC = () => {
   const filteredAndSortedProducts = useMemo(() => {
     if (!category) return [];
 
-    let filtered = category.products.filter(product =>
+    let filtered = category.products.filter((product: { description: string; modelNo: string; }) =>
       product.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.modelNo.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
     // Sort products
-    filtered.sort((a, b) => {
+    filtered.sort((a: { description: string; usd: number; modelNo: string; }, b: { description: any; usd: number; modelNo: any; }) => {
       switch (sortBy) {
         case 'name':
           return a.description.localeCompare(b.description);
@@ -201,7 +201,7 @@ export const CategoryPage: React.FC = () => {
             animate="visible"
             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4"
           >
-            {filteredAndSortedProducts.map((product, index) => (
+            {filteredAndSortedProducts.map((product: CatalogProduct, index: any) => (
               <motion.div key={`${product.modelNo}-${index}`} variants={itemVariants}>
                 <ProductCard product={product} category={category} />
               </motion.div>

@@ -4,7 +4,8 @@ import { Hero } from './sections/Hero';
 import { About } from './sections/About';
 import { Products } from './sections/Products';
 import { Services } from './sections/Services';
-import { Customers } from './sections/Customers';
+import { Quality } from './sections/Quality';
+import { WhyPhoenix } from './sections/WhyPhoenix';
 import { Clients } from './sections/Clients';
 import { Contact } from './sections/Contact';
 
@@ -15,7 +16,8 @@ export const HomePage: React.FC = () => {
       <About />
       <Products />
       <Services />
-      <Customers />
+      <Quality />
+      <WhyPhoenix />
       <Clients />
       <Contact />
     </>

@@ -91,9 +91,9 @@ export const Services: React.FC = () => {
   };
 
   return (
-    <section id="services" className="section relative overflow-hidden">
+    <section id="services" className="relative overflow-hidden">
       {/* Hero Banner with AI Image */}
-      <div className="relative h-96 mb-16">
+      <div className="relative h-96 mb-4">
         <div className="absolute inset-0">
           <img 
             src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
@@ -135,14 +135,28 @@ export const Services: React.FC = () => {
               viewport={{ once: true }}
               className="text-xl text-white/90 max-w-3xl mx-auto"
             >
-              Comprehensive solutions for all your baby product needs - from manufacturing to design
+              From the first sketch to the final smile on your baby's face - we're with you every step of the way
             </motion.p>
           </div>
         </div>
       </div>
 
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden bg-gradient-to-br from-primary-50 to-white">
+      {/* Background Elements with Image */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2026&q=80" 
+            alt="Services background" 
+            className="w-full h-full object-cover opacity-15"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.src = '/images/Phoenix_Logo.png';
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-50/90 to-white/90"></div>
+        </div>
+        
         <div className="absolute inset-0 hero-pattern opacity-20"></div>
         <motion.div
           animate={{ 
@@ -170,9 +184,7 @@ export const Services: React.FC = () => {
         />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-
-        {/* Main Services */}
+      <div className="container mx-auto px-4 relative z-10 py-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -180,9 +192,18 @@ export const Services: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h3 className="text-3xl font-bold text-gray-900 mb-4">Core Services</h3>
+          <h3 className="text-3xl font-bold text-gray-800 mb-4 relative inline-block">
+            Core Services
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: "100%" }}
+              transition={{ duration: 1, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="absolute -bottom-2 left-0 h-1 bg-primary-600 rounded-full"
+            />
+          </h3>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            From concept to delivery, we provide end-to-end solutions for your baby product needs.
+            Every service we offer is designed with one goal: creating products that make precious moments between you and your baby even more special.
           </p>
         </motion.div>
 
@@ -198,7 +219,7 @@ export const Services: React.FC = () => {
               key={service.id}
               variants={itemVariants}
               whileHover={{ y: -10, scale: 1.02 }}
-              className="card card-hover p-8 text-center group"
+              className="card card-hover p-8 text-center group bg-white/90 backdrop-blur-sm shadow-lg"
             >
               <div className="mb-6 flex justify-center">
                 <div className="p-4 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl text-white shadow-orange group-hover:shadow-orange-lg transition-all duration-300">
@@ -228,9 +249,18 @@ export const Services: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h3 className="text-3xl font-bold text-gray-900 mb-4">Additional Services</h3>
+          <h3 className="text-3xl font-bold text-gray-800 mb-4 relative inline-block">
+            Additional Services
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: "100%" }}
+              transition={{ duration: 1, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="absolute -bottom-2 left-0 h-1 bg-primary-600 rounded-full"
+            />
+          </h3>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Specialized services to enhance your products and brand presence.
+            The finishing touches that transform good products into extraordinary experiences for babies and parents alike.
           </p>
         </motion.div>
 
@@ -267,19 +297,37 @@ export const Services: React.FC = () => {
                   />
                   <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent`}></div>
                 </div>
-                
+
                 {/* Content */}
-                <div className="relative z-10 p-6 h-full flex flex-col justify-end text-white">
-                  <div className={`inline-flex p-3 rounded-xl bg-white/20 backdrop-blur-sm mb-4 ${service.color} w-fit`}>
-                    <IconComponent className="w-6 h-6 text-white" />
+                <div className="relative z-10 p-8 h-80 flex flex-col justify-between text-white">
+                  <div className="flex justify-between items-start">
+                    <div className={`p-3 ${service.bgColor} rounded-xl`}>
+                      <IconComponent className={`w-8 h-8 ${service.color}`} />
+                    </div>
+                    <div className="text-right">
+                      <div className="text-xs opacity-75">Service #{service.id - 4}</div>
+                    </div>
                   </div>
-                  <h4 className="text-lg font-bold text-white mb-3">{service.title}</h4>
-                  <p className="text-white/90 text-sm leading-relaxed">{service.description}</p>
+                  
+                  <div>
+                    <h4 className="text-2xl font-bold mb-3 font-display">{service.title}</h4>
+                    <p className="text-white/90 leading-relaxed text-sm mb-4">{service.description}</p>
+                    
+                    <motion.div
+                      whileHover={{ x: 5 }}
+                      className="flex items-center text-sm font-semibold"
+                    >
+                      Learn More
+                      <ArrowTopRightOnSquareIcon className="w-4 h-4 ml-2" />
+                    </motion.div>
+                  </div>
                 </div>
               </motion.div>
             );
           })}
         </div>
+
+        {/* Trust Banner section has been removed */}
 
         {/* Process Overview */}
         <motion.div
@@ -292,7 +340,7 @@ export const Services: React.FC = () => {
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold gradient-text mb-4 font-display">Our Process</h3>
             <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
-              A streamlined approach to bring your baby product ideas to market.
+              Every step carefully crafted with the love and attention your baby's products deserve.
             </p>
           </div>
 

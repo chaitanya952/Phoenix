@@ -1492,6 +1492,15 @@ export const RAW_MATERIALS = {
       applications: ['Nipples', 'Seals', 'Soft spouts', 'Teething products'],
       certifications: ['Medical grade', 'FDA approved', 'LFGB certified'],
       color: 'bg-pink-100 text-pink-800'
+    },
+    {
+      id: '5',
+      name: 'Organic Cotton',
+      description: 'Natural, organic cotton for textile components',
+      properties: ['100% organic', 'Hypoallergenic', 'Breathable', 'Sustainable'],
+      applications: ['Bottle covers', 'Bibs', 'Cleaning cloths'],
+      certifications: ['GOTS certified', 'Organic certified', 'Eco-friendly'],
+      color: 'bg-yellow-100 text-yellow-800'
     }
   ],
   qualityStandards: [
@@ -1501,4 +1510,4 @@ export const RAW_MATERIALS = {
     'Environmental impact assessment for all materials',
     'Continuous research for safer, more sustainable alternatives'
   ]
-};
+};// src/utils/constants.ts

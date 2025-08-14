@@ -124,8 +124,45 @@ export const AboutPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+      {/* Hero Image Section */}
+      <div className="relative w-full h-80 md:h-96 overflow-hidden">
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2026&q=80" 
+            alt="About Phoenix Baby Products" 
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.src = '/images/Phoenix_Logo.png';
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary-900/70 to-primary-800/70"></div>
+        </div>
+        
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center text-white max-w-4xl px-4">
+            <motion.h1 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-4xl md:text-6xl font-bold mb-4 font-display"
+            >
+              About <span className="text-primary-300">Phoenix</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-xl text-white/90 max-w-3xl mx-auto"
+            >
+              Crafting premium baby products with a mother's love and a commitment to excellence
+            </motion.p>
+          </div>
+        </div>
+      </div>
+      
       {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden z-[-1]">
         <motion.div
           animate={{ 
             rotate: [0, 360],
@@ -256,6 +293,19 @@ export const AboutPage: React.FC = () => {
       {/* Mission, Vision, Values */}
       <section className="py-20 bg-white relative z-10">
         <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Foundation</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Built on love, driven by purpose, and committed to excellence in every product we create.
+            </p>
+          </motion.div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
             {/* Left Column - Mission & Vision */}
             <motion.div
@@ -266,33 +316,61 @@ export const AboutPage: React.FC = () => {
               className="space-y-12"
             >
               {/* Mission */}
-              <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="flex items-center mb-6">
-                  <div className="p-3 bg-primary-100 rounded-xl mr-4">
-                    <HeartIcon className="w-8 h-8 text-primary-600" />
+              <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="relative h-48 mb-6">
+                  <img 
+                    src="https://images.unsplash.com/photo-1559715541-5daf8a0296d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                    alt="Mother and baby bonding"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                  <div className="absolute bottom-4 left-4 flex items-center">
+                    <div className="p-2 bg-white/20 backdrop-blur-sm rounded-lg mr-3">
+                      <HeartIcon className="w-6 h-6 text-white" />
+                    </div>
+                    <h2 className="text-xl font-bold text-white">Our Mission</h2>
                   </div>
-                  <h2 className="text-2xl font-bold text-gray-900">Our Mission</h2>
                 </div>
-                <p className="text-gray-700 leading-relaxed text-lg">
-                  {COMPANY_INFO.mission}
-                </p>
+                <div className="p-8 pt-0">
+                  <p className="text-gray-700 leading-relaxed text-lg">
+                    Our mission is to design and manufacture high-quality baby products that prioritize child safety, promote healthy development, and support modern parenting needs.
+                  </p>
+                </div>
               </div>
 
               {/* Vision */}
-              <div className="bg-gradient-to-br from-secondary-50 to-secondary-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="flex items-center mb-6">
-                  <div className="p-3 bg-secondary-100 rounded-xl mr-4">
-                    <EyeIcon className="w-8 h-8 text-secondary-600" />
+              <div className="bg-gradient-to-br from-secondary-50 to-secondary-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="relative h-48 mb-6">
+                  <img 
+                    src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                    alt="Baby eyes close-up"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = "https://images.unsplash.com/photo-1566004100631-35d015d6a491?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                  <div className="absolute bottom-4 left-4 flex items-center">
+                    <div className="p-2 bg-white/20 backdrop-blur-sm rounded-lg mr-3">
+                      <EyeIcon className="w-6 h-6 text-white" />
+                    </div>
+                    <h2 className="text-xl font-bold text-white">Our Vision</h2>
                   </div>
-                  <h2 className="text-2xl font-bold text-gray-900">Our Vision</h2>
                 </div>
-                <p className="text-gray-700 leading-relaxed text-lg">
-                  {COMPANY_INFO.vision}
-                </p>
+                <div className="p-8 pt-0">
+                  <p className="text-gray-700 leading-relaxed text-lg">
+                    To become the most trusted and innovative baby care brand, enriching every child's early years with safe, sustainable, and thoughtfully designed products.
+                  </p>
+                </div>
               </div>
             </motion.div>
 
-            {/* Right Column - Values & History */}
+            {/* Right Column - Values & Journey */}
             <motion.div
               variants={itemVariants}
               initial="hidden"
@@ -301,38 +379,56 @@ export const AboutPage: React.FC = () => {
               className="space-y-12"
             >
               {/* Values */}
-              <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="flex items-center mb-6">
-                  <div className="p-3 bg-green-100 rounded-xl mr-4">
-                    <StarIcon className="w-8 h-8 text-green-600" />
+              <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="relative h-48 mb-6">
+                  <img 
+                    src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                    alt="Mother and baby together"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                  <div className="absolute bottom-4 left-4 flex items-center">
+                    <div className="p-2 bg-white/20 backdrop-blur-sm rounded-lg mr-3">
+                      <StarIcon className="w-6 h-6 text-white" />
+                    </div>
+                    <h2 className="text-xl font-bold text-white">Our Values</h2>
                   </div>
-                  <h2 className="text-2xl font-bold text-gray-900">Our Values</h2>
                 </div>
-                <div className="space-y-3">
-                  {COMPANY_INFO.values.map((value, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1, duration: 0.5 }}
-                      viewport={{ once: true }}
-                      className="flex items-start space-x-3"
-                    >
-                      <CheckCircleIcon className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700">{value}</span>
-                    </motion.div>
-                  ))}
+                <div className="p-8 pt-0">
+                  <p className="text-gray-700 leading-relaxed text-lg">
+                    Love-inspired design, unwavering safety, mother's intuition, and the belief that every baby deserves the very best care.
+                  </p>
                 </div>
               </div>
 
-              {/* History */}
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Journey</h2>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  {COMPANY_INFO.history}
-                </p>
-                <div className="flex items-center justify-center text-sm text-blue-700">
-                  <span className="font-semibold">HQ: {COMPANY_INFO.headquarters}</span>
+              {/* Journey */}
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="relative h-48 mb-6">
+                  <img 
+                    src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                    alt="Mother and baby journey"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = "https://images.unsplash.com/photo-1559715541-5daf8a0296d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                  <div className="absolute bottom-4 left-4 flex items-center">
+                    <div className="p-2 bg-white/20 backdrop-blur-sm rounded-lg mr-3">
+                      <CalendarIcon className="w-6 h-6 text-white" />
+                    </div>
+                    <h2 className="text-xl font-bold text-white">Our Journey</h2>
+                  </div>
+                </div>
+                <div className="p-8 pt-0">
+                  <p className="text-gray-700 leading-relaxed text-lg">
+                    Founded with a mother's love, Phoenix has grown from a small family business to a trusted global brand, dedicated to creating safe and nurturing feeding solutions for babies worldwide.
+                  </p>
                 </div>
               </div>
             </motion.div>
@@ -361,34 +457,55 @@ export const AboutPage: React.FC = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="space-y-8"
           >
-            {TEAM_MEMBERS.map((member, index) => (
-              <motion.div
-                key={member.id}
-                variants={itemVariants}
-                whileHover={{ y: -10, scale: 1.02 }}
-                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center"
-              >
-                <div className="relative mb-6">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-24 h-24 rounded-full mx-auto object-cover border-4 border-primary-100"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = '/images/placeholder-avatar.png';
-                    }}
-                  />
-                  <div className="absolute -bottom-2 -right-2 bg-primary-600 text-white text-xs px-2 py-1 rounded-full">
-                    {member.experience}
+            {/* First row - 4 members */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {TEAM_MEMBERS.slice(0, 4).map((member, index) => (
+                <motion.div
+                  key={member.id}
+                  variants={itemVariants}
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center"
+                >
+                  <div className="relative mb-6">
+                    <div className="w-24 h-24 rounded-full mx-auto bg-primary-100 border-4 border-primary-200 flex items-center justify-center">
+                      <UsersIcon className="w-12 h-12 text-primary-600" />
+                    </div>
+                    <div className="absolute -bottom-2 -right-2 bg-primary-600 text-white text-xs px-2 py-1 rounded-full">
+                      {member.experience}
+                    </div>
                   </div>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
-                <p className="text-primary-600 font-semibold mb-3">{member.position}</p>
-                <p className="text-gray-600 text-sm leading-relaxed">{member.bio}</p>
-              </motion.div>
-            ))}
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
+                  <p className="text-primary-600 font-semibold mb-3">{member.position}</p>
+                  <p className="text-gray-600 text-sm leading-relaxed">{member.bio}</p>
+                </motion.div>
+              ))}
+            </div>
+            
+            {/* Second row - 3 members */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              {TEAM_MEMBERS.slice(4, 7).map((member, index) => (
+                <motion.div
+                  key={member.id}
+                  variants={itemVariants}
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center"
+                >
+                  <div className="relative mb-6">
+                    <div className="w-24 h-24 rounded-full mx-auto bg-primary-100 border-4 border-primary-200 flex items-center justify-center">
+                      <UsersIcon className="w-12 h-12 text-primary-600" />
+                    </div>
+                    <div className="absolute -bottom-2 -right-2 bg-primary-600 text-white text-xs px-2 py-1 rounded-full">
+                      {member.experience}
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
+                  <p className="text-primary-600 font-semibold mb-3">{member.position}</p>
+                  <p className="text-gray-600 text-sm leading-relaxed">{member.bio}</p>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
@@ -613,34 +730,6 @@ export const AboutPage: React.FC = () => {
               ))}
             </div>
 
-            {/* Phoenix vs Others Comparison */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-8 mb-12"
-            >
-              <h3 className="text-2xl font-bold text-center text-gray-900 mb-8">Phoenix vs Others</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary-600 mb-2">60,000</div>
-                  <div className="text-sm font-semibold text-gray-800 mb-1">Sq.ft Facility</div>
-                  <div className="text-xs text-gray-600">vs 20,000 Sq.ft (Others)</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary-600 mb-2">700+</div>
-                  <div className="text-sm font-semibold text-gray-800 mb-1">Molds</div>
-                  <div className="text-xs text-gray-600">vs ~100 (Others)</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary-600 mb-2">10M+</div>
-                  <div className="text-sm font-semibold text-gray-800 mb-1">Products Delivered</div>
-                  <div className="text-xs text-gray-600">vs &lt;1M (Others)</div>
-                </div>
-              </div>
-            </motion.div>
-
             {/* What Sets Us Apart */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -659,21 +748,6 @@ export const AboutPage: React.FC = () => {
                 viewport={{ once: true }}
                 className="relative mb-12 rounded-2xl overflow-hidden shadow-2xl"
               >
-                <img 
-                  src="/images/Phoenix_Logo.png"
-                  alt="Phoenix Manufacturing Excellence"
-                  className="w-full h-64 md:h-80 object-contain bg-gradient-to-br from-primary-50 to-white"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = "/images/image.png";
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent">
-                  <div className="absolute bottom-6 left-6 text-white">
-                    <h4 className="text-2xl font-bold mb-2">India's Largest Baby Product Manufacturing Facility</h4>
-                    <p className="text-lg opacity-90">60,000 sq.ft of advanced manufacturing excellence</p>
-                  </div>
-                </div>
               </motion.div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -704,60 +778,6 @@ export const AboutPage: React.FC = () => {
               </div>
             </motion.div>
 
-            {/* Factory Merits */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="mb-16"
-            >
-              <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">Factory Excellence</h3>
-              
-              {/* Facilities Stats */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                {FACTORY_MERITS.facilities.map((facility, index) => (
-                  <motion.div
-                    key={facility.id}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: index * 0.1, duration: 0.6 }}
-                    viewport={{ once: true }}
-                    className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-xl p-6 text-center"
-                  >
-                    <div className="inline-flex p-3 rounded-xl bg-primary-600 text-white mb-4">
-                      {getIcon(facility.icon)}
-                    </div>
-                    <div className="text-3xl font-bold text-primary-600 mb-2">{facility.value}</div>
-                    <div className="text-sm font-semibold text-gray-800 mb-2">{facility.description}</div>
-                    <div className="text-xs text-gray-600">{facility.details}</div>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Factory Features */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {FACTORY_MERITS.features.map((feature, index) => (
-                  <motion.div
-                    key={feature.id}
-                    initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1, duration: 0.6 }}
-                    viewport={{ once: true }}
-                    className="bg-white rounded-xl p-6 shadow-lg"
-                  >
-                    <div className="flex items-center mb-4">
-                      <div className="inline-flex p-2 rounded-lg bg-primary-100 text-primary-600 mr-3">
-                        {getIcon(feature.icon)}
-                      </div>
-                      <h4 className="text-lg font-bold text-gray-900">{feature.title}</h4>
-                    </div>
-                    <p className="text-gray-600 text-sm">{feature.description}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-
             {/* Raw Materials Excellence */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -769,7 +789,7 @@ export const AboutPage: React.FC = () => {
               <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">Premium Materials</h3>
               
               {/* Materials Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 {RAW_MATERIALS.materials.map((material, index) => (
                   <motion.div
                     key={material.id}
@@ -838,6 +858,44 @@ export const AboutPage: React.FC = () => {
                     </div>
                   ))}
                 </div>
+              </motion.div>
+
+              {/* Trusted Suppliers */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                viewport={{ once: true }}
+                className="mt-12 bg-white rounded-xl p-8 shadow-lg"
+              >
+                <h4 className="text-2xl font-bold text-gray-900 mb-8 text-center">Our Trusted Suppliers</h4>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                  {[
+                    { name: 'RELIANCE', logo: 'text-blue-600' },
+                    { name: 'WACKER', logo: 'text-red-600' },
+                    { name: 'RUCO', logo: 'text-green-600' },
+                    { name: 'MARABU', logo: 'text-purple-600' }
+                  ].map((supplier, index) => (
+                    <motion.div
+                      key={supplier.name}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: index * 0.1, duration: 0.5 }}
+                      viewport={{ once: true }}
+                      className="text-center group"
+                    >
+                      <div className="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors duration-300 group-hover:shadow-md">
+                        <div className={`text-2xl font-bold ${supplier.logo} mb-2`}>
+                          {supplier.name}
+                        </div>
+                        <div className="w-12 h-0.5 bg-gradient-to-r from-primary-600 to-secondary-600 mx-auto"></div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+                <p className="text-center text-gray-600 mt-6 text-sm">
+                  We partner with industry-leading suppliers to ensure the highest quality raw materials for our products.
+                </p>
               </motion.div>
             </motion.div>
           </motion.div>

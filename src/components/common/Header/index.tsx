@@ -9,7 +9,6 @@ export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
-  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -42,24 +41,50 @@ export const Header: React.FC = () => {
         damping: 20
       }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-orange border-b border-primary-100' : 'bg-white/95 backdrop-blur-md'
+        isScrolled 
+          ? 'bg-gradient-to-r from-white via-primary-50/30 to-white shadow-orange border-b border-primary-100' 
+          : 'bg-gradient-to-r from-white/95 via-primary-50/20 to-white/95 backdrop-blur-md'
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between h-16 lg:h-20 py-2">
           {/* Logo */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            whileHover={{ scale: 1.05 }}
-            className="flex-shrink-0"
+            className="flex-shrink-0 relative"
           >
-            <Link to="/" className="flex items-center gap-3">
-              <img 
-                src="/images/Phoenix_Logo.png" 
-                alt="Phoenix Logo" 
-                className="h-10 w-auto object-contain"
+            <Link to="/" className="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-primary-50/30 transition-colors duration-300">
+              {/* Bird Logo (Left) */}
+              <motion.img 
+                src="/images/512 X 512/1.svg" 
+                alt="Phoenix Bird Logo" 
+                className="h-12 w-auto object-contain drop-shadow-sm"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.2 }}
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = '/images/Phoenix_Logo.png';
+                }}
+              />
+              {/* Text Logo (Right) */}
+              <motion.img 
+                src="/images/512 X 512/2.svg" 
+                alt="Phoenix Text Logo" 
+                className="h-12 w-auto object-contain drop-shadow-md" /* Increased from h-10 to h-12 */
+                initial={{ opacity: 0.9, y: 2 }}
+                animate={{ 
+                  opacity: 1, 
+                  y: 0,
+                  filter: ["drop-shadow(0 0 0 rgba(239, 68, 68, 0))", "drop-shadow(0 0 2px rgba(239, 68, 68, 0.3))", "drop-shadow(0 0 0 rgba(239, 68, 68, 0))"]
+                }}
+                transition={{ 
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatType: "reverse"
+                }}
+                whileHover={{ scale: 1.05, filter: "drop-shadow(0 0 3px rgba(239, 68, 68, 0.5))" }}
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.style.display = 'none';
@@ -123,110 +148,34 @@ export const Header: React.FC = () => {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 10, scale: 0.95 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 mt-2 bg-white rounded-xl shadow-2xl border border-gray-100 z-50 overflow-hidden"
+                          className="absolute top-full left-0 mt-2 bg-white rounded-xl shadow-2xl border border-gray-100 z-50 overflow-hidden w-64"
                         >
-                          <div className="flex">
-                            {/* Categories Column */}
-                            <div className="w-48 border-r border-gray-100">
-                              <div className="p-2">
-                                <h3 className="text-xs font-semibold text-gray-900 mb-2 px-2">Categories</h3>
-                                <div className="max-h-40 overflow-y-auto space-y-0.5">
-                                  {PRODUCT_CATEGORIES.map((category) => (
-                                    <div
-                                      key={category.id}
-                                      className="relative"
-                                      onMouseEnter={() => setHoveredCategory(category.id)}
-                                    >
-                                      <Link
-                                        to={`/products/category/${category.id}`}
-                                        className={`group block px-2 py-1.5 rounded transition-colors duration-200 ${
-                                          hoveredCategory === category.id ? 'bg-primary-50' : 'hover:bg-gray-50'
-                                        }`}
-                                        onClick={() => {
-                                          setIsProductsDropdownOpen(false);
-                                          setHoveredCategory(null);
-                                        }}
-                                      >
-                                        <div className="flex items-center justify-between">
-                                          <h4 className={`font-medium text-xs transition-colors duration-200 ${
-                                            hoveredCategory === category.id ? 'text-primary-600' : 'text-gray-900 group-hover:text-primary-600'
-                                          }`}>
-                                            {category.displayName}
-                                          </h4>
-                                          <ChevronDownIcon className="w-3 h-3 text-gray-400 rotate-[-90deg]" />
-                                        </div>
-                                      </Link>
-                                    </div>
-                                  ))}
-                                </div>
-                              </div>
-                            </div>
-
-                            {/* Products Column */}
-                            <div className="w-60">
-                              <AnimatePresence mode="wait">
-                                {hoveredCategory && (
-                                  <motion.div
-                                    key={hoveredCategory}
-                                    initial={{ opacity: 0, x: 20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    exit={{ opacity: 0, x: -20 }}
-                                    transition={{ duration: 0.2 }}
-                                    className="p-2"
+                          <div className="p-2">
+                            <h3 className="text-xs font-semibold text-gray-900 mb-2 px-2">Product Categories</h3>
+                            <div className="max-h-60 overflow-y-auto space-y-0.5">
+                              {PRODUCT_CATEGORIES.map((category) => (
+                                <div
+                                  key={category.id}
+                                  className="relative"
+                                >
+                                  <Link
+                                    to={`/products/category/${category.id}`}
+                                    className="group block px-3 py-2 rounded hover:bg-primary-50 transition-colors duration-200"
+                                    onClick={() => {
+                                      setIsProductsDropdownOpen(false);
+                                    }}
                                   >
-                                    {(() => {
-                                      const category = PRODUCT_CATEGORIES.find(cat => cat.id === hoveredCategory);
-                                      if (!category) return null;
-                                      
-                                      return (
-                                        <>
-                                          <h3 className="text-xs font-semibold text-gray-900 mb-2 px-2">
-                                            {category.displayName} Products
-                                          </h3>
-                                          <div className="max-h-40 overflow-y-auto space-y-0.5">
-                                            {category.products.map((product) => (
-                                              <Link
-                                                key={product.modelNo}
-                                                to={`/products/${product.modelNo}`}
-                                                className="group block px-2 py-1 rounded hover:bg-gray-50 transition-colors duration-200"
-                                                onClick={() => {
-                                                  setIsProductsDropdownOpen(false);
-                                                  setHoveredCategory(null);
-                                                }}
-                                              >
-                                                <div>
-                                                  <h4 className="font-medium text-xs text-gray-900 group-hover:text-primary-600 transition-colors duration-200 truncate">
-                                                    {product.description}
-                                                  </h4>
-                                                  <div className="flex items-center justify-between mt-0.5">
-                                                    <p className="text-xs text-gray-500 font-mono">
-                                                      {product.modelNo}
-                                                    </p>
-                                                    <p className="text-xs font-semibold text-primary-600">
-                                                      ${product.usd.toFixed(2)}
-                                                    </p>
-                                                  </div>
-                                                </div>
-                                              </Link>
-                                            ))}
-                                          </div>
-                                        </>
-                                      );
-                                    })()}
-                                  </motion.div>
-                                )}
-                              </AnimatePresence>
-                              
-                              {!hoveredCategory && (
-                                <div className="p-2 flex items-center justify-center h-40">
-                                  <div className="text-center text-gray-500">
-                                    <div className="w-8 h-8 mx-auto mb-2 bg-gray-100 rounded-full flex items-center justify-center">
-                                      <ChevronDownIcon className="w-4 h-4 rotate-[-90deg]" />
+                                    <div className="flex items-center justify-between">
+                                      <h4 className="font-medium text-sm text-gray-900 group-hover:text-primary-600 transition-colors duration-200">
+                                        {category.displayName}
+                                      </h4>
+                                      <div className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">
+                                        {category.products.length}
+                                      </div>
                                     </div>
-                                    <p className="text-xs">Hover over a category</p>
-                                  </div>
+                                  </Link>
                                 </div>
-                              )}
+                              ))}
                             </div>
                           </div>
                           
@@ -236,7 +185,6 @@ export const Header: React.FC = () => {
                               className="block w-full text-center py-1.5 px-3 bg-primary-600 text-white rounded hover:bg-primary-700 transition-colors duration-200 font-semibold text-xs"
                               onClick={() => {
                                 setIsProductsDropdownOpen(false);
-                                setHoveredCategory(null);
                               }}
                             >
                               View All Categories
