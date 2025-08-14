@@ -8,6 +8,7 @@ import {
   MagnifyingGlassIcon
 } from '@heroicons/react/24/outline';
 import { getCategoryById, CatalogProduct } from '../../data/catalogData';
+import { generateProductImagePath } from '../../utils/imageUtils';
 
 export const CategoryPage: React.FC = () => {
   const { categoryId } = useParams<{ categoryId: string }>();
@@ -242,6 +243,8 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, category }) => {
+  const imagePath = generateProductImagePath(product, category);
+  
   return (
     <Link to={`/products/${product.modelNo}`}>
       <motion.div 
@@ -251,7 +254,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, category }) => {
         {/* Product Image */}
         <div className="relative h-48 overflow-hidden bg-gray-50">
           <img 
-            src={`/images/${category.name} JPEG/${product.modelNo}.jpg`}
+            src={imagePath}
             alt={product.description}
             className="w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-300"
             onError={(e) => {

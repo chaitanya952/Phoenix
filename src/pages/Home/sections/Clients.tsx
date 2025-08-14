@@ -101,33 +101,45 @@ export const Clients: React.FC = () => {
           </motion.p>
         </motion.div>
 
-        {/* Client Logos Grid */}
+        {/* Client Logos Horizontal Scroll */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="mb-20"
         >
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-6">
-            {clientImages.map((image, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="bg-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group aspect-square flex items-center justify-center"
-              >
-                <img
-                  src={`/images/trustedClients/${image}`}
-                  alt={`Trusted Client ${index + 1}`}
-                  className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-300 filter group-hover:brightness-110"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                  }}
-                />
-              </motion.div>
-            ))}
+          <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 overflow-hidden">
+            <div className="flex overflow-x-auto scrollbar-hide gap-6 pb-2 scroll-smooth" style={{ WebkitOverflowScrolling: 'touch' }}>
+              {clientImages.map((image, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  className="flex-shrink-0 bg-gray-50 rounded-xl p-4 hover:bg-white hover:shadow-lg transition-all duration-300 border border-gray-100 group w-32 h-24 flex items-center justify-center"
+                >
+                  <img
+                    src={`/images/trustedClients/${image}`}
+                    alt={`Trusted Client ${index + 1}`}
+                    className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-300 filter group-hover:brightness-110"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                    }}
+                  />
+                </motion.div>
+              ))}
+            </div>
+            {/* Scroll Indicator */}
+            <div className="flex justify-center mt-4">
+              <div className="flex items-center gap-2 text-sm text-gray-500">
+                <ArrowTopRightOnSquareIcon className="w-4 h-4 rotate-90" />
+                <span>Scroll to see more clients</span>
+              </div>
+            </div>
           </div>
         </motion.div>
 

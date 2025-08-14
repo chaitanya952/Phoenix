@@ -402,7 +402,7 @@ export const ServicesPage: React.FC = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 bg-gradient-to-br from-primary-600 to-primary-700">
+      <section className="py-16 bg-gradient-to-br from-primary-400 to-primary-600">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -422,7 +422,8 @@ export const ServicesPage: React.FC = () => {
                 <Link to="/contact">
                   <Button 
                     size="lg" 
-                    className="bg-white text-primary-600 hover:bg-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 group"
+                    variant="secondary"
+                    className="!bg-white !text-primary-600 hover:!bg-primary-50 hover:!text-primary-700 shadow-xl hover:shadow-2xl !rounded-xl group"
                   >
                     <span className="flex items-center space-x-2">
                       <span>Get Started Today</span>
@@ -441,7 +442,7 @@ export const ServicesPage: React.FC = () => {
                   <Button 
                     size="lg" 
                     variant="outline"
-                    className="border-white text-white hover:bg-white hover:text-primary-600 transition-all duration-300"
+                    className="!border-2 !border-white !text-white hover:!bg-white hover:!text-primary-600 !rounded-xl"
                   >
                     View Our Products
                   </Button>

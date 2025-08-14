@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useParams, Link } from 'react-router-dom';
 import { PRODUCT_CATEGORIES } from '../../data/catalogData';
 import { Button } from '../../components/common/Button';
+import { generateProductImagePath } from '../../utils/imageUtils';
 import { 
   ArrowRightIcon,
   ChevronLeftIcon,
@@ -40,8 +41,14 @@ export const ProductDetailPage: React.FC = () => {
     );
   }
 
-  // For catalog products, we'll use the specific product image
-  const images = [`/images/${category.name} JPEG/${product.modelNo}.jpg`];
+  // Generate the product image path using the utility function
+  const imagePath = generateProductImagePath(product, category);
+  const images = [imagePath];
+  
+  // Debug logging
+  console.log('Debug - Product modelNo:', product.modelNo);
+  console.log('Debug - Category image:', category.image);
+  console.log('Debug - Generated image path:', imagePath);
 
   const nextImage = () => {
     setSelectedImageIndex((prev) => (prev + 1) % images.length);
@@ -379,7 +386,7 @@ export const ProductDetailPage: React.FC = () => {
                         {/* Product Image */}
                         <div className="relative h-32 overflow-hidden bg-gray-50">
                           <img 
-                            src={`/images/${category.name} JPEG/${relatedProduct.modelNo}.jpg`}
+                            src={generateProductImagePath(relatedProduct, category)}
                             alt={relatedProduct.description}
                             className="w-full h-full object-contain p-2 group-hover:scale-110 transition-transform duration-300"
                             onError={(e) => {
@@ -477,7 +484,7 @@ export const ProductDetailPage: React.FC = () => {
                             {/* Product Image */}
                             <div className="relative h-32 overflow-hidden bg-gray-50">
                               <img 
-                                src={`/images/${otherCategory.name} JPEG/${otherProduct.modelNo}.jpg`}
+                                src={generateProductImagePath(otherProduct, otherCategory)}
                                 alt={otherProduct.description}
                                 className="w-full h-full object-contain p-2 group-hover:scale-110 transition-transform duration-300"
                                 onError={(e) => {

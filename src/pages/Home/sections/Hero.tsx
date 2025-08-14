@@ -54,10 +54,10 @@ const StatCard: React.FC<{
           </div>
         </div>
         <div className="text-center">
-          <div className="text-xl md:text-2xl font-bold gradient-text mb-1 font-display">
+          <div className="text-lg md:text-xl font-bold gradient-text mb-1 font-display">
             {count}
           </div>
-          <div className="text-secondary-600 text-sm font-medium">
+          <div className="text-secondary-600 text-xs font-medium">
             {label}
           </div>
         </div>
@@ -402,34 +402,7 @@ export const Hero: React.FC = () => {
               transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
               className="text-left"
             >
-              {/* Phoenix Logo - Bird and Text Side by Side */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.1 }}
-                className="flex justify-start items-center mb-4"
-              >
-                {/* Bird Logo (Left) */}
-                <img 
-                  src="/images/512 X 512/1.svg" 
-                  alt="Phoenix Bird Logo" 
-                  className="h-20 w-auto object-contain drop-shadow-lg mr-2" /* Increased from h-16 to h-20 */
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = "/images/Phoenix_Logo.png";
-                  }}
-                />
-                {/* Text Logo (Right) */}
-                <img 
-                  src="/images/512 X 512/2.svg" 
-                  alt="Phoenix Text Logo" 
-                  className="h-14 w-auto object-contain drop-shadow-lg" /* Increased from h-12 to h-14 */
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                  }}
-                />
-              </motion.div>
+
 
               {/* Badge */}
               <motion.div

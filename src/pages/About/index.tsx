@@ -90,10 +90,10 @@ const AnimatedStatCard: React.FC<{
           <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 text-white shadow-orange mb-4 group-hover:scale-110 group-hover:shadow-orange-lg transition-all duration-300">
             {icon}
           </div>
-          <div className="text-3xl md:text-4xl font-bold mb-2 gradient-text font-display">
+          <div className="text-2xl md:text-3xl font-bold mb-2 gradient-text font-display">
             {count}
           </div>
-          <div className="text-secondary-600 font-medium text-sm">
+          <div className="text-secondary-600 font-medium text-xs">
             {label}
           </div>
         </div>
@@ -147,7 +147,7 @@ export const AboutPage: React.FC = () => {
               transition={{ duration: 0.6 }}
               className="text-4xl md:text-6xl font-bold mb-4 font-display"
             >
-              About <span className="text-primary-300">Phoenix</span>
+              <span className="text-white">About</span> <span className="text-primary-300">Phoenix</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}

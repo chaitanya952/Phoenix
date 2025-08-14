@@ -201,7 +201,7 @@ export const ProductsPage: React.FC = () => {
 
 
       {/* Safety & Trust Section */}
-      <section className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white py-12">
+      <section className="bg-gradient-to-br from-primary-400 to-primary-600 text-white py-12">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold mb-4">Trusted by Parents Worldwide</h3>
@@ -234,7 +234,7 @@ export const ProductsPage: React.FC = () => {
           </div>
 
           <div className="text-center mt-8">
-            <Link to="/contact" className="bg-white text-primary-600 hover:bg-white/95 px-8 py-3 rounded-xl font-semibold transition-colors shadow-lg">
+            <Link to="/contact" className="inline-block bg-white text-primary-600 hover:bg-primary-50 hover:text-primary-700 px-8 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
               Get In Touch
             </Link>
           </div>

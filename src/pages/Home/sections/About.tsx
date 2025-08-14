@@ -50,10 +50,10 @@ const AnimatedStatCard: React.FC<{
           <div className="inline-flex p-2 rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 text-white shadow-orange mb-3 group-hover:scale-110 group-hover:shadow-orange-lg transition-all duration-300">
             {icon}
           </div>
-          <div className="text-2xl md:text-3xl font-bold mb-1 gradient-text font-display">
+          <div className="text-xl md:text-2xl font-bold mb-1 gradient-text font-display">
             {count}
           </div>
-          <div className="text-secondary-600 text-sm font-medium">
+          <div className="text-secondary-600 text-xs font-medium">
             {label}
           </div>
         </div>
