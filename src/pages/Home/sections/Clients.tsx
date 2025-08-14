@@ -110,7 +110,7 @@ export const Clients: React.FC = () => {
           className="mb-20"
         >
           <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 overflow-hidden">
-            <div className="flex overflow-x-auto scrollbar-hide gap-6 pb-2 scroll-smooth" style={{ WebkitOverflowScrolling: 'touch' }}>
+            <div className="flex overflow-x-auto clients-scrollbar gap-6 pb-1 scroll-smooth" style={{ WebkitOverflowScrolling: 'touch', paddingBottom: '4px' }}>
               {clientImages.map((image, index) => (
                 <motion.div
                   key={index}

@@ -1,6 +1,7 @@
 // src/pages/Home/sections/Services.tsx
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { SERVICES } from '../../../utils/constants';
 import { 
   BuildingOfficeIcon,
@@ -338,14 +339,16 @@ export const Services: React.FC = () => {
             <p className="text-xl text-secondary-600 mb-8 max-w-2xl mx-auto">
               Let's discuss how we can help bring your baby product vision to life with our comprehensive services.
             </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-primary px-8 py-4 text-lg flex items-center gap-2 mx-auto"
-            >
-              Get Started Today
-              <ArrowTopRightOnSquareIcon className="w-5 h-5" />
-            </motion.button>
+            <Link to="/contact">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="btn-primary px-8 py-4 text-lg flex items-center gap-2 mx-auto"
+              >
+                Get Started Today
+                <ArrowTopRightOnSquareIcon className="w-5 h-5" />
+              </motion.button>
+            </Link>
           </div>
         </motion.div>
       </div>

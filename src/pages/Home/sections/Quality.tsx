@@ -222,15 +222,6 @@ export const Quality: React.FC = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <motion.button
-            onClick={scrollToQualityDetails}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="btn-primary px-8 py-4 text-lg font-semibold rounded-xl inline-flex items-center gap-2"
-          >
-            Know More About Quality
-            <DocumentCheckIcon className="w-5 h-5" />
-          </motion.button>
         </motion.div>
       </div>
     </section>

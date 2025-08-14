@@ -1,6 +1,7 @@
 // src/pages/Home/sections/Hero.tsx
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Button } from '../../../components/common/Button';
 import { useCountUp } from '../../../hooks/useCountUp';
 import { 
@@ -475,10 +476,12 @@ export const Hero: React.FC = () => {
                   <ArrowRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
                 
-                <button className="btn-secondary px-6 py-3 text-lg font-semibold rounded-xl flex items-center justify-center gap-2 group">
-                  <PlayIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                  Watch Video
-                </button>
+                <Link to="/about">
+                  <button className="btn-secondary px-6 py-3 text-lg font-semibold rounded-xl flex items-center justify-center gap-2 group">
+                    <PlayIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                    Learn More
+                  </button>
+                </Link>
               </motion.div>
 
               {/* Slide Indicators */}

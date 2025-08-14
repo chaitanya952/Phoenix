@@ -115,7 +115,7 @@ export const ServicesPage: React.FC = () => {
               transition={{ duration: 0.6 }}
               className="text-4xl md:text-6xl font-bold mb-4 font-display"
             >
-              Our <span className="text-primary-300">Services</span>
+             <span className="text-white">Our</span> <span className="text-primary-300">Services</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -171,21 +171,8 @@ export const ServicesPage: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              Our <span className="text-primary-600">Services</span>
-            </h1>
-            <motion.div
-              initial={{ width: 0 }}
-              animate={{ width: "100px" }}
-              transition={{ duration: 1, delay: 0.3 }}
-              className="h-1 bg-primary-600 rounded-full mx-auto mb-8"
-            />
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              From concept to delivery, Phoenix offers comprehensive manufacturing services 
-              tailored to meet your specific needs. Partner with us to bring your baby product 
-              vision to life with our expertise and commitment to quality.
-            </p>
-          </motion.div>
+          </motion.div>           
+
         </div>
       </section>
 
@@ -262,11 +249,7 @@ export const ServicesPage: React.FC = () => {
                 viewport={{ once: true }}
                 className="text-center relative"
               >
-                {/* Connection Line */}
-                {index < processSteps.length - 1 && (
-                  <div className="hidden lg:block absolute top-16 left-full w-full h-0.5 bg-gradient-to-r from-primary-300 to-primary-200 transform -translate-x-1/2 z-0" />
-                )}
-                
+
                 <div className="relative z-10">
                   <div className="w-16 h-16 bg-primary-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
                     {step.step}

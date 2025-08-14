@@ -1,6 +1,7 @@
 // src/pages/Home/sections/About.tsx
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { useCountUp } from '../../../hooks/useCountUp';
 import { COMPANY_STATS, COMPANY_INFO, TEAM_MEMBERS } from '../../../utils/constants';
 import { 
@@ -117,26 +118,6 @@ export const About: React.FC = () => {
             viewport={{ once: true }}
             className="flex justify-center items-center mb-6"
           >
-            {/* Bird Logo (Left) */}
-            <img 
-              src="/images/512 X 512/1.svg" 
-              alt="Phoenix Bird Logo" 
-              className="h-16 w-auto object-contain drop-shadow-lg mr-2" /* Increased from h-14 to h-16 */
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.src = "/images/Phoenix_Logo.png";
-              }}
-            />
-            {/* Text Logo (Right) */}
-            <img 
-              src="/images/512 X 512/2.svg" 
-              alt="Phoenix Text Logo" 
-              className="h-12 w-auto object-contain drop-shadow-lg" /* Increased from h-10 to h-12 */
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.style.display = 'none';
-              }}
-            />
           </motion.div>
           
           <motion.h2 
@@ -265,15 +246,16 @@ export const About: React.FC = () => {
             </div>
           </div>
 
-          <motion.button
-            onClick={() => scrollToSection('why-phoenix')}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="btn-primary px-8 py-3 text-lg font-semibold rounded-xl inline-flex items-center gap-2 mt-2"
-          >
-            Know More About Phoenix
-            <CheckCircleIcon className="w-5 h-5" />
-          </motion.button>
+          <Link to="/about">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="btn-primary px-8 py-3 text-lg font-semibold rounded-xl inline-flex items-center gap-2 mt-2"
+            >
+              Know More About Phoenix
+              <CheckCircleIcon className="w-5 h-5" />
+            </motion.button>
+          </Link>
         </motion.div>
       </div>
     </section>

@@ -87,12 +87,22 @@ export const InnovationPage: React.FC = () => {
     "OEM partners and international distributors"
   ];
 
-  const upcomingDevelopments = [
-    "Self-sterilizing bottle technology",
-    "Smart sippers with temperature indicators",
-    "Plant-based biodegradable babyware",
-    "Enhanced ergonomic designs for small hands and first feeds"
-  ];
+
+
+const upcomingDevelopmentImages = [
+  "/images/Innovation & Development Pics/IMG-20250807-WA0159.jpg",
+  "/images/Innovation & Development Pics/IMG-20250807-WA0160.jpg",
+  "/images/Innovation & Development Pics/IMG-20250807-WA0161.jpg",
+  "/images/Innovation & Development Pics/IMG-20250807-WA0162.jpg",
+  "/images/Innovation & Development Pics/IMG-20250807-WA0163.jpg",
+  "/images/Innovation & Development Pics/IMG-20250807-WA0164.jpg",
+  "/images/Innovation & Development Pics/IMG-20250807-WA0165.jpg",
+  "/images/Innovation & Development Pics/IMG-20250807-WA0168.jpg",
+  "/images/Innovation & Development Pics/IMG-20250807-WA0169.jpg",
+  "/images/Innovation & Development Pics/IMG-20250807-WA0170.jpg",
+  "/images/Innovation & Development Pics/IMG-20250807-WA0171.jpg",
+  "/images/Innovation & Development Pics/IMG-20250807-WA0172.jpg",
+];
 
   const innovationProcess = [
     {
@@ -225,7 +235,7 @@ export const InnovationPage: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-5xl md:text-7xl font-bold mb-6 font-display leading-tight"
             >
-              Innovation & <span className="text-primary-300">Development</span>
+              <span className="text-white">Innovation & </span>  <span className="text-primary-300">Development</span>
             </motion.h1>
             
             <motion.p
@@ -863,48 +873,52 @@ export const InnovationPage: React.FC = () => {
             </motion.div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {upcomingDevelopments.map((development, index) => (
+              {upcomingDevelopmentImages.map((src, index) => (
                 <motion.div
-                  key={index}
+                  key={src}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.6 }}
+                  transition={{ delay: index * 0.05, duration: 0.6 }}
                   viewport={{ once: true }}
                   whileHover={{ 
                     y: -10,
                     boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.1)"
                   }}
-                  className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 transition-all duration-300 relative overflow-hidden group"
+                  className="bg-white rounded-2xl shadow-lg border border-gray-100 transition-all duration-300 relative overflow-hidden group"
                 >
-                  {/* Background gradient that animates on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-primary-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  
+                  {/* Image */}
+                  <div className="relative h-40">
+                    <img 
+                      src={src}
+                      alt={`Upcoming Development ${index + 1}`}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+
                   {/* Content */}
-                  <div className="relative">
-                    <div className="mb-6 flex justify-center">
-                      <motion.div 
-                        className="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300"
-                        whileHover={{ rotate: 360 }}
-                        transition={{ duration: 0.8 }}
-                      >
-                        <RocketLaunchIcon className="w-8 h-8 text-primary-600" />
-                      </motion.div>
+                  <div className="p-6">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-2 text-primary-600">
+                        <RocketLaunchIcon className="w-5 h-5" />
+                        <span className="text-sm font-medium">Upcoming Development</span>
+                      </div>
+                      <span className="text-xs text-gray-400">#{index + 1}</span>
                     </div>
-                    
-                    <h4 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-primary-600 transition-colors duration-300">{development}</h4>
-                    
-                    {/* Progress bar to indicate development status */}
-                    <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden mt-4">
+
+                    {/* Progress bar */}
+                    <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
                       <motion.div 
                         className="h-full bg-primary-500 rounded-full"
                         initial={{ width: 0 }}
-                        whileInView={{ width: `${65 - index * 15}%` }}
-                        transition={{ duration: 1, delay: 0.5 + index * 0.1 }}
+                        whileInView={{ width: `${70 - (index % 4) * 10}%` }}
+                        transition={{ duration: 1, delay: 0.4 }}
                         viewport={{ once: true }}
                       />
-                    </div>
-                    <div className="mt-2 text-xs text-gray-500 text-right">
-                      {index === 0 ? 'Coming Soon' : index === 1 ? 'In Development' : index === 2 ? 'Research Phase' : 'Concept Stage'}
                     </div>
                   </div>
                 </motion.div>

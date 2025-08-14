@@ -1150,70 +1150,48 @@ export const FAQS: FAQ[] = [
 export const NEWS_ITEMS: NewsItem[] = [
   {
     id: '1',
-    title: 'Phoenix Launches New Eco-Friendly Product Line',
-    excerpt: 'Introducing our latest sustainable baby products made from recycled materials.',
-    content: 'We are excited to announce the launch of our new eco-friendly product line, featuring baby bottles and cups made from recycled materials...',
-    image: '/images/news/eco-friendly-launch.jpg',
+    title: 'Behind the Scenes: How Our Baby Bottles Are Made',
+    excerpt: 'Take an exclusive look at our transparent manufacturing process, from selecting FDA-approved materials to rigorous quality testing.',
+    content: 'When it comes to your babys health, transparency matters. We are pulling back the curtain to show you how our baby bottles are carefully crafted from start to finish. Our process begins with choosing the safest materials - BPA-free, phthalate-free, and lead-free components that are FDA-approved and tested for food safety compliance...',
+    image: '/images/news/manufacturing-process.jpg',
     date: '2024-01-15',
-    category: 'Product Launch',
-    author: 'Phoenix Team',
-    readTime: '3 min read'
-  },
-  {
-    id: '2',
-    title: 'Expansion into European Markets',
-    excerpt: 'Phoenix expands operations to serve European customers better.',
-    content: 'Following successful market research and regulatory approvals, we are expanding our operations into key European markets...',
-    image: '/images/news/europe-expansion.jpg',
-    date: '2024-01-10',
-    category: 'Business',
-    author: 'Marketing Team',
+    category: 'Manufacturing',
+    author: 'Production Team',
     readTime: '5 min read'
   },
   {
+    id: '2',
+    title: 'How We Ensure Every Bottle Meets Safety Standards',
+    excerpt: 'Discover our comprehensive safety protocols, from laboratory testing to international compliance standards.',
+    content: 'When it comes to feeding your baby, nothing matters more than safety. Every bottle we produce goes through rigorous testing and quality control processes to ensure it meets—and often exceeds—global safety standards...',
+    image: '/images/news/safety-testing.jpg',
+    date: '2024-01-10',
+    category: 'Safety',
+    author: 'Quality Assurance Team',
+    readTime: '4 min read'
+  },
+  {
     id: '3',
-    title: 'New Safety Testing Facility Opens',
-    excerpt: 'State-of-the-art testing facility ensures highest safety standards.',
-    content: 'Our new 5000 sq ft safety testing facility is now operational, featuring advanced equipment for comprehensive product testing...',
-    image: '/images/news/testing-facility.jpg',
+    title: 'Signs Your Baby Is Ready to Transition from Bottle to Cup',
+    excerpt: 'Expert guidance on recognizing when your little one is ready for this important developmental milestone.',
+    content: 'As your baby grows, so do their feeding needs. Most pediatricians recommend starting the transition around 12 months and fully weaning off bottles by 18 months. Key signs of readiness include sitting up independently, showing interest in what you are drinking, and demonstrating feeding independence...',
+    image: '/images/news/bottle-to-cup-transition.jpg',
     date: '2024-01-05',
+    category: 'Child Development',
+    author: 'Pediatric Consultants',
+    readTime: '6 min read'
+  },
+  {
+    id: '4',
+    title: 'Why We Use Medical-Grade Silicone in Our Nipples',
+    excerpt: 'Learn about the superior safety and performance benefits of medical-grade silicone for your baby feeding experience.',
+    content: 'Medical-grade silicone is a high-purity, hypoallergenic material specifically tested and approved for medical and food applications. Its free from BPA, phthalates, PVC, latex, and harmful additives, making it ideal for baby bottle nipples that go directly into your little ones mouth...',
+    image: '/images/news/medical-grade-silicone.jpg',
+    date: '2024-01-01',
     category: 'Innovation',
     author: 'R&D Team',
     readTime: '4 min read'
   },
-  {
-    id: '4',
-    title: 'Phoenix Wins Industry Excellence Award',
-    excerpt: 'Recognition for outstanding quality and innovation in baby product manufacturing.',
-    content: 'We are proud to announce that Phoenix has been awarded the Industry Excellence Award for our commitment to quality and innovation...',
-    image: '/images/news/award-win.jpg',
-    date: '2024-01-01',
-    category: 'Awards',
-    author: 'Phoenix Team',
-    readTime: '2 min read'
-  },
-  {
-    id: '5',
-    title: 'New Partnership with Leading Retailers',
-    excerpt: 'Strategic partnerships to expand Phoenix product availability and reach more families.',
-    content: 'Phoenix has formed strategic partnerships with leading retailers to make our products more accessible to families everywhere...',
-    image: '/images/news/partnership.jpg',
-    date: '2023-12-20',
-    category: 'Business',
-    author: 'Sales Team',
-    readTime: '3 min read'
-  },
-  {
-    id: '6',
-    title: 'Sustainable Manufacturing Initiative',
-    excerpt: 'Phoenix commits to carbon-neutral manufacturing by 2025.',
-    content: 'As part of our environmental commitment, Phoenix is implementing sustainable manufacturing practices to achieve carbon neutrality...',
-    image: '/images/news/sustainability.jpg',
-    date: '2023-12-15',
-    category: 'Sustainability',
-    author: 'Operations Team',
-    readTime: '6 min read'
-  }
 ];
 
 export const TESTIMONIALS: Testimonial[] = [

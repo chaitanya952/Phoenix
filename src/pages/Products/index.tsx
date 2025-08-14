@@ -204,7 +204,7 @@ export const ProductsPage: React.FC = () => {
       <section className="bg-gradient-to-br from-primary-400 to-primary-600 text-white py-12">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold mb-4">Trusted by Parents Worldwide</h3>
+            <h3 className="text-2xl font-bold mb-4 text-white">Trusted by Parents Worldwide</h3>
             <p className="text-white/90 max-w-2xl mx-auto">
               Every Phoenix product meets the highest safety standards and is designed with your baby's wellbeing in mind.
             </p>
@@ -213,22 +213,22 @@ export const ProductsPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
               <ShieldCheckIcon className="w-8 h-8 text-white mx-auto mb-3" />
-              <h4 className="font-semibold mb-2">100% BPA Free</h4>
+              <h4 className="font-semibold mb-2 text-white">100% BPA Free</h4>
               <p className="text-sm text-white/80">Safe for your baby</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
               <HeartIcon className="w-8 h-8 text-white mx-auto mb-3" />
-              <h4 className="font-semibold mb-2">Non-Toxic Materials</h4>
+              <h4 className="font-semibold mb-2 text-white">Non-Toxic Materials</h4>
               <p className="text-sm text-white/80">Premium quality assured</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
               <GlobeAltIcon className="w-8 h-8 text-white mx-auto mb-3" />
-              <h4 className="font-semibold mb-2">Eco-Friendly</h4>
+              <h4 className="font-semibold mb-2 text-white">Eco-Friendly</h4>
               <p className="text-sm text-white/80">Sustainable production</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
               <SparklesIcon className="w-8 h-8 text-white mx-auto mb-3" />
-              <h4 className="font-semibold mb-2">Innovation</h4>
+              <h4 className="font-semibold mb-2 text-white">Innovation</h4>
               <p className="text-sm text-white/80">Latest baby care tech</p>
             </div>
           </div>
