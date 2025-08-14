@@ -93,7 +93,7 @@ const AnimatedStatCard: React.FC<{
           <div className="text-3xl md:text-4xl font-bold mb-2 gradient-text font-display">
             {count}
           </div>
-          <div className="text-secondary-600 font-medium">
+          <div className="text-secondary-600 font-medium text-sm">
             {label}
           </div>
         </div>
@@ -215,30 +215,8 @@ export const AboutPage: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <motion.h1 
-              className="text-4xl md:text-6xl font-bold text-gray-900 mb-6"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              About <span className="text-primary-600">Phoenix</span>
-            </motion.h1>
-            <motion.div
-              initial={{ width: 0 }}
-              animate={{ width: "100px" }}
-              transition={{ duration: 1, delay: 0.3 }}
-              className="h-1 bg-primary-600 rounded-full mx-auto mb-8"
-            />
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
-            >
-              Discover the story behind Phoenix, a leading manufacturer of premium baby products 
-              with over two decades of experience in creating safe, innovative, and high-quality 
-              products for families everywhere.
-            </motion.p>
+            
+           
           </motion.div>
         </div>
       </section>
@@ -254,7 +232,7 @@ export const AboutPage: React.FC = () => {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-20"
           >
             <AnimatedStatCard
-              icon={<CalendarIcon className="w-8 h-8 text-primary-600" />}
+              icon={<CalendarIcon className="w-8 h-8 text-white-600" />}
               end={COMPANY_STATS.years}
               suffix="+"
               label="Years of Excellence"
@@ -262,7 +240,7 @@ export const AboutPage: React.FC = () => {
               color="border-l-primary-500"
             />
             <AnimatedStatCard
-              icon={<UsersIcon className="w-8 h-8 text-green-600" />}
+              icon={<UsersIcon className="w-8 h-8 text-white-600" />}
               end={COMPANY_STATS.employees}
               suffix="+"
               label="Skilled Employees"
@@ -270,20 +248,20 @@ export const AboutPage: React.FC = () => {
               color="border-l-green-500"
             />
             <AnimatedStatCard
-              icon={<BuildingOfficeIcon className="w-8 h-8 text-blue-600" />}
+              icon={<BuildingOfficeIcon className="w-8 h-8 text-white-600" />}
               end={COMPANY_STATS.factoryArea}
-              suffix=" m²"
+              suffix="sqft"
               label="Factory Area"
               delay={600}
               color="border-l-blue-500"
             />
             
             <AnimatedStatCard
-              icon={<TruckIcon className="w-8 h-8 text-orange-600" />}
+              icon={<TruckIcon className="w-8 h-8 text-white-600" />}
               end={COMPANY_STATS.monthlyCapacity / 1000000}
               suffix="M"
               label="Monthly Capacity"
-              delay={1000}
+              delay={100}
               color="border-l-orange-500"
             />
           </motion.div>
@@ -306,20 +284,19 @@ export const AboutPage: React.FC = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
-            {/* Left Column - Mission & Vision */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+            {/* Mission */}
             <motion.div
               variants={itemVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="space-y-12"
+              className="h-full"
             >
-              {/* Mission */}
-              <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="relative h-48 mb-6">
+              <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+                <div className="relative h-40 mb-4">
                   <img 
-                    src="https://images.unsplash.com/photo-1559715541-5daf8a0296d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                    src="images/About/Mission.jpeg"
                     alt="Mother and baby bonding"
                     className="w-full h-full object-cover"
                     onError={(e) => {
@@ -328,25 +305,33 @@ export const AboutPage: React.FC = () => {
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 flex items-center">
-                    <div className="p-2 bg-white/20 backdrop-blur-sm rounded-lg mr-3">
-                      <HeartIcon className="w-6 h-6 text-white" />
+                  <div className="absolute bottom-3 left-3 flex items-center">
+                    <div className="p-1.5 bg-white/20 backdrop-blur-sm rounded-lg mr-2">
+                      <HeartIcon className="w-5 h-5 text-white" />
                     </div>
-                    <h2 className="text-xl font-bold text-white">Our Mission</h2>
+                    <h2 className="text-lg font-bold text-white">Our Mission</h2>
                   </div>
                 </div>
-                <div className="p-8 pt-0">
-                  <p className="text-gray-700 leading-relaxed text-lg">
+                <div className="p-6 pt-0 flex-grow">
+                  <p className="text-gray-700 leading-relaxed text-sm">
                     Our mission is to design and manufacture high-quality baby products that prioritize child safety, promote healthy development, and support modern parenting needs.
                   </p>
                 </div>
               </div>
+            </motion.div>
 
-              {/* Vision */}
-              <div className="bg-gradient-to-br from-secondary-50 to-secondary-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="relative h-48 mb-6">
+            {/* Vision */}
+            <motion.div
+              variants={itemVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="h-full"
+            >
+              <div className="bg-gradient-to-br from-secondary-50 to-secondary-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+                <div className="relative h-40 mb-4">
                   <img 
-                    src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                    src="images/About/Vision.jpeg"
                     alt="Baby eyes close-up"
                     className="w-full h-full object-cover"
                     onError={(e) => {
@@ -355,34 +340,33 @@ export const AboutPage: React.FC = () => {
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 flex items-center">
-                    <div className="p-2 bg-white/20 backdrop-blur-sm rounded-lg mr-3">
-                      <EyeIcon className="w-6 h-6 text-white" />
+                  <div className="absolute bottom-3 left-3 flex items-center">
+                    <div className="p-1.5 bg-white/20 backdrop-blur-sm rounded-lg mr-2">
+                      <EyeIcon className="w-5 h-5 text-white" />
                     </div>
-                    <h2 className="text-xl font-bold text-white">Our Vision</h2>
+                    <h2 className="text-lg font-bold text-white">Our Vision</h2>
                   </div>
                 </div>
-                <div className="p-8 pt-0">
-                  <p className="text-gray-700 leading-relaxed text-lg">
+                <div className="p-6 pt-0 flex-grow">
+                  <p className="text-gray-700 leading-relaxed text-sm">
                     To become the most trusted and innovative baby care brand, enriching every child's early years with safe, sustainable, and thoughtfully designed products.
                   </p>
                 </div>
               </div>
             </motion.div>
 
-            {/* Right Column - Values & Journey */}
+            {/* Values */}
             <motion.div
               variants={itemVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="space-y-12"
+              className="h-full"
             >
-              {/* Values */}
-              <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="relative h-48 mb-6">
+              <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+                <div className="relative h-40 mb-4">
                   <img 
-                    src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                    src="/images/About/Values.jpeg"
                     alt="Mother and baby together"
                     className="w-full h-full object-cover"
                     onError={(e) => {
@@ -391,25 +375,33 @@ export const AboutPage: React.FC = () => {
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 flex items-center">
-                    <div className="p-2 bg-white/20 backdrop-blur-sm rounded-lg mr-3">
-                      <StarIcon className="w-6 h-6 text-white" />
+                  <div className="absolute bottom-3 left-3 flex items-center">
+                    <div className="p-1.5 bg-white/20 backdrop-blur-sm rounded-lg mr-2">
+                      <StarIcon className="w-5 h-5 text-white" />
                     </div>
-                    <h2 className="text-xl font-bold text-white">Our Values</h2>
+                    <h2 className="text-lg font-bold text-white">Our Values</h2>
                   </div>
                 </div>
-                <div className="p-8 pt-0">
-                  <p className="text-gray-700 leading-relaxed text-lg">
+                <div className="p-6 pt-0 flex-grow">
+                  <p className="text-gray-700 leading-relaxed text-sm">
                     Love-inspired design, unwavering safety, mother's intuition, and the belief that every baby deserves the very best care.
                   </p>
                 </div>
               </div>
+            </motion.div>
 
-              {/* Journey */}
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="relative h-48 mb-6">
+            {/* Journey */}
+            <motion.div
+              variants={itemVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="h-full"
+            >
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+                <div className="relative h-40 mb-4">
                   <img 
-                    src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                    src="images/About/Journey.jpeg"
                     alt="Mother and baby journey"
                     className="w-full h-full object-cover"
                     onError={(e) => {
@@ -418,15 +410,15 @@ export const AboutPage: React.FC = () => {
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 flex items-center">
-                    <div className="p-2 bg-white/20 backdrop-blur-sm rounded-lg mr-3">
-                      <CalendarIcon className="w-6 h-6 text-white" />
+                  <div className="absolute bottom-3 left-3 flex items-center">
+                    <div className="p-1.5 bg-white/20 backdrop-blur-sm rounded-lg mr-2">
+                      <CalendarIcon className="w-5 h-5 text-white" />
                     </div>
-                    <h2 className="text-xl font-bold text-white">Our Journey</h2>
+                    <h2 className="text-lg font-bold text-white">Our Journey</h2>
                   </div>
                 </div>
-                <div className="p-8 pt-0">
-                  <p className="text-gray-700 leading-relaxed text-lg">
+                <div className="p-6 pt-0 flex-grow">
+                  <p className="text-gray-700 leading-relaxed text-sm">
                     Founded with a mother's love, Phoenix has grown from a small family business to a trusted global brand, dedicated to creating safe and nurturing feeding solutions for babies worldwide.
                   </p>
                 </div>
@@ -903,7 +895,7 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 bg-gradient-to-br from-primary-600 to-primary-700 relative z-10">
+      <section className="py-16 bg-gradient-to-br from-primary-400 to-primary-500 relative z-10">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

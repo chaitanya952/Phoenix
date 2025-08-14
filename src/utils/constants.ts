@@ -6,7 +6,7 @@ export const COMPANY_STATS: CompanyStats = {
   employees: 150,
   factoryArea: 60000,
   countries: 50,
-  monthlyCapacity: 10000000
+  monthlyCapacity: 1000000
 };
 
 export const PRODUCTS: Product[] = [

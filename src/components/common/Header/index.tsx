@@ -72,7 +72,7 @@ export const Header: React.FC = () => {
               <motion.img 
                 src="/images/512 X 512/2.svg" 
                 alt="Phoenix Text Logo" 
-                className="h-12 w-auto object-contain drop-shadow-md" /* Increased from h-10 to h-12 */
+                className="h-16 w-auto object-contain drop-shadow-md -ml-2" /* Increased from h-12 to h-14 to match bird image, moved left with -ml-2 */
                 initial={{ opacity: 0.9, y: 2 }}
                 animate={{ 
                   opacity: 1, 

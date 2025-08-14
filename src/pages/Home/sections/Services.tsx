@@ -268,7 +268,6 @@ export const Services: React.FC = () => {
                       whileHover={{ x: 5 }}
                       className="flex items-center text-sm font-semibold"
                     >
-                      Learn More
                       <ArrowTopRightOnSquareIcon className="w-4 h-4 ml-2" />
                     </motion.div>
                   </div>
@@ -332,7 +331,7 @@ export const Services: React.FC = () => {
           className="text-center"
         >
           <div className="card p-12 glass-orange">
-            <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-orange-lg animate-float">
+            <div className="w-16 h-16 bg-gradient-to-br from-primary-400 to-primary-400 rounded-full flex items-center justify-center mx-auto mb-6 shadow-orange-lg animate-float">
               <SparklesIcon className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-3xl font-bold gradient-text mb-4 font-display">Ready to Start Your Project?</h3>
