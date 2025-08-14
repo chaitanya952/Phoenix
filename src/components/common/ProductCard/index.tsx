@@ -32,9 +32,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         scale: 1.02,
         transition: { duration: 0.3, type: "spring", stiffness: 300 }
       }}
-      className="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-primary-200"
+      className="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 border border-gray-200 hover:border-primary-300"
     >
-      <div className="relative overflow-hidden bg-gray-100 h-56">
+      <div className="relative overflow-hidden bg-gray-50 h-56">
         <motion.div
           whileHover={{ scale: 1.1 }}
           transition={{ duration: 0.4 }}
@@ -54,7 +54,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             initial={{ opacity: 0, scale: 0 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3 }}
-            className="absolute top-4 right-4 bg-primary-600 text-white text-xs px-2 py-1 rounded-full font-medium"
+            className="absolute top-4 right-4 bg-primary-400 text-white text-xs px-2 py-1 rounded-full font-medium"
           >
             {product.subProducts!.length} variants
           </motion.div>
@@ -64,7 +64,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <motion.div
           initial={{ opacity: 0 }}
           whileHover={{ opacity: 1 }}
-          className="absolute inset-0 bg-black/20 flex items-center justify-center"
+          className="absolute inset-0 bg-primary-100/40 flex items-center justify-center"
         >
           <motion.div
             initial={{ scale: 0 }}
@@ -86,14 +86,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         transition={{ delay: 0.2, duration: 0.5 }}
       >
         <motion.h3 
-          className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors"
+          className="text-xl font-bold text-gray-700 mb-3 group-hover:text-primary-600 transition-colors"
           whileHover={{ scale: 1.02 }}
         >
           {product.name}
         </motion.h3>
         
         <motion.p 
-          className="text-gray-600 mb-4 line-clamp-2 leading-relaxed"
+          className="text-gray-500 mb-4 line-clamp-2 leading-relaxed"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.5 }}
@@ -116,7 +116,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.5 + index * 0.1, duration: 0.3 }}
                   whileHover={{ scale: 1.05 }}
-                  className="px-3 py-1.5 bg-primary-50 text-primary-700 text-xs font-medium rounded-full border border-primary-100 hover:bg-primary-100 transition-colors"
+                  className="px-3 py-1.5 bg-primary-50 text-primary-600 text-xs font-medium rounded-full border border-primary-200 hover:bg-primary-100 transition-colors"
                 >
                   {feature}
                 </motion.span>
@@ -134,7 +134,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         >
           <Link
             to={`/products/${product.id}`}
-            className="w-full bg-primary-600 text-white py-2 px-4 rounded-2xl hover:bg-primary-700 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+            className="w-full bg-primary-500 text-white py-2 px-4 rounded-2xl hover:bg-primary-600 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
           >
             Know More
             <ArrowRightIcon className="w-4 h-4" />

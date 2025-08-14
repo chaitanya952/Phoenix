@@ -978,48 +978,48 @@ export const CERTIFICATIONS: Certification[] = [
     id: '1',
     name: 'FDA Approved',
     description: 'All products meet US Food and Drug Administration standards for baby products',
-    image: '/images/certifications/fda.png',
+    image: '/images/certs/FDA.png',
     issuer: 'US Food and Drug Administration',
     validUntil: '2025-12-31'
   },
   {
     id: '2',
-    name: 'LFGB Certified',
+    name: 'UKAS Certified',
     description: 'German food and consumer goods safety certification',
-    image: '/images/certifications/lfgb.png',
+    image: '/images/certs/UKAS.jpeg',
     issuer: 'German Federal Institute',
     validUntil: '2025-06-30'
   },
   {
     id: '3',
-    name: 'CPC Compliant',
-    description: 'Children\'s Product Certificate ensuring safety for children under 12',
-    image: '/images/certifications/cpc.png',
-    issuer: 'CPSC',
+    name: 'GMP Certified',
+    description: 'Good Manufacturing Practice certification ensuring quality production standards',
+    image: '/images/certs/GMP.png',
+    issuer: 'International GMP Association',
     validUntil: '2025-12-31'
   },
   {
     id: '4',
-    name: 'EN 14350 Standard',
-    description: 'European standard for child care articles and drinking equipment',
-    image: '/images/certifications/en.png',
-    issuer: 'European Committee for Standardization',
+    name: 'ISO Certified',
+    description: 'International Organization for Standardization quality management certification',
+    image: '/images/certs/ISO.png',
+    issuer: 'ISO',
     validUntil: '2025-08-31'
   },
   {
     id: '5',
-    name: 'ISO 9001:2015',
-    description: 'Quality management system certification',
-    image: '/images/certifications/iso9001.png',
-    issuer: 'International Organization for Standardization',
+    name: 'Quality Certified',
+    description: 'Quality management system certification for baby products',
+    image: '/images/certs/cert1.jpeg',
+    issuer: 'International Quality Association',
     validUntil: '2026-03-15'
   },
   {
     id: '6',
-    name: 'OEKO-TEX Standard 100',
-    description: 'Textile safety certification for harmful substances',
-    image: '/images/certifications/oeko-tex.png',
-    issuer: 'OEKO-TEX Association',
+    name: 'Safety Standard Certified',
+    description: 'Safety certification for baby products ensuring highest safety standards',
+    image: '/images/certs/download.jpeg',
+    issuer: 'International Safety Standards',
     validUntil: '2025-09-30'
   }
 ];

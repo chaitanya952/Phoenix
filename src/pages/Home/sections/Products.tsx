@@ -166,25 +166,25 @@ export const Products: React.FC = () => {
             <motion.div key={product.id} variants={itemVariants}>
               <Link to={`/products/category/${product.id}`}>
                 <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer">
-                  <div className="relative h-24 overflow-hidden">
+                  <div className="relative h-40 overflow-hidden bg-gray-50">
                     <img 
                       src={product.image} 
                       alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-300"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.src = '/images/Phoenix_Logo.png';
                       }}
                     />
-                    <div className="absolute top-1 right-1 bg-primary-600 text-white px-1 py-0.5 rounded text-xs font-semibold">
+                    <div className="absolute top-2 right-2 bg-primary-500 text-white px-2 py-1 rounded text-xs font-semibold">
                       {product.volume}
                     </div>
                   </div>
                   <div className="p-3">
-                    <h4 className="text-sm font-bold text-gray-900 mb-1 line-clamp-1">{product.name}</h4>
+                    <h4 className="text-sm font-bold text-gray-700 mb-1 line-clamp-1">{product.name}</h4>
                     <div className="flex flex-wrap gap-1 mb-2">
                       {product.features.slice(0, 2).map((feature, index) => (
-                        <span key={index} className="bg-primary-50 text-primary-700 px-1.5 py-0.5 rounded text-xs font-medium">
+                        <span key={index} className="bg-primary-50 text-primary-600 px-1.5 py-0.5 rounded text-xs font-medium">
                           {feature}
                         </span>
                       ))}

@@ -13,7 +13,7 @@ import {
 export const Clients: React.FC = () => {
   // Array of all client images
   const clientImages = [
-    '1.jpg', 'Picture1.jpg', 'Picture2.jpg', 'Picture3.jpg', 'Picture4.jpg',
+     'Picture3.jpg', 'Picture4.jpg',
     'Picture5.png', 'Picture6.png', 'Picture7.png', 'Picture8.png', 'Picture9.png',
     'Picture10.png', 'Picture11.jpg', 'Picture12.jpg', 'Picture13.png', 'Picture14.jpg',
     'Picture15.jpg', 'Picture16.jpg', 'Picture17.jpg', 'Picture18.png', 'Picture19.jpg',

@@ -116,21 +116,27 @@ export const Quality: React.FC = () => {
           className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-8 mb-12"
         >
           <h3 className="text-2xl font-bold text-center text-gray-900 mb-6">International Certifications</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {CERTIFICATIONS.slice(0, 4).map((cert, index) => (
-              <div key={cert.id} className="text-center">
-                <img
-                  src={cert.image}
-                  alt={cert.name}
-                  className="w-12 h-12 mx-auto mb-2 object-contain"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                  }}
-                />
-                <div className="text-sm font-semibold text-gray-900">{cert.name}</div>
+              <motion.div 
+                key={cert.id} 
+                className="text-center bg-white rounded-xl p-4 shadow-md hover:shadow-lg transition-all duration-300"
+                whileHover={{ scale: 1.05, y: -3 }}
+              >
+                <div className="h-20 flex items-center justify-center mb-3">
+                  <img
+                    src={cert.image}
+                    alt={cert.name}
+                    className="max-h-full max-w-full object-contain rounded-lg"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = '/images/Phoenix_Logo.png';
+                    }}
+                  />
+                </div>
+                <div className="text-sm font-semibold text-gray-900 mb-1">{cert.name}</div>
                 <div className="text-xs text-gray-600">{cert.issuer}</div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>

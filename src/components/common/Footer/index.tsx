@@ -110,39 +110,26 @@ export const Footer: React.FC = () => {
                   }}
                 />
                 {/* Text Logo (Right) */}
-                <motion.img 
-                  src="/images/512 X 512/2.svg" 
-                  alt="Phoenix Text Logo" 
-                  className="h-12 w-auto object-contain" /* Increased from h-10 to h-12 */
-                  whileHover={{ scale: 1.1 }}
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                    const fallback = target.nextElementSibling as HTMLElement;
-                    if (fallback) fallback.style.display = 'block';
-                  }}
-                />
                 <motion.h3 
-                  className="text-3xl font-bold text-primary-400"
-                  whileHover={{ color: "#60a5fa" }}
-                  style={{display: 'none'}}
+                  className="text-2xl font-bold text-white"
+                  whileHover={{ scale: 0.9 }}
                 >
-                  Phoenix
+                  PHOENIX
                 </motion.h3>
               </div>
               <p className="text-gray-300 mb-6 leading-relaxed">
-                20+ years of excellence in baby products manufacturing. 
+                10+ years of excellence in baby products manufacturing. 
                 Your trusted partner for OEM & ODM services everywhere.
               </p>
               
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="flex items-center space-x-2">
                   <BuildingOfficeIcon className="w-5 h-5 text-primary-400" />
-                  <span className="text-sm text-gray-300">1M+ Products</span>
+                  <span className="text-sm text-gray-300">10M+ Products</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <GlobeAltIcon className="w-5 h-5 text-primary-400" />
-                  <span className="text-sm text-gray-300">10+ Years</span>
+                  <span className="text-sm text-gray-300">10+ Years of Excellence</span>
                 </div>
               </div>
 
@@ -259,7 +246,6 @@ export const Footer: React.FC = () => {
                   <PhoneIcon className="w-5 h-5 text-primary-400 mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="text-gray-300 text-sm">+91 73865 90043</p>
-                    <p className="text-gray-300 text-sm">9000700700</p>
                     <p className="text-gray-400 text-xs mt-1">24/7 Support</p>
                   </div>
                 </motion.div>

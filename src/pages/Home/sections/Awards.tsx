@@ -189,31 +189,32 @@ export const Awards: React.FC = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mb-16"
+          className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 mb-16"
         >
           {CERTIFICATIONS.map((cert, index) => (
             <motion.div
               key={cert.id}
               variants={itemVariants}
               whileHover={{ scale: 1.05, y: -5 }}
-              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center"
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center flex flex-col h-full"
             >
-              <div className="mb-4">
+              <div className="mb-4 h-40 flex items-center justify-center">
                 <img
                   src={cert.image}
                   alt={cert.name}
-                  className="w-16 h-16 mx-auto object-contain"
+                  className="max-h-full max-w-full object-contain rounded-lg"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = '/images/placeholder-cert.png';
+                    target.src = '/images/Phoenix_Logo.png';
                   }}
                 />
               </div>
-              <h4 className="text-sm font-bold text-gray-900 mb-2">{cert.name}</h4>
-              <p className="text-xs text-gray-500 mb-2">{cert.issuer}</p>
-              <div className="flex items-center justify-center">
-                <CheckBadgeIcon className="w-4 h-4 text-green-500 mr-1" />
-                <span className="text-xs text-green-600">Valid until {cert.validUntil}</span>
+              <h4 className="text-lg font-bold text-gray-900 mb-2">{cert.name}</h4>
+              <p className="text-sm text-gray-600 mb-3">{cert.issuer}</p>
+              <p className="text-xs text-gray-500 italic mb-4">{cert.description}</p>
+              <div className="mt-auto pt-3 flex items-center justify-center">
+                <CheckBadgeIcon className="w-5 h-5 text-green-500 mr-1" />
+                <span className="text-sm font-medium text-green-600">Valid until {cert.validUntil ? new Date(cert.validUntil).toLocaleDateString() : 'N/A'}</span>
               </div>
             </motion.div>
           ))}

@@ -92,54 +92,6 @@ export const Services: React.FC = () => {
 
   return (
     <section id="services" className="relative overflow-hidden">
-      {/* Hero Banner with AI Image */}
-      <div className="relative h-96 mb-4">
-        <div className="absolute inset-0">
-          <img 
-            src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-            alt="Mother and baby with feeding bottle" 
-            className="w-full h-full object-cover"
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              target.src = 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2026&q=80';
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-900/80 via-primary-800/60 to-primary-900/80"></div>
-        </div>
-        
-        <div className="relative z-10 h-full flex items-center justify-center">
-          <div className="text-center text-white">
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-4xl md:text-6xl font-bold mb-4 font-display"
-            >
-              Services We{' '}
-              <span className="text-primary-300 relative">
-                Offer
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                  className="absolute -top-2 -right-8 text-primary-300"
-                >
-                  <SparklesIcon className="w-8 h-8" />
-                </motion.div>
-              </span>
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="text-xl text-white/90 max-w-3xl mx-auto"
-            >
-              From the first sketch to the final smile on your baby's face - we're with you every step of the way
-            </motion.p>
-          </div>
-        </div>
-      </div>
 
       {/* Background Elements with Image */}
       <div className="absolute inset-0 overflow-hidden">
@@ -249,7 +201,7 @@ export const Services: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h3 className="text-3xl font-bold text-gray-800 mb-4 relative inline-block">
+          <h3 className="text-3xl font-bold text-gray-800 mb-4 relative inline-block" style={{ transform: 'none', writingMode: 'horizontal-tb', textOrientation: 'mixed' }}>
             Additional Services
             <motion.div
               initial={{ width: 0 }}
@@ -268,12 +220,11 @@ export const Services: React.FC = () => {
           {additionalServices.map((service, index) => {
             const IconComponent = service.icon;
             const serviceImages = [
-              'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80', // Custom Colors
-              'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80', // Printing Services
-              'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80', // Packaging Solutions
-              'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'  // Design Services
+              '/images/Phoenix/printing and packaging/A1.jpeg', // Custom Colors
+              '/images/Phoenix/printing and packaging/A2.jpeg', // Printing Services
+              '/images/Phoenix/printing and packaging/A3.jpeg', // Packaging Solutions
+              '/images/Phoenix/printing and packaging/A4.jpeg'  // Design Services
             ];
-            
             return (
               <motion.div
                 key={service.id}
@@ -310,7 +261,7 @@ export const Services: React.FC = () => {
                   </div>
                   
                   <div>
-                    <h4 className="text-2xl font-bold mb-3 font-display">{service.title}</h4>
+                    <h4 className="text-2xl font-bold mb-3 font-display text-white">{service.title}</h4>
                     <p className="text-white/90 leading-relaxed text-sm mb-4">{service.description}</p>
                     
                     <motion.div
@@ -366,9 +317,7 @@ export const Services: React.FC = () => {
                 <h4 className="text-lg font-bold text-secondary-900 mb-2 font-display">{process.title}</h4>
                 <p className="text-secondary-600 text-sm">{process.desc}</p>
                 
-                {index < 4 && (
-                  <div className="hidden md:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-primary-400 to-primary-500 -translate-x-1/2"></div>
-                )}
+
               </motion.div>
             ))}
           </div>

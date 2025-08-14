@@ -205,7 +205,7 @@ export const About: React.FC = () => {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img 
-                src="/images/baby_picture.jpeg"
+                src="/images/AboutImg.jpeg"
                 alt="Mother lovingly feeding her baby"
                 className="w-full h-96 object-cover"
                 onError={(e) => {
@@ -213,8 +213,8 @@ export const About: React.FC = () => {
                   target.src = "/images/Wide Neck Bottles JPEG/WN0001 - 210ml.jpg";
                 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-              <div className="absolute bottom-6 left-6 text-white">
+              <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent"></div>
+              <div className="absolute bottom-6 right-6 text-white">
                 <h4 className="text-xl font-bold mb-1">Every Moment Matters</h4>
                 <p className="text-sm opacity-90">Nurturing bonds through safe feeding</p>
               </div>
@@ -229,7 +229,7 @@ export const About: React.FC = () => {
               className="absolute -bottom-6 -left-6 bg-white rounded-xl p-4 shadow-lg border border-gray-100"
             >
               <div className="text-2xl font-bold text-primary-600">{(COMPANY_STATS.monthlyCapacity / 1000000).toFixed(1)}M+</div>
-              <div className="text-sm text-gray-600">Products</div>
+              <div className="text-sm text-gray-600">Products Manufactured</div>
             </motion.div>
           </motion.div>
         </div>
