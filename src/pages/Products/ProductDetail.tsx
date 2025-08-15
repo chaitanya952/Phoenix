@@ -84,7 +84,7 @@ export const ProductDetailPage: React.FC = () => {
       {/* Product Detail */}
       <section className="pb-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
             {/* Product Images */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -153,16 +153,16 @@ export const ProductDetailPage: React.FC = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="space-y-6">
+              <div className="space-y-3 max-w-xl w-full">
                 <div>
-                  <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                  <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
                     {product.description}
                   </h1>
                   
                   {/* Product Details Grid */}
-                  <div className="bg-gray-50 rounded-2xl p-6 mb-6">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Product Specifications</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                  <div className="bg-gray-50 rounded-xl p-4 mb-3">
+                    <h3 className="text-base font-semibold text-gray-900 mb-2">Product Specifications</h3>
+                    <div className="grid grid-cols-1 gap-2 text-sm">
                       {product.sNo && (
                         <div className="flex justify-between">
                           <span className="font-semibold text-gray-700">S.No:</span>
@@ -219,15 +219,9 @@ export const ProductDetailPage: React.FC = () => {
                           <span className="text-gray-600">{product.monoDimensions}</span>
                         </div>
                       )}
-                      {product.innerDimensions && (
-                        <div className="flex justify-between">
-                          <span className="font-semibold text-gray-700">Inner Dimensions:</span>
-                          <span className="text-gray-600">{product.innerDimensions}</span>
-                        </div>
-                      )}
                       {product.masterDimensions && (
                         <div className="flex justify-between">
-                          <span className="font-semibold text-gray-700">Master Dimensions:</span>
+                          <span className="font-semibold text-gray-700">Outer Dimensions:</span>
                           <span className="text-gray-600">{product.masterDimensions}</span>
                         </div>
                       )}
@@ -248,46 +242,21 @@ export const ProductDetailPage: React.FC = () => {
                   </span>
                 </div>
 
-                {/* Pricing Information */}
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Pricing Information</h3>
-                  <div className="bg-gray-50 rounded-2xl p-6">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <span className="font-semibold text-gray-700">INR Price:</span>
-                        <span className="ml-2 text-lg font-bold text-primary-600">₹{product.inr}</span>
-                      </div>
-                      <div>
-                        <span className="font-semibold text-gray-700">USD Price:</span>
-                        <span className="ml-2 text-lg font-bold text-primary-600">${product.usd.toFixed(2)}</span>
-                      </div>
-                      <div>
-                        <span className="font-semibold text-gray-700">Inner Pack:</span>
-                        <span className="ml-2 text-gray-600">{product.inner} units</span>
-                      </div>
-                      <div>
-                        <span className="font-semibold text-gray-700">Outer Pack:</span>
-                        <span className="ml-2 text-gray-600">{product.outer} units</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
                 {/* Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 pt-6">
+                <div className="flex flex-col sm:flex-row gap-2 pt-3">
                   <Link 
                     to={`/contact?product=${encodeURIComponent(product.description)}&model=${encodeURIComponent(product.modelNo)}`}
                     className="flex-1"
                   >
                     <Button 
-                      size="lg" 
+                      size="md" 
                       className="bg-primary-600 hover:bg-primary-700 text-white w-full"
                     >
                       Request Quote
                     </Button>
                   </Link>
                   <Button 
-                    size="lg" 
+                    size="md" 
                     variant="outline"
                     className="border-primary-600 text-primary-600 hover:bg-primary-50 flex-1"
                   >

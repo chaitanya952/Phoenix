@@ -13,7 +13,7 @@ import {
   PaperAirplaneIcon
 } from '@heroicons/react/24/outline';
 import { Button } from '../../components/common/Button';
-import emailjs from '@emailjs/browser';
+// import emailjs from '@emailjs/browser';
 
 
 export const ContactPage: React.FC = () => {
@@ -28,10 +28,8 @@ export const ContactPage: React.FC = () => {
     inquiryType: 'general'
   });
 
-  // EmailJS env vars (configure in Vercel Project Settings > Environment Variables)
-  const EMAILJS_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID as string;
-  const EMAILJS_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID as string;
-  const EMAILJS_PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY as string;
+  // Backend API endpoint (Vercel serverless function)
+  const CONTACT_API_URL = process.env.REACT_APP_CONTACT_API_URL || '/api/contact';
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   // Pre-fill form if product inquiry parameters are present
@@ -64,33 +62,32 @@ export const ContactPage: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
-        throw new Error('EmailJS environment variables are not configured');
+      const resp = await fetch(CONTACT_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          phone: formData.phone,
+          subject: formData.subject || `New ${formData.inquiryType} inquiry`,
+          message: formData.message,
+          inquiryType: formData.inquiryType,
+        }),
+      });
+
+      if (!resp.ok) {
+        const data = await resp.json().catch(() => ({} as any));
+        const status = resp.status;
+        const msg = data?.error || `Request failed (${status})`;
+        throw new Error(msg);
       }
-
-      // Template params must match your EmailJS template variable names
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        company: formData.company,
-        phone: formData.phone,
-        subject: formData.subject || `New ${formData.inquiryType} inquiry` ,
-        message: formData.message,
-        inquiry_type: formData.inquiryType,
-        to_email: 'bda@phoenixplastowares.com'
-      };
-
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        templateParams,
-        { publicKey: EMAILJS_PUBLIC_KEY }
-      );
 
       setIsSubmitted(true);
     } catch (err) {
       console.error(err);
-      alert('There was a problem sending your message. Please try again.');
+      const msg = err instanceof Error ? err.message : '';
+      alert(`There was a problem sending your message. ${msg ? 'Details: ' + msg : 'Please try again.'}`);
     } finally {
       setIsSubmitting(false);
     }

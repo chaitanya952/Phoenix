@@ -35,36 +35,40 @@ export const NewsPage: React.FC = () => {
   const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 relative overflow-hidden bg-gradient-to-r from-primary-600 to-primary-700">
-        <div className="absolute inset-0 pointer-events-none">
-          <img
-            src="/images/News/world-map.svg"
-            alt=""
-            className="w-full h-full object-cover opacity-25 mix-blend-soft-light"
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+      {/* Hero Image Section */}
+      <div className="relative w-full h-80 md:h-96 overflow-hidden">
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2026&q=80" 
+            alt="About Phoenix Baby Products" 
+            className="w-full h-full object-cover"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
-              target.style.display = 'none';
+              target.src = '/images/Phoenix_Logo.png';
             }}
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary-900/70 to-primary-800/70"></div>
         </div>
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 h-full flex items-center justify-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center text-white"
+            className="text-center text-white relative flex flex-col items-center"
           >
-            <h1 className="text-4xl md:text-5xl text-white font-bold mb-6">
-              Latest News & Updates
-            </h1>
+        
+            <div className="relative inline-block z-10">
+              <h1 className="relative text-4xl md:text-5xl text-white font-bold mb-6">
+                Latest News & Updates
+              </h1>
+            </div>
             <p className="text-xl text-primary-100 max-w-3xl mx-auto">
               Stay updated with Phoenix's latest developments, industry insights, and company milestones.
             </p>
           </motion.div>
         </div>
-      </section>
+      </div>
 
       {/* News Section */}
       <section className="py-16">

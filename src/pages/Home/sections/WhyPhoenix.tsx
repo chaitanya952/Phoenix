@@ -285,24 +285,7 @@ export const WhyPhoenix: React.FC = () => {
             </motion.div>
           </motion.div>
 
-          {/* Call to Action */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <motion.button
-              onClick={scrollToDetailedSection}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-primary px-8 py-4 text-lg font-semibold rounded-xl inline-flex items-center gap-2"
-            >
-              Know More About Phoenix
-              <ChevronRightIcon className="w-5 h-5" />
-            </motion.button>
-          </motion.div>
+
         </motion.div>
       </div>
     </section>

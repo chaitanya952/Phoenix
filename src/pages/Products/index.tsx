@@ -48,7 +48,7 @@ export const ProductsPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50">
       {/* Baby-friendly Hero Banner */}
-      <section className="relative h-[70vh] overflow-hidden">
+      <section className="relative h-[50vh] overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
           <img 
@@ -91,22 +91,6 @@ export const ProductsPage: React.FC = () => {
                 Discover our complete range of premium baby products designed with love, 
                 safety, and innovation for your little one's journey.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-white text-primary-600 px-8 py-3 rounded-xl font-bold hover:bg-white/95 transition-colors shadow-lg"
-                >
-                  Explore Categories
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-white/20 backdrop-blur-sm text-white px-8 py-3 rounded-xl font-bold hover:bg-white/30 transition-colors border border-white/30"
-                >
-                  Safety Information
-                </motion.button>
-              </div>
             </motion.div>
           </div>
         </div>

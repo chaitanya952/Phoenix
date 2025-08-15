@@ -235,7 +235,7 @@ const upcomingDevelopmentImages = [
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-5xl md:text-7xl font-bold mb-6 font-display leading-tight"
             >
-              <span className="text-white">Innovation & </span> &  <span className="text-primary-300">Development</span>
+              <span className="text-white">Innovation & </span><span className="text-white">Development</span>
             </motion.h1>
             
             <motion.p
@@ -278,7 +278,7 @@ const upcomingDevelopmentImages = [
       </div>
       
       {/* Header Section */}
-      <section className="pt-16 pb-16 relative overflow-hidden">
+      <section className="pt-8 pb-8 relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 hero-pattern opacity-10"></div>
           <motion.div
@@ -325,7 +325,7 @@ const upcomingDevelopmentImages = [
       </section>
 
       {/* Innovation Approach - Modern Design */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-12 relative overflow-hidden">
         {/* Background elements */}
         <div className="absolute inset-0 pointer-events-none">
           <motion.div 
@@ -354,7 +354,7 @@ const upcomingDevelopmentImages = [
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-12"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -403,7 +403,7 @@ const upcomingDevelopmentImages = [
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
           >
             {innovationApproaches.map((approach, index) => (
               <motion.div
@@ -418,7 +418,7 @@ const upcomingDevelopmentImages = [
                     whileHover={{ rotate: [0, -10, 10, -10, 0] }}
                     transition={{ duration: 0.5 }}
                   >
-                    <div className="text-white">
+                    <div className="text-gray-700">
                       {approach.icon}
                     </div>
                   </motion.div>
@@ -442,7 +442,7 @@ const upcomingDevelopmentImages = [
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="mb-24"
+            className="mb-16"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -851,7 +851,7 @@ const upcomingDevelopmentImages = [
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="mb-24"
+            className="mb-16"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -1130,7 +1130,7 @@ const upcomingDevelopmentImages = [
       </section>
 
       {/* Innovation Process Flow - Modern Design */}
-      <section className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
         {/* Background elements */}
         <div className="absolute inset-0 pointer-events-none">
           <motion.div 
@@ -1209,7 +1209,7 @@ const upcomingDevelopmentImages = [
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="mb-20 relative"
+            className="mb-12 relative"
           >
             {/* Removed per request: Process Flow image block */}
             
@@ -1241,7 +1241,7 @@ const upcomingDevelopmentImages = [
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="mb-24"
+            className="mb-16"
           >
             <div className="relative rounded-3xl overflow-hidden">
               {/* Background with animated gradient */}

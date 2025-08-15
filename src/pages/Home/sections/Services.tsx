@@ -265,12 +265,7 @@ export const Services: React.FC = () => {
                     <h4 className="text-2xl font-bold mb-3 font-display text-white">{service.title}</h4>
                     <p className="text-white/90 leading-relaxed text-sm mb-4">{service.description}</p>
                     
-                    <motion.div
-                      whileHover={{ x: 5 }}
-                      className="flex items-center text-sm font-semibold"
-                    >
-                      <ArrowTopRightOnSquareIcon className="w-4 h-4 ml-2" />
-                    </motion.div>
+
                   </div>
                 </div>
               </motion.div>
