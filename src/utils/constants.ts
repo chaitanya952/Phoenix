@@ -1312,19 +1312,8 @@ export const NEWS_ITEMS: NewsItem[] = [
   readTime: '5 min read'
 },
 {
-  id: '5',
-  title: "Behind the Scenes How Our Baby Bottles Are Made",
-  excerpt: "Get an exclusive look at how our baby bottles are carefully crafted from start to finish—using only BPA-free, non-toxic, high-quality materials for your baby safety.",
-  content: "It all begins with the right foundation: safe, non-toxic, high-quality materials. We work with carefully selected, FDA-approved materials that are BPA-free, phthalate-free, and lead-free. Each material—whether medical-grade silicone, borosilicate glass, or premium BPA-free polypropylene—is chosen for durability, safety, and performance under real-life parenting conditions.",
-  category: "Safety",
-  image: "/images/News/1.jpeg",
-  date: '2024-03-01',
-  author: 'R&D Team',
-  readTime: '5 min read'
-},
-{
   id: '6',
-  title: "The Truth About BPA-Free Baby Bottles",
+  title: "The Truth About BPA: Why Safe Materials Matter in Baby Bottles",
   excerpt: "Learn why BPA-free matters, the risks of BPA, and how to choose the safest bottles for your baby.",
   content: `As parents, nothing matters more than the safety and well-being of our children. One topic that continues to raise questions is BPA in baby bottles. BPA, or bisphenol A, is a chemical once common in plastics, but research has shown it can leach into food and beverages, potentially disrupting hormones and impacting development. 
 
