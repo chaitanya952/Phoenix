@@ -24,7 +24,7 @@ export const generateProductImagePath = (product: any, category: any): string =>
   } else {
     // For other products like Teethers & Pacifiers (TP0001) - use modelNo directly
     // Determine extension based on folder name
-    const extension = (folderName.includes('Others') || folderName.includes('MotherCare')) ? '.jpg' : '.JPG';
+    const extension =  '.jpg';
     imagePath = `/images/${folderName}/${product.modelNo}${extension}`;
   }
   

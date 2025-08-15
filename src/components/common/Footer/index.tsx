@@ -149,7 +149,7 @@ export const Footer: React.FC = () => {
 
                 {/* Facebook */}
                 <motion.a
-                  href="#"
+                  href="https://www.facebook.com/share/1EVqbc1LE2/"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -2 }}
@@ -164,7 +164,7 @@ export const Footer: React.FC = () => {
 
                 {/* Instagram */}
                 <motion.a
-                  href="#"
+                  href="https://www.instagram.com/phoenix_plastowares/?igsh=MW5rc3E1cnJzZXFxbQ%3D%3D#"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -2 }}
@@ -179,7 +179,7 @@ export const Footer: React.FC = () => {
 
                 {/* YouTube */}
                 <motion.a
-                  href="#"
+                  href="https://www.youtube.com/@PhoenixPlastowares"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -2 }}

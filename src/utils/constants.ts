@@ -175,6 +175,60 @@ export const PRODUCTS: Product[] = [
         heatResistance: 'Can withstand 180°C-200°C',
         dropResistance: 'Excellent structural integrity',
         durability: 'Superior long-term performance'
+      },
+      {
+        id: '3-3',
+        name: 'RN0041 Standard Bottle',
+        description: 'Reliable standard neck bottle with multiple capacity options',
+        image: '/images/Standard Neck Bottles With Handle  JPEG/RN0041 - 125ml.jpg',
+        material: 'PP (Polypropylene)',
+        features: ['Standard Neck', 'Universal Compatibility', 'Lightweight', 'BPA-Free', 'Cost Effective'],
+        specifications: {
+          'Material': 'PP (Polypropylene)',
+          'Capacity': '125ml, 250ml',
+          'Age Range': '0-24 months',
+          'Certification': 'FDA, LFGB, CPC'
+        },
+        transparency: 'Clear transparent',
+        heatResistance: 'Up to 110°C-120°C',
+        dropResistance: 'Good basic protection',
+        durability: 'Reliable everyday use'
+      },
+      {
+        id: '3-4',
+        name: 'RN0047 Standard Bottle',
+        description: 'Standard neck bottle with larger capacity options',
+        image: '/images/Standard Neck Bottles With Handle  JPEG/RN0047 - 180ml.jpg',
+        material: 'PP (Polypropylene)',
+        features: ['Standard Neck', 'Larger Capacity', 'Universal Nipples', 'BPA-Free', 'Easy to Clean'],
+        specifications: {
+          'Material': 'PP (Polypropylene)',
+          'Capacity': '180ml, 300ml',
+          'Age Range': '0-24 months',
+          'Certification': 'FDA, LFGB, CPC'
+        },
+        transparency: 'Clear transparent',
+        heatResistance: 'Up to 110°C-120°C',
+        dropResistance: 'Good basic protection',
+        durability: 'Reliable everyday use'
+      },
+      {
+        id: '3-5',
+        name: 'RN0056 Standard Bottle',
+        description: 'Standard neck bottle with medium to large capacity range',
+        image: '/images/Standard Neck Bottles With Handle  JPEG/RN0056 - 180ml.jpg',
+        material: 'PP (Polypropylene)',
+        features: ['Standard Neck', 'Medium-Large Capacity', 'Universal Compatibility', 'BPA-Free', 'Durable Design'],
+        specifications: {
+          'Material': 'PP (Polypropylene)',
+          'Capacity': '180ml, 270ml',
+          'Age Range': '0-24 months',
+          'Certification': 'FDA, LFGB, CPC'
+        },
+        transparency: 'Clear transparent',
+        heatResistance: 'Up to 110°C-120°C',
+        dropResistance: 'Good basic protection',
+        durability: 'Reliable everyday use'
       }
     ]
   },
@@ -185,7 +239,7 @@ export const PRODUCTS: Product[] = [
     image: '/images/Standard Neck Bottles With Handle  JPEG/RN0029 - 125ml.jpg',
     category: 'Standard Neck Feeding Bottles',
     features: ['Standard Neck', 'Ergonomic Handles', 'Easy Grip', 'Universal Compatibility', 'BPA Free'],
-    volume: '125 - 180 ml',
+    volume: '125 - 300 ml',
     specialFeatures: ['handle'],
     material: 'food grade plastic',
     ageGroup: '3 to 6',
@@ -200,6 +254,60 @@ export const PRODUCTS: Product[] = [
         specifications: {
           'Material': 'PP (Polypropylene)',
           'Capacity': '125ml, 250ml',
+          'Age Range': '3+ months',
+          'Certification': 'FDA, LFGB, CPC'
+        },
+        transparency: 'Clear with colored handles',
+        heatResistance: 'Up to 110°C-120°C',
+        dropResistance: 'Enhanced with handle support',
+        durability: 'Reliable handle attachment'
+      },
+      {
+        id: '4-2',
+        name: 'RN0041 Handle Bottle',
+        description: 'Standard neck bottle with ergonomic handles for easy grip',
+        image: '/images/Standard Neck Bottles With Handle  JPEG/RN0041 - 125ml.jpg',
+        material: 'PP (Polypropylene)',
+        features: ['Standard Neck', 'Ergonomic Handles', 'Easy Grip', 'BPA-Free', 'Lightweight'],
+        specifications: {
+          'Material': 'PP (Polypropylene)',
+          'Capacity': '125ml, 250ml',
+          'Age Range': '3+ months',
+          'Certification': 'FDA, LFGB, CPC'
+        },
+        transparency: 'Clear with colored handles',
+        heatResistance: 'Up to 110°C-120°C',
+        dropResistance: 'Enhanced with handle support',
+        durability: 'Reliable handle attachment'
+      },
+      {
+        id: '4-3',
+        name: 'RN0047 Handle Bottle',
+        description: 'Standard neck bottle with handles for larger capacity feeding',
+        image: '/images/Standard Neck Bottles With Handle  JPEG/RN0047 - 180ml.jpg',
+        material: 'PP (Polypropylene)',
+        features: ['Standard Neck', 'Larger Capacity', 'Comfortable Handles', 'BPA-Free', 'Easy Clean'],
+        specifications: {
+          'Material': 'PP (Polypropylene)',
+          'Capacity': '180ml, 300ml',
+          'Age Range': '3+ months',
+          'Certification': 'FDA, LFGB, CPC'
+        },
+        transparency: 'Clear with colored handles',
+        heatResistance: 'Up to 110°C-120°C',
+        dropResistance: 'Enhanced with handle support',
+        durability: 'Reliable handle attachment'
+      },
+      {
+        id: '4-4',
+        name: 'RN0056 Handle Bottle',
+        description: 'Standard neck bottle with handles for medium to large capacity',
+        image: '/images/Standard Neck Bottles With Handle  JPEG/RN0056 - 180ml.jpg',
+        material: 'PP (Polypropylene)',
+        features: ['Standard Neck', 'Medium-Large Capacity', 'Comfortable Handles', 'BPA-Free', 'Durable Design'],
+        specifications: {
+          'Material': 'PP (Polypropylene)',
+          'Capacity': '180ml, 270ml',
           'Age Range': '3+ months',
           'Certification': 'FDA, LFGB, CPC'
         },
