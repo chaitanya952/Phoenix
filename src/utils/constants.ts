@@ -1312,16 +1312,35 @@ export const NEWS_ITEMS: NewsItem[] = [
   readTime: '5 min read'
 },
 {
+  id: '5',
+  title: "Behind the Scenes How Our Baby Bottles Are Made",
+  excerpt: "Get an exclusive look at how our baby bottles are carefully crafted from start to finish—using only BPA-free, non-toxic, high-quality materials for your baby safety.",
+  content: "It all begins with the right foundation: safe, non-toxic, high-quality materials. We work with carefully selected, FDA-approved materials that are BPA-free, phthalate-free, and lead-free. Each material—whether medical-grade silicone, borosilicate glass, or premium BPA-free polypropylene—is chosen for durability, safety, and performance under real-life parenting conditions.",
+  category: "Safety",
+  image: "/images/News/1.jpeg",
+  date: '2024-03-01',
+  author: 'R&D Team',
+  readTime: '5 min read'
+},
+{
   id: '6',
-  title: 'Top 5 Tips to Prevent Gas and Colic in Bottle-Fed Babies',
-  excerpt: 'Discover simple yet effective bottle-feeding practices to reduce gas, colic, and discomfort in your baby’s tummy.',
-  content: 'Nothing is harder for a parent than seeing their baby cry in discomfort—especially when it’s from gas or colic. While some fussiness is normal, excessive crying, bloating, or visible discomfort during or after feeding may point to gas or colic.\n\nThe good news? With the right bottle-feeding practices and tools, you can significantly reduce these issues. Here are our Top 5 Tips to Prevent Gas and Colic in Bottle-Fed Babies:\n\n1. Use an Anti-Colic Bottle — Standard bottles can trap air, which your baby might swallow during feeding, leading to gas and discomfort. Anti-colic bottles with venting systems, slow flow rates, and soft nipples can help.\n\n2. Feed in an Upright Position — Hold your baby at a 45-degree angle and keep the bottle tilted to fill the nipple with milk. Keep them upright for 20–30 minutes after feeding to aid digestion.\n\n3. Choose the Right Nipple Flow — A flow that’s too fast or too slow can cause air intake. Start with a slow-flow nipple and adjust as your baby grows.\n\n4. Take Breaks and Burp Often — Burp your baby every 2–3 ounces or halfway through the bottle to release trapped air. Try over-the-shoulder, upright, or lap positions.\n\n5. Watch for Overfeeding — Overfeeding can cause discomfort, bloating, and gas. Follow your baby’s hunger cues and avoid pushing them to finish the bottle.\n\nThese steps can make a big difference in making feeding a more comfortable and soothing experience for your little one.',
-  image: '/images/News/1.jpeg',
-  date: '2024-02-01',
-  category: 'Parenting',
+  title: "The Truth About BPA-Free Baby Bottles",
+  excerpt: "Learn why BPA-free matters, the risks of BPA, and how to choose the safest bottles for your baby.",
+  content: `As parents, nothing matters more than the safety and well-being of our children. One topic that continues to raise questions is BPA in baby bottles. BPA, or bisphenol A, is a chemical once common in plastics, but research has shown it can leach into food and beverages, potentially disrupting hormones and impacting development. 
+
+Infants are especially vulnerable, and studies have linked BPA exposure to developmental issues, reproductive problems, and certain health risks. While the FDA banned BPA in baby bottles and sippy cups in 2012, not all BPA-free products are equally safe—some use replacements like BPS or BPF, which may pose similar concerns.
+
+For the safest choice, look for bottles made from glass, stainless steel, medical-grade silicone, or certified BPA-free plastics tested by third-party labs. Avoid heating plastic bottles, replace damaged bottles, and choose trusted brands transparent about their materials.
+
+Choosing safe baby bottles isn’t about fear—it’s about informed choices. Your baby deserves nothing less than the safest start in life.`,
+  category: "Safety",
+  image: "/images/News/1.jpeg",
+  date: '2024-03-01',
   author: 'R&D Team',
   readTime: '5 min read'
 }
+
+
 
 ];
 

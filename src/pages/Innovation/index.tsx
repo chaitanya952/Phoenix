@@ -758,7 +758,7 @@ const upcomingDevelopmentImages = [
             className="mb-24 relative"
           >
             <div className="absolute inset-0 rounded-3xl overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-orange-600"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary-100/70 to-orange-100/70"></div>
               
               {/* Modern geometric patterns */}
               <motion.div 
@@ -794,9 +794,9 @@ const upcomingDevelopmentImages = [
                   whileInView={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.6 }}
                   viewport={{ once: true }}
-                  className="inline-block p-4 bg-white/10 backdrop-blur-sm rounded-2xl mb-6"
+                  className="inline-block p-4 bg-white/60 backdrop-blur-sm rounded-2xl mb-6 border border-white/40"
                 >
-                  <SparklesIcon className="w-16 h-16 text-white" />
+                  <SparklesIcon className="w-16 h-16 text-primary-600" />
                 </motion.div>
                 
                 <motion.h3 
@@ -804,7 +804,7 @@ const upcomingDevelopmentImages = [
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.1 }}
                   viewport={{ once: true }}
-                  className="text-4xl font-bold mb-4 text-white"
+                  className="text-4xl font-bold mb-4 text-gray-800"
                 >
                   Collaborative Innovation
                 </motion.h3>
@@ -814,7 +814,7 @@ const upcomingDevelopmentImages = [
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                   viewport={{ once: true }}
-                  className="text-xl text-white/90 max-w-3xl mx-auto"
+                  className="text-xl text-gray-700 max-w-3xl mx-auto"
                 >
                   We collaborate with experts and partners to ensure our innovations meet real-world needs 
                   and exceed expectations in safety, comfort, and functionality.
@@ -830,15 +830,15 @@ const upcomingDevelopmentImages = [
                     transition={{ delay: index * 0.1, duration: 0.6 }}
                     viewport={{ once: true }}
                     whileHover={{ scale: 1.05, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
-                    className="flex flex-col items-center text-center bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20 hover:bg-white/20 transition-all duration-300"
+                    className="flex flex-col items-center text-center bg-white/60 backdrop-blur-sm rounded-xl p-8 border border-white/40 hover:bg-white/80 transition-all duration-300"
                   >
-                    <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mb-4">
-                      {index === 0 && <UserGroupIcon className="w-6 h-6 text-white" />}
-                      {index === 1 && <AcademicCapIcon className="w-6 h-6 text-white" />}
-                      {index === 2 && <GlobeAltIcon className="w-6 h-6 text-white" />}
+                    <div className="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center mb-4">
+                      {index === 0 && <UserGroupIcon className="w-6 h-6 text-primary-600" />}
+                      {index === 1 && <AcademicCapIcon className="w-6 h-6 text-primary-600" />}
+                      {index === 2 && <GlobeAltIcon className="w-6 h-6 text-primary-600" />}
                     </div>
-                    <span className="text-white text-lg font-medium">{collaboration}</span>
-                    <div className="mt-4 w-12 h-1 bg-white/30 rounded-full"></div>
+                    <span className="text-gray-800 text-lg font-medium">{collaboration}</span>
+                    <div className="mt-4 w-12 h-1 bg-primary-200 rounded-full"></div>
                   </motion.div>
                 ))}
               </div>
@@ -1098,7 +1098,7 @@ const upcomingDevelopmentImages = [
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-r from-primary-600 to-orange-600 rounded-2xl p-12 text-white text-center"
+            className="bg-gradient-to-r from-primary-100/80 to-orange-100/80 backdrop-blur-sm rounded-2xl p-12 text-gray-800 text-center border border-primary-200/50"
           >
             <h3 className="text-3xl font-bold mb-6">🏆 Compliance Standards</h3>
             <p className="text-xl opacity-90 mb-8">
@@ -1118,10 +1118,10 @@ const upcomingDevelopmentImages = [
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                   viewport={{ once: true }}
-                  className="bg-white/10 rounded-xl p-4 hover:bg-white/20 transition-colors"
+                  className="bg-white/60 backdrop-blur-sm rounded-xl p-4 hover:bg-white/80 transition-colors border border-white/40"
                 >
-                  <div className="text-lg font-bold mb-2">{standard.name}</div>
-                  <div className="text-sm opacity-80">{standard.desc}</div>
+                  <div className="text-lg font-bold mb-2 text-gray-800">{standard.name}</div>
+                  <div className="text-sm text-gray-600">{standard.desc}</div>
                 </motion.div>
               ))}
             </div>
@@ -1245,7 +1245,7 @@ const upcomingDevelopmentImages = [
           >
             <div className="relative rounded-3xl overflow-hidden">
               {/* Background with animated gradient */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-orange-600 z-0"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary-100/70 to-orange-100/70 z-0"></div>
               
               <motion.div 
                 className="absolute inset-0 z-0 opacity-30"
@@ -1267,9 +1267,9 @@ const upcomingDevelopmentImages = [
                     whileInView={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="inline-block p-4 bg-white/10 backdrop-blur-sm rounded-2xl mb-6"
+                    className="inline-block p-4 bg-white/60 backdrop-blur-sm rounded-2xl mb-6 border border-white/40"
                   >
-                    <CogIcon className="w-16 h-16 text-white" />
+                    <CogIcon className="w-16 h-16 text-primary-600" />
                   </motion.div>
                   
                   <motion.h3 
@@ -1277,7 +1277,7 @@ const upcomingDevelopmentImages = [
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.1 }}
                     viewport={{ once: true }}
-                    className="text-4xl font-bold mb-4 text-white"
+                    className="text-4xl font-bold mb-4 text-gray-800"
                   >
                     World-Class Innovation Facilities
                   </motion.h3>
@@ -1287,7 +1287,7 @@ const upcomingDevelopmentImages = [
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                     viewport={{ once: true }}
-                    className="text-xl text-white/90 max-w-3xl mx-auto"
+                    className="text-xl text-gray-700 max-w-3xl mx-auto"
                   >
                     Our cutting-edge facilities combine advanced technology with meticulous craftsmanship 
                     to deliver products that exceed global standards.
@@ -1349,14 +1349,14 @@ const upcomingDevelopmentImages = [
                         />
                       </div>
                       
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/60 to-transparent opacity-90 group-hover:opacity-95 transition-opacity duration-300"></div>
                       
                       <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                         <div className={`${facility.color} p-3 rounded-lg inline-block mb-3 shadow-lg`}>
                           {facility.icon}
                         </div>
-                        <h4 className="text-xl font-bold text-white mb-2">{facility.title}</h4>
-                        <p className="text-white/80 text-sm transform opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100">{facility.description}</p>
+                        <h4 className="text-xl font-bold text-gray-800 mb-2">{facility.title}</h4>
+                        <p className="text-gray-600 text-sm transform opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100">{facility.description}</p>
                       </div>
                     </motion.div>
                   ))}

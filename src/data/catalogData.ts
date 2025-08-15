@@ -4112,7 +4112,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0009',
- description: 'Rio Sipper with Soft Spout',
+ description: 'Rio Sipper with Soft Spout - 180ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4125,7 +4125,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0010',
- description: 'Rio Sipper with Hard Spout',
+ description: 'Rio Sipper with Hard Spout - 180ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4138,7 +4138,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0011',
- description: 'Rio Straw Sipper Rotate',
+ description: 'Rio Straw Sipper Rotate - 180ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4151,7 +4151,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0012',
- description: 'Rio Duck Straw Sipper',
+ description: 'Rio Duck Straw Sipper - 180ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4164,7 +4164,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0013',
- description: 'Rio 360 Sipper',
+ description: 'Rio 360 Sipper - 180ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4177,7 +4177,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0014',
- description: 'Rio Straw Sipper Flip Style',
+ description: 'Rio Straw Sipper Flip Style - 180ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4190,7 +4190,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0015',
- description: 'Bummer Handle Dolphin Straw Sipper',
+ description: 'Bummer Handle Dolphin Straw Sipper - 200ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4203,7 +4203,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0016',
- description: 'Bummer Handle Soft Spout Sipper',
+ description: 'Bummer Handle Soft Spout Sipper - 200ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4216,7 +4216,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0017',
- description: 'Bummer Handle Hard Spout Sipper',
+ description: 'Bummer Handle Hard Spout Sipper - 200ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4229,7 +4229,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0018',
- description: 'Bummer Handle Flip Straw Sipper',
+ description: 'Bummer Handle Flip Straw Sipper - 200ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4242,7 +4242,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0019',
- description: 'Bummer Handle Rotate Straw Sipper',
+ description: 'Bummer Handle Rotate Straw Sipper - 200ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4255,7 +4255,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0020',
- description: 'Bummer Handle 360 Cup',
+ description: 'Bummer Handle 360 Cup - 200ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4268,7 +4268,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0021',
- description: 'Bunty Sipper with Duck Straw',
+ description: 'Bunty Sipper with Duck Straw - 180ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4281,7 +4281,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0022',
- description: 'Bunty Sipper with Slip Straw',
+ description: 'Bunty Sipper with Slip Straw - 180ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4294,7 +4294,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0023',
- description: 'Bunty Sipper with Trix Straw',
+ description: 'Bunty Sipper with Trix Straw - 180ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4307,7 +4307,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0024',
- description: 'Bunty Handle Soft Spout Sipper',
+ description: 'Bunty Handle Soft Spout Sipper - 180ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4320,7 +4320,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0025',
- description: 'Sport Sipper - Soft Spout',
+ description: 'Sport Sipper - Soft Spout - 300ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4333,7 +4333,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0026',
- description: 'Sport Sipper - Hard Spout',
+ description: 'Sport Sipper - Hard Spout - 300ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4346,7 +4346,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0027',
- description: 'Sport Sipper - Duck Straw',
+ description: 'Sport Sipper - Duck Straw - 300ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4359,7 +4359,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0028',
- description: 'Sport Sipper - Flip Straw',
+ description: 'Sport Sipper - Flip Straw - 300ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4372,7 +4372,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0029',
- description: 'Sport Sipper - Rotate Straw',
+ description: 'Sport Sipper - Rotate Straw - 300ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4385,7 +4385,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0030',
- description: 'Sport Sipper - 360 Cup',
+ description: 'Sport Sipper - 360 Cup - 300ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4398,7 +4398,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0031',
- description: 'Bozo Sipper - Soft Spout',
+ description: 'Bozo Sipper - Soft Spout - 300ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4411,7 +4411,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0032',
- description: 'Bozo Sipper - Hard Spout',
+ description: 'Bozo Sipper - Hard Spout - 300ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4424,7 +4424,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0033',
- description: 'Bozo Sipper - Duck Straw',
+ description: 'Bozo Sipper - Duck Straw - 300ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4437,7 +4437,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0034',
- description: 'Bozo Sipper - Flip Straw',
+ description: 'Bozo Sipper - Flip Straw - 300ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4450,7 +4450,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0035',
- description: 'Bozo Sipper - Rotate Sipper',
+ description: 'Bozo Sipper - Rotate Sipper - 300ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4463,7 +4463,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0036',
- description: 'Bozo Sipper - 360 Cup',
+ description: 'Bozo Sipper - 360 Cup - 300ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4476,7 +4476,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0037',
- description: 'Momo Sipper - Soft Spout - 270ml',
+ description: 'Momo Sipper - Soft Spout - 240ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -4619,7 +4619,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0048',
- description: 'Viva Straw Sipper - 150ml',
+ description: 'Viva Straw Sipper - 210ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
@@ -5217,7 +5217,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
  },
  {
  modelNo: 'SP0094',
- description: 'KK Hard Spout Sipper',
+ description: 'KK Hard Spout Sipper - 180ml',
  packaging: 'Header Card',
  inner: 12,
  outer: 144,
