@@ -1153,7 +1153,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     title: 'Behind the Scenes: How Our Baby Bottles Are Made',
     excerpt: 'Take an exclusive look at our transparent manufacturing process, from selecting FDA-approved materials to rigorous quality testing.',
     content: 'When it comes to your babys health, transparency matters. We are pulling back the curtain to show you how our baby bottles are carefully crafted from start to finish. Our process begins with choosing the safest materials - BPA-free, phthalate-free, and lead-free components that are FDA-approved and tested for food safety compliance...',
-    image: '/images/news/manufacturing-process.jpg',
+    image: '/images/News/BTS.jpeg',
     date: '2024-01-15',
     category: 'Manufacturing',
     author: 'Production Team',
@@ -1164,7 +1164,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     title: 'How We Ensure Every Bottle Meets Safety Standards',
     excerpt: 'Discover our comprehensive safety protocols, from laboratory testing to international compliance standards.',
     content: 'When it comes to feeding your baby, nothing matters more than safety. Every bottle we produce goes through rigorous testing and quality control processes to ensure it meets—and often exceeds—global safety standards...',
-    image: '/images/news/safety-testing.jpg',
+    image: '/images/News/3.jpeg',
     date: '2024-01-10',
     category: 'Safety',
     author: 'Quality Assurance Team',
@@ -1175,7 +1175,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     title: 'Signs Your Baby Is Ready to Transition from Bottle to Cup',
     excerpt: 'Expert guidance on recognizing when your little one is ready for this important developmental milestone.',
     content: 'As your baby grows, so do their feeding needs. Most pediatricians recommend starting the transition around 12 months and fully weaning off bottles by 18 months. Key signs of readiness include sitting up independently, showing interest in what you are drinking, and demonstrating feeding independence...',
-    image: '/images/news/bottle-to-cup-transition.jpg',
+    image: '/images/News/4.jpeg',
     date: '2024-01-05',
     category: 'Child Development',
     author: 'Pediatric Consultants',
@@ -1186,12 +1186,35 @@ export const NEWS_ITEMS: NewsItem[] = [
     title: 'Why We Use Medical-Grade Silicone in Our Nipples',
     excerpt: 'Learn about the superior safety and performance benefits of medical-grade silicone for your baby feeding experience.',
     content: 'Medical-grade silicone is a high-purity, hypoallergenic material specifically tested and approved for medical and food applications. Its free from BPA, phthalates, PVC, latex, and harmful additives, making it ideal for baby bottle nipples that go directly into your little ones mouth...',
-    image: '/images/news/medical-grade-silicone.jpg',
+    image: '/images/News/5.jpeg',
     date: '2024-01-01',
     category: 'Innovation',
     author: 'R&D Team',
     readTime: '4 min read'
   },
+  {
+  id: '5',
+  title: 'Top 5 Tips to Prevent Gas and Colic in Bottle-Fed Babies',
+  excerpt: 'Discover simple yet effective bottle-feeding practices to reduce gas, colic, and discomfort in your baby’s tummy.',
+  content: 'Nothing is harder for a parent than seeing their baby cry in discomfort—especially when it’s from gas or colic. While some fussiness is normal, excessive crying, bloating, or visible discomfort during or after feeding may point to gas or colic.\n\nThe good news? With the right bottle-feeding practices and tools, you can significantly reduce these issues. Here are our Top 5 Tips to Prevent Gas and Colic in Bottle-Fed Babies:\n\n1. Use an Anti-Colic Bottle — Standard bottles can trap air, which your baby might swallow during feeding, leading to gas and discomfort. Anti-colic bottles with venting systems, slow flow rates, and soft nipples can help.\n\n2. Feed in an Upright Position — Hold your baby at a 45-degree angle and keep the bottle tilted to fill the nipple with milk. Keep them upright for 20–30 minutes after feeding to aid digestion.\n\n3. Choose the Right Nipple Flow — A flow that’s too fast or too slow can cause air intake. Start with a slow-flow nipple and adjust as your baby grows.\n\n4. Take Breaks and Burp Often — Burp your baby every 2–3 ounces or halfway through the bottle to release trapped air. Try over-the-shoulder, upright, or lap positions.\n\n5. Watch for Overfeeding — Overfeeding can cause discomfort, bloating, and gas. Follow your baby’s hunger cues and avoid pushing them to finish the bottle.\n\nThese steps can make a big difference in making feeding a more comfortable and soothing experience for your little one.',
+  image: '/images/News/6.jpeg',
+  date: '2024-02-01',
+  category: 'Parenting',
+  author: 'R&D Team',
+  readTime: '5 min read'
+},
+{
+  id: '6',
+  title: 'Top 5 Tips to Prevent Gas and Colic in Bottle-Fed Babies',
+  excerpt: 'Discover simple yet effective bottle-feeding practices to reduce gas, colic, and discomfort in your baby’s tummy.',
+  content: 'Nothing is harder for a parent than seeing their baby cry in discomfort—especially when it’s from gas or colic. While some fussiness is normal, excessive crying, bloating, or visible discomfort during or after feeding may point to gas or colic.\n\nThe good news? With the right bottle-feeding practices and tools, you can significantly reduce these issues. Here are our Top 5 Tips to Prevent Gas and Colic in Bottle-Fed Babies:\n\n1. Use an Anti-Colic Bottle — Standard bottles can trap air, which your baby might swallow during feeding, leading to gas and discomfort. Anti-colic bottles with venting systems, slow flow rates, and soft nipples can help.\n\n2. Feed in an Upright Position — Hold your baby at a 45-degree angle and keep the bottle tilted to fill the nipple with milk. Keep them upright for 20–30 minutes after feeding to aid digestion.\n\n3. Choose the Right Nipple Flow — A flow that’s too fast or too slow can cause air intake. Start with a slow-flow nipple and adjust as your baby grows.\n\n4. Take Breaks and Burp Often — Burp your baby every 2–3 ounces or halfway through the bottle to release trapped air. Try over-the-shoulder, upright, or lap positions.\n\n5. Watch for Overfeeding — Overfeeding can cause discomfort, bloating, and gas. Follow your baby’s hunger cues and avoid pushing them to finish the bottle.\n\nThese steps can make a big difference in making feeding a more comfortable and soothing experience for your little one.',
+  image: '/images/News/1.jpeg',
+  date: '2024-02-01',
+  category: 'Parenting',
+  author: 'R&D Team',
+  readTime: '5 min read'
+}
+
 ];
 
 export const TESTIMONIALS: Testimonial[] = [

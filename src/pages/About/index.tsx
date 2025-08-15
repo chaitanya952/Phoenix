@@ -852,6 +852,60 @@ export const AboutPage: React.FC = () => {
                 </div>
               </motion.div>
 
+              {/* Our Factory (Workshop) */}
+              <motion.div
+                id="workshop"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.35 }}
+                viewport={{ once: true }}
+                className="mt-12 bg-white rounded-xl p-8 shadow-lg"
+              >
+                <h4 className="text-2xl font-bold text-gray-900 mb-8 text-center">Our Factory (Workshop)</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {[
+                    { title: 'Injection Molding', image: '/images/Innovation & Development Pics/IMG-20250807-WA0159.jpg', description: 'High-precision injection molding for consistent parts.' },
+                    { title: 'Stretch Blow Molding', image: '/images/Innovation & Development Pics/IMG-20250807-WA0160.jpg', description: 'PET stretch blow molding for strong, clear bottles.' },
+                    { title: 'Extrusion Blow Molding', image: '/images/Innovation & Development Pics/IMG-20250807-WA0161.jpg', description: 'Uniform wall thickness for durable containers.' },
+                    { title: 'ISBM', image: '/images/Innovation & Development Pics/IMG-20250807-WA0162.jpg', description: 'Integrated injection stretch blow for clarity and strength.' },
+                    { title: 'Compression Molding', image: '/images/Innovation & Development Pics/IMG-20250807-WA0163.jpg', description: 'Efficient, high-volume component molding.' },
+                    { title: 'LSR Molding', image: '/images/Innovation & Development Pics/IMG-20250807-WA0164.jpg', description: 'Liquid silicone rubber molding for safe, flexible parts.' },
+                    { title: 'Automatic Screen Printing', image: '/images/Innovation & Development Pics/IMG-20250807-WA0165.jpg', description: 'High-speed, multi-color branding with precision.' },
+                    { title: 'Foil Transfer Printing', image: '/images/Innovation & Development Pics/IMG-20250807-WA0168.jpg', description: 'Premium metallic finishes with hot foil stamping.' },
+                    { title: 'EVA Water Teether Filling', image: '/images/Innovation & Development Pics/IMG-20250807-WA0169.jpg', description: 'Hygienic filling for safe, leak-proof teethers.' },
+                    { title: 'Pad Printing', image: '/images/Innovation & Development Pics/IMG-20250807-WA0170.jpg', description: 'Fine-detail printing on complex surfaces.' },
+                    { title: 'Blister Packaging', image: '/images/Innovation & Development Pics/IMG-20250807-WA0171.jpg', description: 'Retail-ready, tamper-evident packaging.' },
+                    { title: 'Ultrasonic Welding', image: '/images/Innovation & Development Pics/IMG-20250807-WA0172.jpg', description: 'Clean, strong, solvent-free bonding.' }
+                  ].map((item, index) => (
+                    <motion.div
+                      key={item.title}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.05, duration: 0.5 }}
+                      viewport={{ once: true }}
+                      className="bg-gray-50 rounded-xl overflow-hidden shadow hover:shadow-md transition-all"
+                    >
+                      <div className="relative h-40">
+                        <img
+                          src={encodeURI(item.image)}
+                          alt={item.title}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = '/images/Phoenix_Logo.png';
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                      </div>
+                      <div className="p-4">
+                        <h5 className="font-semibold text-gray-900">{item.title}</h5>
+                        <p className="text-sm text-gray-600 mt-1">{item.description}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+
               {/* Trusted Suppliers */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -863,10 +917,10 @@ export const AboutPage: React.FC = () => {
                 <h4 className="text-2xl font-bold text-gray-900 mb-8 text-center">Our Trusted Suppliers</h4>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                   {[
-                    { name: 'RELIANCE', logo: 'text-blue-600' },
-                    { name: 'WACKER', logo: 'text-red-600' },
-                    { name: 'RUCO', logo: 'text-green-600' },
-                    { name: 'MARABU', logo: 'text-purple-600' }
+                    { name: 'RELIANCE', image: '/images/Suppliers/Reliance.png' },
+                    { name: 'WACKER', image: '/images/Suppliers/Wacker.jpg' },
+                    { name: 'RUCO', image: '/images/Suppliers/RUCO.png' },
+                    { name: 'MARABU', image: '/images/Suppliers/MARABU.jpg' }
                   ].map((supplier, index) => (
                     <motion.div
                       key={supplier.name}
@@ -877,9 +931,15 @@ export const AboutPage: React.FC = () => {
                       className="text-center group"
                     >
                       <div className="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors duration-300 group-hover:shadow-md">
-                        <div className={`text-2xl font-bold ${supplier.logo} mb-2`}>
-                          {supplier.name}
-                        </div>
+                        <img
+                          src={supplier.image}
+                          alt={`${supplier.name} logo`}
+                          className="h-12 w-auto mx-auto object-contain mb-2"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = '/images/Phoenix_Logo.png';
+                          }}
+                        />
                         <div className="w-12 h-0.5 bg-gradient-to-r from-primary-600 to-secondary-600 mx-auto"></div>
                       </div>
                     </motion.div>

@@ -1,5 +1,5 @@
 // src/pages/News/index.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { NEWS_ITEMS, TESTIMONIALS } from '../../utils/constants';
 import { 
@@ -7,8 +7,10 @@ import {
   ArrowRightIcon,
   StarIcon,
   ClockIcon,
-  UserIcon
+  UserIcon,
+  XMarkIcon
 } from '@heroicons/react/24/outline';
+import { NewsItem } from '../../types';
 
 export const NewsPage: React.FC = () => {
   const containerVariants = {
@@ -30,10 +32,23 @@ export const NewsPage: React.FC = () => {
     }
   };
 
+  const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-r from-primary-600 to-primary-700">
+      <section className="pt-24 pb-16 relative overflow-hidden bg-gradient-to-r from-primary-600 to-primary-700">
+        <div className="absolute inset-0 pointer-events-none">
+          <img
+            src="/images/News/world-map.svg"
+            alt=""
+            className="w-full h-full object-cover opacity-25 mix-blend-soft-light"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.style.display = 'none';
+            }}
+          />
+        </div>
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -41,7 +56,7 @@ export const NewsPage: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center text-white"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-4xl md:text-5xl text-white font-bold mb-6">
               Latest News & Updates
             </h1>
             <p className="text-xl text-primary-100 max-w-3xl mx-auto">
@@ -110,7 +125,10 @@ export const NewsPage: React.FC = () => {
                       <span>{item.author}</span>
                     </div>
                     
-                    <button className="flex items-center gap-2 text-primary-600 hover:text-primary-700 font-semibold text-sm group-hover:gap-3 transition-all">
+                    <button
+                      onClick={() => setSelectedNews(item)}
+                      className="flex items-center gap-2 text-primary-600 hover:text-primary-700 font-semibold text-sm group-hover:gap-3 transition-all"
+                    >
                       Read More
                       <ArrowRightIcon className="w-4 h-4" />
                     </button>
@@ -121,6 +139,44 @@ export const NewsPage: React.FC = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Modal for full news content */}
+      {selectedNews && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-black/50" onClick={() => setSelectedNews(null)} />
+          <div className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-hidden">
+            <div className="flex items-center justify-between p-4 border-b">
+              <h3 className="text-xl font-bold text-gray-900">{selectedNews.title}</h3>
+              <button
+                className="p-2 rounded-full hover:bg-gray-100"
+                onClick={() => setSelectedNews(null)}
+                aria-label="Close"
+              >
+                <XMarkIcon className="w-6 h-6" />
+              </button>
+            </div>
+            <div className="p-4 overflow-y-auto space-y-4">
+              <img
+                src={selectedNews.image}
+                alt={selectedNews.title}
+                className="w-full h-56 object-cover rounded-lg"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = '/images/Phoenix_Logo.png';
+                }}
+              />
+              <div className="flex items-center gap-4 text-sm text-gray-500">
+                <span>{new Date(selectedNews.date).toLocaleDateString()}</span>
+                <span>•</span>
+                <span>{selectedNews.readTime}</span>
+                <span>•</span>
+                <span>By {selectedNews.author}</span>
+              </div>
+              <p className="text-gray-700 whitespace-pre-line">{selectedNews.content}</p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Testimonials Section */}
       <section className="py-16 bg-gray-50">

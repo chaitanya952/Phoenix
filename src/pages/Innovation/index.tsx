@@ -235,7 +235,7 @@ const upcomingDevelopmentImages = [
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-5xl md:text-7xl font-bold mb-6 font-display leading-tight"
             >
-              <span className="text-white">Innovation & </span>  <span className="text-primary-300">Development</span>
+              <span className="text-white">Innovation & </span> &  <span className="text-primary-300">Development</span>
             </motion.h1>
             
             <motion.p

@@ -13,6 +13,7 @@ import {
   PaperAirplaneIcon
 } from '@heroicons/react/24/outline';
 import { Button } from '../../components/common/Button';
+import emailjs from '@emailjs/browser';
 
 
 export const ContactPage: React.FC = () => {
@@ -26,6 +27,11 @@ export const ContactPage: React.FC = () => {
     message: '',
     inquiryType: 'general'
   });
+
+  // EmailJS env vars (configure in Vercel Project Settings > Environment Variables)
+  const EMAILJS_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID as string;
+  const EMAILJS_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID as string;
+  const EMAILJS_PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY as string;
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   // Pre-fill form if product inquiry parameters are present
@@ -56,13 +62,38 @@ export const ContactPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    console.log('Form submitted:', formData);
+
+    try {
+      if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+        throw new Error('EmailJS environment variables are not configured');
+      }
+
+      // Template params must match your EmailJS template variable names
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        company: formData.company,
+        phone: formData.phone,
+        subject: formData.subject || `New ${formData.inquiryType} inquiry` ,
+        message: formData.message,
+        inquiry_type: formData.inquiryType,
+        to_email: 'bda@phoenixplastowares.com'
+      };
+
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        { publicKey: EMAILJS_PUBLIC_KEY }
+      );
+
+      setIsSubmitted(true);
+    } catch (err) {
+      console.error(err);
+      alert('There was a problem sending your message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // FORCE UPDATE: Phoenix Plastowares Manoharabad - v2.0

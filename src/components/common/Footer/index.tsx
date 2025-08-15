@@ -133,16 +133,79 @@ export const Footer: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex space-x-4">
-                <motion.button 
-                  onClick={handleSocialClick}
+              <div className="flex space-x-3">
+                {/* Website */}
+                <motion.a 
+                  href="#" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   className="p-3 bg-primary-600 hover:bg-primary-500 rounded-full transition-colors shadow-lg"
                   aria-label="Visit our website"
                 >
                   <GlobeAltIcon className="w-5 h-5" />
-                </motion.button>
+                </motion.a>
+
+                {/* Facebook */}
+                <motion.a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="p-3 bg-primary-600 hover:bg-primary-500 rounded-full transition-colors shadow-lg"
+                  aria-label="Facebook"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                    <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.325v21.351C0 23.403.597 24 1.325 24h11.495v-9.294H9.691V11.41h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.794.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.764v2.313h3.59l-.467 3.296h-3.123V24h6.127C23.403 24 24 23.403 24 22.676V1.325C24 .597 23.403 0 22.675 0z" />
+                  </svg>
+                </motion.a>
+
+                {/* Instagram */}
+                <motion.a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="p-3 bg-primary-600 hover:bg-primary-500 rounded-full transition-colors shadow-lg"
+                  aria-label="Instagram"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                    <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2.2a2.8 2.8 0 110 5.6 2.8 2.8 0 010-5.6zM17.5 6a1 1 0 100 2 1 1 0 000-2z" />
+                  </svg>
+                </motion.a>
+
+                {/* YouTube */}
+                <motion.a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="p-3 bg-primary-600 hover:bg-primary-500 rounded-full transition-colors shadow-lg"
+                  aria-label="YouTube"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                    <path d="M23.498 6.186a2.99 2.99 0 00-2.106-2.116C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.392.57A2.99 2.99 0 00.502 6.186 31.05 31.05 0 000 12a31.05 31.05 0 00.502 5.814 2.99 2.99 0 002.106 2.116C4.5 20.5 12 20.5 12 20.5s7.5 0 9.392-.57a2.99 2.99 0 002.106-2.116A31.05 31.05 0 0024 12a31.05 31.05 0 00-.502-5.814zM9.75 15.021V8.979L15.5 12l-5.75 3.021z" />
+                  </svg>
+                </motion.a>
+
+                {/* Twitter */}
+                <motion.a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="p-3 bg-primary-600 hover:bg-primary-500 rounded-full transition-colors shadow-lg"
+                  aria-label="Twitter"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                    <path d="M23.954 4.569a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 9.864 9.864 0 01-3.127 1.184 4.92 4.92 0 00-8.384 4.482A13.978 13.978 0 011.671 3.149a4.822 4.822 0 001.523 6.574 4.903 4.903 0 01-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.935 4.935 0 01-2.224.084 4.928 4.928 0 004.604 3.417A9.867 9.867 0 010 19.54a13.94 13.94 0 007.548 2.209c9.057 0 14.01-7.496 13.995-14.235a9.935 9.935 0 002.411-2.945z" />
+                  </svg>
+                </motion.a>
               </div>
             </motion.div>
           </motion.div>
@@ -245,7 +308,7 @@ export const Footer: React.FC = () => {
                 >
                   <PhoneIcon className="w-5 h-5 text-primary-400 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-gray-300 text-sm">+91 73865 90043</p>
+                    <p className="text-gray-300 text-sm">+91 90007 00700</p>
                     <p className="text-gray-400 text-xs mt-1">24/7 Support</p>
                   </div>
                 </motion.div>

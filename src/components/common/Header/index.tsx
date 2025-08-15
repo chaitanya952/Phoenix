@@ -1,5 +1,5 @@
 // src/components/common/Header/index.tsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { Bars3Icon, XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
@@ -9,14 +9,26 @@ export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
+  const [isScrollingDown, setIsScrollingDown] = useState(false); // track scroll direction
+  const lastScrollYRef = useRef(0);
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentY = window.scrollY;
+      setIsScrolled(currentY > 50);
+
+      // Only apply hide-on-scroll for mobile widths
+      const isMobile = window.matchMedia('(max-width: 767px)').matches;
+      if (isMobile) {
+        setIsScrollingDown(currentY > lastScrollYRef.current && currentY > 10);
+      } else {
+        setIsScrollingDown(false);
+      }
+      lastScrollYRef.current = currentY;
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -32,15 +44,15 @@ export const Header: React.FC = () => {
 
   return (
     <motion.header
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
+      initial={{ y: 0, opacity: 1 }}
+      animate={{ y: isScrollingDown ? '-100%' : 0, opacity: 1 }}
       transition={{ 
-        duration: 0.6, 
+        duration: 0.3, 
         type: "spring", 
-        stiffness: 100,
-        damping: 20
+        stiffness: 200,
+        damping: 25
       }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${
         isScrolled 
           ? 'bg-gradient-to-r from-white via-primary-50/30 to-white shadow-orange border-b border-primary-100' 
           : 'bg-gradient-to-r from-white/95 via-primary-50/20 to-white/95 backdrop-blur-md'
