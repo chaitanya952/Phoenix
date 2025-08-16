@@ -461,8 +461,12 @@ export const AboutPage: React.FC = () => {
                   className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center"
                 >
                   <div className="relative mb-6">
-                    <div className="w-24 h-24 rounded-full mx-auto bg-primary-100 border-4 border-primary-200 flex items-center justify-center">
-                      <UsersIcon className="w-12 h-12 text-primary-600" />
+                    <div className="w-24 h-24 rounded-full mx-auto bg-primary-100 border-4 border-white flex items-center justify-center">
+                      <img
+        src={member.image}
+        alt={member.name}
+        className="w-full h-full object-cover"
+      />
                     </div>
                     <div className="absolute -bottom-2 -right-2 bg-primary-600 text-white text-xs px-2 py-1 rounded-full">
                       {member.experience}
@@ -485,8 +489,12 @@ export const AboutPage: React.FC = () => {
                   className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center"
                 >
                   <div className="relative mb-6">
-                    <div className="w-24 h-24 rounded-full mx-auto bg-primary-100 border-4 border-primary-200 flex items-center justify-center">
-                      <UsersIcon className="w-12 h-12 text-primary-600" />
+                    <div className="w-24 h-24 rounded-full mx-auto bg-primary-100 border-4 border-white flex items-center justify-center">
+                      <img
+        src={member.image}
+        alt={member.name}
+        className="w-full h-full object-cover"
+      />
                     </div>
                     <div className="absolute -bottom-2 -right-2 bg-primary-600 text-white text-xs px-2 py-1 rounded-full">
                       {member.experience}

@@ -121,18 +121,18 @@ export const Products: React.FC = () => {
         >
           {[
             {
-              id: 'wide-feeding',
-              name: 'Wide Neck Bottles',
-              image: '/images/Wide Neck Bottles JPEG/WN0001 - 210ml.jpg',
-              volume: '210ml - 300ml',
-              features: ['Anti-Colic', 'BPA-Free']
-            },
-            {
               id: 'std-feeding',
               name: 'Standard Neck Bottles',
               image: '/images/Standard Neck Bottles JPEG/RN0001 - 125ml.jpg',
               volume: '60ml - 250ml',
               features: ['Universal Fit', 'Gentle Flow']
+            },
+            {
+              id: 'wide-feeding',
+              name: 'Wide Neck Bottles',
+              image: '/images/Wide Neck Bottles JPEG/WN0001 - 210ml.jpg',
+              volume: '210ml - 300ml',
+              features: ['Anti-Colic', 'BPA-Free']
             },
             {
               id: 'sippy-cups',
