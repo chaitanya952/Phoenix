@@ -196,8 +196,8 @@ export const About: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent"></div>
               <div className="absolute bottom-6 right-6 text-white">
-                <h4 className="text-xl font-bold mb-1">Every Moment Matters</h4>
-                <p className="text-sm opacity-90">Nurturing bonds through safe feeding</p>
+                <h4 className="text-l font-bold text-white mb-1">Every Moment Matters</h4>
+                <p className="text-sm opacity-90 text-orange-600">Nurturing bonds through safe feeding</p>
               </div>
             </div>
             
@@ -209,7 +209,7 @@ export const About: React.FC = () => {
               viewport={{ once: true }}
               className="absolute -bottom-6 -left-6 bg-white rounded-xl p-4 shadow-lg border border-gray-100"
             >
-              <div className="text-2xl font-bold text-primary-600">{(COMPANY_STATS.monthlyCapacity / 1000000).toFixed(1)}M+</div>
+              <div className="text-2xl font-bold text-primary-600">{(COMPANY_STATS.monthlyCapacity / 100000).toFixed(1)}M+</div>
               <div className="text-sm text-gray-600">Products Manufactured</div>
             </motion.div>
           </motion.div>

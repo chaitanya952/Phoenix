@@ -40,7 +40,7 @@ export const NewsPage: React.FC = () => {
       <div className="relative w-full h-80 md:h-96 overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2026&q=80" 
+            src="images/baby_news_two.png" 
             alt="About Phoenix Baby Products" 
             className="w-full h-full object-cover"
             onError={(e) => {
