@@ -18,8 +18,8 @@ export const generateProductImagePath = (product: any, category: any): string =>
       actualFolderName = 'Standard Neck Bottles With Handle  JPEG'; // Note: double space in folder name
     }
     imagePath = `/images/${actualFolderName}/${product.modelNo.replace('-', ' - ')}.jpg`;
-  } else if (folderName.includes('Sippy Cups')) {
-    // For Sippy Cups like SP0001 - extract capacity from description
+  } else if (/^SP\d{4}$/i.test(product.modelNo)) {
+    // For Sippy Cups (SPxxxx) - extract capacity from description
     const capacityMatch = product.description.match(/(\d+ml)/);
     const capacity = capacityMatch ? capacityMatch[1] : '';
     
@@ -37,10 +37,29 @@ export const generateProductImagePath = (product: any, category: any): string =>
       imagePath = `/images/Phoenix_Logo.png`;
     }
   } else {
-    // For other products like Teethers & Pacifiers (TP0001) - use modelNo directly
-    // Determine extension based on folder name
-    const extension =  '.jpg';
-    imagePath = `/images/${folderName}/${product.modelNo}${extension}`;
+    // For other products like Teethers & Pacifiers (TP0001) or Cutlery & Tableware (CT0001)
+    // Choose extension based on folder naming conventions (.JPG used in these folders)
+    const useUppercaseJPG = /Teethers & Pacifiers|Cutlery & Tableware/i.test(folderName);
+    const extension = useUppercaseJPG ? '.JPG' : '.jpg';
+
+    // Handle known filename exceptions
+    let filename = product.modelNo;
+    if (folderName.includes('Cutlery & Tableware') && product.modelNo === 'CT0003') {
+      // File is named "CT0003 CT0003.JPG" in assets
+      filename = 'CT0003 CT0003';
+    }
+
+    // Special fallback for Teethers & Pacifiers models with placeholders only
+    if (folderName.includes('Teethers & Pacifiers')) {
+      const placeholders = new Set(['TP0017','TP0020','TP0021','TP0022','TP0023','TP0024']);
+      if (placeholders.has(product.modelNo)) {
+        imagePath = `/images/Missing Images JPEG/${product.modelNo}.jpg`;
+      } else {
+        imagePath = `/images/${folderName}/${filename}${extension}`;
+      }
+    } else {
+      imagePath = `/images/${folderName}/${filename}${extension}`;
+    }
   }
   
   return imagePath;
