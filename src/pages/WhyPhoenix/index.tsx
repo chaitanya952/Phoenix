@@ -73,7 +73,7 @@ export const WhyPhoenixPage: React.FC = () => {
       transition: { duration: 0.6 }
     }
   };
-
+             /*comments*/
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       {/* Hero Section */}
