@@ -872,18 +872,18 @@ export const AboutPage: React.FC = () => {
                 <h4 className="text-2xl font-bold text-gray-900 mb-8 text-center">Our Factory (Workshop)</h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {[
-                    { title: 'Injection Molding', image: '/images/Innovation & Development Pics/IMG-20250807-WA0159.jpg', description: 'High-precision injection molding for consistent parts.' },
-                    { title: 'Stretch Blow Molding', image: '/images/Innovation & Development Pics/IMG-20250807-WA0160.jpg', description: 'PET stretch blow molding for strong, clear bottles.' },
-                    { title: 'Extrusion Blow Molding', image: '/images/Innovation & Development Pics/IMG-20250807-WA0161.jpg', description: 'Uniform wall thickness for durable containers.' },
-                    { title: 'ISBM', image: '/images/Innovation & Development Pics/IMG-20250807-WA0162.jpg', description: 'Integrated injection stretch blow for clarity and strength.' },
-                    { title: 'Compression Molding', image: '/images/Innovation & Development Pics/IMG-20250807-WA0163.jpg', description: 'Efficient, high-volume component molding.' },
-                    { title: 'LSR Molding', image: '/images/Innovation & Development Pics/IMG-20250807-WA0164.jpg', description: 'Liquid silicone rubber molding for safe, flexible parts.' },
-                    { title: 'Automatic Screen Printing', image: '/images/Innovation & Development Pics/IMG-20250807-WA0165.jpg', description: 'High-speed, multi-color branding with precision.' },
-                    { title: 'Foil Transfer Printing', image: '/images/Innovation & Development Pics/IMG-20250807-WA0168.jpg', description: 'Premium metallic finishes with hot foil stamping.' },
-                    { title: 'EVA Water Teether Filling', image: '/images/Innovation & Development Pics/IMG-20250807-WA0169.jpg', description: 'Hygienic filling for safe, leak-proof teethers.' },
-                    { title: 'Pad Printing', image: '/images/Innovation & Development Pics/IMG-20250807-WA0170.jpg', description: 'Fine-detail printing on complex surfaces.' },
-                    { title: 'Blister Packaging', image: '/images/Innovation & Development Pics/IMG-20250807-WA0171.jpg', description: 'Retail-ready, tamper-evident packaging.' },
-                    { title: 'Ultrasonic Welding', image: '/images/Innovation & Development Pics/IMG-20250807-WA0172.jpg', description: 'Clean, strong, solvent-free bonding.' }
+                    { title: 'Injection Molding', image: '/images/WorkShop/INJ.jpeg', description: 'High-precision injection molding for consistent parts.' },
+                    { title: 'Stretch Blow Molding', image: '/images/WorkShop/2SBM.jpeg', description: 'PET stretch blow molding for strong, clear bottles.' },
+                    { title: 'Extrusion Blow Molding', image: '/images/WorkShop/EBM.jpeg', description: 'Uniform wall thickness for durable containers.' },
+                    { title: 'ISBM', image: '/images/WorkShop/ISBM.jpeg', description: 'Integrated injection stretch blow for clarity and strength.' },
+                    { title: 'Compression Molding', image: '/images/Workshop/CSME.jpeg', description: 'Efficient, high-volume component molding.' },
+                    { title: 'LSR Molding', image: '/images/Workshop/LSR.jpeg', description: 'Liquid silicone rubber molding for safe, flexible parts.' },
+                    { title: 'Automatic Screen Printing', image: '/images/WorkShop/IMG-20250807-WA0165.jpg', description: 'High-speed, multi-color branding with precision.' },
+                    { title: 'Foil Transfer Printing', image: '/images/WorkShop/IMG-20250807-WA0168.jpg', description: 'Premium metallic finishes with hot foil stamping.' },
+                    { title: 'EVA Water Teether Filling', image: '/images/WorkShop/EVA.jpeg', description: 'Hygienic filling for safe, leak-proof teethers.' },
+                    { title: 'Pad Printing', image: '/images/Workshop/Print.jpeg', description: 'Fine-detail printing on complex surfaces.' },
+                    { title: 'Blister Packaging', image: '/images/WorkShop/PackagingFacility.jpeg', description: 'Retail-ready, tamper-evident packaging.' },
+                    { title: 'Ultrasonic Welding', image: '/images/WorkShop/IMG-20250807-WA0172.jpg', description: 'Clean, strong, solvent-free bonding.' }
                   ].map((item, index) => (
                     <motion.div
                       key={item.title}
