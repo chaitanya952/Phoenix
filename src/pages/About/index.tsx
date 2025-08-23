@@ -878,12 +878,10 @@ export const AboutPage: React.FC = () => {
                     { title: 'ISBM', image: '/images/WorkShop/ISBM.jpeg', description: 'Integrated injection stretch blow for clarity and strength.' },
                     { title: 'Compression Molding', image: '/images/Workshop/CSME.jpeg', description: 'Efficient, high-volume component molding.' },
                     { title: 'LSR Molding', image: '/images/Workshop/LSR.jpeg', description: 'Liquid silicone rubber molding for safe, flexible parts.' },
-                    { title: 'Automatic Screen Printing', image: '/images/WorkShop/IMG-20250807-WA0165.jpg', description: 'High-speed, multi-color branding with precision.' },
-                    { title: 'Foil Transfer Printing', image: '/images/WorkShop/IMG-20250807-WA0168.jpg', description: 'Premium metallic finishes with hot foil stamping.' },
                     { title: 'EVA Water Teether Filling', image: '/images/WorkShop/EVA.jpeg', description: 'Hygienic filling for safe, leak-proof teethers.' },
                     { title: 'Pad Printing', image: '/images/Workshop/Print.jpeg', description: 'Fine-detail printing on complex surfaces.' },
-                    { title: 'Blister Packaging', image: '/images/WorkShop/PackagingFacility.jpeg', description: 'Retail-ready, tamper-evident packaging.' },
-                    { title: 'Ultrasonic Welding', image: '/images/WorkShop/IMG-20250807-WA0172.jpg', description: 'Clean, strong, solvent-free bonding.' }
+                    { title: 'Blister Packaging', image: '/images/WorkShop/PackagingFacility.jpeg', description: 'Retail-ready, tamper-evident packaging.' }
+                    
                   ].map((item, index) => (
                     <motion.div
                       key={item.title}

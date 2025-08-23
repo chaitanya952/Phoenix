@@ -278,7 +278,7 @@ export const Contact: React.FC = () => {
           >
             {/* Map */}
             <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
-              <div className="p-4 bg-gradient-to-r from-primary-500 to-primary-600">
+              <div className="p-4 bg-primary-600">
                 <h4 className="text-white font-semibold flex items-center">
                   <MapPinIcon className="w-5 h-5 mr-2" />
                   Our Location
@@ -325,7 +325,7 @@ export const Contact: React.FC = () => {
             </div>
 
             {/* Additional Information */}
-            <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-8">
+            <div className="bg-primary-50 rounded-2xl p-8">
               <h4 className="text-xl font-bold text-gray-900 mb-4">Why  Phoenix?</h4>
               <ul className="space-y-3">
                 {[
@@ -377,13 +377,13 @@ export const Contact: React.FC = () => {
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
-              <div className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white p-6 flex items-center justify-between">
-                <h3 className="text-2xl font-bold">Frequently Asked Questions</h3>
+              <div className="bg-primary-600 text-white p-6 flex items-center justify-between">
+                <h3 className="text-xl font-bold">Frequently Asked Questions</h3>
                 <button
                   onClick={() => setShowFAQPopup(false)}
                   className="p-2 hover:bg-white/20 rounded-full transition-colors"
                 >
-                  <XMarkIcon className="w-6 h-6" />
+                  <XMarkIcon className="w-5 h-5" />
                 </button>
               </div>
 
@@ -394,7 +394,7 @@ export const Contact: React.FC = () => {
                     <button
                       key={category}
                       onClick={() => setSelectedCategory(category)}
-                      className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                      className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
                         selectedCategory === category
                           ? 'bg-primary-600 text-white'
                           : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -419,8 +419,8 @@ export const Contact: React.FC = () => {
                         className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-100 transition-colors"
                       >
                         <div>
-                          <h4 className="text-lg font-semibold text-gray-900 mb-1">{faq.question}</h4>
-                          <span className="text-sm text-primary-600 font-medium">{faq.category}</span>
+                          <h4 className="text-base font-semibold text-gray-900 mb-1">{faq.question}</h4>
+                          <span className="text-xs text-primary-600 font-medium">{faq.category}</span>
                         </div>
                         {openFAQ === faq.id ? (
                           <ChevronUpIcon className="w-5 h-5 text-gray-500 flex-shrink-0" />
@@ -439,7 +439,7 @@ export const Contact: React.FC = () => {
                         className="overflow-hidden"
                       >
                         <div className="px-6 pb-4">
-                          <p className="text-gray-600 leading-relaxed whitespace-pre-line">{faq.answer}</p>
+                          <p className="text-sm text-gray-600 leading-relaxed whitespace-pre-line">{faq.answer}</p>
                         </div>
                       </motion.div>
                     </div>

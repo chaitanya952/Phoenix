@@ -3,7 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header } from './components/common/Header';
 import { Footer } from './components/common/Footer';
-import { ScrollToTop } from './components/common/ScrollToTop';
+
 import { HomePage } from './pages/Home';
 import { AboutPage } from './pages/About';
 import { ProductsPage } from './pages/Products';
@@ -18,7 +18,6 @@ import './index.css';
 function App() {
   return (
     <Router>
-      <ScrollToTop />
       <div className="App">
         <Header />
         <main>

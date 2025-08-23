@@ -1,6 +1,6 @@
 // src/pages/News/index.tsx
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { NEWS_ITEMS, TESTIMONIALS } from '../../utils/constants';
 import { 
   CalendarIcon,
@@ -13,6 +13,10 @@ import {
 import { NewsItem } from '../../types';
 
 export const NewsPage: React.FC = () => {
+  const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null);
+  const [imageLoadErrors, setImageLoadErrors] = useState<Set<string>>(new Set());
+  const [isLoading, setIsLoading] = useState(true);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -32,7 +36,39 @@ export const NewsPage: React.FC = () => {
     }
   };
 
-  const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null);
+  const handleImageError = (itemId: string) => {
+    setImageLoadErrors(prev => new Set(prev).add(itemId));
+  };
+
+  // Simulate loading state
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Handle keyboard events for modal
+  React.useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && selectedNews) {
+        setSelectedNews(null);
+      }
+    };
+
+    if (selectedNews) {
+      document.addEventListener('keydown', handleKeyDown);
+      // Prevent body scroll when modal is open
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedNews]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
@@ -73,13 +109,35 @@ export const NewsPage: React.FC = () => {
       {/* News Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {NEWS_ITEMS.map((item, index) => (
+          {isLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[...Array(6)].map((_, index) => (
+                <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden animate-pulse">
+                  <div className="h-48 bg-gray-200"></div>
+                  <div className="p-6">
+                    <div className="flex items-center gap-4 mb-3">
+                      <div className="h-4 bg-gray-200 rounded w-20"></div>
+                      <div className="h-4 bg-gray-200 rounded w-16"></div>
+                    </div>
+                    <div className="h-6 bg-gray-200 rounded mb-3"></div>
+                    <div className="h-4 bg-gray-200 rounded mb-2"></div>
+                    <div className="h-4 bg-gray-200 rounded mb-4 w-3/4"></div>
+                    <div className="flex items-center justify-between">
+                      <div className="h-4 bg-gray-200 rounded w-24"></div>
+                      <div className="h-4 bg-gray-200 rounded w-20"></div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              {NEWS_ITEMS.map((item, index) => (
               <motion.article
                 key={item.id}
                 variants={itemVariants}
@@ -92,7 +150,10 @@ export const NewsPage: React.FC = () => {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = '/images/Phoenix_Logo.png';
+                      if (!imageLoadErrors.has(item.id)) {
+                        handleImageError(item.id);
+                        target.src = '/images/Phoenix_Logo.png';
+                      }
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -141,46 +202,133 @@ export const NewsPage: React.FC = () => {
               </motion.article>
             ))}
           </motion.div>
+          )}
         </div>
       </section>
 
       {/* Modal for full news content */}
-      {selectedNews && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-black/50" onClick={() => setSelectedNews(null)} />
-          <div className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-hidden">
-            <div className="flex items-center justify-between p-4 border-b">
-              <h3 className="text-xl font-bold text-gray-900">{selectedNews.title}</h3>
-              <button
-                className="p-2 rounded-full hover:bg-gray-100"
-                onClick={() => setSelectedNews(null)}
-                aria-label="Close"
-              >
-                <XMarkIcon className="w-6 h-6" />
-              </button>
-            </div>
-            <div className="p-4 overflow-y-auto space-y-4">
-              <img
-                src={selectedNews.image}
-                alt={selectedNews.title}
-                className="w-full h-56 object-cover rounded-lg"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.src = '/images/Phoenix_Logo.png';
-                }}
-              />
-              <div className="flex items-center gap-4 text-sm text-gray-500">
-                <span>{new Date(selectedNews.date).toLocaleDateString()}</span>
-                <span>•</span>
-                <span>{selectedNews.readTime}</span>
-                <span>•</span>
-                <span>By {selectedNews.author}</span>
+      <AnimatePresence>
+        {selectedNews && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            onClick={() => setSelectedNews(null)}
+          >
+            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: 50 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: 50 }}
+              transition={{ 
+                type: "spring", 
+                stiffness: 300, 
+                damping: 30,
+                duration: 0.4 
+              }}
+              className="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[85vh] overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Modal Header */}
+              <div className="sticky top-0 bg-white/95 backdrop-blur-sm border-b border-gray-200 z-10">
+                <div className="flex items-center justify-between p-6">
+                  <div className="flex-1 pr-4">
+                    <h3 className="text-2xl font-bold text-gray-900 line-clamp-2">{selectedNews.title}</h3>
+                    <div className="flex items-center gap-4 text-sm text-gray-500 mt-2">
+                      <span className="flex items-center gap-1">
+                        <CalendarIcon className="w-4 h-4" />
+                        {new Date(selectedNews.date).toLocaleDateString()}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <ClockIcon className="w-4 h-4" />
+                        {selectedNews.readTime}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <UserIcon className="w-4 h-4" />
+                        {selectedNews.author}
+                      </span>
+                    </div>
+                  </div>
+                  <button
+                    className="p-2 rounded-full hover:bg-gray-100 transition-colors flex-shrink-0"
+                    onClick={() => setSelectedNews(null)}
+                    aria-label="Close"
+                  >
+                    <XMarkIcon className="w-6 h-6" />
+                  </button>
+                </div>
               </div>
-              <p className="text-gray-700 whitespace-pre-line">{selectedNews.content}</p>
-            </div>
-          </div>
-        </div>
-      )}
+
+              {/* Modal Content - Scrollable */}
+              <div className="overflow-y-auto max-h-[calc(85vh-120px)] custom-scrollbar">
+                <div className="p-6 space-y-6">
+                  {/* Featured Image */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="relative"
+                  >
+                    <img
+                      src={selectedNews.image}
+                      alt={selectedNews.title}
+                      className="w-full h-64 md:h-80 object-cover rounded-xl shadow-lg"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        if (!imageLoadErrors.has(selectedNews.id)) {
+                          handleImageError(selectedNews.id);
+                          target.src = '/images/Phoenix_Logo.png';
+                        }
+                      }}
+                    />
+                    <div className="absolute top-4 left-4 bg-primary-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                      {selectedNews.category}
+                    </div>
+                  </motion.div>
+
+                  {/* Article Content */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="prose prose-lg max-w-none"
+                  >
+                    <div className="text-gray-700 leading-relaxed whitespace-pre-line text-base md:text-lg">
+                      {selectedNews.content}
+                    </div>
+                  </motion.div>
+
+                  {/* Article Footer */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="border-t border-gray-200 pt-6 mt-8"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="text-sm text-gray-500">
+                        Published on {new Date(selectedNews.date).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric'
+                        })}
+                      </div>
+                      <button
+                        onClick={() => setSelectedNews(null)}
+                        className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+                      >
+                        Close Article
+                      </button>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Testimonials Section */}
       <section className="py-16 bg-gray-50">

@@ -72,7 +72,7 @@ export const Header: React.FC = () => {
               <motion.img 
                 src="/images/512 X 512/1.svg" 
                 alt="Phoenix Bird Logo" 
-                className="h-12 w-auto object-contain drop-shadow-sm"
+                className="h-16 w-auto object-contain drop-shadow-sm"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
                 onError={(e) => {
@@ -84,7 +84,7 @@ export const Header: React.FC = () => {
               <motion.img 
                 src="/images/512 X 512/2.svg" 
                 alt="Phoenix Text Logo" 
-                className="h-16 w-auto object-contain drop-shadow-md -ml-4" /* Increased from h-12 to h-14 to match bird image, moved left with -ml-4 */
+                className="h-20 w-auto object-contain drop-shadow-md -ml-4" /* Increased from h-16 to h-20 to match bird image, moved left with -ml-4 */
                 initial={{ opacity: 0.9, y: 2 }}
                 animate={{ 
                   opacity: 1, 
