@@ -28,8 +28,10 @@ export const ContactPage: React.FC = () => {
     inquiryType: 'general'
   });
 
-  // Backend API endpoint (Vercel serverless function)
-  const CONTACT_API_URL = process.env.REACT_APP_CONTACT_API_URL || '/api/contact';
+  // Backend API endpoint (absolute URL preferred; fallback to same-origin)
+  const CONTACT_API_URL =
+    process.env.REACT_APP_CONTACT_API_URL?.trim() ||
+    (typeof window !== 'undefined' ? `${window.location.origin}/api/contact` : '/api/contact');
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   // Pre-fill form if product inquiry parameters are present
