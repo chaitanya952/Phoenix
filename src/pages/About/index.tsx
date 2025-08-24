@@ -876,10 +876,10 @@ export const AboutPage: React.FC = () => {
                     { title: 'Stretch Blow Molding', image: '/images/WorkShop/2SBM.jpeg', description: 'PET stretch blow molding for strong, clear bottles.' },
                     { title: 'Extrusion Blow Molding', image: '/images/WorkShop/EBM.jpeg', description: 'Uniform wall thickness for durable containers.' },
                     { title: 'ISBM', image: '/images/WorkShop/ISBM.jpeg', description: 'Integrated injection stretch blow for clarity and strength.' },
-                    { title: 'Compression Molding', image: '/images/Workshop/CSME.jpeg', description: 'Efficient, high-volume component molding.' },
-                    { title: 'LSR Molding', image: '/images/Workshop/LSR.jpeg', description: 'Liquid silicone rubber molding for safe, flexible parts.' },
+                    { title: 'Compression Molding', image: '/images/WorkShop/CSME.jpeg', description: 'Efficient, high-volume component molding.' },
+                    { title: 'LSR Molding', image: '/images/WorkShop/LSR.jpeg', description: 'Liquid silicone rubber molding for safe, flexible parts.' },
                     { title: 'EVA Water Teether Filling', image: '/images/WorkShop/EVA.jpeg', description: 'Hygienic filling for safe, leak-proof teethers.' },
-                    { title: 'Pad Printing', image: '/images/Workshop/Print.jpeg', description: 'Fine-detail printing on complex surfaces.' },
+                    { title: 'Pad Printing', image: '/images/WorkShop/Print.jpeg', description: 'Fine-detail printing on complex surfaces.' },
                     { title: 'Blister Packaging', image: '/images/WorkShop/PackagingFacility.jpeg', description: 'Retail-ready, tamper-evident packaging.' }
                     
                   ].map((item, index) => (

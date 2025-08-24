@@ -55,33 +55,30 @@ app.post('/api/contact', async (req, res) => {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
-    const SMTP_HOST = process.env.SMTP_HOST || 'smtp.zoho.com';
-    const SMTP_PORT = Number(process.env.SMTP_PORT || 587);
-    const SMTP_USER = process.env.SMTP_USER;
-    const SMTP_PASS = process.env.SMTP_PASS; // This should be App-Specific Password
-    const TO_EMAIL = process.env.TO_EMAIL || SMTP_USER;
-    const FROM_EMAIL = process.env.FROM_EMAIL || SMTP_USER;
+    const EMAIL_SERVICE = process.env.EMAIL_SERVICE; // e.g., 'gmail'
+    const EMAIL_USER = process.env.EMAIL_USER || process.env.SMTP_USER;
+    const EMAIL_PASS = process.env.EMAIL_PASS || process.env.SMTP_PASS;
+    const TO_EMAIL = process.env.TO_EMAIL || EMAIL_USER;
+    const FROM_EMAIL = process.env.FROM_EMAIL || EMAIL_USER;
 
-    if (!SMTP_USER || !SMTP_PASS) {
-      return res.status(500).json({ error: 'Email server not configured' });
+    if (!EMAIL_USER || !EMAIL_PASS) {
+      return res.status(500).json({ error: 'Email not configured' });
     }
 
-    // Enhanced Zoho SMTP configuration
-    const transporter = nodemailer.createTransport({
-      host: SMTP_HOST,
-      port: SMTP_PORT,
-      secure: false, // Use STARTTLS for port 587
-      auth: {
-        user: SMTP_USER,
-        pass: SMTP_PASS // Must be App-Specific Password
-      },
-      tls: {
-        rejectUnauthorized: false, // Accept self-signed certificates
-        ciphers: 'SSLv3'
-      },
-      debug: true, // Enable debug logging
-      logger: true // Enable logging
-    });
+    // Email transporter (prefer Gmail via service)
+    const transporter = nodemailer.createTransport(
+      EMAIL_SERVICE
+        ? {
+            service: EMAIL_SERVICE,
+            auth: { user: EMAIL_USER, pass: EMAIL_PASS },
+          }
+        : {
+            host: process.env.SMTP_HOST || 'smtp.gmail.com',
+            port: Number(process.env.SMTP_PORT || 587),
+            secure: false, // Use STARTTLS for port 587
+            auth: { user: EMAIL_USER, pass: EMAIL_PASS },
+          }
+    );
 
     // Test connection before sending
     try {
@@ -246,7 +243,11 @@ app.use((err, req, res, next) => {
 
 app.listen(PORT, () => {
   console.log(`🚀 Server listening on http://localhost:${PORT}`);
-  console.log(`📧 SMTP Host: ${process.env.SMTP_HOST || 'smtp.zoho.com'}`);
-  console.log(`📧 SMTP Port: ${process.env.SMTP_PORT || 587}`);
-  console.log(`📧 From Email: ${process.env.FROM_EMAIL || process.env.SMTP_USER}`);
+  if (process.env.EMAIL_SERVICE) {
+    console.log(`📧 Email Service: ${process.env.EMAIL_SERVICE}`);
+  } else {
+    console.log(`📧 SMTP Host: ${process.env.SMTP_HOST || 'smtp.gmail.com'}`);
+    console.log(`📧 SMTP Port: ${process.env.SMTP_PORT || 587}`);
+  }
+  console.log(`📧 From Email: ${process.env.FROM_EMAIL || process.env.EMAIL_USER || process.env.SMTP_USER || 'N/A'}`);
 });
