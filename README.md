@@ -46,3 +46,36 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Vercel Deployment and Local Development
+
+- **Production API endpoint**: The app calls the Vercel Serverless Function at `/api/contact`.
+- **Environment variables** (set in Vercel Project Settings → Environment Variables):
+  - `SMTP_HOST`
+  - `SMTP_PORT` (e.g., `587`)
+  - `SMTP_USER`
+  - `SMTP_PASS`
+  - `FROM_EMAIL` (optional, defaults to `SMTP_USER`)
+  - `TO_EMAIL` (optional, comma-separated list)
+
+### Local development
+
+1) Install dependencies:
+   ```bash
+   npm install
+   ```
+2) Start CRA dev server:
+   ```bash
+   npm start
+   ```
+3) Run the serverless function locally with Vercel CLI (proxies `/api/*`):
+   ```bash
+   npm i -g vercel
+   vercel dev
+   ```
+4) The app is configured to use the same-origin function locally via `.env.local`:
+   ```bash
+   REACT_APP_CONTACT_API_URL=/api/contact
+   ```
+
+- **Note**: `server.js` was removed; use the serverless function at `api/contact.ts` instead.
