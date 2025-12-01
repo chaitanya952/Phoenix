@@ -215,55 +215,6 @@ export const AboutPage: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            
-           
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Company Stats */}
-      <section className="pb-20 relative z-10">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-20"
-          >
-            <AnimatedStatCard
-              icon={<CalendarIcon className="w-8 h-8 text-white-600" />}
-              end={COMPANY_STATS.years}
-              suffix="+"
-              label="Years of Excellence"
-              delay={200}
-              color="border-l-primary-500"
-            />
-            <AnimatedStatCard
-              icon={<UsersIcon className="w-8 h-8 text-white-600" />}
-              end={COMPANY_STATS.employees}
-              suffix="+"
-              label="Skilled Employees"
-              delay={400}
-              color="border-l-green-500"
-            />
-            <AnimatedStatCard
-              icon={<BuildingOfficeIcon className="w-8 h-8 text-white-600" />}
-              end={COMPANY_STATS.factoryArea}
-              suffix="sqft"
-              label="Factory Area"
-              delay={600}
-              color="border-l-blue-500"
-            />
-            
-            <AnimatedStatCard
-              icon={<TruckIcon className="w-8 h-8 text-white-600" />}
-              end={COMPANY_STATS.monthlyCapacity / 1000000}
-              suffix="M"
-              label="Monthly Capacity"
-              delay={100}
-              color="border-l-orange-500"
-            />
           </motion.div>
         </div>
       </section>
@@ -785,60 +736,7 @@ export const AboutPage: React.FC = () => {
               viewport={{ once: true }}
               className="mb-16"
             >
-              <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">Premium Materials</h3>
-              
-              {/* Materials Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                {RAW_MATERIALS.materials.map((material, index) => (
-                  <motion.div
-                    key={material.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1, duration: 0.6 }}
-                    viewport={{ once: true }}
-                    className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                  >
-                    <div className={`inline-block px-3 py-1 rounded-full text-xs font-semibold mb-4 ${material.color}`}>
-                      {material.name}
-                    </div>
-                    <p className="text-sm text-gray-600 mb-4">{material.description}</p>
-                    
-                    <div className="mb-4">
-                      <h5 className="text-sm font-semibold text-gray-800 mb-2">Properties:</h5>
-                      <ul className="space-y-1">
-                        {material.properties.map((property, idx) => (
-                          <li key={idx} className="text-xs text-gray-600 flex items-center">
-                            <div className="w-1 h-1 bg-primary-600 rounded-full mr-2 flex-shrink-0"></div>
-                            {property}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="mb-4">
-                      <h5 className="text-sm font-semibold text-gray-800 mb-2">Applications:</h5>
-                      <div className="flex flex-wrap gap-1">
-                        {material.applications.map((app, idx) => (
-                          <span key={idx} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
-                            {app}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div>
-                      <h5 className="text-sm font-semibold text-gray-800 mb-2">Certifications:</h5>
-                      <div className="flex flex-wrap gap-1">
-                        {material.certifications.map((cert, idx) => (
-                          <span key={idx} className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">
-                            {cert}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+            
 
               {/* Quality Standards */}
               <motion.div
