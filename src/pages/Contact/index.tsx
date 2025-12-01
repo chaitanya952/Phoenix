@@ -471,7 +471,7 @@ export const ContactPage: React.FC = () => {
               </div>
             </motion.div>
 
-            {/* Map & Additional Info */}
+            
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -480,47 +480,9 @@ export const ContactPage: React.FC = () => {
               className="space-y-8"
             >
               {/* Interactive Map */}
-              <div className="bg-white rounded-2xl overflow-hidden shadow-lg">
-                <div className="p-4 bg-gradient-to-r from-primary-500 to-primary-600">
-                  <h4 className="text-white font-semibold flex items-center">
-                    <MapPinIcon className="w-5 h-5 mr-2" />
-                    Our Location
-                  </h4>
-                </div>
-                <div className="h-64">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3798.2!2d78.4672192!3d17.7721533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb7b8b8b8b8b8b%3A0x8b8b8b8b8b8b8b8b!2sPhoenix%20Plastowares%20Private%20Limited!5e0!3m2!1sen!2sin!4v1640000000000"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Phoenix Plastowares Private Limited - Manoharabad, Hyderabad"
-                  ></iframe>
-                </div>
-                <div className="p-4 bg-gray-50">
-                  <div className="space-y-1">
-                    <p className="text-sm text-gray-800 font-semibold">Phoenix Plastowares Private Limited</p>
-                    <p className="text-sm text-gray-600">S.No 30/5&30/EE, V SRP Properties, Block C2</p>
-                    <p className="text-sm text-gray-600">beside Reliance Petrol Station, Manoharabad</p>
-                    <p className="text-sm text-gray-600">Hyderabad, Telangana 502334, India</p>
-                  </div>
-                  <div className="mt-3 pt-3 border-t border-gray-200">
-                    <a
-                      href="https://maps.app.goo.gl/GB6udZDUk8vjcJQX8"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-primary-600 hover:text-primary-700 text-sm font-medium transition-colors"
-                    >
-                      <MapPinIcon className="w-4 h-4 mr-1" />
-                      Open in Google Maps
-                    </a>
-                  </div>
-                </div>
-              </div>
+              
 
-              {/* Why Choose Phoenix */}
+              {/* Why Choose Phoenix
               <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-8">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Why Choose Phoenix?</h3>
                 <ul className="space-y-3">
@@ -536,7 +498,7 @@ export const ContactPage: React.FC = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </div> */}
 
               {/* Response Time */}
               <div className="bg-white rounded-2xl p-6 shadow-lg">

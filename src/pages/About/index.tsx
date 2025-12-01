@@ -725,58 +725,57 @@ export const AboutPage: React.FC = () => {
                     {getIcon(reason.icon)}
                   </div>
                   <h4 className="text-lg font-bold text-gray-900 mb-2">{reason.title}</h4>
-                  <p className="text-sm text-gray-600">{reason.description}</p>
+                  
                 </motion.div>
               ))}
             </div>
 
             {/* What Sets Us Apart */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="mb-16"
-            >
-              <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">What Sets Us Apart</h3>
-              
-              {/* Hero Image Section */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="relative mb-12 rounded-2xl overflow-hidden shadow-2xl"
-              >
-              </motion.div>
+<motion.div
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, delay: 0.3 }}
+  viewport={{ once: true }}
+  className="mb-16"
+>
+  <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">
+    What Sets Us Apart
+  </h3>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {WHAT_SETS_APART.differentiators.map((diff, index) => (
-                  <motion.div
-                    key={diff.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1, duration: 0.6 }}
-                    viewport={{ once: true }}
-                    className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                  >
-                    <div className="inline-flex p-3 rounded-xl bg-primary-100 text-primary-600 mb-4">
-                      {getIcon(diff.icon)}
-                    </div>
-                    <h4 className="text-lg font-bold text-gray-900 mb-3">{diff.title}</h4>
-                    <p className="text-sm text-gray-600 mb-4">{diff.description}</p>
-                    <ul className="space-y-1">
-                      {diff.features.map((feature, idx) => (
-                        <li key={idx} className="text-xs text-gray-500 flex items-center">
-                          <CheckCircleIcon className="w-3 h-3 text-green-500 mr-1 flex-shrink-0" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+  {/* Hero Image Section */}
+  <motion.div
+    initial={{ opacity: 0, scale: 0.95 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.8 }}
+    viewport={{ once: true }}
+    className="relative mb-12 rounded-2xl overflow-hidden shadow-2xl"
+  >
+  </motion.div>
+
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    {WHAT_SETS_APART.differentiators.map((diff, index) => (
+      <motion.div
+        key={diff.id}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: index * 0.1, duration: 0.6 }}
+        viewport={{ once: true }}
+        className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+      >
+        <span className="flex items-center gap-3">
+          <span className="inline-flex p-3 rounded-xl bg-primary-100 text-primary-600">
+            {getIcon(diff.icon)}
+          </span>
+
+          <span className="text-lg font-bold text-gray-900">
+            {diff.title}
+          </span>
+        </span>
+      </motion.div>
+    ))}
+  </div>
+</motion.div>
+
 
             {/* Raw Materials Excellence */}
             <motion.div

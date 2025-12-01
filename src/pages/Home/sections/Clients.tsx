@@ -13,16 +13,11 @@ import {
 export const Clients: React.FC = () => {
   // Array of all client images
   const clientImages = [
-     'Picture3.jpg', 'Picture4.jpg',
+    'Picture3.jpg', 'Picture4.jpg',
     'Picture5.png', 'Picture6.png', 'Picture7.png', 'Picture8.png', 'Picture9.png',
-    'Picture10.png', 'Picture11.jpg', 'Picture12.jpg', 'Picture13.png', 'Picture14.jpg',
-    'Picture15.jpg', 'Picture16.jpg', 'Picture17.jpg', 'Picture18.png', 'Picture19.jpg',
-    'Picture20.jpg', 'Picture21.png', 'Picture22.png', 'Picture23.png', 'Picture24.png',
-    'Picture25.jpg', 'Picture26.jpg', 'Picture27.png', 'Picture28.jpg', 'Picture29.png',
-    'Picture30.png', 'Picture31.png', 'Picture32.jpg', 'Picture33.png', 'Picture34.jpg',
-    'Picture35.png', 'Picture36.png', 'Picture37.jpg', 'Picture38.png', 'Picture39.png',
-    'Picture40.png', 'Picture41.png', 'Picture42.png', 'Picture43.png', 'Picture44.jpg',
-    'Picture45.jpg'
+    'Picture10.png', 'Picture11.jpg', 'Picture13.png', 'Picture14.jpg',
+    'Picture15.jpg', 'Picture16.jpg', 'Picture17.jpg',  'Picture19.jpg',
+    'Picture20.jpg', 'Picture21.png'
   ];
 
   const containerVariants = {
@@ -78,7 +73,7 @@ export const Clients: React.FC = () => {
                   transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                   className="absolute -top-2 -right-8 text-blue-500"
                 >
-                  <BuildingOfficeIcon className="w-8 h-8" />
+                  
                 </motion.div>
               </span>
             </h2>

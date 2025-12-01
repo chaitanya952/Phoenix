@@ -351,7 +351,7 @@ export const Footer: React.FC = () => {
               className="text-gray-400 text-sm"
               whileHover={{ color: "#9ca3af" }}
             >
-              © 2024 Phoenix Baby Product Co., Ltd. All rights reserved.
+              © 2025 Phoenix Plastowares Pvt Ltd. All rights reserved.
             </motion.p>
             
             <div className="flex items-center space-x-6">
